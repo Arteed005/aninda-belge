@@ -1,0 +1,32 @@
+{
+  "slug": "kapora-sozlesmesi",
+  "category": "sozlesmeler",
+  "title": "Kapora Sözleşmesi",
+  "description": "Bir alım satım işleminden önce verilen kaporayı ve şartlarını yazılı hale getir.",
+  "meta": "Ort. 3 dk",
+  "signatures": ["Kaporayı Veren İmzası", "Kaporayı Alan İmzası"],
+  "steps": [
+    {"title": "Taraflar", "fields": ["payer_name", "payer_tc", "payer_address", "payee_name", "payee_tc", "payee_address"]},
+    {"title": "Kapora Şartları", "fields": ["subject", "deposit_amount", "total_price", "final_date"]}
+  ],
+  "fields": [
+    {"name": "payer_name", "label": "Kaporayı Veren Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "payer_tc", "label": "Kaporayı Veren T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "payer_address", "label": "Kaporayı Veren Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "payee_name", "label": "Kaporayı Alan Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ayşe Demir"},
+    {"name": "payee_tc", "label": "Kaporayı Alan T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "payee_address", "label": "Kaporayı Alan Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "subject", "label": "Sözleşmenin Konusu (Kaporanın Verildiği İşlem)", "type": "textarea", "required": true, "placeholder": "Örn: X adresindeki dairenin satın alınması"},
+    {"name": "deposit_amount", "label": "Kapora Tutarı", "type": "text", "required": true, "format": "currency-try", "placeholder": "20.000"},
+    {"name": "total_price", "label": "Toplam Bedel (varsa)", "type": "text", "required": false, "format": "currency-try", "placeholder": "500.000"},
+    {"name": "final_date", "label": "Nihai Sözleşme / Teslim Tarihi", "type": "date", "required": true, "format": "date-tr"}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — TARAFLAR", "template": "Kaporayı Veren: {payer_name} (T.C. Kimlik No: {payer_tc})\nAdresi: {payer_address}\nKaporayı Alan: {payee_name} (T.C. Kimlik No: {payee_tc})\nAdresi: {payee_address}"},
+    {"title": "MADDE 2 — KAPORANIN KONUSU", "template": "{subject}"},
+    {"title": "MADDE 3 — KAPORA TUTARI", "template": "Kapora Tutarı: {deposit_amount}\nToplam Bedel: {total_price}"},
+    {"title": "MADDE 4 — NİHAİ İŞLEM TARİHİ", "template": "Taraflar, {final_date} tarihine kadar nihai sözleşmeyi/işlemi tamamlamayı kabul eder."},
+    {"title": "MADDE 5 — CAYMA HÜKÜMLERİ", "template": "Kaporayı veren taraf işlemden vazgeçerse verdiği kaporayı geri talep edemez. Kaporayı alan taraf işlemden vazgeçerse, aldığı kaporanın iki katını kaporayı verene ödemekle yükümlüdür."},
+    {"title": "MADDE 6 — GENEL HÜKÜMLER", "template": "Taraflar, işbu sözleşmede yer alan hükümlere uymayı kabul ve taahhüt eder. Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

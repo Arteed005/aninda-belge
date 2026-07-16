@@ -1,0 +1,48 @@
+{
+  "slug": "kira-sozlesmesi",
+  "category": "sozlesmeler",
+  "title": "Kira Sözleşmesi",
+  "description": "Ev veya iş yeri kiralamaları için yasal olarak geçerli sözleşme oluştur.",
+  "meta": "Ort. 4 dk",
+  "signatures": ["Kiraya Veren İmzası", "Kiracı İmzası"],
+  "steps": [
+    {"title": "Taraflar", "fields": ["landlord", "landlord_tc", "landlord_address", "tenant", "tenant_tc", "tenant_address"]},
+    {"title": "Taşınmaz", "fields": ["rental_subject", "property_address"]},
+    {"title": "Kira Şartları", "fields": ["rent", "payment_method", "payment_day", "startDate", "duration"]}
+  ],
+  "fields": [
+    {"name": "landlord", "label": "Kiraya Veren Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "landlord_tc", "label": "Kiraya Veren T.C. Kimlik / Vergi No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "landlord_address", "label": "Kiraya Veren Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "tenant", "label": "Kiracı Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ayşe Demir"},
+    {"name": "tenant_tc", "label": "Kiracı T.C. Kimlik / Vergi No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "tenant_address", "label": "Kiracı Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "rental_subject", "label": "Kira Konusu", "type": "text", "required": false, "placeholder": "Örn: 2+1 Konut"},
+    {"name": "property_address", "label": "Kiralanan Taşınmazın Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "rent", "label": "Aylık Kira Bedeli", "type": "text", "required": true, "format": "currency-try", "placeholder": "15.000"},
+    {"name": "payment_method", "label": "Ödeme Şekli", "type": "select", "required": false,
+      "options": [
+        {"value": "Banka Havalesi/EFT", "label": "Banka Havalesi/EFT"},
+        {"value": "Elden Nakit", "label": "Elden Nakit"},
+        {"value": "Diğer", "label": "Diğer"}
+      ]},
+    {"name": "payment_day", "label": "Ödeme Tarihi", "type": "text", "required": false, "placeholder": "Örn: Her ayın 5'i"},
+    {"name": "startDate", "label": "Başlangıç Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "duration", "label": "Kira Süresi", "type": "select", "required": false,
+      "options": [
+        {"value": "6 Ay", "label": "6 Ay"},
+        {"value": "1 Yıl", "label": "1 Yıl"},
+        {"value": "2 Yıl", "label": "2 Yıl"},
+        {"value": "Süresiz", "label": "Süresiz"}
+      ]}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — TARAFLAR", "template": "Kiraya Veren: {landlord} (T.C. Kimlik/Vergi No: {landlord_tc})\nKiraya Veren Adresi: {landlord_address}\nKiracı: {tenant} (T.C. Kimlik/Vergi No: {tenant_tc})\nKiracı Adresi: {tenant_address}"},
+    {"title": "MADDE 2 — KİRALANAN TAŞINMAZ", "template": "Kira Konusu: {rental_subject}\nAdres: {property_address}"},
+    {"title": "MADDE 3 — KİRA BEDELİ VE ÖDEME ŞEKLİ", "template": "Aylık Kira Bedeli: {rent}\nÖdeme Şekli: {payment_method}\nÖdeme Tarihi: {payment_day}"},
+    {"title": "MADDE 4 — KİRA SÜRESİ", "template": "Başlangıç Tarihi: {startDate}\nKira Süresi: {duration}"},
+    {"title": "MADDE 5 — TESLİM ŞARTLARI", "template": "Kiralanan taşınmazın teslimi, işbu sözleşmenin imzalandığı tarihte taraflarca karşılıklı olarak yapılacaktır."},
+    {"title": "MADDE 6 — TARAFLARIN HAK VE YÜKÜMLÜLÜKLERİ", "template": "1) Kiracı, kira bedelini her ay belirlenen tarihte eksiksiz ve zamanında ödemekle yükümlüdür.\n2) Kiraya veren, taşınmazı kullanıma uygun ve kararlaştırılan halde teslim etmekle yükümlüdür.\n3) Kiracı, taşınmazı amacına uygun kullanacak, taşınmaza ve demirbaşlara zarar vermeyecektir.\n4) Kiraya veren, taşınmazın olağan bakım ve onarım sorumluluğunu üstlenir.\n5) Taraflar arasında doğabilecek uyuşmazlıklarda Türk Borçlar Kanunu ve ilgili mevzuat hükümleri uygulanır."},
+    {"title": "MADDE 7 — GENEL HÜKÜMLER", "template": "Taraflar, işbu sözleşmede yer alan hükümlere uymayı kabul ve taahhüt eder. Sözleşme, taraflarca imzalandığı tarihte yürürlüğe girer ve yukarıda belirtilen süre boyunca geçerlidir. Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

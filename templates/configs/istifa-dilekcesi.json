@@ -1,0 +1,20 @@
+{
+  "slug": "istifa-dilekcesi",
+  "category": "dilekceler",
+  "title": "İstifa Dilekçesi",
+  "description": "İşyerinden ayrılırken kullanabileceğin resmi istifa dilekçesi hazırla.",
+  "meta": "Ort. 2 dk",
+  "signatures": ["İstifa Eden Çalışan İmzası"],
+  "fields": [
+    {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
+    {"name": "employee_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},
+    {"name": "employee_tc", "label": "T.C. Kimlik Numaranız", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "position", "label": "Göreviniz / Unvanınız", "type": "text", "required": true, "placeholder": "Örn: Yazılım Geliştirici"},
+    {"name": "start_date", "label": "İşe Başlama Tarihiniz", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "last_working_date", "label": "İstifa Tarihi / Son Çalışma Gününüz", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "city", "label": "Dilekçenin Yazıldığı Şehir", "type": "text", "required": true, "placeholder": "Örn: İstanbul"}
+  ],
+  "clauses": [
+    {"title": "", "template": "{city}, {bugun_tarihi}\n\n{company_name} İnsan Kaynakları Departmanı'na,\n\n{company_name} bünyesinde {position} pozisyonunda {start_date} tarihinden bu yana görev yapmaktayım. İşbu dilekçe ile {last_working_date} tarihi itibariyle istifa etmek istediğimi bildiririm.\n\nBelirtilen tarihe kadar görevimi eksiksiz şekilde yerine getireceğimi, gerekli devir teslim işlemlerini titizlikle tamamlayacağımı taahhüt ederim.\n\nÇalıştığım süre boyunca kullanmadığım yıllık izin hakkım ile varsa diğer yasal alacaklarımın (kıdem tazminatı, fazla mesai vb.) tarafıma eksiksiz olarak ödenmesini rica ederim.\n\nGösterdiğiniz anlayış için teşekkür eder, bundan sonraki çalışmalarınızda başarılar dilerim.\n\nSaygılarımla,\n\n{employee_name}\nT.C. Kimlik No: {employee_tc}"}
+  ]
+}

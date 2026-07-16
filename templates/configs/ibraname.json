@@ -1,0 +1,29 @@
+{
+  "slug": "ibraname",
+  "category": "is-belgeleri",
+  "title": "İbraname",
+  "description": "İşten ayrılışta çalışanın haklarını aldığını beyan ettiği ibraname belgesi hazırla.",
+  "meta": "Ort. 3 dk",
+  "signatures": ["İşveren Yetkilisi İmzası", "Çalışan İmzası"],
+  "steps": [
+    {"title": "Taraflar", "fields": ["company_name", "employee_name", "employee_tc", "position"]},
+    {"title": "Ödeme Bilgileri", "fields": ["start_date", "end_date", "amount_paid", "payment_items"]}
+  ],
+  "fields": [
+    {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
+    {"name": "employee_name", "label": "Çalışanın Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},
+    {"name": "employee_tc", "label": "Çalışanın T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "position", "label": "Görevi", "type": "text", "required": true, "placeholder": "Örn: Yazılım Geliştirici"},
+    {"name": "start_date", "label": "İşe Başlama Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "end_date", "label": "İşten Ayrılış Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "amount_paid", "label": "Ödenen Toplam Tutar", "type": "text", "required": true, "format": "currency-try", "placeholder": "20.000"},
+    {"name": "payment_items", "label": "Ödemenin Kapsamı", "type": "textarea", "required": false, "placeholder": "Örn: Kıdem tazminatı, ihbar tazminatı, yıllık izin ücreti"}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — TARAFLAR", "template": "İşveren: {company_name}\nÇalışan: {employee_name} (T.C. Kimlik No: {employee_tc})\nGörev: {position}"},
+    {"title": "MADDE 2 — ÇALIŞMA SÜRESİ", "template": "İşe Başlama Tarihi: {start_date}\nİşten Ayrılış Tarihi: {end_date}"},
+    {"title": "MADDE 3 — ÖDEME", "template": "Çalışan, iş sözleşmesinin sona ermesi nedeniyle kendisine {amount_paid} tutarında ödeme yapıldığını, bu tutarın {payment_items} kalemlerini kapsadığını kabul eder."},
+    {"title": "MADDE 4 — İBRA BEYANI", "template": "Çalışan, işbu belgeyi imzalamakla, işveren ile arasındaki iş ilişkisinden doğan ücret, fazla mesai, kıdem ve ihbar tazminatı, yıllık izin ücreti ve sair tüm haklarını eksiksiz olarak aldığını, işvereni bu konularda ibra ettiğini ve herhangi bir hak talebinde bulunmayacağını beyan ve taahhüt eder."},
+    {"title": "MADDE 5 — GENEL HÜKÜMLER", "template": "Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

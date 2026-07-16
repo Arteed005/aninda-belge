@@ -1,0 +1,22 @@
+{
+  "slug": "trafik-cezasi-itiraz-dilekcesi",
+  "category": "dilekceler",
+  "title": "Trafik Cezası İtiraz Dilekçesi",
+  "description": "Kesilen trafik cezasına yasal süresinde itiraz etmek için dilekçe hazırla.",
+  "meta": "Ort. 3 dk",
+  "signatures": ["İtiraz Eden İmzası"],
+  "fields": [
+    {"name": "authority", "label": "İtiraz Edilecek Makam", "type": "text", "required": true, "placeholder": "Örn: İstanbul Sulh Ceza Hakimliği"},
+    {"name": "applicant_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "applicant_tc", "label": "T.C. Kimlik Numaranız", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "applicant_address", "label": "Adresiniz", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "penalty_no", "label": "Ceza Tutanağı Seri / Sıra No", "type": "text", "required": true, "placeholder": "Örn: AA123456"},
+    {"name": "penalty_date", "label": "Cezanın Düzenlenme / Tebliğ Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "penalty_amount", "label": "Ceza Tutarı", "type": "text", "required": false, "format": "currency-try", "placeholder": "1.500"},
+    {"name": "reason", "label": "İtiraz Gerekçeniz", "type": "textarea", "required": true, "placeholder": "İtirazınızın nedenini detaylı yazın"},
+    {"name": "city", "label": "Dilekçenin Yazıldığı Şehir", "type": "text", "required": true, "placeholder": "Örn: İstanbul"}
+  ],
+  "clauses": [
+    {"title": "", "template": "{authority}'NE\n\n{city}, {bugun_tarihi}\n\nİTİRAZ EDEN: {applicant_name} (T.C. Kimlik No: {applicant_tc})\nADRES: {applicant_address}\n\nKONU: {penalty_date} tarihli, {penalty_no} seri/sıra numaralı, {penalty_amount} tutarındaki trafik idari para cezasına itirazımdır.\n\nAÇIKLAMALAR:\n{reason}\n\nSONUÇ VE TALEP: Yukarıda açıkladığım nedenlerle hakkımda düzenlenen idari para cezasının iptaline karar verilmesini saygılarımla arz ve talep ederim.\n\n{applicant_name}\nİmza"}
+  ]
+}

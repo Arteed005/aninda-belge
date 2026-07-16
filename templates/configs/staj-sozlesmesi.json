@@ -1,0 +1,34 @@
+{
+  "slug": "staj-sozlesmesi",
+  "category": "sozlesmeler",
+  "title": "Staj Sözleşmesi",
+  "description": "Öğrenci stajyer ile şirket arasındaki staj ilişkisini ve şartlarını netleştir.",
+  "meta": "Ort. 3 dk",
+  "signatures": ["Şirket Yetkilisi İmzası", "Stajyer İmzası"],
+  "steps": [
+    {"title": "Taraflar", "fields": ["company_name", "company_address", "intern_name", "intern_tc", "intern_address"]},
+    {"title": "Staj Bilgileri", "fields": ["school_name", "department", "position", "start_date", "end_date", "daily_allowance", "working_days"]}
+  ],
+  "fields": [
+    {"name": "company_name", "label": "Şirket Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
+    {"name": "company_address", "label": "Şirket Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "intern_name", "label": "Stajyer Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Zeynep Aksoy"},
+    {"name": "intern_tc", "label": "Stajyer T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "intern_address", "label": "Stajyer Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "school_name", "label": "Öğrenim Gördüğü Okul", "type": "text", "required": true, "placeholder": "Örn: İstanbul Üniversitesi"},
+    {"name": "department", "label": "Bölüm", "type": "text", "required": false, "placeholder": "Örn: Bilgisayar Mühendisliği"},
+    {"name": "position", "label": "Staj Pozisyonu / Departmanı", "type": "text", "required": true, "placeholder": "Örn: Yazılım Departmanı"},
+    {"name": "start_date", "label": "Başlangıç Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "end_date", "label": "Bitiş Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "daily_allowance", "label": "Staj Ücreti (varsa)", "type": "text", "required": false, "placeholder": "Örn: Günlük 300 TL"},
+    {"name": "working_days", "label": "Çalışma Günleri / Saatleri", "type": "text", "required": false, "placeholder": "Örn: Hafta içi 09:00-17:00"}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — TARAFLAR", "template": "Şirket: {company_name}\nŞirket Adresi: {company_address}\nStajyer: {intern_name} (T.C. Kimlik No: {intern_tc})\nStajyer Adresi: {intern_address}"},
+    {"title": "MADDE 2 — ÖĞRENİM BİLGİLERİ", "template": "Okul: {school_name}\nBölüm: {department}"},
+    {"title": "MADDE 3 — STAJIN KONUSU VE SÜRESİ", "template": "Staj Pozisyonu: {position}\nBaşlangıç Tarihi: {start_date}\nBitiş Tarihi: {end_date}"},
+    {"title": "MADDE 4 — ÜCRET VE ÇALIŞMA DÜZENİ", "template": "Staj Ücreti: {daily_allowance}\nÇalışma Günleri/Saatleri: {working_days}"},
+    {"title": "MADDE 5 — TARAFLARIN YÜKÜMLÜLÜKLERİ", "template": "1) Şirket, stajyere staj konusuyla ilgili uygun çalışma ortamı ve gözetim sağlamakla yükümlüdür.\n2) Stajyer, işyeri kurallarına ve iş güvenliği talimatlarına uymakla yükümlüdür.\n3) Taraflar, staj süresince edinilen ticari sır niteliğindeki bilgileri gizli tutmayı kabul eder."},
+    {"title": "MADDE 6 — GENEL HÜKÜMLER", "template": "Taraflar, işbu sözleşmede yer alan hükümlere uymayı kabul ve taahhüt eder. Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

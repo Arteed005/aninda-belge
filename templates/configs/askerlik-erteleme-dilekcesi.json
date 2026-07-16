@@ -1,0 +1,25 @@
+{
+  "slug": "askerlik-erteleme-dilekcesi",
+  "category": "dilekceler",
+  "title": "Askerlik Erteleme Dilekçesi",
+  "description": "Askerlik hizmetinin ertelenmesini talep etmek için askerlik şubesine sunulacak dilekçe hazırla.",
+  "meta": "Ort. 2 dk",
+  "signatures": ["İmza"],
+  "fields": [
+    {"name": "authority", "label": "Başvurulacak Makam", "type": "text", "required": true, "placeholder": "Örn: Kadıköy Askerlik Şubesi Başkanlığı"},
+    {"name": "applicant_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},
+    {"name": "applicant_tc", "label": "T.C. Kimlik Numaranız", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "applicant_address", "label": "Adresiniz", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "postponement_reason", "label": "Erteleme Nedeni", "type": "select", "required": true,
+      "options": [
+        {"value": "Öğrenim", "label": "Öğrenim"},
+        {"value": "Sağlık", "label": "Sağlık"},
+        {"value": "Diğer", "label": "Diğer"}
+      ]},
+    {"name": "explanation", "label": "Açıklama", "type": "textarea", "required": true, "placeholder": "Erteleme talebinizin gerekçesini detaylı yazın"},
+    {"name": "city", "label": "Dilekçenin Yazıldığı Şehir", "type": "text", "required": true, "placeholder": "Örn: İstanbul"}
+  ],
+  "clauses": [
+    {"title": "", "template": "{authority}'NA\n\n{city}, {bugun_tarihi}\n\nAdım Soyadım: {applicant_name}\nT.C. Kimlik No: {applicant_tc}\nAdresim: {applicant_address}\n\n{explanation}\n\nYukarıda belirttiğim {postponement_reason} nedeniyle askerlik hizmetimin ertelenmesini talep ediyorum. Gereğini saygılarımla arz ederim.\n\n{applicant_name}\nİmza"}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "zam-talep-dilekcesi",
+  "category": "dilekceler",
+  "title": "Zam Talep Dilekçesi",
+  "description": "Yöneticinden ücretine zam yapılmasını talep etmek için resmi dilekçe hazırla.",
+  "meta": "Ort. 3 dk",
+  "signatures": ["Çalışan İmzası"],
+  "fields": [
+    {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
+    {"name": "employee_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},
+    {"name": "position", "label": "Göreviniz / Unvanınız", "type": "text", "required": true, "placeholder": "Örn: Yazılım Geliştirici"},
+    {"name": "start_date", "label": "İşe Başlama Tarihiniz", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "justification", "label": "Talebinizin Gerekçesi", "type": "textarea", "required": true, "placeholder": "Örn: Üstlendiğim ek sorumluluklar ve performans değerlendirmelerim doğrultusunda..."},
+    {"name": "requested_increase", "label": "Talep Edilen Artış", "type": "text", "required": true, "placeholder": "Örn: %15 / 5.000 TL"},
+    {"name": "city", "label": "Dilekçenin Yazıldığı Şehir", "type": "text", "required": true, "placeholder": "Örn: İstanbul"}
+  ],
+  "clauses": [
+    {"title": "", "template": "{city}, {bugun_tarihi}\n\n{company_name} İnsan Kaynakları Departmanı'na,\n\n{start_date} tarihinden bu yana {position} pozisyonunda görev yapmaktayım. {justification}\n\nBu doğrultuda mevcut ücretimde {requested_increase} oranında/tutarında bir artış yapılmasını talep ediyorum.\n\nDeğerlendirmenizi rica eder, gösterdiğiniz ilgi için teşekkür ederim.\n\nSaygılarımla,\n\n{employee_name}"}
+  ]
+}

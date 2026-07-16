@@ -1,0 +1,38 @@
+{
+  "slug": "borc-senedi",
+  "category": "sozlesmeler",
+  "title": "Borç Senedi",
+  "description": "Kişiler arası ödünç para ilişkisini yazılı hale getiren borç senedi / ödünç sözleşmesi hazırla.",
+  "meta": "Ort. 3 dk",
+  "signatures": ["Alacaklı (Borç Veren) İmzası", "Borçlu İmzası"],
+  "steps": [
+    {"title": "Taraflar", "fields": ["creditor_name", "creditor_tc", "creditor_address", "debtor_name", "debtor_tc", "debtor_address"]},
+    {"title": "Borç Şartları", "fields": ["amount", "loan_date", "repayment_date", "repayment_method", "interest"]}
+  ],
+  "fields": [
+    {"name": "creditor_name", "label": "Alacaklı (Borç Veren) Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "creditor_tc", "label": "Alacaklı T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "creditor_address", "label": "Alacaklı Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "debtor_name", "label": "Borçlu Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ayşe Demir"},
+    {"name": "debtor_tc", "label": "Borçlu T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "debtor_address", "label": "Borçlu Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "amount", "label": "Borç Tutarı", "type": "text", "required": true, "format": "currency-try", "placeholder": "10.000"},
+    {"name": "loan_date", "label": "Borç Verilme Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "repayment_date", "label": "Geri Ödeme Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "repayment_method", "label": "Geri Ödeme Şekli", "type": "select", "required": false,
+      "options": [
+        {"value": "Tek Seferde", "label": "Tek Seferde"},
+        {"value": "Taksitle", "label": "Taksitle"},
+        {"value": "Diğer", "label": "Diğer"}
+      ]},
+    {"name": "interest", "label": "Faiz Durumu", "type": "text", "required": false, "placeholder": "Örn: Faizsiz"}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — TARAFLAR", "template": "Alacaklı (Borç Veren): {creditor_name} (T.C. Kimlik No: {creditor_tc})\nAlacaklı Adresi: {creditor_address}\nBorçlu: {debtor_name} (T.C. Kimlik No: {debtor_tc})\nBorçlu Adresi: {debtor_address}"},
+    {"title": "MADDE 2 — BORÇ TUTARI", "template": "Borçlu, alacaklıdan {amount} tutarında borç aldığını kabul ve beyan eder."},
+    {"title": "MADDE 3 — BORCUN VERİLME VE GERİ ÖDEME TARİHİ", "template": "Borcun Verilme Tarihi: {loan_date}\nGeri Ödeme Tarihi: {repayment_date}\nGeri Ödeme Şekli: {repayment_method}"},
+    {"title": "MADDE 4 — FAİZ", "template": "Faiz Durumu: {interest}"},
+    {"title": "MADDE 5 — TEMERRÜT", "template": "Borçlunun, geri ödeme tarihinde borcunu ödememesi halinde, ödenmeyen tutara yasal faiz oranı üzerinden temerrüt faizi işletileceğini ve alacaklının yasal yollara başvurma hakkının saklı olduğunu taraflar kabul eder."},
+    {"title": "MADDE 6 — GENEL HÜKÜMLER", "template": "Taraflar, işbu senette yer alan hükümlere uymayı kabul ve taahhüt eder. Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

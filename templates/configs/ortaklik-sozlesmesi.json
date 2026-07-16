@@ -1,0 +1,33 @@
+{
+  "slug": "ortaklik-sozlesmesi",
+  "category": "sozlesmeler",
+  "title": "Ortaklık Sözleşmesi",
+  "description": "İki kişi arasındaki iş ortaklığının konusunu, sermaye ve kar paylaşımını netleştir.",
+  "meta": "Ort. 4 dk",
+  "signatures": ["1. Ortak İmzası", "2. Ortak İmzası"],
+  "steps": [
+    {"title": "Ortaklar", "fields": ["partner1_name", "partner1_tc", "partner1_address", "partner2_name", "partner2_tc", "partner2_address"]},
+    {"title": "Ortaklık Şartları", "fields": ["business_subject", "capital_share1", "capital_share2", "profit_share", "start_date"]}
+  ],
+  "fields": [
+    {"name": "partner1_name", "label": "1. Ortak Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "partner1_tc", "label": "1. Ortak T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "partner1_address", "label": "1. Ortak Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "partner2_name", "label": "2. Ortak Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ayşe Demir"},
+    {"name": "partner2_tc", "label": "2. Ortak T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "partner2_address", "label": "2. Ortak Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "business_subject", "label": "Ortaklığın Konusu", "type": "textarea", "required": true, "placeholder": "Örn: Kafe işletmeciliği"},
+    {"name": "capital_share1", "label": "1. Ortağın Sermaye Payı", "type": "text", "required": true, "placeholder": "Örn: %50 / 50.000 TL"},
+    {"name": "capital_share2", "label": "2. Ortağın Sermaye Payı", "type": "text", "required": true, "placeholder": "Örn: %50 / 50.000 TL"},
+    {"name": "profit_share", "label": "Kar / Zarar Paylaşım Oranı", "type": "text", "required": true, "placeholder": "Örn: Eşit (%50-%50)"},
+    {"name": "start_date", "label": "Yürürlük Tarihi", "type": "date", "required": true, "format": "date-tr"}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — TARAFLAR", "template": "1. Ortak: {partner1_name} (T.C. Kimlik No: {partner1_tc})\nAdresi: {partner1_address}\n2. Ortak: {partner2_name} (T.C. Kimlik No: {partner2_tc})\nAdresi: {partner2_address}"},
+    {"title": "MADDE 2 — ORTAKLIĞIN KONUSU", "template": "{business_subject}"},
+    {"title": "MADDE 3 — SERMAYE PAYLARI", "template": "1. Ortak Sermaye Payı: {capital_share1}\n2. Ortak Sermaye Payı: {capital_share2}"},
+    {"title": "MADDE 4 — KAR/ZARAR PAYLAŞIMI", "template": "{profit_share}"},
+    {"title": "MADDE 5 — YÜRÜRLÜK TARİHİ", "template": "İşbu sözleşme {start_date} tarihinde yürürlüğe girer."},
+    {"title": "MADDE 6 — GENEL HÜKÜMLER", "template": "Taraflar, işbu sözleşmede yer alan hükümlere uymayı kabul ve taahhüt eder. Ortaklığın feshi veya ayrılık halinde taraflar karşılıklı mutabakatla hareket edeceklerini kabul eder. Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

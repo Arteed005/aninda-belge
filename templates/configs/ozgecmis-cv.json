@@ -1,0 +1,47 @@
+{
+  "slug": "ozgecmis-cv",
+  "category": "is-belgeleri",
+  "title": "Özgeçmiş (CV)",
+  "description": "Deneyim ve eğitimini profesyonel bir özgeçmiş formatında sun.",
+  "meta": "Ort. 5 dk",
+  "kind": "resume",
+  "allowCustomClauses": false,
+  "fields": [
+    {"name": "full_name", "label": "Ad Soyad", "type": "text", "required": true, "placeholder": "Örn: Zeynep Aksoy"},
+    {"name": "title", "label": "Ünvan / Hedef Pozisyon", "type": "text", "required": false, "placeholder": "Örn: Kıdemli Yazılım Geliştirici"},
+    {"name": "email", "label": "E-posta", "type": "text", "required": true, "placeholder": "Örn: zeynep@example.com"},
+    {"name": "phone", "label": "Telefon", "type": "text", "required": true, "placeholder": "Örn: 0555 123 45 67"},
+    {"name": "location", "label": "Şehir", "type": "text", "required": false, "placeholder": "Örn: İstanbul"},
+    {"name": "linkedin", "label": "LinkedIn / Portfolyo (varsa)", "type": "text", "required": false, "placeholder": "Örn: linkedin.com/in/zeynepaksoy"},
+    {"name": "summary", "label": "Hakkımda", "type": "textarea", "required": false, "placeholder": "Kendini kısaca tanıt: deneyim alanın, güçlü yönlerin, hedeflerin"},
+    {"name": "skills", "label": "Yetenekler (virgülle ayırın)", "type": "textarea", "required": false, "placeholder": "Örn: JavaScript, Proje Yönetimi, İngilizce"},
+    {"name": "languages", "label": "Diller (virgülle ayırın)", "type": "textarea", "required": false, "placeholder": "Örn: İngilizce (İleri), Almanca (Orta)"}
+  ],
+  "groups": [
+    {
+      "key": "experience", "title": "İş Deneyimi", "addLabel": "+ Deneyim Ekle",
+      "fields": [
+        {"name": "company", "label": "Şirket", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
+        {"name": "position", "label": "Pozisyon", "type": "text", "required": true, "placeholder": "Örn: Yazılım Geliştirici"},
+        {"name": "start_date", "label": "Başlangıç", "type": "text", "required": false, "placeholder": "Örn: Ocak 2020"},
+        {"name": "end_date", "label": "Bitiş", "type": "text", "required": false, "placeholder": "Örn: Halen"},
+        {"name": "description", "label": "Görev Tanımı / Başarılar", "type": "textarea", "required": false, "placeholder": "Kısaca görev ve başarılarını yaz"}
+      ]
+    },
+    {
+      "key": "education", "title": "Eğitim", "addLabel": "+ Eğitim Ekle",
+      "fields": [
+        {"name": "school", "label": "Okul", "type": "text", "required": true, "placeholder": "Örn: İstanbul Üniversitesi"},
+        {"name": "degree", "label": "Bölüm / Derece", "type": "text", "required": true, "placeholder": "Örn: Bilgisayar Mühendisliği"},
+        {"name": "start_date", "label": "Başlangıç", "type": "text", "required": false, "placeholder": "Örn: 2016"},
+        {"name": "end_date", "label": "Bitiş", "type": "text", "required": false, "placeholder": "Örn: 2020"}
+      ]
+    }
+  ],
+  "steps": [
+    {"title": "Kişisel Bilgiler", "fields": ["full_name", "title", "email", "phone", "location", "linkedin", "summary"]},
+    {"title": "İş Deneyimi", "group": "experience"},
+    {"title": "Eğitim", "group": "education"},
+    {"title": "Yetenekler ve Diller", "fields": ["skills", "languages"]}
+  ]
+}

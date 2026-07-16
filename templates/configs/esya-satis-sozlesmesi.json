@@ -1,0 +1,43 @@
+{
+  "slug": "esya-satis-sozlesmesi",
+  "category": "sozlesmeler",
+  "title": "Eşya Satış Sözleşmesi",
+  "description": "Araç dışındaki taşınır eşyaların (elektronik, mobilya, makine vb.) alım satımını güvence altına al.",
+  "meta": "Ort. 3 dk",
+  "signatures": ["Satıcı İmzası", "Alıcı İmzası"],
+  "steps": [
+    {"title": "Taraflar", "fields": ["seller_name", "seller_tc", "seller_address", "buyer_name", "buyer_tc", "buyer_address"]},
+    {"title": "Satış Şartları", "fields": ["item_description", "item_condition", "price", "payment_method", "delivery_date"]}
+  ],
+  "fields": [
+    {"name": "seller_name", "label": "Satıcı Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "seller_tc", "label": "Satıcı T.C. Kimlik / Vergi No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "seller_address", "label": "Satıcı Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "buyer_name", "label": "Alıcı Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ayşe Demir"},
+    {"name": "buyer_tc", "label": "Alıcı T.C. Kimlik / Vergi No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "buyer_address", "label": "Alıcı Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "item_description", "label": "Satılan Eşyanın Tanımı", "type": "textarea", "required": true, "placeholder": "Marka, model, özellikler vb."},
+    {"name": "item_condition", "label": "Eşyanın Durumu", "type": "select", "required": false,
+      "options": [
+        {"value": "Sıfır", "label": "Sıfır"},
+        {"value": "İkinci El - İyi", "label": "İkinci El - İyi"},
+        {"value": "İkinci El - Orta", "label": "İkinci El - Orta"},
+        {"value": "İkinci El - Kötü", "label": "İkinci El - Kötü"}
+      ]},
+    {"name": "price", "label": "Satış Bedeli", "type": "text", "required": true, "format": "currency-try", "placeholder": "5.000"},
+    {"name": "payment_method", "label": "Ödeme Şekli", "type": "select", "required": false,
+      "options": [
+        {"value": "Banka Havalesi/EFT", "label": "Banka Havalesi/EFT"},
+        {"value": "Elden Nakit", "label": "Elden Nakit"},
+        {"value": "Diğer", "label": "Diğer"}
+      ]},
+    {"name": "delivery_date", "label": "Teslim Tarihi", "type": "date", "required": true, "format": "date-tr"}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — TARAFLAR", "template": "Satıcı: {seller_name} (T.C. Kimlik/Vergi No: {seller_tc})\nSatıcı Adresi: {seller_address}\nAlıcı: {buyer_name} (T.C. Kimlik/Vergi No: {buyer_tc})\nAlıcı Adresi: {buyer_address}"},
+    {"title": "MADDE 2 — SATIŞA KONU EŞYA", "template": "Eşyanın Tanımı: {item_description}\nEşyanın Durumu: {item_condition}"},
+    {"title": "MADDE 3 — SATIŞ BEDELİ VE ÖDEME ŞEKLİ", "template": "Satış Bedeli: {price}\nÖdeme Şekli: {payment_method}"},
+    {"title": "MADDE 4 — TESLİM", "template": "Eşya, {delivery_date} tarihinde alıcıya teslim edilecektir. Satıcı, eşyanın mevcut haliyle satıldığını, alıcının eşyayı inceleyerek satın aldığını beyan eder."},
+    {"title": "MADDE 5 — GENEL HÜKÜMLER", "template": "Taraflar, işbu sözleşmede yer alan hükümlere uymayı kabul ve taahhüt eder. Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

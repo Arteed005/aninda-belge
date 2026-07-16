@@ -1,0 +1,21 @@
+{
+  "slug": "fesih-dilekcesi",
+  "category": "dilekceler",
+  "title": "Fesih Dilekçesi",
+  "description": "İşveren tarafından çalışana iş sözleşmesinin feshini bildiren resmi yazı hazırla.",
+  "meta": "Ort. 2 dk",
+  "signatures": ["Yetkili İmza"],
+  "fields": [
+    {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
+    {"name": "employee_name", "label": "Çalışanın Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},
+    {"name": "employee_tc", "label": "Çalışanın T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "position", "label": "Çalışanın Görevi", "type": "text", "required": true, "placeholder": "Örn: Yazılım Geliştirici"},
+    {"name": "start_date", "label": "İşe Başlama Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "termination_date", "label": "Fesih / Son Çalışma Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "reason", "label": "Fesih Nedeni", "type": "text", "required": true, "placeholder": "Örn: İşyeri ihtiyaçları"},
+    {"name": "city", "label": "Dilekçenin Yazıldığı Şehir", "type": "text", "required": true, "placeholder": "Örn: İstanbul"}
+  ],
+  "clauses": [
+    {"title": "", "template": "{city}, {bugun_tarihi}\n\nSayın {employee_name},\n\n{company_name} bünyesinde {start_date} tarihinden bu yana {position} pozisyonunda görev yapmakta olduğunuz iş sözleşmeniz, {reason} nedeniyle {termination_date} tarihi itibariyle şirketimiz tarafından feshedilmiştir.\n\nYasal haklarınız (kıdem tazminatı, ihbar tazminatı, kullanılmayan izin ücreti vb.) mevzuata uygun şekilde tarafınıza ödenecektir.\n\nBu süreçteki katkılarınız için teşekkür eder, bundan sonraki çalışma hayatınızda başarılar dileriz.\n\nSaygılarımızla,\n\n{company_name}"}
+  ]
+}

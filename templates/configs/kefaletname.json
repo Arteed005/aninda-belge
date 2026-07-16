@@ -1,0 +1,29 @@
+{
+  "slug": "kefaletname",
+  "category": "kisisel-belgeler",
+  "title": "Kefaletname",
+  "description": "Bir borç ya da yükümlülük için kefil olduğunu beyan eden kefaletname hazırla.",
+  "meta": "Ort. 3 dk",
+  "signatures": ["Kefil İmzası"],
+  "steps": [
+    {"title": "Taraflar", "fields": ["guarantor_name", "guarantor_tc", "guarantor_address", "debtor_name", "debtor_tc", "creditor_name"]},
+    {"title": "Kefalet Şartları", "fields": ["obligation_description", "amount"]}
+  ],
+  "fields": [
+    {"name": "guarantor_name", "label": "Kefil Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "guarantor_tc", "label": "Kefil T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "guarantor_address", "label": "Kefil Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "debtor_name", "label": "Asıl Borçlu Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},
+    {"name": "debtor_tc", "label": "Asıl Borçlu T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "creditor_name", "label": "Alacaklı Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: ABC Finans A.Ş."},
+    {"name": "obligation_description", "label": "Kefil Olunan Borcun / Yükümlülüğün Tanımı", "type": "textarea", "required": true, "placeholder": "Örn: Kira sözleşmesinden doğan aylık kira bedeli ödeme yükümlülüğü"},
+    {"name": "amount", "label": "Kefalet Tutarı (varsa sınır)", "type": "text", "required": false, "format": "currency-try", "placeholder": "50.000"}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — TARAFLAR", "template": "Kefil: {guarantor_name} (T.C. Kimlik No: {guarantor_tc})\nKefil Adresi: {guarantor_address}\nAsıl Borçlu: {debtor_name} (T.C. Kimlik No: {debtor_tc})\nAlacaklı: {creditor_name}"},
+    {"title": "MADDE 2 — KEFALETİN KONUSU", "template": "{obligation_description}"},
+    {"title": "MADDE 3 — KEFALET TUTARI", "template": "Kefil, azami {amount} tutar ile sınırlı olmak üzere sorumludur."},
+    {"title": "MADDE 4 — KEFİLİN SORUMLULUĞU", "template": "Kefil, asıl borçlunun yükümlülüğünü yerine getirmemesi halinde, işbu belgede belirtilen tutarla sınırlı olmak üzere alacaklıya karşı sorumlu olduğunu kabul ve taahhüt eder."},
+    {"title": "MADDE 5 — GENEL HÜKÜMLER", "template": "Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

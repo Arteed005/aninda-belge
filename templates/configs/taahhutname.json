@@ -1,0 +1,20 @@
+{
+  "slug": "taahhutname",
+  "category": "kisisel-belgeler",
+  "title": "Taahhütname",
+  "description": "Bir kişiye veya kuruma karşı belirli bir konuda taahhütte bulunduğunu beyan eden belge hazırla.",
+  "meta": "Ort. 2 dk",
+  "signatures": ["Taahhüt Eden İmzası"],
+  "fields": [
+    {"name": "declarant_name", "label": "Taahhüt Eden Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "declarant_tc", "label": "Taahhüt Eden T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "declarant_address", "label": "Taahhüt Eden Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "addressee", "label": "Taahhüdün Muhatabı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
+    {"name": "commitment", "label": "Taahhüdün Konusu", "type": "textarea", "required": true, "placeholder": "Neyi, hangi şartlarda taahhüt ettiğinizi yazın"},
+    {"name": "deadline", "label": "Yerine Getirilme Tarihi (varsa)", "type": "date", "required": false, "format": "date-tr"},
+    {"name": "city", "label": "Yazıldığı Şehir", "type": "text", "required": true, "placeholder": "Örn: İstanbul"}
+  ],
+  "clauses": [
+    {"title": "", "template": "{city}, {bugun_tarihi}\n\n{addressee},\n\nAşağıda imzası bulunan ben {declarant_name} (T.C. Kimlik No: {declarant_tc}), adresim {declarant_address} olup;\n\n{commitment}\n\nhususunu {deadline} tarihine kadar yerine getireceğimi kabul, beyan ve taahhüt ederim.\n\n{declarant_name}\nİmza"}
+  ]
+}

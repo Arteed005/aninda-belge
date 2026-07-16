@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+input::placeholder{color:#9aa5b4}
+@keyframes pageFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes cardIn{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#ffffff;color:#1a2b4a;overflow-x:hidden;--accent:{{ accentGreen }};animation:pageFadeIn 240ms ease">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #e4e8ee">
+    <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;gap:16px">
+      <a href="Anında Belge Ana Sayfa.dc.html" style="display:block"><img src="../../assets/logo-aninda-belge.png" alt="anında belge" style="height:58px;width:auto;display:block;margin:-4px 0" /></a>
+      <div style="display:flex;align-items:center;gap:10px;flex:none">
+        <a href="#" onClick="{{ onNavLogin }}" style="color:#1a2b4a;font-weight:600;font-size:15px;text-decoration:none;padding:10px 16px;border-radius:10px" style-hover="background:#eef1f6">Giriş Yap</a>
+        <a href="#" onClick="{{ onNavSignup }}" style="background:var(--accent);color:#ffffff;font-weight:700;font-size:15px;text-decoration:none;padding:10px 22px;border-radius:10px;box-shadow:0 2px 8px rgba(30,158,92,0.28);transition:transform 180ms ease,background 180ms ease;display:inline-block" style-hover="background:#167a47;transform:scale(1.02)">Kayıt Ol</a>
+      </div>
+    </div>
+  </header>
+
+  <section style="background:#f5f7fa;padding:64px 24px 80px;min-height:calc(100vh - 300px)">
+    <div style="max-width:420px;margin:0 auto;background:#ffffff;border-radius:20px;box-shadow:0 20px 48px rgba(26,43,74,0.1);padding:40px 36px;animation:cardIn 380ms cubic-bezier(.22,.61,.36,1) both">
+
+      <img src="../../assets/logo-aninda-belge.png" alt="anında belge" style="height:64px;width:auto;display:block;margin:0 auto 28px" />
+
+      <div style="display:flex;border-bottom:1px solid #e4e8ee;margin-bottom:28px">
+        <button onClick="{{ onNavLogin }}" style="flex:1;padding:12px 0;text-align:center;font-weight:700;font-size:15px;cursor:pointer;background:none;border:none;border-bottom:{{ loginTabBorder }};margin-bottom:-1px;color:{{ loginTabColor }};font-family:inherit;transition:color 180ms ease,border-color 180ms ease">Giriş Yap</button>
+        <button onClick="{{ onNavSignup }}" style="flex:1;padding:12px 0;text-align:center;font-weight:700;font-size:15px;cursor:pointer;background:none;border:none;border-bottom:{{ signupTabBorder }};margin-bottom:-1px;color:{{ signupTabColor }};font-family:inherit;transition:color 180ms ease,border-color 180ms ease">Kayıt Ol</button>
+      </div>
+
+      <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onLoginSubmit }}" style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <label style="display:block;font-size:13px;font-weight:600;color:#1a2b4a;margin-bottom:6px">E-posta</label>
+            <input type="email" placeholder="ornek@eposta.com" value="{{ loginEmail }}" onChange="{{ setLoginEmail }}" style="width:100%;font-size:15px;padding:12px 14px;border:1.5px solid #e4e8ee;border-radius:10px;font-family:inherit;color:#1a2b4a;outline:none;transition:border-color 180ms ease" style-focus="border-color:var(--accent)" />
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:600;color:#1a2b4a;margin-bottom:6px">Şifre</label>
+            <input type="password" placeholder="••••••••" value="{{ loginPassword }}" onChange="{{ setLoginPassword }}" style="width:100%;font-size:15px;padding:12px 14px;border:1.5px solid #e4e8ee;border-radius:10px;font-family:inherit;color:#1a2b4a;outline:none;transition:border-color 180ms ease" style-focus="border-color:var(--accent)" />
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <label style="display:flex;align-items:center;gap:7px;font-size:13.5px;color:#46536b;cursor:pointer">
+              <input type="checkbox" checked="{{ remember }}" onChange="{{ setRemember }}" style="width:16px;height:16px;accent-color:var(--accent);cursor:pointer" />
+              Beni Hatırla
+            </label>
+            <a href="#" style="font-size:13.5px;color:var(--accent);text-decoration:none;font-weight:600" style-hover="text-decoration:underline">Şifremi Unuttum</a>
+          </div>
+          <button type="submit" style="width:100%;background:var(--accent);color:#ffffff;border:none;font-weight:700;font-size:16px;padding:14px;border-radius:12px;cursor:pointer;font-family:inherit;box-shadow:0 8px 20px rgba(30,158,92,0.26);transition:transform 180ms ease,background 180ms ease;margin-top:4px" style-hover="background:#167a47;transform:scale(1.02)" style-active="transform:scale(0.98)">Giriş Yap</button>
+          <p style="text-align:center;font-size:13.5px;color:#8b96a6;margin:8px 0 0">Hesabın yok mu? <a href="#" onClick="{{ onNavSignup }}" style="color:var(--accent);font-weight:700;text-decoration:none" style-hover="text-decoration:underline">Kayıt Ol</a></p>
+        </form>
+      </sc-if>
+
+      <sc-if value="{{ isSignup }}" hint-placeholder-val="{{ false }}">
+        <form onSubmit="{{ onSignupSubmit }}" style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <label style="display:block;font-size:13px;font-weight:600;color:#1a2b4a;margin-bottom:6px">Ad Soyad</label>
+            <input type="text" placeholder="Adın Soyadın" value="{{ fullName }}" onChange="{{ setFullName }}" style="width:100%;font-size:15px;padding:12px 14px;border:1.5px solid #e4e8ee;border-radius:10px;font-family:inherit;color:#1a2b4a;outline:none;transition:border-color 180ms ease" style-focus="border-color:var(--accent)" />
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:600;color:#1a2b4a;margin-bottom:6px">E-posta</label>
+            <input type="email" placeholder="ornek@eposta.com" value="{{ signupEmail }}" onChange="{{ setSignupEmail }}" style="width:100%;font-size:15px;padding:12px 14px;border:1.5px solid #e4e8ee;border-radius:10px;font-family:inherit;color:#1a2b4a;outline:none;transition:border-color 180ms ease" style-focus="border-color:var(--accent)" />
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:600;color:#1a2b4a;margin-bottom:6px">Şifre</label>
+            <input type="password" placeholder="••••••••" value="{{ signupPassword }}" onChange="{{ setSignupPassword }}" style="width:100%;font-size:15px;padding:12px 14px;border:1.5px solid #e4e8ee;border-radius:10px;font-family:inherit;color:#1a2b4a;outline:none;transition:border-color 180ms ease" style-focus="border-color:var(--accent)" />
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:600;color:#1a2b4a;margin-bottom:6px">Şifre Tekrar</label>
+            <input type="password" placeholder="••••••••" value="{{ signupConfirm }}" onChange="{{ setSignupConfirm }}" style="width:100%;font-size:15px;padding:12px 14px;border:1.5px solid {{ confirmBorderColor }};border-radius:10px;font-family:inherit;color:#1a2b4a;outline:none;transition:border-color 180ms ease" style-focus="border-color:var(--accent)" />
+            <sc-if value="{{ passwordMismatch }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size:12.5px;color:#dc2626;margin:6px 0 0">Şifreler eşleşmiyor</p>
+            </sc-if>
+          </div>
+          <label style="display:flex;align-items:flex-start;gap:9px;font-size:13px;color:#46536b;cursor:pointer;line-height:1.5">
+            <input type="checkbox" checked="{{ agree }}" onChange="{{ setAgree }}" style="width:16px;height:16px;accent-color:var(--accent);cursor:pointer;margin-top:1px;flex:none" />
+            <span><a href="Kullanım Şartları.dc.html" style="color:var(--accent);text-decoration:none;font-weight:600" style-hover="text-decoration:underline">Kullanım Şartları'nı</a> ve <a href="Gizlilik Politikası.dc.html" style="color:var(--accent);text-decoration:none;font-weight:600" style-hover="text-decoration:underline">Gizlilik Politikası'nı</a> kabul ediyorum</span>
+          </label>
+          <button type="submit" disabled="{{ signupDisabled }}" style="width:100%;background:var(--accent);color:#ffffff;border:none;font-weight:700;font-size:16px;padding:14px;border-radius:12px;cursor:pointer;font-family:inherit;box-shadow:0 8px 20px rgba(30,158,92,0.26);transition:transform 180ms ease,background 180ms ease;margin-top:2px" style-hover="background:#167a47;transform:scale(1.02)" style-active="transform:scale(0.98)">Kayıt Ol</button>
+          <p style="text-align:center;font-size:13.5px;color:#8b96a6;margin:8px 0 0">Zaten hesabın var mı? <a href="#" onClick="{{ onNavLogin }}" style="color:var(--accent);font-weight:700;text-decoration:none" style-hover="text-decoration:underline">Giriş Yap</a></p>
+        </form>
+      </sc-if>
+
+    </div>
+  </section>
+
+  <footer style="background:#1a2b4a;color:#ffffff;padding:52px 24px 26px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;padding-bottom:34px">
+        <div style="flex:1;min-width:220px;max-width:280px">
+          <a href="Anında Belge Ana Sayfa.dc.html" style="text-decoration:none;display:inline-block;transition:opacity 180ms ease" style-hover="opacity:0.8">
+            <div style="font-size:21px;font-weight:800">
+              <span style="color:#ffffff">anında</span> <span style="color:#3fc37e">belge</span>
+            </div>
+          </a>
+          <p style="font-size:13.5px;color:rgba(255,255,255,0.6);margin:10px 0 0;line-height:1.6">Belgeni dakikalar içinde hazırla, güvenle indir.</p>
+        </div>
+        <div style="flex:none">
+          <h4 style="font-size:14px;font-weight:700;margin:0 0 14px;color:rgba(255,255,255,0.85)">İletişim</h4>
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:13.5px;color:rgba(255,255,255,0.6)">
+            <a href="mailto:destek@anindabelge.com" style="color:rgba(255,255,255,0.6);text-decoration:none" style-hover="color:var(--accent)">destek@anindabelge.com</a>
+            <a href="tel:+908501234567" style="color:rgba(255,255,255,0.6);text-decoration:none" style-hover="color:var(--accent)">0850 123 45 67</a>
+          </div>
+        </div>
+        <div style="flex:none">
+          <h4 style="font-size:14px;font-weight:700;margin:0 0 14px;color:rgba(255,255,255,0.85)">Yasal</h4>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="Kullanım Şartları.dc.html" style="font-size:13.5px;color:rgba(255,255,255,0.6);text-decoration:none" style-hover="color:var(--accent)">Kullanım Şartları</a>
+            <a href="Gizlilik Politikası.dc.html" style="font-size:13.5px;color:rgba(255,255,255,0.6);text-decoration:none" style-hover="color:var(--accent)">Gizlilik Politikası</a>
+            <a href="KVKK Aydınlatma Metni.dc.html" style="font-size:13.5px;color:rgba(255,255,255,0.6);text-decoration:none" style-hover="color:var(--accent)">KVKK Aydınlatma Metni</a>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.12);padding-top:20px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:12.5px;color:rgba(255,255,255,0.5)">
+        <span>© 2026 anında belge. Tüm hakları saklıdır.</span>
+        <span>Bu site <a href="https://aksoycode.com.tr" target="_blank" style="color:rgba(255,255,255,0.7);text-decoration:underline" style-hover="color:var(--accent)">Aksoycode</a> tarafından tasarlandı</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}, &quot;accentGreen&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#1e9e5c&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#1e9e5c&quot;, &quot;#0f9d58&quot;, &quot;#219653&quot;, &quot;#16a34a&quot;], &quot;section&quot;: &quot;Renk&quot;}}">
+class Component extends DCLogic {
+  state = {
+    activeTab: (typeof window !== 'undefined' && window.location.hash === '#kayit') ? 'signup' : 'login',
+    loginEmail: '', loginPassword: '', remember: false,
+    fullName: '', signupEmail: '', signupPassword: '', signupConfirm: '', agree: false,
+  };
+
+  setTab = (tab) => (e) => { if (e) e.preventDefault(); this.setState({ activeTab: tab }); };
+
+  renderVals() {
+    const s = this.state;
+    const passwordMismatch = s.signupConfirm.length > 0 && s.signupPassword !== s.signupConfirm;
+    const signupDisabled = !(s.fullName.trim() && s.signupEmail.trim() && s.signupPassword.length > 0 && s.signupConfirm.length > 0 && !passwordMismatch && s.agree);
+    const isLogin = s.activeTab === 'login';
+
+    return {
+      accentGreen: this.props.accentGreen ?? '#1e9e5c',
+      isLogin,
+      isSignup: !isLogin,
+      loginTabColor: isLogin ? '#1a2b4a' : '#8b96a6',
+      signupTabColor: !isLogin ? '#1a2b4a' : '#8b96a6',
+      loginTabBorder: isLogin ? '2px solid var(--accent)' : '2px solid transparent',
+      signupTabBorder: !isLogin ? '2px solid var(--accent)' : '2px solid transparent',
+      onNavLogin: this.setTab('login'),
+      onNavSignup: this.setTab('signup'),
+
+      loginEmail: s.loginEmail,
+      loginPassword: s.loginPassword,
+      remember: s.remember,
+      setLoginEmail: (e) => this.setState({ loginEmail: e.target.value }),
+      setLoginPassword: (e) => this.setState({ loginPassword: e.target.value }),
+      setRemember: (e) => this.setState({ remember: e.target.checked }),
+      onLoginSubmit: (e) => e.preventDefault(),
+
+      fullName: s.fullName,
+      signupEmail: s.signupEmail,
+      signupPassword: s.signupPassword,
+      signupConfirm: s.signupConfirm,
+      agree: s.agree,
+      setFullName: (e) => this.setState({ fullName: e.target.value }),
+      setSignupEmail: (e) => this.setState({ signupEmail: e.target.value }),
+      setSignupPassword: (e) => this.setState({ signupPassword: e.target.value }),
+      setSignupConfirm: (e) => this.setState({ signupConfirm: e.target.value }),
+      setAgree: (e) => this.setState({ agree: e.target.checked }),
+      passwordMismatch,
+      confirmBorderColor: passwordMismatch ? '#dc2626' : '#e4e8ee',
+      signupDisabled,
+      onSignupSubmit: (e) => e.preventDefault(),
+    };
+  }
+}
+</script>
+</body>
+</html>

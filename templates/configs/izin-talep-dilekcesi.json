@@ -1,0 +1,19 @@
+{
+  "slug": "izin-talep-dilekcesi",
+  "category": "dilekceler",
+  "title": "İzin Talep Dilekçesi",
+  "description": "İşyerinden yıllık izin talep etmek için kullanabileceğin resmi dilekçe hazırla.",
+  "meta": "Ort. 2 dk",
+  "signatures": ["Çalışan İmzası"],
+  "fields": [
+    {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
+    {"name": "employee_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},
+    {"name": "position", "label": "Göreviniz / Unvanınız", "type": "text", "required": true, "placeholder": "Örn: Yazılım Geliştirici"},
+    {"name": "leave_start_date", "label": "İzin Başlangıç Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "leave_end_date", "label": "İzin Bitiş Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "city", "label": "Dilekçenin Yazıldığı Şehir", "type": "text", "required": true, "placeholder": "Örn: İstanbul"}
+  ],
+  "clauses": [
+    {"title": "", "template": "{city}, {bugun_tarihi}\n\n{company_name} İnsan Kaynakları Departmanı'na,\n\n{position} pozisyonunda görev yapmaktayım. {leave_start_date} - {leave_end_date} tarihleri arasında yıllık izinli sayılmamı rica ederim.\n\nGereğini bilgilerinize arz ederim.\n\nSaygılarımla,\n\n{employee_name}"}
+  ]
+}

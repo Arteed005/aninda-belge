@@ -1,0 +1,19 @@
+{
+  "slug": "referans-mektubu",
+  "category": "is-belgeleri",
+  "title": "Referans Mektubu",
+  "description": "Birlikte çalıştığın birine yönelik olumlu referans/tavsiye mektubu hazırla.",
+  "meta": "Ort. 2 dk",
+  "signatures": ["İmza"],
+  "fields": [
+    {"name": "referrer_name", "label": "Referans Veren Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "referrer_title", "label": "Referans Verenin Unvanı / Şirketi", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş. - Genel Müdür"},
+    {"name": "candidate_name", "label": "Hakkında Yazılan Kişi", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},
+    {"name": "relationship", "label": "İlişki / Tanışıklık", "type": "text", "required": true, "placeholder": "Örn: 3 yıl boyunca birlikte çalıştım, yöneticisiydim"},
+    {"name": "strengths", "label": "Güçlü Yönleri / Değerlendirme", "type": "textarea", "required": true, "placeholder": "Öne çıkan nitelikleri, başarıları hakkında yazın"},
+    {"name": "city", "label": "Mektubun Yazıldığı Şehir", "type": "text", "required": true, "placeholder": "Örn: İstanbul"}
+  ],
+  "clauses": [
+    {"title": "", "template": "{city}, {bugun_tarihi}\n\nİLGİLİ MAKAMA,\n\n{candidate_name} ile {relationship}. Bu süre zarfında edindiğim gözlemlerime dayanarak kendisi hakkında olumlu referans vermekten memnuniyet duyarım.\n\n{strengths}\n\nKendisini tereddütsüz tavsiye eder, bundan sonraki çalışma hayatında başarılar dilerim.\n\nSaygılarımla,\n\n{referrer_name}\n{referrer_title}"}
+  ]
+}

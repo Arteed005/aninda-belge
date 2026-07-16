@@ -1,0 +1,33 @@
+{
+  "slug": "freelance-hizmet-sozlesmesi",
+  "category": "sozlesmeler",
+  "title": "Freelance Hizmet Sözleşmesi",
+  "description": "Serbest çalışan ile iş sahibi arasındaki hizmet ilişkisini ve ödeme şartlarını netleştir.",
+  "meta": "Ort. 3 dk",
+  "signatures": ["İşi Veren İmzası", "Hizmeti Veren İmzası"],
+  "steps": [
+    {"title": "Taraflar", "fields": ["client_name", "client_tc", "client_address", "freelancer_name", "freelancer_tc", "freelancer_address"]},
+    {"title": "Hizmet Şartları", "fields": ["service_description", "fee", "payment_terms", "start_date", "deadline"]}
+  ],
+  "fields": [
+    {"name": "client_name", "label": "İşi Veren Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
+    {"name": "client_tc", "label": "İşi Veren T.C. Kimlik / Vergi No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "client_address", "label": "İşi Veren Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "freelancer_name", "label": "Hizmeti Veren Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},
+    {"name": "freelancer_tc", "label": "Hizmeti Veren T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "freelancer_address", "label": "Hizmeti Veren Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "service_description", "label": "Verilecek Hizmetin Tanımı", "type": "textarea", "required": true, "placeholder": "Örn: Kurumsal web sitesi tasarımı ve geliştirilmesi"},
+    {"name": "fee", "label": "Ücret", "type": "text", "required": true, "format": "currency-try", "placeholder": "15.000"},
+    {"name": "payment_terms", "label": "Ödeme Şartları", "type": "text", "required": false, "placeholder": "Örn: %50 peşin, %50 teslimde"},
+    {"name": "start_date", "label": "Başlangıç Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "deadline", "label": "Teslim Tarihi", "type": "date", "required": true, "format": "date-tr"}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — TARAFLAR", "template": "İşi Veren: {client_name} (T.C. Kimlik/Vergi No: {client_tc})\nAdresi: {client_address}\nHizmeti Veren: {freelancer_name} (T.C. Kimlik No: {freelancer_tc})\nAdresi: {freelancer_address}"},
+    {"title": "MADDE 2 — HİZMETİN TANIMI", "template": "{service_description}"},
+    {"title": "MADDE 3 — ÜCRET VE ÖDEME", "template": "Ücret: {fee}\nÖdeme Şartları: {payment_terms}"},
+    {"title": "MADDE 4 — SÜRE", "template": "Başlangıç Tarihi: {start_date}\nTeslim Tarihi: {deadline}"},
+    {"title": "MADDE 5 — FİKRİ MÜLKİYET", "template": "Hizmet kapsamında ortaya çıkan çalışmaların mülkiyet ve kullanım hakları, bedelin tam olarak ödenmesiyle işi verene geçer."},
+    {"title": "MADDE 6 — GENEL HÜKÜMLER", "template": "Taraflar, işbu sözleşmede yer alan hükümlere uymayı kabul ve taahhüt eder. Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

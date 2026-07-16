@@ -1,0 +1,25 @@
+{
+  "slug": "ihtarname",
+  "category": "dilekceler",
+  "title": "İhtarname",
+  "description": "Karşı tarafa yasal süre tanıyarak talebini resmi şekilde bildiren ihtarname hazırla.",
+  "meta": "Ort. 3 dk",
+  "signatures": ["İhtarı Çeken İmzası"],
+  "steps": [
+    {"title": "Taraflar", "fields": ["sender_name", "sender_address", "recipient_name", "recipient_address"]},
+    {"title": "İhtarın İçeriği", "fields": ["subject", "explanation", "deadline_days", "city"]}
+  ],
+  "fields": [
+    {"name": "sender_name", "label": "İhtarı Çeken (Gönderen) Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "sender_address", "label": "Gönderen Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "recipient_name", "label": "Muhatap (İhtar Edilen) Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ayşe Demir"},
+    {"name": "recipient_address", "label": "Muhatap Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "subject", "label": "İhtarın Konusu", "type": "text", "required": true, "placeholder": "Örn: Ödenmemiş Kira Bedeli"},
+    {"name": "explanation", "label": "Açıklama / Talep", "type": "textarea", "required": true, "placeholder": "İhtarın gerekçesini ve talebinizi detaylı yazın"},
+    {"name": "deadline_days", "label": "Süre (Gün)", "type": "text", "required": true, "placeholder": "7"},
+    {"name": "city", "label": "Dilekçenin Yazıldığı Şehir", "type": "text", "required": true, "placeholder": "Örn: İstanbul"}
+  ],
+  "clauses": [
+    {"title": "", "template": "{city}, {bugun_tarihi}\n\nSayın {recipient_name},\nAdresiniz: {recipient_address}\n\nKonu: {subject}\n\n{explanation}\n\nİşbu ihtarnamenin tarafınıza tebliğinden itibaren {deadline_days} gün içerisinde gereğinin yerine getirilmesini, aksi halde yasal yollara başvurma hakkımın saklı olduğunu ihtaren bildiririm.\n\nİhtarı Çeken:\n{sender_name}\n{sender_address}"}
+  ]
+}

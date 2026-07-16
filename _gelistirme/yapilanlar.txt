@@ -1,0 +1,272 @@
+ANINDA BELGE — YAPILANLAR
+Son güncelleme: 2026-07-14 (gece — 21 yeni şablon + Özgeçmiş/CV motoru eklendi)
+
+=================================================
+1) ORTAM KURULUMU
+=================================================
+- C:\xampp\php\php.ini içinde şu extension'lar aktif edildi: gd, zip, openssl
+  (composer'ın paket indirebilmesi ve dompdf'in çalışabilmesi için gerekliydi)
+- Eski/çakışan "extension=php_openssl.dll" satırı yorum satırına alındı (duplicate
+  modül yükleme uyarısını önlemek için)
+- composer.phar indirilip projeye kuruldu, "composer require dompdf/dompdf" ve
+  "composer require phpmailer/phpmailer" ile bağımlılıklar vendor/ klasörüne kuruldu.
+  vendor/ klasörü commit edilecek şekilde bırakıldı (shared hosting'de composer'a
+  gerek kalmadan sadece dosya yükleyerek çalışsın diye).
+- Local MySQL'de "anindabelge" adında veritabanı oluşturuldu, sql/schema.sql uygulandı.
+- Gerçek e-posta gönderimi için cPanel'de anindabelge.com domaini eklendi, DNS
+  ayarlandı, destek@anindabelge.com mailbox'ı oluşturuldu (mt-north.guzelhosting.com,
+  SMTP SSL 465). Local XAMPP'de MTA olmadığı için mail() yerine PHPMailer + gerçek
+  SMTP kullanılıyor — aynı ayarlar site canlıya alınınca da doğrudan çalışacak.
+
+=================================================
+2) KURULAN DOSYA/DİZİN YAPISI
+=================================================
+bootstrap.php              - session, timezone (Europe/Istanbul), tüm lib dosyalarını yükler
+.htaccess                  - lib/, templates/, config/, sql/, cron/, storage/, vendor/,
+                              _gelistirme/ dizinlerini ve .json/.sql/.phar/.lock/.md/
+                              .dc.html/.txt uzantılarını web erişimine kapatır
+
+config/
+  app.php                  - RETENTION_DAYS_DEFAULT (30), WATERMARK_DEFAULT (false), marka renkleri
+  db.php                   - PDO tekil bağlantı (getPdo()), local DB bilgileri
+  mail.php                 - SMTP ayarları (destek@anindabelge.com), .htaccess ile korunuyor
+
+lib/
+  TemplateConfig.php       - isValidSlug(), getTemplateConfig(), getAllTemplateConfigs()
+                              (templates/configs/*.json dosyalarını otomatik keşfeder)
+  ClauseRenderer.php       - renderClauses() : SSR önizleme + PDF için TEK doğruluk kaynağı.
+                              renderCustomClauses() : kullanıcının eklediği serbest "Ek Madde"leri
+                              aynı {title, lines} şekline çevirir. renderLineHtml() : bir satırı
+                              boşluk sızıntısı olmadan HTML'e basar (DRY, PDF'teki whitespace
+                              hatasını da çözdü). trUpper() : Türkçe İ/I büyük harf düzeltmesi.
+  ResumeRenderer.php       - renderResumeData() : "kind":"resume" (CV) belgeleri için düz veri
+                              şekillendirici — {full_name, ..., skills[], languages[], sections[]}.
+                              Segment/madde mantığına ihtiyaç yok, alanlar cümleye gömülmüyor,
+                              doğrudan etiketli veri olarak gösteriliyor. SSR önizleme ve PDF aynı
+                              çıktıyı kullanıyor (tek doğruluk kaynağı ilkesi burada da geçerli).
+  Validator.php            - validateFormData() : sunucu tarafı zorunlu alan/tarih/seçim doğrulaması.
+                              validateCustomClauses() : Ek Madde girdilerini sınırlar (maks. 10 adet,
+                              madde başına maks. 1000 karakter). validateRepeatableGroups() : CV'nin
+                              tekrarlanan deneyim/eğitim girişlerini sınırlar (maks. 15 giriş, alt alan
+                              başına 200/1000 karakter, tamamen boş girişler atılır) — alt alanların
+                              "required"luğu sunucuda zorlanmıyor (bilinçli esneklik, bkz. madde 3).
+  Pdf.php                  - buildDompdf(), renderPdfHtml(), renderResumePdfHtml() (CV için),
+                              shouldWatermark() (pasif altyapı). buildFittedPdf(callable $renderHtml) :
+                              belge birden fazla A4 sayfasına taşarsa yazı boyutu/boşlukları kademeli
+                              küçültüp (1.0 → 0.66 arası) tek sayfaya sığdırana kadar yeniden render
+                              eder — artık bir callback alıyor, hem sözleşme hem CV yolu aynı döngüyü
+                              paylaşıyor.
+  Documents.php            - saveDocument() : documents tablosuna KVKK'ya uygun expires_at ile kayıt
+  Security.php             - csrf_token(), csrf_check()
+  Auth.php                 - registerUser(), attemptLogin(), loginUser() (remember-me cookie),
+                              currentUser(), logoutUser(), generateVerificationToken(),
+                              verifyEmailToken() (SHA-256 hashlenmiş token, 24 saat geçerli)
+  Mailer.php               - PHPMailer + SMTP ile gerçek mail gönderimi, marka logolu HTML
+                              e-posta şablonu (renderEmailHtml()), sendVerificationEmail()
+
+templates/
+  configs/*.json (25 şablon)  - Her biri tek bir JSON dosyası, motor kodu değişmeden çalışıyor:
+                                 * Sözleşmeler (MADDE formatı): kira-sozlesmesi, arac-satis-sozlesmesi,
+                                   is-sozlesmesi, borc-senedi, esya-satis-sozlesmesi, kapora-sozlesmesi,
+                                   freelance-hizmet-sozlesmesi, ortaklik-sozlesmesi, staj-sozlesmesi,
+                                   vekaletname, muvafakatname, kefaletname, ibraname
+                                 * Dilekçeler/mektuplar (akıcı, MADDE'siz metin): istifa-dilekcesi,
+                                   fesih-dilekcesi, izin-talep-dilekcesi, zam-talep-dilekcesi,
+                                   ihtarname, trafik-cezasi-itiraz-dilekcesi,
+                                   nufus-kaydi-talep-dilekcesi, askerlik-erteleme-dilekcesi,
+                                   calisma-belgesi, referans-mektubu, on-yazi, taahhutname
+                                 * Özgeçmiş: ozgecmis-cv (bkz. aşağıdaki "kind":"resume" mimarisi)
+  pdf-shell.php                   - dompdf'e uygun (flex/grid yok, table tabanlı imza alanı)
+                                     HTML/CSS sarmalayıcı. $scale parametresiyle
+                                     buildFittedPdf()'in tek-sayfa küçültmesini uygular.
+  resume-shell.php                - pdf-shell.php'nin CV'ye özgü kardeşi: isim/ünvan/iletişim
+                                     başlığı, "Hakkımda", Deneyim/Eğitim bölümleri (tarih aralığı
+                                     sağda, CSS float ile — dompdf'te float kullanırken her girişte
+                                     "clear:both; overflow:hidden" ŞART, yoksa ardışık float'lar
+                                     birbirinin üstüne yığılıyor, bu proje sırasında keşfedildi),
+                                     Yetenekler/Diller etiket listesi. İmza tablosu YOK.
+
+partials/
+  _header.php, _footer.php  - ortak header/footer (marka renkleri, giriş durumu, doğrulama
+                                banner'ı, footer'daki hukuki sayfa linkleri)
+  _legal-nav.php             - hukuki sayfalar arası sekme navigasyonu
+
+sql/schema.sql              - users (id, name, email, password_hash, email_verified_at,
+                               verify_token_hash, verify_token_expires_at, is_premium, created_at)
+                               documents (id, user_id nullable, template_slug, form_data JSON,
+                               is_watermarked, created_at, expires_at + index)
+
+cron/cleanup-documents.php  - CLI-only (web'den çağrılırsa 403), süresi dolan documents
+                               kayıtlarını siler. cPanel cron ile günlük çalıştırılacak.
+
+assets/js/live-preview.js   - vanilla JS, config JSON'unu okuyup PHP'nin render fonksiyonlarını
+                               client-side mirror'lar. Wizard adım geçişlerini (Geri/İleri, adım
+                               noktaları, zorunlu alan kontrolü) HER İKİ belge türü için ortak
+                               yönetir (adım iskeleti [data-field]/[data-step-panel]'den generic
+                               türetildiği için sözleşme/CV ayrımı gerektirmiyor). config.kind
+                               "resume" ise CV'ye özel yola (buildResumeData/renderResumePreview,
+                               tekrarlanan deneyim/eğitim kartı ekle/kaldır — Ek Madde'nin çok
+                               alanlı hali) girer, değilse mevcut sözleşme yoluna (renderClauses/
+                               renderCustomClauses/Ek Madde) girer.
+assets/js/homepage.js       - ana sayfadaki arama kutusu, kategori chip'leri, "yakında" modalı
+assets/css/site.css         - tüm ortak stiller (prototiplerdeki inline stillerden çıkarıldı;
+                               wizard, ek madde, auth, yasal sayfa, flash/doğrulama banner
+                               bölümleri dahil)
+
+index.php                   - Ana sayfa: arama, kategori kartları, popüler şablonlar, "nasıl
+                               çalışır" bölümü — tamamen kullanıcının verdiği .dc.html
+                               tasarımından portlandı. searchCatalog artık 26 şablonun hepsini
+                               içeriyor, 4 kategori kartı da kategori.php'ye bağlı.
+kategori.php                 - ?slug=sozlesmeler|dilekceler|is-belgeleri|kisisel-belgeler ile
+                               çağrılan kategori listeleme sayfası — kullanıcının verdiği
+                               "Sözleşmeler.dc.html" tasarımından birebir portlandı (4 kategori
+                               için genelleştirildi: başlık/açıklama/ikon/arama placeholder'ı
+                               config'ten geliyor). O kategorideki tüm config'leri
+                               getAllTemplateConfigs()'ten filtreleyip kart olarak listeler,
+                               assets/js/category.js ile client-side arama filtresi çalışır.
+sablon.php                  - ?slug=... ile çağrılan TEK dinamik form + adım adım (wizard)
+                               + canlı önizleme sayfası. Her yeni belge türü için yeni sayfa
+                               yazılmaz, sadece yeni JSON config eklenir. config['kind']==='resume'
+                               ise CV'ye özel dallanmaya girer (tekrarlanan grup adımları,
+                               resume-preview) — sözleşme yolu hiç değişmeden yan yana duruyor.
+indir.php                   - POST endpoint: CSRF kontrolü, sunucu doğrulaması, Ek Madde
+                               birleştirme (ya da CV için grup doğrulama), buildFittedPdf() ile
+                               tek-sayfa PDF üretimi, documents tablosuna kayıt, PDF'i indirme
+                               olarak stream eder.
+giris.php, cikis.php        - Giriş/Kayıt (tek sayfa, sekmeli) ve çıkış işlemleri
+dogrula.php                 - E-posta doğrulama token linki (?token=...) burada işlenir
+dogrula-gonder.php          - Doğrulama e-postasını tekrar gönderme (banner'daki link)
+kullanim-sartlari.php,
+gizlilik-politikasi.php,
+kvkk-aydinlatma-metni.php   - Hukuki sayfalar, footer'dan bağlı
+
+_gelistirme/tasarim-referans/  - Kullanıcının Claude Design ile hazırladığı orijinal .dc.html
+                                   prototipleri (canlı sitenin parçası değil, sadece referans).
+                                   Her yeni sayfa bu prototiplerden birebir portlanıyor.
+
+=================================================
+3) TASARIM/MİMARİ KARARLAR
+=================================================
+- Routing: sayfa-başına-dosya + query string (sablon.php?slug=...), mod_rewrite'a bağımlılık yok.
+- Şablonlar dosya tabanlı JSON config (templates/configs/*.json), veritabanında değil.
+  Yeni belge eklemek = yeni JSON dosyası, kod değişmez.
+- Adım adım form (wizard): config'te opsiyonel "steps" dizisi tanımlanır, tanımlanmazsa
+  motor tüm alanları tek adıma toplar. "Ek Maddeler" adımı motor tarafından HER config'e
+  otomatik eklenir (config'te "allowCustomClauses": false ile kapatılabilir) — kullanıcı
+  sabit maddelere ek olarak kendi serbest metnini yazıp sözleşmeye/dilekçeye dahil edebiliyor.
+  Tüm adımlar SSR'da aynı anda render edilir, JS sadece görünürlüğü kontrol eder
+  (yeni bir AJAX/partial-load mekanizması yok).
+- Frontend tasarımı: her sayfa kullanıcının Claude Design ile hazırladığı .dc.html
+  prototiplerinden birebir portlanıyor, motor kendi tasarımını icat etmiyor.
+- Güvenlik: slug regex whitelist + dosya varlığı kontrolü (path traversal engellendi),
+  PHP tarafında htmlspecialchars(), JS tarafında textContent (XSS'e kapalı), CSRF token,
+  sunucu tarafı doğrulama JS'e güvenmez, config/ dizini ve içindeki SMTP şifresi
+  .htaccess ile web erişimine kapalı.
+- E-posta doğrulama: ücretsiz/basit — kayıt sırasında SHA-256 hashlenmiş token üretilir
+  (plaintext hiç saklanmaz), 24 saat geçerli, doğrulanmamış kullanıcılar engellenmiyor
+  (non-blocking UX), sadece banner + "spam klasörüne bakın" uyarısı + tekrar gönder linki
+  gösteriliyor.
+- Freemium altyapısı hazır ama PASİF: shouldWatermark() şu an her zaman false döner,
+  documents.is_watermarked kolonu ileride kullanılmak üzere duruyor.
+- Belge "kind"i (Özgeçmiş/CV motoru): config'e "kind": "resume" eklenerek motor seviyesinde
+  ikinci bir belge türü açıldı ("kind" yoksa varsayılan "contract", mevcut 25 şablon hiç
+  değişmeden çalışmaya devam ediyor — CV tamamen paralel, izole bir kod yolundan geçiyor).
+  CV'nin kendine özgü ihtiyacı: kullanıcının istediği kadar iş deneyimi/eğitim girişi
+  ekleyip çıkarabilmesi. Bunun için config'e "groups" (her biri kendi alt-alan şemasına
+  sahip tekrarlanan bir grup, ör. "experience": şirket/pozisyon/tarih/açıklama) ve
+  "steps" dizisindeki bir adımın normal "fields" yerine "group": "experience" işareti
+  taşıyabilmesi eklendi. POST alan adlandırması experience[0][company] şeklinde — PHP
+  bunu otomatik diziye çeviriyor, JS tarafında yeniden numaralama sadece görünen etikette
+  gerekiyor (Ek Madde'nin renumberCustomClauses() deneyiminden öğrenilen sadeleştirme).
+  CV alanları cümleye gömülmediği (kira'daki {tenant} gibi değil, doğrudan etiketli veri
+  olarak gösterildiği) için ClauseRenderer'ın segment mantığına ihtiyaç yok — yeni,
+  daha basit bir ResumeRenderer.php yeterli oldu.
+- KVKK: her PDF üretiminde (misafir dahil) form verisi documents tablosuna expires_at
+  (varsayılan 30 gün) ile kaydediliyor, cron script'i süresi dolanları siliyor.
+
+=================================================
+4) TEST EDİLEN VE DOĞRULANAN DAVRANIŞLAR
+=================================================
+- 25 şablonun HEPSİ (kira-sozlesmesi, istifa-dilekcesi, vekaletname, arac-satis-sozlesmesi,
+  is-sozlesmesi, ihtarname, borc-senedi, fesih-dilekcesi, esya-satis-sozlesmesi,
+  kapora-sozlesmesi, freelance-hizmet-sozlesmesi, ortaklik-sozlesmesi,
+  izin-talep-dilekcesi, zam-talep-dilekcesi, trafik-cezasi-itiraz-dilekcesi,
+  nufus-kaydi-talep-dilekcesi, askerlik-erteleme-dilekcesi, ibraname, calisma-belgesi,
+  referans-mektubu, staj-sozlesmesi, on-yazi, muvafakatname, kefaletname, taahhutname,
+  ozgecmis-cv) sablon.php?slug=... üzerinden HTTP 200 dönüyor; her ikisi de temsilen
+  (MADDE formatı: is-sozlesmesi, mektup formatı: ihtarname/trafik-cezasi-itiraz-dilekcesi)
+  uçtan uca form doldurulup PDF üretilerek doğrulandı.
+- Özgeçmiş (CV): "İş Deneyimi" ve "Eğitim" adımlarında "+ Deneyim/Eğitim Ekle" ile
+  sınırsız kart eklenip "Kaldır" ile silinebiliyor (server-side sınır: maks. 15 giriş,
+  16. giriş gönderildiğinde 15'e kırpıldığı DB'deki kayıttan doğrulandı). PDF çıktısı
+  gerçek özgeçmiş düzeninde (imza satırı YOK, isim/ünvan/iletişim başlığı, Deneyim/Eğitim
+  bölümleri, tarih aralığı sağda) — 2 deneyim + 2 eğitim ile ve hiç deneyim/eğitim
+  girilmeden (minimal veri) test edildi, ikisi de tek A4 sayfasına sığdı.
+  * PDF'i pdftotext ile kontrol ederken tarih aralıklarının bölüm başında toplu şekilde
+    göründüğü, her girişin yanından ayrı düştüğü görüldü — bu bir dompdf render hatası
+    OLARAK YORUMLANDI ama gerçekte pdftotext'in float'lu (CSS float:right) içeriği okuma
+    sırasını yanlış çıkarması (poppler'ın bilinen bir sınırlaması). PyMuPDF ile PDF'i
+    gerçekten görüntüye çevirip bakınca render'ın baştan beri doğru olduğu anlaşıldı.
+    DERS: PDF görsel doğruluğunu pdftotext çıktısına bakarak değerlendirmek yanıltıcı
+    olabiliyor — mümkünse görüntüye çevirip (bu ortamda: `pip install pymupdf`,
+    `fitz.open(path).get_pixmap()`) bakmak gerekiyor. Yine de dompdf'te tarih aralığı
+    her girişte "clear:both; overflow:hidden" ile düzeltildi (float'ların birbirinin
+    üstüne yığılmasını önlemek için — bu kısım gerçek bir düzeltmeydi, sonuç aynı kaldı
+    ama daha sağlam).
+- sablon.php?slug=kira-sozlesmesi, ?slug=istifa-dilekcesi, ?slug=vekaletname ve
+  ?slug=arac-satis-sozlesmesi sayfaları HTTP 200 dönüyor, wizard adımları, form ve
+  canlı önizleme doğru render ediliyor.
+- Form doldurulup gönderildiğinde PDF doğru üretiliyor: Türkçe karakterler (ş, ı, ö, ç, İ)
+  doğru görünüyor, para birimi formatlanıyor (15.000 TL), tarih formatlanıyor (01.08.2026),
+  otomatik {bugun_tarihi} alanı çalışıyor, imza satırları tablo tabanlı düzgün hizalanıyor.
+- Ek Madde: sunucu tarafı sınır (maks. 10 adet, madde başına 1000 karakter) doğrudan
+  indir.php'ye 11/15 madde gönderilerek doğrulandı, fazlası kırpılıyor; boş bırakılan
+  otomatik atlanıyor; PDF'te sabit maddelerden sonra doğru numarayla çıkıyor.
+- buildFittedPdf(): 5 uzun Ek Madde ile ve sunucu sınırının tam ucunda (10x1000 karakter)
+  test edildi, her ikisinde de PDF tek A4 sayfasına sığdı (önceden 2. sayfaya taşabiliyordu).
+- giris.php üzerinden kayıt olma, doğrulama e-postası alma (gerçek SMTP ile, marka logolu
+  HTML şablon), token ile dogrula.php üzerinden hesabı doğrulama, giriş yapma/çıkış yapma
+  uçtan uca test edildi.
+- Test sırasında bulunan ve düzeltilen hatalar:
+  * mb_strtoupper() Türkçe İ/I kuralını bilmediği için "KIRA SÖZLEŞMESI" yazıyordu ->
+    trUpper() helper'ı eklenerek düzeltildi.
+  * PDF'te alan hemen ardından noktalama işareti geldiğinde ("...12345678901 )") fazladan
+    boşluk çıkıyordu -> renderLineHtml() ile tek kaynaktan string concatenation'a geçilerek
+    düzeltildi.
+  * Wizard'ın son adımındaki "Geri" ve "PDF Olarak İndir" butonları hiç görünmüyordu ->
+    CSS'teki ID seçicili "display:none" kuralı, JS'in style.display='' atamasından daha
+    yüksek önceliğe sahipti; JS artık her zaman açık bir display değeri veriyor.
+- Zorunlu alan boş bırakılıp doğrudan indir.php'ye POST atıldığında sunucu reddediyor
+  ve hataları (Ek Madde'ler ve girilen değerlerle birlikte) sablon.php'ye flash olarak taşıyor.
+- CSRF token'sız POST -> HTTP 400. slug=../../config/db gibi path traversal denemesi -> HTTP 404.
+- config/, templates/, lib/, sql/, cron/, _gelistirme/ dizinlerine doğrudan tarayıcıdan
+  erişim -> HTTP 403.
+- index.php, giris.php, kullanim-sartlari.php, gizlilik-politikasi.php,
+  kvkk-aydinlatma-metni.php düzenli olarak regresyon için HTTP 200 kontrolünden geçiriliyor.
+- buildFittedPdf()'in imzası değiştiği (artık callable alıyor) için kira-sozlesmesi'nin
+  PDF çıktısı tekrar üretilip önceki (değişiklik öncesi) çıktısıyla byte-byte
+  karşılaştırıldı — birebir aynı, sözleşme yolunda regresyon yok.
+- index.php'nin arama kataloğu (searchCatalog) 10 şablondan 26'ya çıkarıldı (yeni
+  eklenen 16 şablon daha önce hiçbir yerden linklenmiyordu, sadece URL biliniyorsa
+  erişilebiliyordu) — artık hepsi arama kutusundan bulunabiliyor, "available":true.
+- Test verileri her seferinde documents tablosundan temizleniyor.
+- (Bu oturumda ayrıca fark edildi: local MySQL VE Apache servisleri XAMPP'te "servis"
+  olarak değil, elle başlatılan process olarak çalışıyor — bir terminal oturumu
+  kapanınca ikisi de kapanabiliyor. Birkaç kez mysqld.exe/httpd.exe elle yeniden
+  başlatıldı. Hosting ortamında ilgisi yok, ama local geliştirmeye devam edilirken
+  "bağlantı reddedildi" hatası görülürse önce XAMPP Control Panel'den Apache/MySQL'in
+  açık olduğunu kontrol etmek gerekiyor.)
+
+=================================================
+5) SONRAKİ FAZ (HENÜZ YAPILMADI)
+=================================================
+- Sabit madde metinlerinin kullanıcı tarafından düzenlenebilir olması (biz standart metni
+  verelim, kullanıcı silip yeniden yazabilsin) — daha önce planlanmıştı ama plan dosyası
+  (serialized-meandering-naur.md) bu oturumda CV motoru planıyla ÜZERİNE YAZILDI, o yüzden
+  kayıtlı plan artık yok. Fikir hâlâ geçerli, bir sonraki oturumda yeniden planlanmalı.
+- Kullanıcı hesabına bağlı belge geçmişi (documents tablosu şu an user_id nullable
+  tutuyor ama arayüzde henüz gösterilmiyor).
+- Premium/filigran akışının aktive edilmesi (altyapı hazır, shouldWatermark() pasif).
+- CV'nin "Yetenekler"i şu an tek bir virgülle-ayrılmış metin alanı; ileride istenirse
+  deneyim/eğitim gibi ayrı tekrarlanan bir "group" yapısına taşınabilir (motor zaten
+  destekliyor, sadece config'te bir grup daha tanımlamak yeterli olur).

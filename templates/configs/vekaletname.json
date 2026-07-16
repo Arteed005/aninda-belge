@@ -1,0 +1,36 @@
+{
+  "slug": "vekaletname",
+  "category": "kisisel-belgeler",
+  "title": "Vekaletname",
+  "description": "Bir işlemi senin adına yapması için başka birine yetki ver.",
+  "meta": "Ort. 3 dk",
+  "signatures": ["Vekil Eden İmzası", "Vekil İmzası"],
+  "steps": [
+    {"title": "Taraflar", "fields": ["principal_name", "principal_tc", "principal_address", "agent_name", "agent_tc", "agent_address"]},
+    {"title": "Vekaletin Kapsamı", "fields": ["scope", "duration"]}
+  ],
+  "fields": [
+    {"name": "principal_name", "label": "Vekil Eden Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "principal_tc", "label": "Vekil Eden T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "principal_address", "label": "Vekil Eden Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "agent_name", "label": "Vekil (Yetkili Kılınan) Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ayşe Demir"},
+    {"name": "agent_tc", "label": "Vekil T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "agent_address", "label": "Vekil Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "scope", "label": "Vekaletin Konusu ve Kapsamı", "type": "textarea", "required": true, "placeholder": "Örn: Banka hesaplarımla ilgili her türlü işlemi (para yatırma, çekme, havale) benim adıma yapma yetkisi"},
+    {"name": "duration", "label": "Vekaletin Süresi", "type": "select", "required": true,
+      "options": [
+        {"value": "belirtilen işlem tamamlanana kadar", "label": "Belirtilen İşlem Tamamlanana Kadar"},
+        {"value": "3 Ay", "label": "3 Ay"},
+        {"value": "6 Ay", "label": "6 Ay"},
+        {"value": "1 Yıl", "label": "1 Yıl"},
+        {"value": "Süresiz", "label": "Süresiz"}
+      ]}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — TARAFLAR", "template": "Vekil Eden: {principal_name} (T.C. Kimlik No: {principal_tc})\nVekil Eden Adresi: {principal_address}\nVekil (Yetkili Kılınan): {agent_name} (T.C. Kimlik No: {agent_tc})\nVekil Adresi: {agent_address}"},
+    {"title": "MADDE 2 — VEKALETİN KONUSU VE KAPSAMI", "template": "{scope}"},
+    {"title": "MADDE 3 — VEKALETİN SÜRESİ", "template": "İşbu vekalet {duration} süreyle geçerlidir."},
+    {"title": "MADDE 4 — VEKİLİN YÜKÜMLÜLÜKLERİ", "template": "Vekil, işbu belge ile kendisine verilen yetkiyi vekil edenin menfaatlerini gözeterek, iyi niyet ve dürüstlük kuralları çerçevesinde kullanmakla yükümlüdür.\nVekil, yaptığı işlemler hakkında vekil edeni bilgilendirmekle ve talep edildiğinde hesap vermekle yükümlüdür.\nVekil, kendisine tanınan yetkinin dışına çıkamaz."},
+    {"title": "MADDE 5 — GENEL HÜKÜMLER", "template": "Taraflar, işbu belgede yer alan hükümlere uymayı kabul ve taahhüt eder. Vekil eden, işbu belgeyi dilediği zaman yazılı bildirimle iptal etme hakkını saklı tutar. Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

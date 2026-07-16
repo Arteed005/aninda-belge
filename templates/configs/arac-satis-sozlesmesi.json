@@ -1,0 +1,45 @@
+{
+  "slug": "arac-satis-sozlesmesi",
+  "category": "sozlesmeler",
+  "title": "Araç Satış Sözleşmesi",
+  "description": "Araç alım satım işlemlerini güvence altına alan sözleşme taslağı.",
+  "meta": "Ort. 4 dk",
+  "signatures": ["Satıcı İmzası", "Alıcı İmzası"],
+  "steps": [
+    {"title": "Taraflar", "fields": ["seller_name", "seller_tc", "seller_address", "buyer_name", "buyer_tc", "buyer_address"]},
+    {"title": "Araç Bilgileri", "fields": ["brand_model", "model_year", "plate_no", "chassis_no", "engine_no", "color", "mileage"]},
+    {"title": "Satış Şartları", "fields": ["price", "payment_method", "delivery_date"]}
+  ],
+  "fields": [
+    {"name": "seller_name", "label": "Satıcı Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "seller_tc", "label": "Satıcı T.C. Kimlik / Vergi No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "seller_address", "label": "Satıcı Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "buyer_name", "label": "Alıcı Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ayşe Demir"},
+    {"name": "buyer_tc", "label": "Alıcı T.C. Kimlik / Vergi No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "buyer_address", "label": "Alıcı Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "brand_model", "label": "Marka / Model", "type": "text", "required": true, "placeholder": "Örn: Toyota Corolla"},
+    {"name": "model_year", "label": "Model Yılı", "type": "text", "required": true, "placeholder": "2020"},
+    {"name": "plate_no", "label": "Plaka No", "type": "text", "required": true, "placeholder": "34 ABC 123"},
+    {"name": "chassis_no", "label": "Şasi No (VIN)", "type": "text", "required": true, "placeholder": "Örn: NMTBH12N0K0123456"},
+    {"name": "engine_no", "label": "Motor No", "type": "text", "required": false, "placeholder": "Örn: 2ZR1234567"},
+    {"name": "color", "label": "Renk", "type": "text", "required": false, "placeholder": "Örn: Beyaz"},
+    {"name": "mileage", "label": "Kilometre", "type": "text", "required": true, "placeholder": "Örn: 85.000 km"},
+    {"name": "price", "label": "Satış Bedeli", "type": "text", "required": true, "format": "currency-try", "placeholder": "450.000"},
+    {"name": "payment_method", "label": "Ödeme Şekli", "type": "select", "required": false,
+      "options": [
+        {"value": "Banka Havalesi/EFT", "label": "Banka Havalesi/EFT"},
+        {"value": "Elden Nakit", "label": "Elden Nakit"},
+        {"value": "Diğer", "label": "Diğer"}
+      ]},
+    {"name": "delivery_date", "label": "Teslim Tarihi", "type": "date", "required": true, "format": "date-tr"}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — TARAFLAR", "template": "Satıcı: {seller_name} (T.C. Kimlik/Vergi No: {seller_tc})\nSatıcı Adresi: {seller_address}\nAlıcı: {buyer_name} (T.C. Kimlik/Vergi No: {buyer_tc})\nAlıcı Adresi: {buyer_address}"},
+    {"title": "MADDE 2 — SATIŞA KONU ARAÇ", "template": "Marka / Model: {brand_model}\nModel Yılı: {model_year}\nPlaka No: {plate_no}\nŞasi No: {chassis_no}\nMotor No: {engine_no}\nRenk: {color}\nKilometre: {mileage}"},
+    {"title": "MADDE 3 — SATIŞ BEDELİ VE ÖDEME ŞEKLİ", "template": "Satış Bedeli: {price}\nÖdeme Şekli: {payment_method}"},
+    {"title": "MADDE 4 — TESLİM", "template": "Aracın alıcıya teslimi {delivery_date} tarihinde, anahtar, ruhsat ve varsa ek donanımlarıyla birlikte yapılacaktır."},
+    {"title": "MADDE 5 — ARACIN DURUMU", "template": "Satıcı, aracı mevcut haliyle sattığını, araç üzerinde rehin, haciz veya üçüncü şahıslara ait herhangi bir hak ya da takyidat bulunmadığını beyan ve taahhüt eder. Alıcı, aracı satın almadan önce inceleme fırsatı bulduğunu ve aracın durumunu kabul ettiğini beyan eder."},
+    {"title": "MADDE 6 — TARAFLARIN HAK VE YÜKÜMLÜLÜKLERİ", "template": "1) Satıcı, araca ait ruhsat, anahtar ve varsa bakım kayıtlarını alıcıya eksiksiz teslim etmekle yükümlüdür.\n2) Alıcı, satış bedelini kararlaştırılan şekilde ve sürede eksiksiz ödemekle yükümlüdür.\n3) Taraflar, aracın devir/tescil işlemlerini ilgili trafik tescil kuruluşunda en kısa sürede tamamlamayı kabul eder.\n4) Devir işlemi tamamlanana kadar araçla ilgili trafik cezaları ve sorumluluklar satıcıya, devir sonrasında alıcıya aittir."},
+    {"title": "MADDE 7 — GENEL HÜKÜMLER", "template": "Taraflar, işbu sözleşmede yer alan hükümlere uymayı kabul ve taahhüt eder. Sözleşme, taraflarca imzalandığı tarihte yürürlüğe girer. Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

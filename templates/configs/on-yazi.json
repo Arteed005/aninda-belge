@@ -1,0 +1,20 @@
+{
+  "slug": "on-yazi",
+  "category": "is-belgeleri",
+  "title": "Ön Yazı",
+  "description": "İş başvurunuza eşlik edecek etkili bir ön yazı (cover letter) hazırla.",
+  "meta": "Ort. 3 dk",
+  "signatures": ["İmza"],
+  "fields": [
+    {"name": "applicant_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Zeynep Aksoy"},
+    {"name": "applicant_contact", "label": "E-posta / Telefon", "type": "text", "required": true, "placeholder": "Örn: zeynep@example.com / 0555 123 45 67"},
+    {"name": "company_name", "label": "Başvurulan Şirket", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
+    {"name": "position", "label": "Başvurulan Pozisyon", "type": "text", "required": true, "placeholder": "Örn: Yazılım Geliştirici"},
+    {"name": "motivation", "label": "Neden Bu Pozisyon?", "type": "textarea", "required": true, "placeholder": "Bu pozisyona ve şirkete neden ilgi duyduğunuzu yazın"},
+    {"name": "strengths", "label": "Öne Çıkan Nitelikleriniz", "type": "textarea", "required": true, "placeholder": "Deneyim ve yetkinliklerinizden kısaca bahsedin"},
+    {"name": "city", "label": "Yazıldığı Şehir", "type": "text", "required": true, "placeholder": "Örn: İstanbul"}
+  ],
+  "clauses": [
+    {"title": "", "template": "{city}, {bugun_tarihi}\n\n{company_name} İnsan Kaynakları Departmanı'na,\n\n{position} pozisyonu için başvurumu iletmek isterim.\n\n{motivation}\n\n{strengths}\n\nDeneyim ve yetkinliklerimin ekibinize değer katacağına inanıyor, özgeçmişimi değerlendirmenizi rica ediyorum. Görüşme fırsatı için teşekkür ederim.\n\nSaygılarımla,\n\n{applicant_name}\n{applicant_contact}"}
+  ]
+}

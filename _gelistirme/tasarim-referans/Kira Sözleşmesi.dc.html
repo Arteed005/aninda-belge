@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+input::placeholder,textarea::placeholder{color:#9aa5b4}
+@keyframes pageFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes checkPop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#ffffff;color:#1a2b4a;overflow-x:hidden;--accent:{{ accentGreen }};animation:pageFadeIn 240ms ease">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #e4e8ee">
+    <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;gap:16px">
+      <a href="Anında Belge Ana Sayfa.dc.html" style="display:block"><img src="../../assets/logo-aninda-belge.png" alt="anında belge" style="height:58px;width:auto;display:block;margin:-4px 0" /></a>
+      <div style="display:flex;align-items:center;gap:10px;flex:none">
+        <a href="Giriş Yap - Kayıt Ol.dc.html#giris" style="color:#1a2b4a;font-weight:600;font-size:15px;text-decoration:none;padding:10px 16px;border-radius:10px" style-hover="background:#eef1f6">Giriş Yap</a>
+        <a href="Giriş Yap - Kayıt Ol.dc.html#kayit" style="background:var(--accent);color:#ffffff;font-weight:700;font-size:15px;text-decoration:none;padding:10px 22px;border-radius:10px;box-shadow:0 2px 8px rgba(30,158,92,0.28);transition:transform 180ms ease,background 180ms ease;display:inline-block" style-hover="background:#167a47;transform:scale(1.02)">Kayıt Ol</a>
+      </div>
+    </div>
+  </header>
+
+  <div style="max-width:1240px;margin:0 auto;padding:20px 24px 0">
+    <div style="display:flex;align-items:center;gap:8px;font-size:13.5px;color:#8b96a6;flex-wrap:wrap">
+      <a href="Anında Belge Ana Sayfa.dc.html" style="color:#8b96a6;text-decoration:none" style-hover="color:var(--accent)">Ana Sayfa</a>
+      <span>›</span>
+      <span>Sözleşmeler</span>
+      <span>›</span>
+      <span style="color:#1a2b4a;font-weight:600">Kira Sözleşmesi</span>
+    </div>
+  </div>
+
+  <main style="max-width:1240px;margin:0 auto;padding:24px 24px 80px">
+    <div style="margin-bottom:28px">
+      <h1 style="font-size:clamp(1.6rem,3vw,2.1rem);font-weight:800;color:#1a2b4a;margin:0 0 8px">Kira Sözleşmesi</h1>
+      <p style="font-size:15px;color:#5b6b82;margin:0">Bilgilerini gir, sözleşmen sağda canlı olarak önizlensin.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:28px;align-items:start">
+
+      <div>
+        <div style="background:#ffffff;border:1px solid #e7ebf1;border-radius:18px;padding:30px">
+
+          <div style="display:flex;gap:10px;align-items:flex-start;background:#eef1f6;border:1px solid #e4e8ee;border-radius:12px;padding:14px 16px;margin-bottom:26px">
+            <div style="flex:none;width:20px;height:20px;border-radius:50%;background:#1a2b4a;color:#ffffff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif">i</div>
+            <p style="margin:0;font-size:13.5px;color:#46536b;line-height:1.55">Bu belge bilgilendirme amaçlıdır, hukuki tavsiye niteliği taşımaz.</p>
+          </div>
+
+          <h2 style="font-size:16px;font-weight:700;color:#1a2b4a;margin:0 0 20px">Bilgilerini Gir</h2>
+
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:600;color:#1a2b4a;margin-bottom:6px">Kiraya Veren Adı Soyadı</label>
+              <input type="text" placeholder="Örn: Ahmet Yılmaz" value="{{ landlord }}" onChange="{{ setLandlord }}" style="width:100%;font-size:15px;padding:12px 14px;border:1.5px solid #e4e8ee;border-radius:10px;font-family:inherit;color:#1a2b4a;outline:none;transition:border-color 180ms ease" style-focus="border-color:var(--accent)" />
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:600;color:#1a2b4a;margin-bottom:6px">Kiracı Adı Soyadı</label>
+              <input type="text" placeholder="Örn: Ayşe Demir" value="{{ tenant }}" onChange="{{ setTenant }}" style="width:100%;font-size:15px;padding:12px 14px;border:1.5px solid #e4e8ee;border-radius:10px;font-family:inherit;color:#1a2b4a;outline:none;transition:border-color 180ms ease" style-focus="border-color:var(--accent)" />
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:600;color:#1a2b4a;margin-bottom:6px">Taşınmaz Adresi</label>
+              <textarea placeholder="Mahalle, sokak, no, ilçe/il" rows="2" value="{{ address }}" onChange="{{ setAddress }}" style="width:100%;font-size:15px;padding:12px 14px;border:1.5px solid #e4e8ee;border-radius:10px;font-family:inherit;color:#1a2b4a;outline:none;resize:vertical;transition:border-color 180ms ease" style-focus="border-color:var(--accent)"></textarea>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px">
+              <div>
+                <label style="display:block;font-size:13px;font-weight:600;color:#1a2b4a;margin-bottom:6px">Aylık Kira Bedeli</label>
+                <div style="position:relative">
+                  <input type="text" placeholder="15.000" value="{{ rent }}" onChange="{{ setRent }}" style="width:100%;font-size:15px;padding:12px 44px 12px 14px;border:1.5px solid #e4e8ee;border-radius:10px;font-family:inherit;color:#1a2b4a;outline:none;transition:border-color 180ms ease" style-focus="border-color:var(--accent)" />
+                  <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:13px;color:#8b96a6;font-weight:700">TL</span>
+                </div>
+              </div>
+              <div>
+                <label style="display:block;font-size:13px;font-weight:600;color:#1a2b4a;margin-bottom:6px">Başlangıç Tarihi</label>
+                <input type="date" value="{{ startDate }}" onChange="{{ setStartDate }}" style="width:100%;font-size:15px;padding:12px 14px;border:1.5px solid #e4e8ee;border-radius:10px;font-family:inherit;color:#1a2b4a;outline:none;transition:border-color 180ms ease" style-focus="border-color:var(--accent)" />
+              </div>
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:600;color:#1a2b4a;margin-bottom:6px">Sözleşme Süresi</label>
+              <select value="{{ duration }}" onChange="{{ setDuration }}" style="width:100%;font-size:15px;padding:12px 14px;border:1.5px solid #e4e8ee;border-radius:10px;font-family:inherit;color:#1a2b4a;outline:none;background:#ffffff;transition:border-color 180ms ease" style-focus="border-color:var(--accent)">
+                <option value="">Seçiniz</option>
+                <option value="6 Ay">6 Ay</option>
+                <option value="1 Yıl">1 Yıl</option>
+                <option value="2 Yıl">2 Yıl</option>
+                <option value="Süresiz">Süresiz</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="position:sticky;top:96px;align-self:start">
+        <div style="background:#eef1f6;border-radius:20px;padding:22px;display:flex;justify-content:center">
+          <div style="background:#ffffff;width:100%;max-width:460px;border-radius:4px;box-shadow:0 20px 40px rgba(26,43,74,0.14);padding:40px 36px;font-family:'Plus Jakarta Sans',sans-serif;min-height:520px">
+            <div style="text-align:center;margin-bottom:22px">
+              <h3 style="font-size:17px;font-weight:800;color:#1a2b4a;letter-spacing:.03em;margin:0 0 4px">KİRA SÖZLEŞMESİ</h3>
+              <p style="font-size:11.5px;color:#9aa5b4;margin:0">Bu belge otomatik olarak oluşturulmaktadır</p>
+              <div style="height:1px;background:#e4e8ee;margin-top:16px"></div>
+            </div>
+
+            <div style="margin-bottom:16px">
+              <p style="font-size:12px;font-weight:800;color:#1e9e5c;margin:0 0 8px;letter-spacing:.03em">MADDE 1 — TARAFLAR</p>
+              <p style="font-size:13px;color:#3a4658;margin:0 -6px 5px -6px;line-height:1.6;padding:2px 6px;border-radius:6px;transition:background-color 500ms ease;background-color:{{ hl.landlord }}">Kiraya Veren: <span style="font-weight:700;color:{{ landlordDisplay.color }}">{{ landlordDisplay.text }}</span></p>
+              <p style="font-size:13px;color:#3a4658;margin:0 -6px 0 -6px;line-height:1.6;padding:2px 6px;border-radius:6px;transition:background-color 500ms ease;background-color:{{ hl.tenant }}">Kiracı: <span style="font-weight:700;color:{{ tenantDisplay.color }}">{{ tenantDisplay.text }}</span></p>
+            </div>
+
+            <div style="margin-bottom:16px">
+              <p style="font-size:12px;font-weight:800;color:#1e9e5c;margin:0 0 8px;letter-spacing:.03em">MADDE 2 — TAŞINMAZ</p>
+              <p style="font-size:13px;color:#3a4658;margin:0 -6px;line-height:1.6;padding:2px 6px;border-radius:6px;transition:background-color 500ms ease;background-color:{{ hl.address }}">Adres: <span style="font-weight:700;color:{{ addressDisplay.color }}">{{ addressDisplay.text }}</span></p>
+            </div>
+
+            <div style="margin-bottom:16px">
+              <p style="font-size:12px;font-weight:800;color:#1e9e5c;margin:0 0 8px;letter-spacing:.03em">MADDE 3 — BEDEL VE SÜRE</p>
+              <p style="font-size:13px;color:#3a4658;margin:0 -6px 5px -6px;line-height:1.6;padding:2px 6px;border-radius:6px;transition:background-color 500ms ease;background-color:{{ hl.rent }}">Aylık Kira Bedeli: <span style="font-weight:700;color:{{ rentDisplay.color }}">{{ rentDisplay.text }}</span></p>
+              <p style="font-size:13px;color:#3a4658;margin:0 -6px 5px -6px;line-height:1.6;padding:2px 6px;border-radius:6px;transition:background-color 500ms ease;background-color:{{ hl.startDate }}">Başlangıç Tarihi: <span style="font-weight:700;color:{{ dateDisplay.color }}">{{ dateDisplay.text }}</span></p>
+              <p style="font-size:13px;color:#3a4658;margin:0 -6px;line-height:1.6;padding:2px 6px;border-radius:6px;transition:background-color 500ms ease;background-color:{{ hl.duration }}">Sözleşme Süresi: <span style="font-weight:700;color:{{ durationDisplay.color }}">{{ durationDisplay.text }}</span></p>
+            </div>
+
+            <div style="margin-bottom:26px">
+              <p style="font-size:12px;font-weight:800;color:#1e9e5c;margin:0 0 8px;letter-spacing:.03em">MADDE 4 — GENEL HÜKÜMLER</p>
+              <p style="font-size:12.5px;color:#8b96a6;margin:0;line-height:1.65">Taraflar, işbu sözleşmede yer alan hükümlere uymayı kabul ve taahhüt eder. Sözleşme, taraflarca imzalandığı tarihte yürürlüğe girer ve yukarıda belirtilen süre boyunca geçerlidir.</p>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;gap:20px;margin-top:34px">
+              <div style="flex:1;text-align:center">
+                <div style="border-top:1px solid #c9cfd9;padding-top:8px;font-size:11.5px;color:#9aa5b4">Kiraya Veren</div>
+              </div>
+              <div style="flex:1;text-align:center">
+                <div style="border-top:1px solid #c9cfd9;padding-top:8px;font-size:11.5px;color:#9aa5b4">Kiracı</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:36px">
+      <button onClick="{{ onDownload }}" disabled="{{ isButtonDisabled }}" style="display:flex;align-items:center;gap:10px;background:var(--accent);color:#ffffff;border:none;font-weight:700;font-size:17px;padding:17px 46px;border-radius:14px;cursor:pointer;font-family:inherit;box-shadow:0 10px 24px rgba(30,158,92,0.28);transition:transform 180ms ease,background 180ms ease" style-hover="background:#167a47;transform:scale(1.02)">
+        <sc-if value="{{ isIdle }}" hint-placeholder-val="{{ true }}">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><polyline points="7,10 12,15 17,10"></polyline><path d="M4 19h16"></path></svg>
+        </sc-if>
+        <sc-if value="{{ isPreparing }}" hint-placeholder-val="{{ false }}">
+          <svg viewBox="0 0 24 24" width="20" height="20" style="animation:spin 800ms linear infinite">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="3"></circle>
+            <path d="M12 3a9 9 0 0 1 9 9" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"></path>
+          </svg>
+        </sc-if>
+        <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+          <svg viewBox="0 0 24 24" width="20" height="20" style="animation:checkPop 250ms ease both">
+            <polyline points="5,13 10,18 19,7" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          </svg>
+        </sc-if>
+        {{ downloadLabel }}
+      </button>
+      <sc-if value="{{ downloadDisabled }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size:13px;color:#8b96a6;margin:0">PDF indirmek için zorunlu alanları doldur.</p>
+      </sc-if>
+      <a href="#" style="font-size:13px;color:#5b6b82;text-decoration:none;text-align:center">Ücretsiz PDF'de küçük filigran bulunur. Filigransız + Word formatı için <span style="color:var(--accent);font-weight:700;text-decoration:underline">Premium'a geç →</span></a>
+    </div>
+  </main>
+
+  <footer style="background:#1a2b4a;color:#ffffff;padding:52px 24px 26px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;padding-bottom:34px">
+        <div style="flex:1;min-width:220px;max-width:280px">
+          <a href="Anında Belge Ana Sayfa.dc.html" style="text-decoration:none;display:inline-block;transition:opacity 180ms ease" style-hover="opacity:0.8">
+            <div style="font-size:21px;font-weight:800">
+              <span style="color:#ffffff">anında</span> <span style="color:#3fc37e">belge</span>
+            </div>
+          </a>
+          <p style="font-size:13.5px;color:rgba(255,255,255,0.6);margin:10px 0 0;line-height:1.6">Belgeni dakikalar içinde hazırla, güvenle indir.</p>
+        </div>
+        <div style="flex:none">
+          <h4 style="font-size:14px;font-weight:700;margin:0 0 14px;color:rgba(255,255,255,0.85)">İletişim</h4>
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:13.5px;color:rgba(255,255,255,0.6)">
+            <a href="mailto:destek@anindabelge.com" style="color:rgba(255,255,255,0.6);text-decoration:none" style-hover="color:var(--accent)">destek@anindabelge.com</a>
+            <a href="tel:+908501234567" style="color:rgba(255,255,255,0.6);text-decoration:none" style-hover="color:var(--accent)">0850 123 45 67</a>
+          </div>
+        </div>
+        <div style="flex:none">
+          <h4 style="font-size:14px;font-weight:700;margin:0 0 14px;color:rgba(255,255,255,0.85)">Yasal</h4>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="Kullanım Şartları.dc.html" style="font-size:13.5px;color:rgba(255,255,255,0.6);text-decoration:none" style-hover="color:var(--accent)">Kullanım Şartları</a>
+            <a href="Gizlilik Politikası.dc.html" style="font-size:13.5px;color:rgba(255,255,255,0.6);text-decoration:none" style-hover="color:var(--accent)">Gizlilik Politikası</a>
+            <a href="KVKK Aydınlatma Metni.dc.html" style="font-size:13.5px;color:rgba(255,255,255,0.6);text-decoration:none" style-hover="color:var(--accent)">KVKK Aydınlatma Metni</a>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.12);padding-top:20px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:12.5px;color:rgba(255,255,255,0.5)">
+        <span>© 2026 anında belge. Tüm hakları saklıdır.</span>
+        <span>Bu site <a href="https://aksoycode.com.tr" target="_blank" style="color:rgba(255,255,255,0.7);text-decoration:underline" style-hover="color:var(--accent)">Aksoycode</a> tarafından tasarlandı</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}, &quot;requireFields&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Davranış&quot;}, &quot;accentGreen&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#1e9e5c&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#1e9e5c&quot;, &quot;#0f9d58&quot;, &quot;#219653&quot;, &quot;#16a34a&quot;], &quot;section&quot;: &quot;Renk&quot;}}">
+class Component extends DCLogic {
+  state = { landlord: '', tenant: '', address: '', rent: '', startDate: '', duration: '', status: 'idle', highlightField: null };
+
+  disp(val, fmt) {
+    const has = !!(val && String(val).trim().length > 0);
+    return { text: has ? (fmt ? fmt(val) : val) : '—', color: has ? '#1a2b4a' : '#c3cad4' };
+  }
+
+  formatRent(v) {
+    const n = Number(String(v).replace(/[^0-9]/g, ''));
+    return (v && !isNaN(n) && n > 0) ? n.toLocaleString('tr-TR') + ' TL' : v + ' TL';
+  }
+
+  formatDate(v) {
+    const parts = String(v).split('-');
+    return parts.length === 3 ? `${parts[2]}.${parts[1]}.${parts[0]}` : v;
+  }
+
+  triggerHighlight(field) {
+    clearTimeout(this._hlTimer);
+    this.setState({ highlightField: field });
+    this._hlTimer = setTimeout(() => this.setState({ highlightField: null }), 650);
+  }
+
+  makeSetter(field) {
+    return (e) => {
+      const v = e.target.value;
+      this.setState({ [field]: v });
+      this.triggerHighlight(field);
+    };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const p = this.props;
+    const requireFields = p.requireFields ?? true;
+    const filledAll = s.landlord.trim() && s.tenant.trim() && s.address.trim() && s.rent.trim() && s.startDate.trim();
+    const downloadDisabled = requireFields ? !filledAll : false;
+    const hlOn = (key) => s.highlightField === key ? 'rgba(30,158,92,0.12)' : 'transparent';
+
+    const labels = { idle: 'PDF Olarak İndir', preparing: 'Hazırlanıyor...', done: 'İndirildi' };
+
+    return {
+      accentGreen: p.accentGreen ?? '#1e9e5c',
+      landlord: s.landlord,
+      tenant: s.tenant,
+      address: s.address,
+      rent: s.rent,
+      startDate: s.startDate,
+      duration: s.duration,
+      setLandlord: this.makeSetter('landlord'),
+      setTenant: this.makeSetter('tenant'),
+      setAddress: this.makeSetter('address'),
+      setRent: this.makeSetter('rent'),
+      setStartDate: this.makeSetter('startDate'),
+      setDuration: this.makeSetter('duration'),
+      landlordDisplay: this.disp(s.landlord),
+      tenantDisplay: this.disp(s.tenant),
+      addressDisplay: this.disp(s.address),
+      rentDisplay: this.disp(s.rent, this.formatRent),
+      dateDisplay: this.disp(s.startDate, this.formatDate),
+      durationDisplay: this.disp(s.duration),
+      hl: {
+        landlord: hlOn('landlord'),
+        tenant: hlOn('tenant'),
+        address: hlOn('address'),
+        rent: hlOn('rent'),
+        startDate: hlOn('startDate'),
+        duration: hlOn('duration'),
+      },
+      downloadDisabled,
+      isButtonDisabled: downloadDisabled || s.status !== 'idle',
+      isIdle: s.status === 'idle',
+      isPreparing: s.status === 'preparing',
+      isDone: s.status === 'done',
+      downloadLabel: labels[s.status],
+      onDownload: () => {
+        if (downloadDisabled || s.status !== 'idle') return;
+        this.setState({ status: 'preparing' });
+        setTimeout(() => this.setState({ status: 'done' }), 700);
+        setTimeout(() => this.setState({ status: 'idle' }), 700 + 1700);
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "slug": "is-sozlesmesi",
+  "category": "sozlesmeler",
+  "title": "İş Sözleşmesi",
+  "description": "İşe başlarken işveren ve çalışan arasında düzenlenen yasal iş sözleşmesi hazırla.",
+  "meta": "Ort. 4 dk",
+  "signatures": ["İşveren İmzası", "Çalışan İmzası"],
+  "steps": [
+    {"title": "Taraflar", "fields": ["employer_name", "employer_address", "employee_name", "employee_tc", "employee_address"]},
+    {"title": "Görev ve Süre", "fields": ["position", "contract_type", "start_date", "end_date"]},
+    {"title": "Ücret ve Koşullar", "fields": ["salary", "payment_day", "working_hours", "weekly_off_days", "annual_leave"]}
+  ],
+  "fields": [
+    {"name": "employer_name", "label": "İşveren Adı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
+    {"name": "employer_address", "label": "İşveren Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "employee_name", "label": "Çalışan Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},
+    {"name": "employee_tc", "label": "Çalışan T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "employee_address", "label": "Çalışan Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "position", "label": "Görev / Pozisyon", "type": "text", "required": true, "placeholder": "Örn: Yazılım Geliştirici"},
+    {"name": "contract_type", "label": "Sözleşme Türü", "type": "select", "required": true,
+      "options": [
+        {"value": "Belirsiz Süreli", "label": "Belirsiz Süreli"},
+        {"value": "Belirli Süreli", "label": "Belirli Süreli"}
+      ]},
+    {"name": "start_date", "label": "İşe Başlama Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "end_date", "label": "Sözleşme Bitiş Tarihi (belirli süreli ise)", "type": "date", "required": false, "format": "date-tr"},
+    {"name": "salary", "label": "Aylık Brüt Ücret", "type": "text", "required": true, "format": "currency-try", "placeholder": "25.000"},
+    {"name": "payment_day", "label": "Maaş Ödeme Günü", "type": "text", "required": false, "placeholder": "Örn: Her ayın 5'i"},
+    {"name": "working_hours", "label": "Çalışma Saatleri", "type": "text", "required": false, "placeholder": "Örn: Hafta içi 09:00-18:00"},
+    {"name": "weekly_off_days", "label": "Haftalık Tatil Günü", "type": "text", "required": false, "placeholder": "Örn: Cumartesi, Pazar"},
+    {"name": "annual_leave", "label": "Yıllık İzin Süresi", "type": "text", "required": false, "placeholder": "Örn: 14 gün"}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — TARAFLAR", "template": "İşveren: {employer_name}\nİşveren Adresi: {employer_address}\nÇalışan: {employee_name} (T.C. Kimlik No: {employee_tc})\nÇalışan Adresi: {employee_address}"},
+    {"title": "MADDE 2 — GÖREV", "template": "Çalışan, işveren nezdinde {position} pozisyonunda görev yapacaktır."},
+    {"title": "MADDE 3 — SÖZLEŞMENİN TÜRÜ VE SÜRESİ", "template": "Sözleşme Türü: {contract_type}\nİşe Başlama Tarihi: {start_date}\nSözleşme Bitiş Tarihi (belirli süreli ise): {end_date}"},
+    {"title": "MADDE 4 — ÜCRET", "template": "Aylık Brüt Ücret: {salary}\nÖdeme Günü: {payment_day}"},
+    {"title": "MADDE 5 — ÇALIŞMA SÜRESİ VE İZİNLER", "template": "Çalışma Saatleri: {working_hours}\nHaftalık Tatil Günü: {weekly_off_days}\nYıllık İzin Süresi: {annual_leave}"},
+    {"title": "MADDE 6 — TARAFLARIN YÜKÜMLÜLÜKLERİ", "template": "1) Çalışan, görevini özenle ve talimatlara uygun şekilde yerine getirmekle yükümlüdür.\n2) İşveren, ücreti zamanında ve eksiksiz ödemekle, çalışma koşullarını mevzuata uygun şekilde sağlamakla yükümlüdür.\n3) Taraflar, iş ilişkisi süresince birbirlerinin haklarına ve ilgili iş mevzuatına uymayı kabul eder."},
+    {"title": "MADDE 7 — GENEL HÜKÜMLER", "template": "Taraflar, işbu sözleşmede yer alan hükümlere uymayı kabul ve taahhüt eder. Sözleşme, taraflarca imzalandığı tarihte yürürlüğe girer. Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

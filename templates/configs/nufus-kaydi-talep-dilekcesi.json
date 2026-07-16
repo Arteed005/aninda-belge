@@ -1,0 +1,25 @@
+{
+  "slug": "nufus-kaydi-talep-dilekcesi",
+  "category": "dilekceler",
+  "title": "Nüfus Kaydı Talep Dilekçesi",
+  "description": "Nüfus müdürlüğünden nüfus kayıt örneği veya ikametgah belgesi talep etmek için dilekçe hazırla.",
+  "meta": "Ort. 2 dk",
+  "signatures": ["İmza"],
+  "fields": [
+    {"name": "authority", "label": "Başvurulacak Makam", "type": "text", "required": true, "placeholder": "Örn: Kadıköy İlçe Nüfus Müdürlüğü"},
+    {"name": "applicant_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "applicant_tc", "label": "T.C. Kimlik Numaranız", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "applicant_address", "label": "Adresiniz", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "document_type", "label": "Talep Edilen Belge Türü", "type": "select", "required": true,
+      "options": [
+        {"value": "Nüfus Kayıt Örneği", "label": "Nüfus Kayıt Örneği"},
+        {"value": "Vukuatlı Nüfus Kayıt Örneği", "label": "Vukuatlı Nüfus Kayıt Örneği"},
+        {"value": "İkametgah Belgesi", "label": "İkametgah Belgesi"}
+      ]},
+    {"name": "purpose", "label": "Kullanım Amacı", "type": "text", "required": false, "placeholder": "Örn: İş başvurusu için"},
+    {"name": "city", "label": "Dilekçenin Yazıldığı Şehir", "type": "text", "required": true, "placeholder": "Örn: İstanbul"}
+  ],
+  "clauses": [
+    {"title": "", "template": "{authority}'NE\n\n{city}, {bugun_tarihi}\n\nAdım soyadım {applicant_name} olup, T.C. Kimlik Numaram {applicant_tc}'dir. Adresim: {applicant_address}.\n\n{document_type} belgesinin tarafıma verilmesini {purpose} amacıyla talep ediyorum.\n\nGereğini saygılarımla arz ederim.\n\n{applicant_name}\nİmza"}
+  ]
+}

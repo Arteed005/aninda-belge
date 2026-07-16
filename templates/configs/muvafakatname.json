@@ -1,0 +1,32 @@
+{
+  "slug": "muvafakatname",
+  "category": "kisisel-belgeler",
+  "title": "Muvafakatname",
+  "description": "Küçüğün başka biriyle seyahat etmesine veli/vasi olarak izin verdiğini beyan eden muvafakatname hazırla.",
+  "meta": "Ort. 2 dk",
+  "signatures": ["Muvafakat Veren İmzası"],
+  "steps": [
+    {"title": "Muvafakat Veren", "fields": ["consenter_name", "consenter_tc", "consenter_address"]},
+    {"title": "Seyahat Bilgileri", "fields": ["child_name", "child_tc", "companion_name", "companion_tc", "destination", "travel_start", "travel_end", "purpose"]}
+  ],
+  "fields": [
+    {"name": "consenter_name", "label": "Muvafakat Veren (Veli/Vasi) Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
+    {"name": "consenter_tc", "label": "Muvafakat Veren T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "consenter_address", "label": "Muvafakat Veren Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},
+    {"name": "child_name", "label": "Küçüğün Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Elif Yılmaz"},
+    {"name": "child_tc", "label": "Küçüğün T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "companion_name", "label": "Birlikte Seyahat Edecek Kişi", "type": "text", "required": true, "placeholder": "Örn: Ayşe Demir"},
+    {"name": "companion_tc", "label": "Birlikte Seyahat Edecek Kişinin T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "destination", "label": "Gidilecek Yer / Ülke", "type": "text", "required": true, "placeholder": "Örn: Almanya"},
+    {"name": "travel_start", "label": "Seyahat Başlangıç Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "travel_end", "label": "Seyahat Bitiş Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "purpose", "label": "Seyahat Amacı", "type": "text", "required": false, "placeholder": "Örn: Tatil"}
+  ],
+  "clauses": [
+    {"title": "MADDE 1 — MUVAFAKAT VEREN", "template": "{consenter_name} (T.C. Kimlik No: {consenter_tc})\nAdres: {consenter_address}"},
+    {"title": "MADDE 2 — KÜÇÜK VE BİRLİKTE SEYAHAT EDECEK KİŞİ", "template": "Küçüğün Adı Soyadı: {child_name} (T.C. Kimlik No: {child_tc})\nBirlikte Seyahat Edecek Kişi: {companion_name} (T.C. Kimlik No: {companion_tc})"},
+    {"title": "MADDE 3 — SEYAHAT BİLGİLERİ", "template": "Gidilecek Yer: {destination}\nSeyahat Tarihleri: {travel_start} - {travel_end}\nSeyahat Amacı: {purpose}"},
+    {"title": "MADDE 4 — MUVAFAKAT BEYANI", "template": "Yukarıda kimlik bilgileri belirtilen küçüğün, belirtilen tarihler arasında, belirtilen kişi ile birlikte seyahat etmesine, veli/vasi sıfatıyla muvafakat ettiğimi beyan ederim."},
+    {"title": "MADDE 5 — GENEL HÜKÜMLER", "template": "Bu belge {bugun_tarihi} tarihinde düzenlenmiştir."}
+  ]
+}

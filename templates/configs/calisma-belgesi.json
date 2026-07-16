@@ -1,0 +1,21 @@
+{
+  "slug": "calisma-belgesi",
+  "category": "is-belgeleri",
+  "title": "Çalışma Belgesi",
+  "description": "Bir çalışanın işyerindeki görev ve çalışma süresini belgeleyen deneyim yazısı hazırla.",
+  "meta": "Ort. 2 dk",
+  "signatures": ["Yetkili İmza"],
+  "fields": [
+    {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
+    {"name": "employee_name", "label": "Çalışanın Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},
+    {"name": "employee_tc", "label": "Çalışanın T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},
+    {"name": "position", "label": "Görevi", "type": "text", "required": true, "placeholder": "Örn: Yazılım Geliştirici"},
+    {"name": "start_date", "label": "İşe Başlama Tarihi", "type": "date", "required": true, "format": "date-tr"},
+    {"name": "end_date", "label": "İşten Ayrılış Tarihi (halen çalışıyorsa boş bırakın)", "type": "date", "required": false, "format": "date-tr"},
+    {"name": "duties", "label": "Görev ve Sorumlulukları", "type": "textarea", "required": false, "placeholder": "Kısaca görev tanımını yazın"},
+    {"name": "city", "label": "Belgenin Düzenlendiği Şehir", "type": "text", "required": true, "placeholder": "Örn: İstanbul"}
+  ],
+  "clauses": [
+    {"title": "", "template": "{city}, {bugun_tarihi}\n\nİLGİLİ MAKAMA,\n\n{employee_name} (T.C. Kimlik No: {employee_tc}), şirketimiz {company_name} bünyesinde {start_date} - {end_date} tarihleri arasında {position} pozisyonunda çalışmıştır.\n\nGörev ve Sorumlulukları: {duties}\n\nÇalışma süresi boyunca üzerine düşen görevleri başarıyla yerine getirmiş olup, işbu belge kendisinin talebi üzerine düzenlenmiştir.\n\nBilgilerinize arz ederiz.\n\n{company_name}\nYetkili İmza"}
+  ]
+}
