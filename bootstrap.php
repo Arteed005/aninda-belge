@@ -13,6 +13,8 @@ require_once __DIR__ . '/lib/Security.php';
 require_once __DIR__ . '/lib/TemplateConfig.php';
 require_once __DIR__ . '/lib/ClauseRenderer.php';
 require_once __DIR__ . '/lib/ResumeRenderer.php';
+require_once __DIR__ . '/lib/ResumePhoto.php';
+require_once __DIR__ . '/lib/FormFields.php';
 require_once __DIR__ . '/lib/Validator.php';
 require_once __DIR__ . '/lib/Documents.php';
 require_once __DIR__ . '/lib/Pdf.php';

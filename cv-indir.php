@@ -6,9 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit('Method Not Allowed');
 }
 
-$slug = $_GET['slug'] ?? '';
-$config = isValidSlug($slug) ? getTemplateConfig($slug) : null;
-
+$slug = 'ozgecmis-cv';
+$config = getTemplateConfig($slug);
 if ($config === null) {
     http_response_code(404);
     exit('Şablon bulunamadı.');
@@ -19,23 +18,32 @@ if (!csrf_check($_POST['csrf_token'] ?? null)) {
     exit('Geçersiz istek, lütfen formu yeniden gönderin.');
 }
 
+$themeKeys = array_column($config['themes'] ?? [], 'key');
+$theme = $_GET['tema'] ?? '';
+if (!in_array($theme, $themeKeys, true)) {
+    $theme = 'klasik';
+}
+
 $watermark = shouldWatermark(null);
 
 [$errors, $clean] = validateFormData($config, $_POST);
-$extraClauses = validateCustomClauses($_POST);
+$groupEntries = validateRepeatableGroups($config, $_POST);
 
 if (!empty($errors)) {
     $_SESSION['form_errors'][$slug] = $errors;
     $_SESSION['form_values'][$slug] = $clean;
-    $_SESSION['form_extra_clauses'][$slug] = $extraClauses;
-    header('Location: sablon.php?slug=' . urlencode($slug));
+    $_SESSION['form_groups'][$slug] = $groupEntries;
+    header('Location: cv-olustur.php?tema=' . urlencode($theme));
     exit;
 }
 
-$renderedClauses = array_merge(renderClauses($config, $clean), renderCustomClauses($extraClauses));
-$dompdf = buildFittedPdf(fn($scale) => renderPdfHtml($config, $renderedClauses, $watermark, $scale));
+$photoDataUri = processResumePhoto($_FILES['photo'] ?? null);
 
-$clean['extra_clauses'] = $extraClauses;
+$resumeData = renderResumeData($config, $clean, $groupEntries, $photoDataUri);
+$dompdf = buildFittedPdf(fn($scale) => renderResumePdfHtml($config, $resumeData, $theme, $watermark, $scale));
+
+$clean['groups'] = $groupEntries;
+$clean['theme'] = $theme;
 saveDocument(null, $slug, $clean, $watermark);
 
 $filename = $slug . '-' . date('Ymd-His') . '.pdf';

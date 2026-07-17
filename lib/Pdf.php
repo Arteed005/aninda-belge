@@ -38,10 +38,14 @@ function renderPdfHtml(array $config, array $renderedClauses, bool $watermark, f
     return ob_get_clean();
 }
 
-function renderResumePdfHtml(array $config, array $resumeData, bool $watermark, float $scale = 1.0): string
+function renderResumePdfHtml(array $config, array $resumeData, string $theme, bool $watermark, float $scale = 1.0): string
 {
+    $allowedThemes = ['klasik', 'modern', 'minimalist'];
+    if (!in_array($theme, $allowedThemes, true)) {
+        $theme = 'klasik';
+    }
     ob_start();
-    require __DIR__ . '/../templates/resume-shell.php';
+    require __DIR__ . '/../templates/resume-shell-' . $theme . '.php';
     return ob_get_clean();
 }
 

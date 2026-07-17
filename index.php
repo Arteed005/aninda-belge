@@ -30,7 +30,9 @@ $searchCatalog = [
     ['name' => 'Taahhütname', 'cat' => 'Kişisel Belge', 'slug' => 'taahhutname'],
 ];
 foreach ($searchCatalog as &$item) {
-    $item['available'] = getTemplateConfig($item['slug']) !== null;
+    $itemCfg = getTemplateConfig($item['slug']);
+    $item['available'] = $itemCfg !== null;
+    $item['href'] = (($itemCfg['kind'] ?? 'contract') === 'resume') ? 'cv-olustur.php' : 'sablon.php?slug=' . $item['slug'];
 }
 unset($item);
 

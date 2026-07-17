@@ -48,6 +48,7 @@ foreach (getAllTemplateConfigs() as $cfgSlug => $cfg) {
             'title' => $cfg['title'] ?? $cfgSlug,
             'description' => $cfg['description'] ?? '',
             'meta' => $cfg['meta'] ?? '',
+            'href' => (($cfg['kind'] ?? 'contract') === 'resume') ? 'cv-olustur.php' : 'sablon.php?slug=' . $cfgSlug,
         ];
     }
 }
@@ -95,7 +96,7 @@ require __DIR__ . '/partials/_header.php';
           <p><?= htmlspecialchars($item['description']) ?></p>
           <div class="category-card-footer">
             <span class="category-card-meta"><?= htmlspecialchars($item['meta']) ?></span>
-            <a href="sablon.php?slug=<?= urlencode($item['slug']) ?>" class="category-card-btn">Kullan</a>
+            <a href="<?= htmlspecialchars($item['href']) ?>" class="category-card-btn">Kullan</a>
           </div>
         </div>
       <?php endforeach; ?>

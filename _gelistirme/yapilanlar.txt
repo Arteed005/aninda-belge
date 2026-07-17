@@ -1,5 +1,5 @@
 ANINDA BELGE — YAPILANLAR
-Son güncelleme: 2026-07-14 (gece — 21 yeni şablon + Özgeçmiş/CV motoru eklendi)
+Son güncelleme: 2026-07-17 (SEO altyapısı, Google Analytics, git tabanlı deploy, CV Oluşturucu'nun bağımsız/çok şablonlu sayfaya taşınması)
 
 =================================================
 1) ORTAM KURULUMU
@@ -258,15 +258,95 @@ _gelistirme/tasarim-referans/  - Kullanıcının Claude Design ile hazırladığ
   açık olduğunu kontrol etmek gerekiyor.)
 
 =================================================
-5) SONRAKİ FAZ (HENÜZ YAPILMADI)
+6) SEO ALTYAPISI, GOOGLE ANALYTICS, GİT DEPLOY (2026-07-17)
+=================================================
+- Google Analytics (gtag.js) bağlandı: config/app.php'de GA_MEASUREMENT_ID sabiti,
+  partials/_header.php'de koşullu gtag bloğu (aynı desen GOOGLE_SITE_VERIFICATION için
+  de hazırlandı, henüz doldurulmadı — Search Console zaten GA üzerinden otomatik
+  doğrulandı, gerek kalmadı).
+- Temel SEO katmanı: her sayfada $pageDescription, canonical link, Open Graph +
+  Twitter Card etiketleri, sitewide Organization JSON-LD (partials/_header.php),
+  sablon.php'de BreadcrumbList JSON-LD. Yeni robots.txt + dinamik sitemap.php
+  (getAllTemplateConfigs() üzerinden tüm şablonları otomatik listeler).
+  assets/og-image.png (1200x630) sosyal paylaşım kartı için üretildi.
+- Favicon seti (assets/favicon.ico/.png + apple-touch-icon.png) logo ikonundan
+  kırpılıp beyaz daire arka planla üretildi (koyu sekmelerde kaybolmasın diye).
+- .htaccess'e üretim alan adına özel (localhost'u etkilemeyen) HTTPS+www yönlendirmesi,
+  HSTS header, JS cache header'ları, ErrorDocument 404 → yeni 404.php eklendi.
+- Header logosu 1024px yerine 320px'lik ayrı bir dosyadan (assets/logo-header.png)
+  servis ediliyor, Google Fonts preload+swap ile render-blocking olmaktan çıkarıldı
+  (PageSpeed/SEO Site Checkup denetimindeki bulgulara karşılık).
+- Proje FTP/File Manager yerine git tabanlı deploy'a geçirildi: GitHub'da
+  github.com/Arteed005/aninda-belge reposu oluşturuldu, sunucuda (~/anindabelge.com)
+  git init + remote + composer.phar install ile kuruldu, cPanel Git™ Version Control
+  aracına bağlandı ("Pull or Deploy" → "Update from Remote" tek tıkla güncelleme).
+  vendor/ hâlâ .gitignore'da; sunucuda "php composer.phar install --no-dev
+  --optimize-autoloader" ile ayrıca kuruluyor (composer.json değişirse tekrar
+  çalıştırılması gerekiyor).
+
+=================================================
+7) CV OLUŞTURUCU — BAĞIMSIZ, 3 ŞABLONLU SAYFAYA TAŞINDI (2026-07-17)
+=================================================
+- CV artık diğer 25 sözleşme/dilekçeyle sablon.php/indir.php'yi paylaşmıyor; kendi
+  bağımsız sayfaları var: cv-olustur.php (şablon seçimi + sihirbaz) ve cv-indir.php
+  (PDF üretimi). sablon.php?slug=ozgecmis-cv artık cv-olustur.php'ye 301 yönlendiriyor
+  (eski link/indeks kaybolmasın diye). Ana sayfa, kategori sayfası ve sitemap.php
+  otomatik olarak yeni URL'e göre güncellendi (config'teki "kind":"resume" kontrolüyle).
+- Kullanıcı önce 3 görsel şablondan birini seçiyor: Klasik (tek sütun), Modern
+  (fotoğraflı, koyu lacivert yan panelli iki sütun — dompdf'te <table> ile, flex/grid
+  desteklenmediği için), Minimalist (bol boşluklu, ince tipografi, aksansız).
+  Her tema için ayrı dompdf shell'i var: templates/resume-shell-{klasik,modern,
+  minimalist}.php. lib/Pdf.php'deki renderResumePdfHtml() artık $theme parametresiyle
+  doğru dosyayı seçiyor (whitelist'te yoksa klasik'e düşüyor).
+- Yeni bölümler eklendi: Sertifikalar/Kurslar, Projeler, Referanslar (üçü de mevcut
+  "groups" tekrarlanan-kart motoruna yeni birer grup olarak eklendi, motor kodunda
+  hiçbir değişiklik gerekmedi) + Hobiler (Yetenekler/Diller ile aynı virgüllü metin
+  deseni).
+- Fotoğraf yükleme eklendi: lib/ResumePhoto.php içindeki processResumePhoto() GD ile
+  kareye kırpıp 400x400'e küçültüyor, base64 JPEG data URI'a çeviriyor. Dosya sistemine
+  hiç yazılmıyor — documents.form_data JSON'ına gömülmüyor bile (sadece PDF'e gömülüyor,
+  kaydedilen belge verisinde yer almıyor), yani admin panelden bir CV'yi yeniden
+  görüntülerken fotoğraf geri gelmiyor — bilinçli bir sadelik kararı, ayrı depolama/
+  temizlik mekanizması kurmamak için.
+- renderFieldInput() sablon.php'den lib/FormFields.php'ye taşındı (hem sablon.php hem
+  cv-olustur.php aynı fonksiyonu kullanıyor), yeni "file" input tipi desteği eklendi.
+- Canlı önizleme tüm temalar için TEK bir DOM yapısı kullanıyor (assets/js/cv-builder.js
+  + cv-olustur.php'deki renderCvPreviewHtml) — [data-theme] özniteliği CSS üzerinden
+  renk/tipografiyi değiştiriyor. "Modern" temanın gerçek iki-sütunlu dompdf düzeni
+  sadece PDF'te var; canlı önizlemede tam sadık bir sidebar taklidi yapılmadı (kapsam/
+  süre dengesi), sadece renkli başlık ile yaklaşık gösteriliyor. Kullanıcı fark ederse
+  ayrı bir iyileştirme turu olarak ele alınabilir.
+- Bilinen küçük kozmetik eksik: Modern temada içerik azsa (örn. tek deneyim/eğitim),
+  koyu lacivert yan panel sayfanın tamamını değil, sadece kendi içeriği kadar
+  kapladığı için sayfanın alt kısmında beyaz boşluk kalabiliyor (dompdf tablo
+  hücrelerinin height:100% ile sayfa sonuna sabitlenmesi güvenilir değil). İşlevsel
+  bir sorun değil, sadece estetik bir ince ayar — istenirse ayrıca bakılabilir.
+- Uçtan uca doğrulandı: Python requests ile (curl'ün bu ortamda Türkçe karakterleri
+  bazen bozduğu fark edildi — asıl uygulama kodunda bir sorun değil, sadece test
+  metodolojisiyle ilgiliydi) her 3 temada fotoğraf + 5 grup (deneyim, eğitim,
+  sertifika, proje, referans) + yetenek/dil/hobi dolu bir CV gönderildi, üçü de tek
+  sayfaya sığan PDF üretti, PyMuPDF ile rasterize edilip görsel olarak doğrulandı.
+  Diğer 24 sözleşme/dilekçe şablonu (sablon.php + indir.php) regresyon için tek tek
+  test edildi, hepsi 200 döndü; kira-sözleşmesi için uçtan uca PDF üretimi de
+  ayrıca doğrulandı.
+- Bu oturumda ayrıca fark edildi: local config/db.php bir noktada canlı sunucu
+  kimlik bilgileriyle değişmişti (muhtemelen elle kopyalama sırasında) — local
+  XAMPP değerlerine (root/şifresiz, "anindabelge" veritabanı) geri alındı. Bu dosya
+  .gitignore'da olduğu için production'a hiçbir etkisi olmadı, sadece local test
+  akışını bir adım geciktirdi.
+
+=================================================
+8) SONRAKİ FAZ (HENÜZ YAPILMADI)
 =================================================
 - Sabit madde metinlerinin kullanıcı tarafından düzenlenebilir olması (biz standart metni
   verelim, kullanıcı silip yeniden yazabilsin) — daha önce planlanmıştı ama plan dosyası
-  (serialized-meandering-naur.md) bu oturumda CV motoru planıyla ÜZERİNE YAZILDI, o yüzden
+  (serialized-meandering-naur.md) birkaç kez başka planlarla ÜZERİNE YAZILDI, o yüzden
   kayıtlı plan artık yok. Fikir hâlâ geçerli, bir sonraki oturumda yeniden planlanmalı.
 - Kullanıcı hesabına bağlı belge geçmişi (documents tablosu şu an user_id nullable
   tutuyor ama arayüzde henüz gösterilmiyor).
 - Premium/filigran akışının aktive edilmesi (altyapı hazır, shouldWatermark() pasif).
-- CV'nin "Yetenekler"i şu an tek bir virgülle-ayrılmış metin alanı; ileride istenirse
-  deneyim/eğitim gibi ayrı tekrarlanan bir "group" yapısına taşınabilir (motor zaten
-  destekliyor, sadece config'te bir grup daha tanımlamak yeterli olur).
+- CV'de bölümleri sürükle-bırak ile yeniden sıralama, çoklu sayfa desteği (şu an
+  tek sayfaya küçültme davranışı korunuyor) — bilinçli olarak bu turun kapsamı
+  dışında bırakıldı.
+- Modern CV temasındaki yan panel sayfa-sonu boşluğu (yukarıda "Bilinen küçük
+  kozmetik eksik" notuna bak).

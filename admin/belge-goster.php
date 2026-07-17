@@ -21,8 +21,9 @@ $isResume = ($config['kind'] ?? 'contract') === 'resume';
 
 if ($isResume) {
     $groupEntries = $formData['groups'] ?? [];
+    $theme = $formData['theme'] ?? 'klasik';
     $resumeData = renderResumeData($config, $formData, $groupEntries);
-    $dompdf = buildFittedPdf(fn($scale) => renderResumePdfHtml($config, $resumeData, $watermark, $scale));
+    $dompdf = buildFittedPdf(fn($scale) => renderResumePdfHtml($config, $resumeData, $theme, $watermark, $scale));
 } else {
     $extraClauses = $formData['extra_clauses'] ?? [];
     $renderedClauses = array_merge(renderClauses($config, $formData), renderCustomClauses($extraClauses));

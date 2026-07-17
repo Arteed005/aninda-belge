@@ -207,6 +207,63 @@ a { color: inherit; }
 .resume-preview-entry-secondary { color: #3a4658; }
 .resume-preview-entry-dates { font-size: 11px; color: var(--faint); white-space: nowrap; }
 .resume-preview-entry-desc { font-size: 12px; line-height: 1.55; color: #3a4658; margin: 4px 0 0; }
+.resume-preview-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 12px; }
+
+/* CV theme variations — live preview approximates each PDF theme's palette/type */
+#resume-preview[data-theme="modern"] .resume-preview-name { color: var(--navy); }
+#resume-preview[data-theme="modern"] .resume-preview-section-title { color: #1e9e5c; }
+#resume-preview[data-theme="modern"] .resume-preview-header { background: var(--navy); color: #fff; border-radius: 12px; padding: 20px 16px; margin: -4px -4px 20px; }
+#resume-preview[data-theme="modern"] .resume-preview-header::after { display: none; }
+#resume-preview[data-theme="modern"] .resume-preview-name { color: #fff; }
+#resume-preview[data-theme="modern"] .resume-preview-title { color: #3fc37e; }
+#resume-preview[data-theme="modern"] .resume-preview-contact { color: rgba(255,255,255,.75); margin-bottom: 0; }
+
+#resume-preview[data-theme="minimalist"] .resume-preview-name { font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; }
+#resume-preview[data-theme="minimalist"] .resume-preview-title { color: var(--muted); font-weight: 500; }
+#resume-preview[data-theme="minimalist"] .resume-preview-section-title { color: var(--muted); font-weight: 500; letter-spacing: .12em; text-transform: uppercase; border-bottom: none; }
+#resume-preview[data-theme="minimalist"] .resume-preview-entry-primary { color: #2b2f36; }
+
+/* CV Oluşturucu (cv-olustur.php) */
+.cv-picker-main { max-width: 1080px; margin: 0 auto; padding: 24px 24px 90px; }
+.cv-picker-heading { text-align: center; margin-bottom: 34px; }
+.cv-picker-heading h1 { font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 800; margin: 0 0 8px; }
+.cv-picker-heading p { color: var(--muted); font-size: 15px; }
+
+.cv-theme-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.cv-theme-card { border: 1.5px solid var(--border-light); border-radius: 16px; padding: 20px; text-align: center; background: #fff; }
+.cv-theme-card h3 { font-size: 16px; font-weight: 800; margin: 14px 0 6px; }
+.cv-theme-card p { font-size: 13px; color: var(--muted); margin: 0 0 16px; line-height: 1.5; }
+
+.cv-theme-preview { border: 1px solid var(--border-light); border-radius: 10px; background: #fafbfc; padding: 18px 16px; height: 180px; overflow: hidden; }
+.cv-theme-preview-photo { width: 32px; height: 32px; border-radius: 50%; background: var(--border-light); margin: 0 auto 8px; }
+.cv-theme-preview-line { height: 6px; border-radius: 3px; background: var(--border-light); margin: 0 auto 6px; width: 70%; }
+.cv-theme-preview-name { width: 55%; height: 8px; background: var(--navy); opacity: .8; }
+.cv-theme-preview-title { width: 40%; background: var(--accent); }
+.cv-theme-preview-rule { height: 1px; background: var(--border-light); margin: 10px 0; }
+.cv-theme-preview-line.short { width: 45%; }
+
+.cv-theme-preview[data-theme-preview="modern"] { background: var(--navy); }
+.cv-theme-preview[data-theme-preview="modern"] .cv-theme-preview-photo { background: rgba(255,255,255,.3); }
+.cv-theme-preview[data-theme-preview="modern"] .cv-theme-preview-line { background: rgba(255,255,255,.35); }
+.cv-theme-preview[data-theme-preview="modern"] .cv-theme-preview-name { background: #fff; opacity: 1; }
+.cv-theme-preview[data-theme-preview="modern"] .cv-theme-preview-title { background: #3fc37e; }
+.cv-theme-preview[data-theme-preview="modern"] .cv-theme-preview-rule { background: rgba(255,255,255,.2); }
+
+.cv-theme-preview[data-theme-preview="minimalist"] .cv-theme-preview-line { background: #ececec; }
+.cv-theme-preview[data-theme-preview="minimalist"] .cv-theme-preview-photo { background: #ececec; }
+.cv-theme-preview[data-theme-preview="minimalist"] .cv-theme-preview-name,
+.cv-theme-preview[data-theme-preview="minimalist"] .cv-theme-preview-title { background: #b6b9c0; opacity: 1; }
+
+.cv-theme-btn {
+  display: block; text-align: center; background: var(--accent); color: #fff; font-weight: 700;
+  font-size: 14px; padding: 10px 18px; border-radius: 10px; text-decoration: none;
+}
+.cv-theme-btn:hover { filter: brightness(0.94); }
+
+.cv-theme-badge {
+  display: inline-block; font-size: 12px; font-weight: 700; color: var(--accent);
+  background: rgba(30,158,92,.1); border-radius: 999px; padding: 3px 10px; margin-left: 8px; vertical-align: middle;
+}
 
 /* Category listing (kategori.php) */
 .category-main { max-width: 1240px; margin: 0 auto; padding: 24px 24px 90px; }

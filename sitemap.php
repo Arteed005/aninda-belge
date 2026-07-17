@@ -12,8 +12,11 @@ foreach (['sozlesmeler', 'dilekceler', 'is-belgeleri', 'kisisel-belgeler'] as $c
     $urls[] = ['loc' => SITE_URL . '/kategori.php?slug=' . urlencode($catSlug), 'priority' => '0.8'];
 }
 
-foreach (array_keys(getAllTemplateConfigs()) as $slug) {
-    $urls[] = ['loc' => SITE_URL . '/sablon.php?slug=' . urlencode($slug), 'priority' => '0.7'];
+foreach (getAllTemplateConfigs() as $slug => $cfg) {
+    $loc = (($cfg['kind'] ?? 'contract') === 'resume')
+        ? SITE_URL . '/cv-olustur.php'
+        : SITE_URL . '/sablon.php?slug=' . urlencode($slug);
+    $urls[] = ['loc' => $loc, 'priority' => '0.7'];
 }
 
 foreach (['kullanim-sartlari.php', 'gizlilik-politikasi.php', 'kvkk-aydinlatma-metni.php'] as $legalPage) {

@@ -2,11 +2,17 @@
   "slug": "ozgecmis-cv",
   "category": "is-belgeleri",
   "title": "Özgeçmiş (CV)",
-  "description": "Deneyim ve eğitimini profesyonel bir özgeçmiş formatında sun.",
-  "meta": "Ort. 5 dk",
+  "description": "Deneyim ve eğitimini profesyonel, çok şablonlu bir özgeçmişte sun; fotoğraf, sertifika, proje ve referans ekle.",
+  "meta": "Ort. 6 dk",
   "kind": "resume",
   "allowCustomClauses": false,
+  "themes": [
+    {"key": "klasik", "label": "Klasik", "desc": "Tek sütun, ortalanmış başlık, sade ve evrensel."},
+    {"key": "modern", "label": "Modern", "desc": "Fotoğraflı, renkli yan panelli iki sütun."},
+    {"key": "minimalist", "label": "Minimalist", "desc": "Bol boşluklu, ince tipografi, aksansız."}
+  ],
   "fields": [
+    {"name": "photo", "label": "Fotoğraf (opsiyonel)", "type": "file", "required": false},
     {"name": "full_name", "label": "Ad Soyad", "type": "text", "required": true, "placeholder": "Örn: Zeynep Aksoy"},
     {"name": "title", "label": "Ünvan / Hedef Pozisyon", "type": "text", "required": false, "placeholder": "Örn: Kıdemli Yazılım Geliştirici"},
     {"name": "email", "label": "E-posta", "type": "text", "required": true, "placeholder": "Örn: zeynep@example.com"},
@@ -15,7 +21,8 @@
     {"name": "linkedin", "label": "LinkedIn / Portfolyo (varsa)", "type": "text", "required": false, "placeholder": "Örn: linkedin.com/in/zeynepaksoy"},
     {"name": "summary", "label": "Hakkımda", "type": "textarea", "required": false, "placeholder": "Kendini kısaca tanıt: deneyim alanın, güçlü yönlerin, hedeflerin"},
     {"name": "skills", "label": "Yetenekler (virgülle ayırın)", "type": "textarea", "required": false, "placeholder": "Örn: JavaScript, Proje Yönetimi, İngilizce"},
-    {"name": "languages", "label": "Diller (virgülle ayırın)", "type": "textarea", "required": false, "placeholder": "Örn: İngilizce (İleri), Almanca (Orta)"}
+    {"name": "languages", "label": "Diller (virgülle ayırın)", "type": "textarea", "required": false, "placeholder": "Örn: İngilizce (İleri), Almanca (Orta)"},
+    {"name": "hobbies", "label": "Hobiler / İlgi Alanları (virgülle ayırın)", "type": "textarea", "required": false, "placeholder": "Örn: Satranç, Doğa Yürüyüşü, Fotoğrafçılık"}
   ],
   "groups": [
     {
@@ -36,12 +43,42 @@
         {"name": "start_date", "label": "Başlangıç", "type": "text", "required": false, "placeholder": "Örn: 2016"},
         {"name": "end_date", "label": "Bitiş", "type": "text", "required": false, "placeholder": "Örn: 2020"}
       ]
+    },
+    {
+      "key": "certificates", "title": "Sertifikalar / Kurslar", "addLabel": "+ Sertifika Ekle",
+      "fields": [
+        {"name": "name", "label": "Sertifika / Kurs Adı", "type": "text", "required": true, "placeholder": "Örn: AWS Certified Developer"},
+        {"name": "issuer", "label": "Veren Kurum", "type": "text", "required": false, "placeholder": "Örn: Amazon Web Services"},
+        {"name": "start_date", "label": "Tarih", "type": "text", "required": false, "placeholder": "Örn: 2023"},
+        {"name": "description", "label": "Açıklama (opsiyonel)", "type": "textarea", "required": false, "placeholder": "Kısa açıklama"}
+      ]
+    },
+    {
+      "key": "projects", "title": "Projeler", "addLabel": "+ Proje Ekle",
+      "fields": [
+        {"name": "name", "label": "Proje Adı", "type": "text", "required": true, "placeholder": "Örn: E-ticaret Mobil Uygulaması"},
+        {"name": "role", "label": "Rol / Teknolojiler", "type": "text", "required": false, "placeholder": "Örn: Frontend Geliştirici — React Native"},
+        {"name": "start_date", "label": "Başlangıç", "type": "text", "required": false, "placeholder": "Örn: 2022"},
+        {"name": "end_date", "label": "Bitiş", "type": "text", "required": false, "placeholder": "Örn: 2023"},
+        {"name": "description", "label": "Açıklama / Link", "type": "textarea", "required": false, "placeholder": "Kısaca projeyi ve varsa linkini yaz"}
+      ]
+    },
+    {
+      "key": "references", "title": "Referanslar", "addLabel": "+ Referans Ekle",
+      "fields": [
+        {"name": "name", "label": "Ad Soyad", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yıldız"},
+        {"name": "title", "label": "Unvan / Şirket", "type": "text", "required": false, "placeholder": "Örn: Proje Yöneticisi, ABC A.Ş."},
+        {"name": "description", "label": "İletişim", "type": "text", "required": false, "placeholder": "Örn: ahmet@example.com · 0555 000 00 00"}
+      ]
     }
   ],
   "steps": [
-    {"title": "Kişisel Bilgiler", "fields": ["full_name", "title", "email", "phone", "location", "linkedin", "summary"]},
+    {"title": "Kişisel Bilgiler", "fields": ["photo", "full_name", "title", "email", "phone", "location", "linkedin", "summary"]},
     {"title": "İş Deneyimi", "group": "experience"},
     {"title": "Eğitim", "group": "education"},
-    {"title": "Yetenekler ve Diller", "fields": ["skills", "languages"]}
+    {"title": "Sertifikalar", "group": "certificates"},
+    {"title": "Projeler", "group": "projects"},
+    {"title": "Referanslar", "group": "references"},
+    {"title": "Yetenekler, Diller ve Hobiler", "fields": ["skills", "languages", "hobbies"]}
   ]
 }

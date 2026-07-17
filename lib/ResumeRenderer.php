@@ -6,7 +6,7 @@
  * displayed as labeled data — so a plain array is enough. Used identically by
  * sablon.php's SSR preview and templates/resume-shell.php's PDF output.
  */
-function renderResumeData(array $config, array $values, array $groupEntries): array
+function renderResumeData(array $config, array $values, array $groupEntries, ?string $photoDataUri = null): array
 {
     $get = function (string $name) use ($values): string {
         return trim((string) ($values[$name] ?? ''));
@@ -27,6 +27,7 @@ function renderResumeData(array $config, array $values, array $groupEntries): ar
     }
 
     return [
+        'photo' => $photoDataUri,
         'full_name' => $get('full_name'),
         'title' => $get('title'),
         'email' => $get('email'),
@@ -36,6 +37,7 @@ function renderResumeData(array $config, array $values, array $groupEntries): ar
         'summary' => $get('summary'),
         'skills' => $splitList($get('skills')),
         'languages' => $splitList($get('languages')),
+        'hobbies' => $splitList($get('hobbies')),
         'sections' => $sections,
     ];
 }

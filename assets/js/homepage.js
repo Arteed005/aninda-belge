@@ -28,7 +28,7 @@
 
     function goToOrModal(item) {
       if (item.available) {
-        window.location.href = 'sablon.php?slug=' + encodeURIComponent(item.slug);
+        window.location.href = item.href || ('sablon.php?slug=' + encodeURIComponent(item.slug));
       } else {
         openModal(item.name);
       }

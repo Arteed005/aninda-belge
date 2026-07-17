@@ -1,13 +1,12 @@
 <?php
 /**
- * dompdf-safe HTML/CSS wrapper for "kind": "resume" documents. Sibling of
- * pdf-shell.php but a real resume layout — no MADDE headings, no signature
- * table. Expects $config, $resumeData (from renderResumeData()), $watermark,
- * $scale to be in scope (set by renderResumePdfHtml() in lib/Pdf.php).
+ * dompdf-safe HTML/CSS wrapper for the "minimalist" CV theme — single
+ * column, generous whitespace, thin typography, no color blocks. Structural
+ * sibling of resume-shell-klasik.php with different spacing/type choices.
  */
 $scale = $scale ?? 1.0;
 $f = static fn(float $px): string => round($px * $scale, 2) . 'px';
-$lineHeight = max(1.2, round(1.5 * $scale, 2));
+$lineHeight = max(1.3, round(1.6 * $scale, 2));
 ?>
 <!DOCTYPE html>
 <html lang="tr">
@@ -15,34 +14,34 @@ $lineHeight = max(1.2, round(1.5 * $scale, 2));
 <meta charset="utf-8">
 <style>
   @page { margin: 0; size: A4; }
-  body { font-family: DejaVu Sans, sans-serif; color: #1a2b4a; font-size: <?= $f(12) ?>; margin: 0; }
-  .sheet { padding: <?= $f(34) ?> <?= $f(40) ?>; }
-  .watermark { position: fixed; top: 40%; left: 15%; font-size: <?= $f(60) ?>; color: rgba(26,43,74,0.08); transform: rotate(-25deg); }
+  body { font-family: DejaVu Sans, sans-serif; color: #2b2f36; font-size: <?= $f(11.5) ?>; margin: 0; }
+  .sheet { padding: <?= $f(44) ?> <?= $f(48) ?>; }
+  .watermark { position: fixed; top: 40%; left: 15%; font-size: <?= $f(60) ?>; color: rgba(26,43,74,0.06); transform: rotate(-25deg); }
 
-  .resume-header { text-align: center; margin-bottom: <?= $f(18) ?>; }
-  .resume-name { font-size: <?= $f(22) ?>; font-weight: bold; letter-spacing: .3px; margin: 0 0 <?= $f(3) ?>; }
-  .resume-title { font-size: <?= $f(12.5) ?>; color: #1e9e5c; font-weight: bold; margin: 0 0 <?= $f(8) ?>; }
-  .resume-contact { font-size: <?= $f(10) ?>; color: #6b7688; margin: 0; }
-  .resume-header-rule { border-top: 1px solid #e4e8ee; margin-top: <?= $f(14) ?>; }
+  .resume-header { margin-bottom: <?= $f(26) ?>; }
+  .resume-photo { width: <?= $f(64) ?>; height: <?= $f(64) ?>; border-radius: 50%; margin: 0 0 <?= $f(14) ?>; }
+  .resume-name { font-size: <?= $f(21) ?>; font-weight: normal; letter-spacing: 1.5px; margin: 0 0 <?= $f(4) ?>; }
+  .resume-title { font-size: <?= $f(11.5) ?>; color: #8a8f99; letter-spacing: .5px; margin: 0 0 <?= $f(10) ?>; }
+  .resume-contact { font-size: <?= $f(9.5) ?>; color: #8a8f99; margin: 0; letter-spacing: .3px; }
 
-  .resume-section { margin-bottom: <?= $f(16) ?>; }
+  .resume-section { margin-bottom: <?= $f(20) ?>; }
   .resume-section-title {
-    font-size: <?= $f(11) ?>; font-weight: bold; color: #1e9e5c; letter-spacing: 1px;
-    border-bottom: 1px solid #e4e8ee; padding-bottom: <?= $f(4) ?>; margin: 0 0 <?= $f(9) ?>;
+    font-size: <?= $f(9.5) ?>; font-weight: normal; color: #8a8f99; letter-spacing: 2px;
+    text-transform: uppercase; margin: 0 0 <?= $f(10) ?>;
   }
-  .resume-summary { font-size: <?= $f(12) ?>; line-height: <?= $lineHeight ?>; color: #3a4658; margin: 0; }
-  .resume-tags { font-size: <?= $f(11.5) ?>; color: #3a4658; margin: 0; }
+  .resume-summary { font-size: <?= $f(11.5) ?>; line-height: <?= $lineHeight ?>; color: #3d424b; margin: 0; font-weight: normal; }
+  .resume-tags { font-size: <?= $f(11) ?>; color: #3d424b; margin: 0; }
 
   .resume-entry-head { margin: 0 0 <?= $f(2) ?>; clear: both; overflow: hidden; }
-  .resume-entry-main { font-size: <?= $f(12.5) ?>; }
-  .resume-entry-primary { font-weight: bold; color: #1a2b4a; }
-  .resume-entry-secondary { color: #3a4658; }
-  .resume-entry-dates { float: right; font-size: <?= $f(10.5) ?>; color: #9aa5b4; white-space: nowrap; }
-  .resume-entry-desc { font-size: <?= $f(11.5) ?>; color: #3a4658; line-height: <?= $lineHeight ?>; margin: <?= $f(3) ?> 0 0; }
-  .resume-entry { margin-bottom: <?= $f(12) ?>; }
+  .resume-entry-main { font-size: <?= $f(12) ?>; }
+  .resume-entry-primary { font-weight: bold; color: #2b2f36; }
+  .resume-entry-secondary { color: #6b7079; }
+  .resume-entry-dates { float: right; font-size: <?= $f(10) ?>; color: #a7abb3; white-space: nowrap; }
+  .resume-entry-desc { font-size: <?= $f(11) ?>; color: #3d424b; line-height: <?= $lineHeight ?>; margin: <?= $f(4) ?> 0 0; }
+  .resume-entry { margin-bottom: <?= $f(14) ?>; }
   .resume-entry:last-child { margin-bottom: 0; }
 
-  .disclaimer { margin-top: <?= $f(26) ?>; font-size: <?= $f(9.5) ?>; color: #9aa5b4; border-top: 1px solid #e4e8ee; padding-top: <?= $f(10) ?>; }
+  .disclaimer { margin-top: <?= $f(30) ?>; font-size: <?= $f(9) ?>; color: #b6b9c0; }
 </style>
 </head>
 <body>
@@ -52,7 +51,10 @@ $lineHeight = max(1.2, round(1.5 * $scale, 2));
   <?php endif; ?>
 
   <div class="resume-header">
-    <p class="resume-name"><?= htmlspecialchars($resumeData['full_name']) ?></p>
+    <?php if (!empty($resumeData['photo'])): ?>
+      <img class="resume-photo" src="<?= htmlspecialchars($resumeData['photo']) ?>" alt="">
+    <?php endif; ?>
+    <p class="resume-name"><?= htmlspecialchars(trUpper($resumeData['full_name'])) ?></p>
     <?php if ($resumeData['title'] !== ''): ?>
       <p class="resume-title"><?= htmlspecialchars($resumeData['title']) ?></p>
     <?php endif; ?>
@@ -64,12 +66,11 @@ $lineHeight = max(1.2, round(1.5 * $scale, 2));
     <?php if ($contactParts): ?>
       <p class="resume-contact"><?= htmlspecialchars(implode('   ·   ', $contactParts)) ?></p>
     <?php endif; ?>
-    <div class="resume-header-rule"></div>
   </div>
 
   <?php if ($resumeData['summary'] !== ''): ?>
     <div class="resume-section">
-      <p class="resume-section-title">HAKKIMDA</p>
+      <p class="resume-section-title">Hakkımda</p>
       <p class="resume-summary"><?= htmlspecialchars($resumeData['summary']) ?></p>
     </div>
   <?php endif; ?>
@@ -77,7 +78,7 @@ $lineHeight = max(1.2, round(1.5 * $scale, 2));
   <?php foreach ($resumeData['sections'] as $section): ?>
     <?php if (empty($section['entries'])) continue; ?>
     <div class="resume-section">
-      <p class="resume-section-title"><?= htmlspecialchars(trUpper($section['title'])) ?></p>
+      <p class="resume-section-title"><?= htmlspecialchars($section['title']) ?></p>
       <?php $fieldNames = array_column($section['fields'], 'name'); ?>
       <?php foreach ($section['entries'] as $entry): ?>
         <?php
@@ -103,15 +104,22 @@ $lineHeight = max(1.2, round(1.5 * $scale, 2));
 
   <?php if ($resumeData['skills']): ?>
     <div class="resume-section">
-      <p class="resume-section-title">YETENEKLER</p>
+      <p class="resume-section-title">Yetenekler</p>
       <p class="resume-tags"><?= htmlspecialchars(implode('   ·   ', $resumeData['skills'])) ?></p>
     </div>
   <?php endif; ?>
 
   <?php if ($resumeData['languages']): ?>
     <div class="resume-section">
-      <p class="resume-section-title">DİLLER</p>
+      <p class="resume-section-title">Diller</p>
       <p class="resume-tags"><?= htmlspecialchars(implode('   ·   ', $resumeData['languages'])) ?></p>
+    </div>
+  <?php endif; ?>
+
+  <?php if (!empty($resumeData['hobbies'])): ?>
+    <div class="resume-section">
+      <p class="resume-section-title">Hobiler</p>
+      <p class="resume-tags"><?= htmlspecialchars(implode('   ·   ', $resumeData['hobbies'])) ?></p>
     </div>
   <?php endif; ?>
 
