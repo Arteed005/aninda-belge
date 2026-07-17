@@ -51,7 +51,7 @@ function renderCvPreviewHtml(array $resumeData): void
                 <?php if ($primary !== ''): ?><span class="resume-preview-entry-primary"><?= htmlspecialchars($primary) ?></span><?php endif; ?>
                 <?php if ($secondary !== ''): ?><span class="resume-preview-entry-secondary"><?= htmlspecialchars(($primary !== '' ? ' — ' : '') . $secondary) ?></span><?php endif; ?>
               </span>
-              <span class="resume-preview-entry-dates"><?= htmlspecialchars($dateRange) ?></span>
+              <?php if ($dateRange !== ''): ?><span class="resume-preview-entry-dates"><?= htmlspecialchars($dateRange) ?></span><?php endif; ?>
             </div>
             <?php foreach (explode("\n", $description) as $line): if ($line !== ''): ?>
               <p class="resume-preview-entry-desc"><?= htmlspecialchars($line) ?></p>
@@ -64,21 +64,21 @@ function renderCvPreviewHtml(array $resumeData): void
     <?php if ($resumeData['skills']): ?>
       <div class="resume-preview-section">
         <p class="resume-preview-section-title">Yetenekler</p>
-        <p class="resume-preview-text"><?= htmlspecialchars(implode(' · ', $resumeData['skills'])) ?></p>
+        <p class="resume-preview-tags"><?php foreach ($resumeData['skills'] as $skill): ?><span class="tag-pill"><?= htmlspecialchars($skill) ?></span><?php endforeach; ?></p>
       </div>
     <?php endif; ?>
 
     <?php if ($resumeData['languages']): ?>
       <div class="resume-preview-section">
         <p class="resume-preview-section-title">Diller</p>
-        <p class="resume-preview-text"><?= htmlspecialchars(implode(' · ', $resumeData['languages'])) ?></p>
+        <p class="resume-preview-tags"><?php foreach ($resumeData['languages'] as $lang): ?><span class="tag-pill"><?= htmlspecialchars($lang) ?></span><?php endforeach; ?></p>
       </div>
     <?php endif; ?>
 
     <?php if (!empty($resumeData['hobbies'])): ?>
       <div class="resume-preview-section">
         <p class="resume-preview-section-title">Hobiler</p>
-        <p class="resume-preview-text"><?= htmlspecialchars(implode(' · ', $resumeData['hobbies'])) ?></p>
+        <p class="resume-preview-tags"><?php foreach ($resumeData['hobbies'] as $hobby): ?><span class="tag-pill"><?= htmlspecialchars($hobby) ?></span><?php endforeach; ?></p>
       </div>
     <?php endif; ?>
     <?php

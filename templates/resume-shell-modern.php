@@ -17,30 +17,36 @@ $lineHeight = max(1.2, round(1.5 * $scale, 2));
   @page { margin: 0; size: A4; }
   body { font-family: DejaVu Sans, sans-serif; color: #1a2b4a; font-size: <?= $f(12) ?>; margin: 0; }
   table.layout { width: 100%; border-collapse: collapse; }
-  td.side { width: 34%; background: #1a2b4a; color: #ffffff; padding: <?= $f(30) ?> <?= $f(20) ?>; vertical-align: top; }
+  td.side { width: 34%; min-height: <?= $f(1030) ?>; background: #1a2b4a; color: #ffffff; padding: <?= $f(30) ?> <?= $f(20) ?>; vertical-align: top; }
   td.main { width: 66%; padding: <?= $f(30) ?> <?= $f(30) ?>; vertical-align: top; }
   .watermark { position: fixed; top: 40%; left: 15%; font-size: <?= $f(60) ?>; color: rgba(26,43,74,0.08); transform: rotate(-25deg); }
 
-  .resume-photo { width: <?= $f(90) ?>; height: <?= $f(90) ?>; border-radius: 50%; margin: 0 auto <?= $f(14) ?>; }
+  .resume-photo { width: <?= $f(90) ?>; height: <?= $f(90) ?>; border-radius: 50%; margin: 0 auto <?= $f(14) ?>; border: <?= $f(3) ?> solid rgba(255,255,255,.35); }
   .side-name { font-size: <?= $f(16) ?>; font-weight: bold; text-align: center; margin: 0 0 <?= $f(3) ?>; }
   .side-title { font-size: <?= $f(10.5) ?>; color: #3fc37e; text-align: center; margin: 0 0 <?= $f(18) ?>; }
   .side-section { margin-bottom: <?= $f(16) ?>; }
   .side-section-title { font-size: <?= $f(10) ?>; font-weight: bold; letter-spacing: 1px; color: #3fc37e; border-bottom: 1px solid rgba(255,255,255,.25); padding-bottom: <?= $f(4) ?>; margin: 0 0 <?= $f(8) ?>; }
   .side-line { font-size: <?= $f(10) ?>; color: #dfe4ec; margin: 0 0 <?= $f(6) ?>; word-wrap: break-word; }
-  .side-tag { font-size: <?= $f(10) ?>; color: #dfe4ec; margin: 0 0 <?= $f(4) ?>; }
+  .side-tag {
+    display: inline-block; font-size: <?= $f(9.5) ?>; color: #dfe4ec; background: rgba(255,255,255,.12);
+    padding: <?= $f(3) ?> <?= $f(9) ?>; border-radius: <?= $f(9) ?>; margin: 0 <?= $f(5) ?> <?= $f(5) ?> 0;
+  }
 
   .resume-section { margin-bottom: <?= $f(16) ?>; }
   .resume-section-title {
-    font-size: <?= $f(11) ?>; font-weight: bold; color: #1e9e5c; letter-spacing: 1px;
-    border-bottom: 1px solid #e4e8ee; padding-bottom: <?= $f(4) ?>; margin: 0 0 <?= $f(9) ?>;
+    font-size: <?= $f(11) ?>; font-weight: bold; color: #1a2b4a; letter-spacing: 1px;
+    border-left: <?= $f(3) ?> solid #1e9e5c; padding-left: <?= $f(8) ?>; margin: 0 0 <?= $f(10) ?>;
   }
   .resume-summary { font-size: <?= $f(12) ?>; line-height: <?= $lineHeight ?>; color: #3a4658; margin: 0; }
 
-  .resume-entry-head { margin: 0 0 <?= $f(2) ?>; clear: both; overflow: hidden; }
+  .resume-entry-head { margin: 0 0 <?= $f(4) ?>; clear: both; overflow: hidden; }
   .resume-entry-main { font-size: <?= $f(12.5) ?>; }
   .resume-entry-primary { font-weight: bold; color: #1a2b4a; }
   .resume-entry-secondary { color: #3a4658; }
-  .resume-entry-dates { float: right; font-size: <?= $f(10.5) ?>; color: #9aa5b4; white-space: nowrap; }
+  .resume-entry-dates {
+    float: right; font-size: <?= $f(10) ?>; color: #6b7688; white-space: nowrap;
+    background: #f2f4f7; padding: <?= $f(2) ?> <?= $f(8) ?>; border-radius: <?= $f(8) ?>;
+  }
   .resume-entry-desc { font-size: <?= $f(11.5) ?>; color: #3a4658; line-height: <?= $lineHeight ?>; margin: <?= $f(3) ?> 0 0; }
   .resume-entry { margin-bottom: <?= $f(12) ?>; }
   .resume-entry:last-child { margin-bottom: 0; }
@@ -119,7 +125,7 @@ $lineHeight = max(1.2, round(1.5 * $scale, 2));
               ?>
               <div class="resume-entry">
                 <p class="resume-entry-head">
-                  <span class="resume-entry-dates"><?= htmlspecialchars($dateRange) ?></span><span class="resume-entry-main">
+                  <?php if ($dateRange !== ''): ?><span class="resume-entry-dates"><?= htmlspecialchars($dateRange) ?></span><?php endif; ?><span class="resume-entry-main">
                       <?php if ($primary !== ''): ?><span class="resume-entry-primary"><?= htmlspecialchars($primary) ?></span><?php endif; ?>
                       <?php if ($secondary !== ''): ?><span class="resume-entry-secondary"><?= htmlspecialchars(($primary !== '' ? ' — ' : '') . $secondary) ?></span><?php endif; ?>
                   </span>

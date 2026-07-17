@@ -190,14 +190,16 @@ a { color: inherit; }
 .resume-preview-name { font-size: 19px; font-weight: 800; margin: 0 0 3px; }
 .resume-preview-title { font-size: 13px; font-weight: 700; color: var(--accent); margin: 0 0 8px; }
 .resume-preview-contact { font-size: 11px; color: var(--muted); margin: 0 0 14px; }
-.resume-preview-header::after { content: ''; display: block; height: 1px; background: var(--border-light); }
+.resume-preview-header::after { content: ''; display: block; width: 44px; height: 3px; border-radius: 2px; background: var(--accent); margin: 0 auto; }
 
 .resume-preview-section { margin-bottom: 16px; }
 .resume-preview-section-title {
-  font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: .05em;
-  border-bottom: 1px solid var(--border-light); padding-bottom: 5px; margin: 0 0 10px;
+  font-size: 11px; font-weight: 800; color: var(--navy); letter-spacing: .05em;
+  border-left: 3px solid var(--accent); padding-left: 8px; margin: 0 0 10px;
 }
 .resume-preview-text { font-size: 12.5px; line-height: 1.6; color: #3a4658; margin: 0; }
+.resume-preview-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+.tag-pill { display: inline-block; background: #eaf6ef; color: #17794a; font-size: 11px; padding: 3px 10px; border-radius: 10px; }
 
 .resume-preview-entry { margin-bottom: 12px; }
 .resume-preview-entry:last-child { margin-bottom: 0; }
@@ -205,23 +207,27 @@ a { color: inherit; }
 .resume-preview-entry-main { font-size: 13px; }
 .resume-preview-entry-primary { font-weight: 700; color: var(--navy); }
 .resume-preview-entry-secondary { color: #3a4658; }
-.resume-preview-entry-dates { font-size: 11px; color: var(--faint); white-space: nowrap; }
+.resume-preview-entry-dates { font-size: 10.5px; color: #6b7688; white-space: nowrap; background: #f2f4f7; padding: 2px 8px; border-radius: 8px; }
 .resume-preview-entry-desc { font-size: 12px; line-height: 1.55; color: #3a4658; margin: 4px 0 0; }
-.resume-preview-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 12px; }
+.resume-preview-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 12px; border: 3px solid #eaf6ef; }
 
 /* CV theme variations — live preview approximates each PDF theme's palette/type */
 #resume-preview[data-theme="modern"] .resume-preview-name { color: var(--navy); }
-#resume-preview[data-theme="modern"] .resume-preview-section-title { color: #1e9e5c; }
+#resume-preview[data-theme="modern"] .resume-preview-section-title { color: var(--navy); border-left-color: #1e9e5c; }
 #resume-preview[data-theme="modern"] .resume-preview-header { background: var(--navy); color: #fff; border-radius: 12px; padding: 20px 16px; margin: -4px -4px 20px; }
-#resume-preview[data-theme="modern"] .resume-preview-header::after { display: none; }
+#resume-preview[data-theme="modern"] .resume-preview-header::after { background: #3fc37e; }
 #resume-preview[data-theme="modern"] .resume-preview-name { color: #fff; }
 #resume-preview[data-theme="modern"] .resume-preview-title { color: #3fc37e; }
 #resume-preview[data-theme="modern"] .resume-preview-contact { color: rgba(255,255,255,.75); margin-bottom: 0; }
+#resume-preview[data-theme="modern"] .resume-preview-photo { border-color: rgba(255,255,255,.35); }
 
 #resume-preview[data-theme="minimalist"] .resume-preview-name { font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; }
 #resume-preview[data-theme="minimalist"] .resume-preview-title { color: var(--muted); font-weight: 500; }
-#resume-preview[data-theme="minimalist"] .resume-preview-section-title { color: var(--muted); font-weight: 500; letter-spacing: .12em; text-transform: uppercase; border-bottom: none; }
+#resume-preview[data-theme="minimalist"] .resume-preview-header::after { background: #3d424b; }
+#resume-preview[data-theme="minimalist"] .resume-preview-section-title { color: var(--muted); font-weight: 500; letter-spacing: .12em; text-transform: uppercase; border-left: none; border-bottom: 1px solid var(--border-light); padding-left: 0; padding-bottom: 6px; }
 #resume-preview[data-theme="minimalist"] .resume-preview-entry-primary { color: #2b2f36; }
+#resume-preview[data-theme="minimalist"] .tag-pill { background: none; border: 1px solid #d8dade; color: #3d424b; }
+#resume-preview[data-theme="minimalist"] .resume-preview-photo { border-color: #ececec; }
 
 /* CV Oluşturucu (cv-olustur.php) */
 .cv-picker-main { max-width: 1080px; margin: 0 auto; padding: 24px 24px 90px; }

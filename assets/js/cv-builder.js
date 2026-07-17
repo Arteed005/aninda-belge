@@ -110,10 +110,12 @@
             main.appendChild(sEl);
           }
           row.appendChild(main);
-          var datesEl = document.createElement('span');
-          datesEl.className = 'resume-preview-entry-dates';
-          datesEl.textContent = dateRange;
-          row.appendChild(datesEl);
+          if (dateRange) {
+            var datesEl = document.createElement('span');
+            datesEl.className = 'resume-preview-entry-dates';
+            datesEl.textContent = dateRange;
+            row.appendChild(datesEl);
+          }
           entryEl.appendChild(row);
 
           description.split('\n').forEach(function (line) {
@@ -129,32 +131,24 @@
       });
     });
 
-    if (data.skills.length) {
-      addSection('Yetenekler', function (sec) {
+    function addTagSection(titleText, items) {
+      if (!items.length) return;
+      addSection(titleText, function (sec) {
         var p = document.createElement('p');
-        p.className = 'resume-preview-text';
-        p.textContent = data.skills.join(' · ');
+        p.className = 'resume-preview-tags';
+        items.forEach(function (item) {
+          var span = document.createElement('span');
+          span.className = 'tag-pill';
+          span.textContent = item;
+          p.appendChild(span);
+        });
         sec.appendChild(p);
       });
     }
 
-    if (data.languages.length) {
-      addSection('Diller', function (sec) {
-        var p = document.createElement('p');
-        p.className = 'resume-preview-text';
-        p.textContent = data.languages.join(' · ');
-        sec.appendChild(p);
-      });
-    }
-
-    if (data.hobbies.length) {
-      addSection('Hobiler', function (sec) {
-        var p = document.createElement('p');
-        p.className = 'resume-preview-text';
-        p.textContent = data.hobbies.join(' · ');
-        sec.appendChild(p);
-      });
-    }
+    addTagSection('Yetenekler', data.skills);
+    addTagSection('Diller', data.languages);
+    addTagSection('Hobiler', data.hobbies);
   }
 
   document.addEventListener('DOMContentLoaded', function () {
