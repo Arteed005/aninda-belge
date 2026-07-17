@@ -42,8 +42,23 @@ function renderFieldInput(array $field, string $val, ?string $nameOverride = nul
           <?= $dataAttr ?>="<?= $dataVal ?>" value="<?= htmlspecialchars($val) ?>" <?= $reqAttr ?>>
 
       <?php elseif ($type === 'file'): ?>
-        <input type="file" id="<?= htmlspecialchars($id) ?>" name="<?= htmlspecialchars($name) ?>"
-          accept="image/jpeg,image/png" <?= $dataAttr ?>="<?= $dataVal ?>" data-photo-input>
+        <div class="photo-upload" data-photo-upload>
+          <input type="file" id="<?= htmlspecialchars($id) ?>" name="<?= htmlspecialchars($name) ?>"
+            class="photo-upload-input" accept="image/jpeg,image/png" <?= $dataAttr ?>="<?= $dataVal ?>" data-photo-input>
+          <label for="<?= htmlspecialchars($id) ?>" class="photo-upload-dropzone">
+            <img class="photo-upload-thumb" data-photo-thumb hidden alt="">
+            <span class="photo-upload-icon" data-photo-icon>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+                <circle cx="12" cy="14" r="3.5"/>
+              </svg>
+            </span>
+            <span class="photo-upload-text">
+              <strong>Fotoğraf yükle</strong>
+              <small data-photo-filename>JPG veya PNG, maks. 3MB</small>
+            </span>
+          </label>
+        </div>
 
       <?php else: ?>
         <input type="text" id="<?= htmlspecialchars($id) ?>" name="<?= htmlspecialchars($name) ?>"

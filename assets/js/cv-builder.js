@@ -266,12 +266,27 @@
 
     var photoInput = form.querySelector('[data-photo-input]');
     if (photoInput) {
+      var photoWrap = photoInput.closest('[data-photo-upload]');
+      var photoThumb = photoWrap ? photoWrap.querySelector('[data-photo-thumb]') : null;
+      var photoIcon = photoWrap ? photoWrap.querySelector('[data-photo-icon]') : null;
+      var photoFilename = photoWrap ? photoWrap.querySelector('[data-photo-filename]') : null;
+
       photoInput.addEventListener('change', function () {
         var file = photoInput.files && photoInput.files[0];
-        if (!file) { photoDataUrl = null; updatePreview(); return; }
+        if (!file) {
+          photoDataUrl = null;
+          if (photoThumb) photoThumb.hidden = true;
+          if (photoIcon) photoIcon.hidden = false;
+          if (photoFilename) photoFilename.textContent = 'JPG veya PNG, maks. 3MB';
+          updatePreview();
+          return;
+        }
         var reader = new FileReader();
         reader.onload = function (e) {
           photoDataUrl = e.target.result;
+          if (photoThumb) { photoThumb.src = photoDataUrl; photoThumb.hidden = false; }
+          if (photoIcon) photoIcon.hidden = true;
+          if (photoFilename) photoFilename.textContent = file.name;
           updatePreview();
         };
         reader.readAsDataURL(file);
