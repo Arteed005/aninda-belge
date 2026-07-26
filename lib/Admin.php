@@ -2,6 +2,7 @@
 
 define('ADMIN_DOCS_PER_PAGE', 12);
 define('ADMIN_CUSTOMERS_PER_PAGE', 10);
+define('ADMIN_PAYMENTS_PER_PAGE', 20);
 
 function formatDocNo(int $id): string
 {
@@ -374,6 +375,35 @@ function toggleUserPremium(int $userId): void
 {
     $stmt = getPDO()->prepare('UPDATE users SET is_premium = NOT is_premium, premium_expires_at = NULL WHERE id = :id');
     $stmt->execute(['id' => $userId]);
+}
+
+function getShopierPaymentCount(): int
+{
+    return (int) getPDO()->query('SELECT COUNT(*) FROM shopier_processed_orders')->fetchColumn();
+}
+
+function getShopierPaymentsPaginated(int $page, int $perPage = ADMIN_PAYMENTS_PER_PAGE): array
+{
+    $pdo = getPDO();
+    $offset = max(0, ($page - 1) * $perPage);
+    $stmt = $pdo->prepare(
+        'SELECT o.order_id, o.created_at, u.name, u.email
+         FROM shopier_processed_orders o
+         JOIN users u ON u.id = o.user_id
+         ORDER BY o.created_at DESC
+         LIMIT :limit OFFSET :offset'
+    );
+    $stmt->bindValue('limit', $perPage, PDO::PARAM_INT);
+    $stmt->bindValue('offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    return array_map(static function (array $row): array {
+        return [
+            'orderId' => $row['order_id'],
+            'name' => $row['name'],
+            'email' => $row['email'],
+            'date' => (new DateTime($row['created_at']))->format('d M Y H:i'),
+        ];
+    }, $stmt->fetchAll());
 }
 
 function deleteUserAdmin(int $userId): void
