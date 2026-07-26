@@ -2,6 +2,7 @@
   "slug": "muvafakatname",
   "category": "kisisel-belgeler",
   "title": "Muvafakatname",
+  "seoTitle": "Muvafakatname Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "Küçüğün başka biriyle seyahat etmesine veli/vasi olarak izin verdiğini beyan eden muvafakatname hazırla.",
   "meta": "Ort. 2 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "**Önemli:** Yurt dışı seyahatlerde bu belgenin geçerli sayılması için genellikle noterde düzenlenmesi ve/veya apostil şerhi taşıması gerekir — havayolu/sınır kapısı uygulamaları ülkeye göre değişebileceğinden, seyahatten önce ilgili havayolu ve varış ülkesinin güncel şartlarını kontrol etmen önemlidir."
   ],
   "faq": [
+    {"q": "Muvafakatname nasıl yazılır?", "a": "Muvafakatnamede muvafakat veren veli/vasinin ve küçüğün kimlik bilgileri, birlikte seyahat edecek kişinin bilgileri, gidilecek yer, seyahat tarihleri ve amacı ile veli/vasinin izin beyanı yer alır. Bu sayfadaki formu doldurduğunda belge metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "Muvafakatname mutlaka noterden mi çıkarılmalı?", "a": "Yurt dışı seyahatlerde havayolları ve sınır kapıları genellikle noter onaylı muvafakatname ister. Yurt içi seyahatlerde bazı durumlarda yazılı beyan yeterli olabilir, ama uçakla seyahatte havayolunun kendi kurallarını kontrol etmen önerilir."},
     {"q": "Her iki ebeveynin de imzası gerekir mi?", "a": "Genel kural olarak velayet her iki ebeveynde ortaksa, ikisinin de muvafakati istenir. Velayet tek bir ebeveyndeyse (mahkeme kararıyla), sadece velayet sahibinin imzası yeterli olabilir — bu durumu gösteren belgeyi de yanında bulundurman istenebilir."},
     {"q": "Muvafakatnamenin geçerlilik süresi var mı?", "a": "Bu belge genellikle belirtilen tek bir seyahat/tarih aralığı için düzenlenir ve o seyahatle sınırlıdır. Farklı bir seyahat için yeni bir muvafakatname düzenlenmesi gerekir."}

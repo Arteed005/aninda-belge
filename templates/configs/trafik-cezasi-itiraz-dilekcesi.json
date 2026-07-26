@@ -2,6 +2,7 @@
   "slug": "trafik-cezasi-itiraz-dilekcesi",
   "category": "dilekceler",
   "title": "Trafik Cezası İtiraz Dilekçesi",
+  "seoTitle": "Trafik Cezası İtiraz Dilekçesi Örneği ve Nasıl Yazılır?",
   "description": "Kesilen trafik cezasına yasal süresinde itiraz etmek için dilekçe hazırla.",
   "meta": "Ort. 3 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "İtiraz dilekçesinde gerekçenin somut ve net olması (örneğin hatalı tespit, aracın o sırada başka bir yerde olduğuna dair kanıt, usul hatası vb.) başvurunun kabul edilme ihtimalini artırır."
   ],
   "faq": [
+    {"q": "Trafik cezası itiraz dilekçesi nasıl yazılır?", "a": "İtiraz dilekçesinde itiraz edilecek makam (Sulh Ceza Hakimliği), başvuranın kimlik bilgileri, ceza tutanağının seri/sıra numarası ve tarihi, ceza tutarı, itiraz gerekçesi ve talep sonucu net şekilde yazılır. Bu sayfadaki formu doldurduğunda dilekçe metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "Trafik cezasına itiraz için süre ne kadar?", "a": "Trafik idari para cezalarına, tebliğ/tutanak tarihinden itibaren genellikle 15 gün içinde ilgili Sulh Ceza Hakimliği'ne itiraz edilebilir. Bu süre kaçırılırsa ceza kesinleşir, bu yüzden tebliğ tarihini not almak ve süreyi kaçırmamak önemlidir."},
     {"q": "İtiraz ederken ceza ödemem gerekir mi?", "a": "İtiraz süreci devam ederken cezayı ödemek zorunlu değildir, ancak itiraz reddedilirse gecikme zammıyla birlikte ödeme yapman gerekebilir. Erken ödeme yapılan cezalarda bazı durumlarda indirim uygulanabilir — itiraz etme kararını buna göre değerlendirmen faydalı olur."},
     {"q": "İtiraz nereye yapılır, harç ödenir mi?", "a": "İtiraz, cezayı kesen kurumun bulunduğu yerdeki Sulh Ceza Hakimliği'ne yapılır. Trafik idari para cezalarına itirazlar genellikle harçtan muaftır, ancak güncel uygulamayı başvuru sırasında ilgili adliyeden teyit etmen faydalı olur."}

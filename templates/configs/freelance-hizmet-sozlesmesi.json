@@ -2,6 +2,7 @@
   "slug": "freelance-hizmet-sozlesmesi",
   "category": "sozlesmeler",
   "title": "Freelance Hizmet Sözleşmesi",
+  "seoTitle": "Freelance Hizmet Sözleşmesi Örneği ve Nasıl Yazılır?",
   "description": "Serbest çalışan ile iş sahibi arasındaki hizmet ilişkisini ve ödeme şartlarını netleştir.",
   "meta": "Ort. 3 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Özellikle iş tanımının, teslim tarihinin ve ücretin net yazılması, projenin kapsamının sonradan genişletilmesi (\"scope creep\") gibi freelance çalışmada sık yaşanan sorunları önler. Fikri mülkiyet hakkının ne zaman ve nasıl devredileceğinin belirtilmesi de dijital/yaratıcı işlerde özellikle önemlidir."
   ],
   "faq": [
+    {"q": "Freelance hizmet sözleşmesi nasıl yazılır?", "a": "Freelance hizmet sözleşmesinde işi veren ve hizmeti verenin kimlik/ünvan bilgileri, verilecek hizmetin net tanımı, ücret ve ödeme şartları, başlangıç/teslim tarihleri ile fikri mülkiyet devrine ilişkin madde yer alır. Bu sayfadaki formu doldurduğunda sözleşme metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "Freelancer ile işçi arasındaki fark nedir?", "a": "İşçi, işverenin talimatlarına bağlı, belirli çalışma saatleri olan ve SGK'lı çalışan kişidir. Freelancer ise bağımsız çalışır, kendi vergi/SGK yükümlülüklerini kendisi karşılar ve genellikle belirli bir iş/proje karşılığında ücret alır. Bu ayrımın net olması, ileride \"gizli işçilik ilişkisi\" iddialarını önler."},
     {"q": "Freelancer fatura kesmek zorunda mı?", "a": "Türkiye'de düzenli olarak hizmet bedeli tahsil eden serbest çalışanların vergi mükellefiyeti tesis ettirip fatura/serbest meslek makbuzu kesmesi genel kuraldır. Arizi (tek seferlik, düzenli olmayan) işlerde farklı düzenlemeler olabilir; kendi durumun için bir mali müşavire danışmanı öneririz."},
     {"q": "Proje teslim edilmeden ücret talep edilebilir mi?", "a": "Bu tamamen sözleşmede kararlaştırılan ödeme planına bağlıdır. Genellikle projelerde bir kısmı peşin (avans), kalanı teslimde ödenir; bu şablondaki 'Ödeme Şartları' alanına bu planı açıkça yazman anlaşmazlıkları önler."}

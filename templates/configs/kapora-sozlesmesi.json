@@ -2,6 +2,7 @@
   "slug": "kapora-sozlesmesi",
   "category": "sozlesmeler",
   "title": "Kapora Sözleşmesi",
+  "seoTitle": "Kapora Sözleşmesi Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "Bir alım satım işleminden önce verilen kaporayı ve şartlarını yazılı hale getir.",
   "meta": "Ort. 3 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Türk Borçlar Kanunu'na göre, sözleşmede aksi kararlaştırılmadıkça, kaporayı veren taraf cayarsa verdiği kaporayı geri isteyemez; kaporayı alan taraf cayarsa aldığının iki katını geri ödemekle yükümlü olur. Bu kuralın sözleşmede açıkça yazılması, ileride \"kapora mıydı yoksa ön ödeme miydi\" tartışmasını önler."
   ],
   "faq": [
+    {"q": "Kapora sözleşmesi nasıl yazılır?", "a": "Kapora sözleşmesinde kaporayı veren ve alan tarafların bilgileri, kaporanın verildiği işlemin konusu, kapora tutarı, varsa toplam bedel, nihai sözleşme/teslim tarihi ve cayma halinde uygulanacak yaptırım (iki katı iade kuralı) yer alır. Bu sayfadaki formu doldurduğunda sözleşme metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "Kapora ile ön ödeme (avans) arasındaki fark nedir?", "a": "Kapora, cayma halinde yaptırım öngören bir güvence bedelidir (yukarıda açıklanan iki katı/geri alamama kuralı işler). Ön ödeme/avans ise sadece toplam bedelin bir kısmının peşin ödenmesidir ve cayma halinde normalde aynen iade edilir. Sözleşmede hangisinin kastedildiğini açıkça belirtmek önemlidir."},
     {"q": "Kapora tutarı ne kadar olmalı?", "a": "Kanunda sabit bir oran yoktur, taraflar serbestçe belirler; uygulamada genellikle toplam bedelin %5-%10'u civarında kapora verildiği görülür. Tutarın makul olması, cayma halinde ortaya çıkacak yaptırımın da adil olmasını sağlar."},
     {"q": "Nihai sözleşme hiç yapılmazsa kapora ne olur?", "a": "Taraflardan hangisinin işlemi gerçekleştirmekten kaçındığına bağlı olarak yukarıdaki kapora kuralları (cayma yaptırımı) uygulanır. Bu yüzden nihai işlem tarihinin ve tarafların yükümlülüklerinin sözleşmede net yazılması önemlidir."}

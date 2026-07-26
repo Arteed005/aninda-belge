@@ -2,6 +2,7 @@
   "slug": "is-sozlesmesi",
   "category": "sozlesmeler",
   "title": "İş Sözleşmesi",
+  "seoTitle": "İş Sözleşmesi Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "İşe başlarken işveren ve çalışan arasında düzenlenen yasal iş sözleşmesi hazırla.",
   "meta": "Ort. 4 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Bu şablon, işe başlarken sık ihtiyaç duyulan temel maddeleri (taraflar, görev, ücret, çalışma süresi) içerir. Sektöre veya pozisyona özgü ek şartlar (rekabet yasağı, gizlilik, prim sistemi vb.) varsa, bu maddeleri dilekçe/sözleşme adımında ek madde olarak ekleyebilirsin."
   ],
   "faq": [
+    {"q": "İş sözleşmesi nasıl yazılır?", "a": "İş sözleşmesinde işveren ve çalışanın bilgileri, görev/pozisyon, sözleşme türü (belirli/belirsiz süreli) ve süresi, ücret, çalışma saatleri, haftalık tatil günü ve yıllık izin süresi yer alır. Bu sayfadaki formu doldurduğunda sözleşme metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "Belirsiz süreli ile belirli süreli iş sözleşmesi arasındaki fark nedir?", "a": "Belirsiz süreli sözleşmede bir bitiş tarihi yoktur, taraflardan biri fesih bildirimi yapana kadar devam eder. Belirli süreli sözleşme ise önceden belirlenen bir tarihte veya işin tamamlanmasıyla kendiliğinden sona erer; belirli süreli sözleşme yapabilmek için işin niteliği gereği objektif bir sebep bulunması gerekir (örn. proje bazlı iş, mevsimlik iş)."},
     {"q": "İş sözleşmesi yazılı olmak zorunda mı?", "a": "Belirli süreli sözleşmelerde (bir yıl ve üzeri süreli olanlar dahil çoğu durumda) yazılı şekil şartı vardır. Belirsiz süreli sözleşmelerde yazılı yapma zorunluluğu olmasa da, işveren en geç 2 ay içinde çalışma koşullarını yazılı olarak bildirmekle yükümlüdür — bu yüzden pratikte hemen her iş ilişkisinde yazılı sözleşme kullanılır."},
     {"q": "Deneme süresi ne kadar olabilir?", "a": "İş Kanunu'na göre deneme süresi en fazla 2 ay olabilir, toplu iş sözleşmeleriyle bu süre 4 aya kadar uzatılabilir. Deneme süresi içinde taraflar sözleşmeyi bildirim süresine ve tazminata gerek olmaksızın feshedebilir."}

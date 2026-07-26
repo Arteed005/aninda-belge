@@ -2,6 +2,7 @@
   "slug": "esya-satis-sozlesmesi",
   "category": "sozlesmeler",
   "title": "Eşya Satış Sözleşmesi",
+  "seoTitle": "Eşya Satış Sözleşmesi Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "Araç dışındaki taşınır eşyaların (elektronik, mobilya, makine vb.) alım satımını güvence altına al.",
   "meta": "Ort. 3 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Eşyanın durumunun (sıfır, ikinci el iyi/orta/kötü) ve varsa ayıplarının satış sırasında açıkça belirtilmesi, alıcının haklarını ve satıcının sorumluluğunu netleştirir."
   ],
   "faq": [
+    {"q": "Eşya satış sözleşmesi nasıl yazılır?", "a": "Eşya satış sözleşmesinde satıcı ve alıcının kimlik bilgileri, satılan eşyanın tanımı ve durumu (sıfır/ikinci el), satış bedeli, ödeme şekli ve teslim tarihi yer alır. Bu sayfadaki formu doldurduğunda sözleşme metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "İkinci el eşya satışında garanti var mı?", "a": "Kanunen ikinci el satışlarda da satıcının ayıba karşı sorumluluğu genel olarak devam eder, ancak taraflar sözleşmede eşyanın \"mevcut haliyle\" (görülüp beğenilerek) satıldığını belirterek bu sorumluluğu makul ölçüde sınırlayabilir. Önemli ayıpların satış öncesi açıkça belirtilmesi her iki tarafı da korur."},
     {"q": "Sözleşme olmadan eşya satışı geçersiz mi?", "a": "Hayır, sözlü anlaşmayla yapılan satışlar da geçerlidir. Ancak değerli eşyalarda yazılı sözleşme, ödemenin yapıldığını ve eşyanın hangi şartlarla teslim edildiğini ispat etmek açısından faydalıdır."},
     {"q": "Kapora ile bu sözleşme aynı şey mi?", "a": "Hayır. Bu sözleşme doğrudan satışı belgeler; eğer satıştan önce bir ön ödeme/kaparo veriliyorsa bunun için ayrı bir kapora sözleşmesi kullanman daha doğru olur."}

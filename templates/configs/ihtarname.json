@@ -2,6 +2,7 @@
   "slug": "ihtarname",
   "category": "dilekceler",
   "title": "İhtarname",
+  "seoTitle": "İhtarname Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "Karşı tarafa yasal süre tanıyarak talebini resmi şekilde bildiren ihtarname hazırla.",
   "meta": "Ort. 3 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "İhtarnamenin hukuki değer taşıması için karşı tarafa ulaştığının ispatlanabilir olması önemlidir — bu nedenle ihtarnameler genellikle **noter aracılığıyla** veya iadeli taahhütlü mektupla gönderilir. Burada hazırladığın metin, noterde ihtarname çekmeden önce içeriği netleştirmen için hazır bir taslaktır."
   ],
   "faq": [
+    {"q": "İhtarname nasıl yazılır?", "a": "İhtarnamede gönderen ve muhatabın kimlik/adres bilgileri, ihtarın konusu, talebin gerekçesi ve içeriği, talebin yerine getirilmesi için tanınan süre (gün olarak) ve yerine getirilmezse yasal yollara başvurulacağı belirtilir. Bu sayfadaki formu doldurduğunda ihtarname metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "İhtarname mutlaka noterden mi çekilmeli?", "a": "Zorunlu değildir, iadeli taahhütlü mektupla da gönderilebilir; ancak noter kanalıyla çekilen ihtarname, tebliğ tarihi ve içeriği resmi olarak kayıt altına alındığı için daha güçlü bir delil niteliği taşır ve dava sürecinde işine yarayabilir."},
     {"q": "İhtarnamede verilen süreye uyulmazsa ne olur?", "a": "İhtarnamede belirtilen süre sonunda talep karşılanmazsa, ihtarı çeken taraf genellikle bu durumu dava veya icra takibi gibi yasal yollara başvurmak için bir ön koşul/delil olarak kullanabilir. Sürenin makul olması (talebin niteliğine göre değişir) önemlidir."},
     {"q": "İhtarnameye cevap vermek zorunlu mu?", "a": "Genel olarak cevap verme zorunluluğu yoktur, ancak bazı özel durumlarda (örneğin ticari ilişkilerde) susmak talebin kabulü anlamına gelebilir. Bu yüzden bir ihtarname aldığında içeriğini dikkatle değerlendirmen ve gerekiyorsa yazılı cevap vermen önerilir."}

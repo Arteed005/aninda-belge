@@ -2,6 +2,7 @@
   "slug": "referans-mektubu",
   "category": "is-belgeleri",
   "title": "Referans Mektubu",
+  "seoTitle": "Referans Mektubu Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "Birlikte çalıştığın birine yönelik olumlu referans/tavsiye mektubu hazırla.",
   "meta": "Ort. 2 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Mektubun ikna edici olması için genel geçer ifadeler yerine somut örnekler (üstlenilen bir proje, gösterilen bir başarı, karşılaşılan bir zorluğun nasıl aşıldığı) kullanılması önerilir."
   ],
   "faq": [
+    {"q": "Referans mektubu nasıl yazılır?", "a": "Referans mektubunda referansı verenin adı ve unvanı, hakkında yazılan kişi, aralarındaki ilişkinin niteliği (kaç yıl, hangi pozisyonda) ve kişinin güçlü yönlerine dair somut değerlendirmeler yer alır. Bu sayfadaki formu doldurduğunda mektup metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "Referans mektubunu kim yazmalı?", "a": "İdeal olarak referans, kişiyle doğrudan çalışmış bir yönetici, iş ortağı veya öğretim üyesi tarafından yazılmalıdır — bu, mektubun inandırıcılığını artırır. İlişkinin niteliği (kaç yıl, hangi pozisyonda) mektupta açıkça belirtilmelidir."},
     {"q": "Referans mektubu ile referans kişisi (iletişim bilgisi) aynı şey mi?", "a": "Hayır, bazı başvurularda sadece bir referans kişisinin adı ve iletişim bilgisi istenir (işveren adayı arayarak sorar), bazılarında ise bu şablondaki gibi yazılı, imzalı bir mektup istenir. Başvuru şartlarını kontrol ederek hangisinin istendiğini netleştirmen önerilir."},
     {"q": "Referans mektubu ne kadar uzun olmalı?", "a": "Genellikle yarım-bir sayfa (birkaç paragraf) yeterlidir; önemli olan uzunluk değil, somut ve inandırıcı örneklerle desteklenmiş olmasıdır."}

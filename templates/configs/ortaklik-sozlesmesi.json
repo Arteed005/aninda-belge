@@ -2,6 +2,7 @@
   "slug": "ortaklik-sozlesmesi",
   "category": "sozlesmeler",
   "title": "Ortaklık Sözleşmesi",
+  "seoTitle": "Ortaklık Sözleşmesi Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "İki kişi arasındaki iş ortaklığının konusunu, sermaye ve kar paylaşımını netleştir.",
   "meta": "Ort. 4 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Bu belge adi ortaklık niteliğindedir (Türk Borçlar Kanunu anlamında) ve resmi bir şirket (limited/anonim şirket) kuruluşunun yerine geçmez. Ortaklığın büyümesi veya resmi bir tüzel kişilik gerektirmesi halinde bir mali müşavir/avukatla şirketleşme sürecini değerlendirmen önerilir."
   ],
   "faq": [
+    {"q": "Ortaklık sözleşmesi nasıl yazılır?", "a": "Ortaklık sözleşmesinde ortakların kimlik bilgileri, ortaklığın konusu, her ortağın sermaye payı, kar/zarar paylaşım oranı ve sözleşmenin yürürlük tarihi yer alır. Bu sayfadaki formu doldurduğunda sözleşme metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "Bu sözleşme şirket kurmak için yeterli mi?", "a": "Hayır, bu bir adi ortaklık sözleşmesidir; resmi bir şirket (limited/anonim) kurmak için Ticaret Sicili üzerinden ayrı bir kuruluş süreci gerekir. Bu belge, resmi şirketleşmeden önce veya şirketleşmeye gerek duyulmayan küçük ortaklıklarda tarafların anlaşmasını netleştirmek için kullanılır."},
     {"q": "Ortaklardan biri ayrılmak isterse ne olur?", "a": "Sözleşmede bu konuda ayrı bir madde yoksa, adi ortaklıklarda bir ortağın haklı sebeple fesih bildirmesi mümkündür; bu durumda ortaklığın tasfiyesi (sermaye ve kâr/zarar payının hesaplanması) gündeme gelir. Bu tür ihtimalleri baştan sözleşmeye ek madde olarak yazman anlaşmazlık riskini azaltır."},
     {"q": "Kar zarar oranı sermaye oranıyla aynı olmak zorunda mı?", "a": "Hayır, taraflar kar/zarar paylaşım oranını sermaye oranından bağımsız olarak serbestçe belirleyebilir (örneğin biri sermaye koyarken diğeri emek/yönetim katkısı sağlıyorsa farklı bir oran kararlaştırılabilir). Önemli olan bu oranın sözleşmede açıkça yazılmasıdır."}

@@ -2,6 +2,7 @@
   "slug": "calisma-belgesi",
   "category": "is-belgeleri",
   "title": "Çalışma Belgesi",
+  "seoTitle": "Çalışma Belgesi (Deneyim Yazısı) Örneği ve Nasıl Yazılır?",
   "description": "Bir çalışanın işyerindeki görev ve çalışma süresini belgeleyen deneyim yazısı hazırla.",
   "meta": "Ort. 2 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Belgenin görev ve sorumluluklar bölümünün somut şekilde doldurulması, özellikle iş başvurularında değerlendirilirken belgenin daha faydalı olmasını sağlar."
   ],
   "faq": [
+    {"q": "Çalışma belgesi nasıl yazılır?", "a": "Çalışma belgesinde işveren şirketin adı, çalışanın kimlik bilgileri ve görevi, işe başlama ve (varsa) ayrılış tarihleri, görev/sorumlulukların kısa tanımı ve belgenin düzenlendiği yer/tarih bulunur; sonunda yetkili imzası yer alır. Bu sayfadaki formu doldurduğunda belge metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "Çalışma belgesi ile SGK hizmet dökümü aynı şey mi?", "a": "Hayır. Çalışma belgesi işveren tarafından düzenlenen, görev ve pozisyonu içeren bir yazıdır. SGK hizmet dökümü ise e-Devlet üzerinden alınan, sigorta prim gün sayısını ve resmi çalışma sürelerini gösteren ayrı bir belgedir. Bazı başvurularda ikisi birlikte istenebilir."},
     {"q": "İşten ayrıldıktan sonra çalışma belgesi talep edilebilir mi?", "a": "Evet, eski çalışanlar da işverenden geçmişteki çalışma dönemine ilişkin bu belgeyi talep edebilir. İşveren, gerçeğe uygun bir belge düzenlemekle yükümlüdür."},
     {"q": "Halen çalışıyorsam bitiş tarihi ne yazılmalı?", "a": "Halen çalışılıyorsa bitiş tarihi alanı boş bırakılabilir veya \"halen devam etmektedir\" şeklinde belirtilebilir; bu şablonda ilgili alan zaten isteğe bağlı bırakılmıştır."}

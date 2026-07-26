@@ -2,6 +2,7 @@
   "slug": "kira-sozlesmesi",
   "category": "sozlesmeler",
   "title": "Kira Sözleşmesi",
+  "seoTitle": "Kira Sözleşmesi Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "Ev veya iş yeri kiralamaları için yasal olarak geçerli sözleşme oluştur.",
   "meta": "Ort. 4 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Bu şablon konut ve iş yeri kiralamalarında sık kullanılan temel maddeleri (taraflar, taşınmaz bilgisi, kira bedeli, süre, tarafların yükümlülükleri) içerir. Doldurduktan sonra iki nüsha çıkarıp her iki tarafın da imzalaması, gerekirse noterde onaylatılması veya e-Devlet üzerinden kayıt ettirilmesi önerilir."
   ],
   "faq": [
+    {"q": "Kira sözleşmesi nasıl yazılır?", "a": "Kira sözleşmesinde kiraya veren ve kiracının bilgileri, kiralanan taşınmazın adresi ve niteliği, aylık kira bedeli ve ödeme şekli/günü, başlangıç tarihi ve kira süresi ile tarafların hak ve yükümlülükleri yer alır. Bu sayfadaki formu doldurduğunda sözleşme metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "Kira sözleşmesi noterden onaylanmak zorunda mı?", "a": "Hayır, kira sözleşmesinin geçerli olması için noter onayı zorunlu değildir; tarafların imzası yeterlidir. Ancak noter onayı veya e-Devlet üzerinden kayıt, ileride ispat kolaylığı sağlar ve bazı resmi işlemlerde (ikametgah, kira yardımı başvurusu vb.) istenebilir."},
     {"q": "Kira artışı hangi orana göre yapılabilir?", "a": "Konut kiralarında yıllık artış oranı, bir önceki kira yılında tüketici fiyat endeksindeki (TÜFE) on iki aylık ortalamalara göre değişim oranını geçemez. Sözleşmede daha düşük bir oran belirlenmişse o oran geçerli olur; güncel sınırları kira artışı döneminde tekrar kontrol etmen faydalı olur."},
     {"q": "Depozito (güvence bedeli) yasal olarak sınırlı mı?", "a": "Konut kiralarında güvence bedeli, üç aylık kira bedelini aşamaz ve kiracı tarafından bankaya, kiraya verenin onayı olmadan çekilemeyecek şekilde bloke edilebilir. Sözleşmeye bu tutarı ve iade şartlarını açıkça yazmak, taşınma sırasında yaşanabilecek anlaşmazlıkları azaltır."},

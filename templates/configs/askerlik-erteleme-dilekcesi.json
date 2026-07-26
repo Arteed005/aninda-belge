@@ -2,6 +2,7 @@
   "slug": "askerlik-erteleme-dilekcesi",
   "category": "dilekceler",
   "title": "Askerlik Erteleme Dilekçesi",
+  "seoTitle": "Askerlik Erteleme Dilekçesi Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "Askerlik hizmetinin ertelenmesini talep etmek için askerlik şubesine sunulacak dilekçe hazırla.",
   "meta": "Ort. 2 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Erteleme işlemlerinin çoğu artık e-Devlet üzerinden de takip edilebiliyor; bu dilekçe, yazılı/bizzat başvuru istenen veya ek açıklama gerektiren durumlar için kullanılabilir."
   ],
   "faq": [
+    {"q": "Askerlik erteleme dilekçesi nasıl yazılır?", "a": "Askerlik erteleme dilekçesinde başvurulacak askerlik şubesi, başvuranın kimlik bilgileri ve adresi, erteleme nedeni (öğrenim, sağlık vb.) ve bu nedenin gerekçesi, yazıldığı tarih ve şehir yer alır. Bu sayfadaki formu doldurduğunda dilekçe metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "Öğrenim nedeniyle erteleme kaç yaşına kadar geçerli?", "a": "Öğrenim ertelemesi, kanunda belirlenen üst yaş sınırına kadar (lisans ve üzeri öğrenimlerde belirli bir yaşa kadar, güncel mevzuata göre değişebilir) geçerlidir. Güncel yaş sınırlarını başvuru öncesi askerlik şubesinden veya e-Devlet üzerinden teyit etmen önemlidir."},
     {"q": "Erteleme başvurusu e-Devlet'ten yapılabilir mi?", "a": "Evet, öğrenim ertelemesi gibi bazı erteleme türleri e-Devlet üzerinden de yapılabilmektedir. Bu dilekçe, e-Devlet'te işlem yapılamayan özel durumlar veya askerlik şubesine yazılı başvuru gerektiren haller için hazırlanmıştır."},
     {"q": "Sağlık nedeniyle erteleme için ne gerekir?", "a": "Sağlık gerekçeli ertelemede, tam teşekküllü bir hastaneden alınacak sağlık kurulu raporu ve bu raporun askerlik şubesine sunulması gerekir. Rapor süreci ve gerekli belgeler hakkında güncel bilgi için askerlik şubesiyle iletişime geçmen önerilir."}

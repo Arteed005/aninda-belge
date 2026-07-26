@@ -2,6 +2,7 @@
   "slug": "istifa-dilekcesi",
   "category": "dilekceler",
   "title": "İstifa Dilekçesi",
+  "seoTitle": "İstifa Dilekçesi Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "İşyerinden ayrılırken kullanabileceğin resmi istifa dilekçesi hazırla.",
   "meta": "Ort. 2 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Dilekçede işe başlama tarihi, ayrılış tarihi ve görev bilgilerinin doğru yazılması önemlidir; bu bilgiler hem kıdem hesaplamasında hem de olası bir uyuşmazlıkta referans noktası olur. Dilekçeyi doldurduktan sonra iki nüsha çıkarıp birini işverene teslim ederken diğerine \"teslim alındı\" imzası aldırman, teslim edildiğine dair elinde kanıt bulunması açısından faydalı olur."
   ],
   "faq": [
+    {"q": "İstifa dilekçesi nasıl yazılır?", "a": "İstifa dilekçesi; yazıldığı tarih ve şehir, hitap edilen şirket/İnsan Kaynakları bölümü, çalışanın işe başlama tarihi ve görevi, son çalışma günü ve istifa iradesinin açıkça belirtilmesiyle yazılır. Sonunda çalışanın adı-soyadı ve imzası yer alır. Bu sayfadaki formu doldurup bilgilerini girdiğinde, dilekçe metni sağdaki önizlemede otomatik olarak bu formatta oluşturulur; ekstra bir şey yazmana gerek kalmaz."},
     {"q": "İstifa dilekçesi kaç gün önceden verilmeli?", "a": "Belirsiz süreli iş sözleşmelerinde İş Kanunu'ndaki bildirim (ihbar) süreleri genel olarak kıdeme göre değişir: 6 aya kadar kıdemde 2 hafta, 6 ay-1,5 yıl arası 4 hafta, 1,5-3 yıl arası 6 hafta, 3 yıldan fazla kıdemde 8 hafta önceden bildirim önerilir. Sözleşmende farklı bir süre kararlaştırılmış olabilir, bu yüzden kendi sözleşmeni kontrol etmen faydalı olur."},
     {"q": "İstifa dilekçesi noterden onaylatılmalı mı?", "a": "Hayır, istifa dilekçesinin geçerli olması için noter onayı şart değildir. Yazılı, imzalı ve işverene teslim edilmiş olması yeterlidir. Teslim edildiğine dair kanıt istiyorsan imza karşılığı teslim etmek veya iadeli taahhütlü posta ile göndermek yeterli olur."},
     {"q": "İstifa edince kıdem tazminatı alabilir miyim?", "a": "Genel kural olarak sıradan bir istifada kıdem tazminatı hakkı doğmaz. Haklı bir sebeple (ücretin ödenmemesi, sağlık sorunları vb.) istifa, kadın çalışanın evlilik sonrası 1 yıl içinde ayrılması, askerlik veya emeklilik gibi kanunda sayılan özel durumlar bu kuralın istisnalarındandır. Kendi durumun bu istisnalardan birine giriyorsa bir uzmana danışmanı öneririz."},

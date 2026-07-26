@@ -48,7 +48,7 @@ if ($config['allowCustomClauses'] ?? true) {
 $renderedClauses = array_merge(renderClauses($config, $formValues, $formClauseOverrides), renderCustomClauses($formExtraClauses));
 $signatures = $config['signatures'] ?? ['Taraf 1', 'Taraf 2'];
 
-$pageTitle = $config['title'] . ' | ' . SITE_TITLE;
+$pageTitle = ($config['seoTitle'] ?? $config['title']) . ' | ' . SITE_TITLE;
 $pageDescription = $config['description'] ?? SITE_DESCRIPTION;
 require __DIR__ . '/partials/_header.php';
 $__breadcrumbJsonLd = [

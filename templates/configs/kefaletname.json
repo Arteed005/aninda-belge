@@ -2,6 +2,7 @@
   "slug": "kefaletname",
   "category": "kisisel-belgeler",
   "title": "Kefaletname",
+  "seoTitle": "Kefaletname Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "Bir borç ya da yükümlülük için kefil olduğunu beyan eden kefaletname hazırla.",
   "meta": "Ort. 3 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Kefil olmak ciddi bir mali sorumluluk doğurabileceğinden, kefalet tutarının ve kapsamının (hangi borç için, hangi üst sınıra kadar) net şekilde yazılması hem kefili gereksiz risklerden korur hem de alacaklının haklarını netleştirir."
   ],
   "faq": [
+    {"q": "Kefaletname nasıl yazılır?", "a": "Kefaletnamede kefilin, asıl borçlunun ve alacaklının bilgileri, kefil olunan borcun/yükümlülüğün tanımı ve varsa kefalet tutarının üst sınırı açıkça yazılır; sonunda kefilin imzası bulunur. Bu sayfadaki formu doldurduğunda belge metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "Kefaletname noterde mi düzenlenmeli?", "a": "Adi kefalet (bu şablondaki gibi) yazılı olarak düzenlenebilir; ancak müteselsil kefalet gibi daha ağır sorumluluk doğuran türlerde ve yüksek meblağlarda, kefilin sorumluluğunun sınırlarının el yazısıyla belirtilmesi ve noter huzurunda imzalanması kanunen aranabilir. Yüksek tutarlı kefaletlerde noter işlemi güvenli tercih olur."},
     {"q": "Kefil borcun tamamından mı sorumludur?", "a": "Bu, kefaletin türüne (adi kefalet mi müteselsil kefalet mi) ve sözleşmede belirlenen tutar sınırına bağlıdır. Adi kefalette alacaklı önce asıl borçluya başvurmak zorundadır; müteselsil kefalette ise doğrudan kefile başvurabilir. Bu şablon, kefaletin azami tutarla sınırlandığı temel bir yapı sunar."},
     {"q": "Kefillikten nasıl kurtulunur?", "a": "Kefaletin süresi belirtilmişse süre sonunda kendiliğinden sona erer. Süresiz kefaletlerde borç tamamen kapandığında veya taraflar (alacaklı dahil) yazılı olarak kefaleti sonlandırdığında kefillik biter. Kefil, kendi başına tek taraflı olarak kefillikten çekilemez."}

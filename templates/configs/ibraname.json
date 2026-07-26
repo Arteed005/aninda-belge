@@ -2,6 +2,7 @@
   "slug": "ibraname",
   "category": "is-belgeleri",
   "title": "İbraname",
+  "seoTitle": "İbraname Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "İşten ayrılışta çalışanın haklarını aldığını beyan ettiği ibraname belgesi hazırla.",
   "meta": "Ort. 3 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Yargıtay içtihatlarına göre ibranamenin geçerli sayılması için ödemenin gerçekten yapılmış olması, ibra iradesinin serbestçe oluşması ve mümkünse ödenen kalemlerin ayrı ayrı belirtilmiş olması önemlidir. Bu nedenle ibranameyi imzalamadan/imzalatmadan önce ödenen tutarların ve kapsamının doğru şekilde yazıldığından emin olmak gerekir."
   ],
   "faq": [
+    {"q": "İbraname nasıl yazılır?", "a": "İbranamede işveren ve çalışanın bilgileri, çalışma süresi (işe başlama-ayrılış tarihleri), ödenen toplam tutar ve bu tutarın kapsadığı kalemler (kıdem, ihbar, izin ücreti vb.) ile çalışanın haklarını aldığını beyan eden ibra cümlesi yer alır. Bu sayfadaki formu doldurduğunda belge metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "İbraname imzalamak zorunlu mu?", "a": "Hayır, ibraname imzalamak yasal bir zorunluluk değildir. Ancak işverenler genellikle son ödemeyi yaparken bu belgeyi imzalatmak ister; çalışan olarak imzalamadan önce ödenen tutarların ve kapsamının doğru olduğundan emin olman önemlidir."},
     {"q": "İbraname imzaladıktan sonra dava açabilir miyim?", "a": "Genel kural olarak ibra edilen konularda dava hakkı zorlaşır, ancak ibranamenin geçersiz sayılması (örneğin gerçekte ödeme yapılmamışsa, miktar belirtilmemişse veya baskı altında imzalatılmışsa) mümkün olabilir. Yargıtay bu konuda ibranamenin şeklini ve içeriğini sıkı şekilde denetler."},
     {"q": "İbranamede hangi kalemler ayrı ayrı yazılmalı?", "a": "Kıdem tazminatı, ihbar tazminatı, yıllık izin ücreti, fazla mesai, varsa prim/ikramiye gibi kalemlerin miktarlarıyla birlikte ayrı ayrı belirtilmesi, belgenin daha sağlam bir delil niteliği taşıması açısından önerilir; toplu ve belirsiz bir tutar yerine kalem kalem yazmak her iki tarafı da korur."}

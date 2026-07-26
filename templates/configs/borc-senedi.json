@@ -2,6 +2,7 @@
   "slug": "borc-senedi",
   "category": "sozlesmeler",
   "title": "Borç Senedi",
+  "seoTitle": "Borç Senedi Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur",
   "description": "Kişiler arası ödünç para ilişkisini yazılı hale getiren borç senedi / ödünç sözleşmesi hazırla.",
   "meta": "Ort. 3 dk",
   "longDescription": [
@@ -9,6 +10,7 @@
     "Borç senedinin ispat gücünü artırmak için tutarın hem rakamla hem yazıyla belirtilmesi, tarafların imzasının bulunması ve mümkünse iki tanık huzurunda imzalanması önerilir."
   ],
   "faq": [
+    {"q": "Borç senedi nasıl yazılır?", "a": "Borç senedinde alacaklı ve borçlunun kimlik bilgileri ve adresleri, borç tutarı (rakam ve mümkünse yazıyla), borcun verilme tarihi, geri ödeme tarihi/şekli ve varsa faiz durumu açıkça yazılır, sonunda her iki tarafın imzası bulunur. Bu sayfadaki formu doldurduğunda senet metni sağdaki önizlemede otomatik olarak oluşturulur."},
     {"q": "Borç senedi noterden onaylanmalı mı?", "a": "Zorunlu değildir; taraflar arasında imzalanan adi yazılı senet de geçerlidir. Ancak yüksek tutarlı borçlarda noter onayı veya noterde düzenleme, ileride icra takibi gibi süreçlerde ispatı kolaylaştırır."},
     {"q": "Borçlu ödemezse ne yapılabilir?", "a": "Alacaklı, elindeki yazılı borç senedini dayanak göstererek icra takibi başlatabilir veya dava açabilir. Senet üzerinde tutar, tarih ve imza net şekilde yer alıyorsa bu süreç daha hızlı ilerler."},
     {"q": "Faizsiz borç senedi düzenlenebilir mi?", "a": "Evet, taraflar borcun faizsiz olduğunu açıkça belirtebilir. Faiz uygulanacaksa oranın ve hesaplama şeklinin sözleşmede net yazılması, ileride anlaşmazlık çıkmasını önler."}
