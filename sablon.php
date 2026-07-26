@@ -171,6 +171,41 @@ $__breadcrumbJsonLd = [
       </div>
     </div>
   </div>
+
+  <?php if (!empty($config['longDescription'])): ?>
+    <section class="template-info">
+      <h2>Bu Belge Ne İşe Yarar?</h2>
+      <?php foreach ($config['longDescription'] as $para): ?>
+        <p><?= htmlspecialchars($para) ?></p>
+      <?php endforeach; ?>
+    </section>
+  <?php endif; ?>
+
+  <?php if (!empty($config['faq'])): ?>
+    <section class="template-faq">
+      <h2>Sıkça Sorulan Sorular</h2>
+      <div class="faq-list">
+        <?php foreach ($config['faq'] as $item): ?>
+          <details class="faq-item">
+            <summary class="faq-question"><?= htmlspecialchars($item['q']) ?></summary>
+            <p class="faq-answer"><?= htmlspecialchars($item['a']) ?></p>
+          </details>
+        <?php endforeach; ?>
+      </div>
+    </section>
+    <?php
+      $__faqJsonLd = [
+          '@context' => 'https://schema.org',
+          '@type' => 'FAQPage',
+          'mainEntity' => array_map(static fn($item) => [
+              '@type' => 'Question',
+              'name' => $item['q'],
+              'acceptedAnswer' => ['@type' => 'Answer', 'text' => $item['a']],
+          ], $config['faq']),
+      ];
+    ?>
+    <script type="application/ld+json"><?= json_encode($__faqJsonLd, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?></script>
+  <?php endif; ?>
 </main>
 
 <script type="application/json" id="tpl-config"><?= json_encode($config, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?></script>

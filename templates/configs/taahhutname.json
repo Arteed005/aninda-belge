@@ -4,6 +4,15 @@
   "title": "Taahhütname",
   "description": "Bir kişiye veya kuruma karşı belirli bir konuda taahhütte bulunduğunu beyan eden belge hazırla.",
   "meta": "Ort. 2 dk",
+  "longDescription": [
+    "Taahhütname, bir kişinin belirli bir konuda söz verdiğini, belirli bir şart veya koşulu yerine getireceğini yazılı olarak beyan ettiği belgedir. Borcun belirli bir tarihte ödeneceğinin, bir kuralın ihlal edilmeyeceğinin veya bir işin belirli bir tarihe kadar tamamlanacağının beyan edilmesi gibi birçok günlük durumda kullanılabilir.",
+    "Taahhütname, tarafların karşılıklı imzasını gerektiren bir sözleşme değil, taahhüt eden tarafın tek taraflı beyanıdır. Yine de yazılı ve imzalı olması, taahhüdün içeriğinin ve tarihinin ileride ispat edilebilmesi açısından önemlidir."
+  ],
+  "faq": [
+    {"q": "Taahhütname tek taraflı mı imzalanır?", "a": "Evet, taahhütname genellikle sadece taahhüt eden tarafın imzasını taşır — muhatabın (taahhüdün yöneltildiği kişi/kurum) imzası şart değildir, çünkü bu bir sözleşme değil tek taraflı bir beyandır."},
+    {"q": "Taahhütname noterden onaylanmalı mı?", "a": "Zorunlu değildir, ancak taahhüdün önemine göre (örneğin yüksek meblağlı bir borç taahhüdü) noter onayı, ileride ispat gücünü artırır ve taahhüdün ciddiyetini gösterir."},
+    {"q": "Taahhüt yerine getirilmezse ne olur?", "a": "Taahhüdün niteliğine göre değişir; taahhütname bir borcun kabulü niteliğindeyse, alacaklı bu belgeyi icra takibi veya dava sürecinde delil olarak kullanabilir. Taahhüdün hukuki sonuçları içeriğine ve altında yatan ilişkiye göre değerlendirilmelidir."}
+  ],
   "signatures": ["Taahhüt Eden İmzası"],
   "fields": [
     {"name": "declarant_name", "label": "Taahhüt Eden Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},

@@ -4,6 +4,15 @@
   "title": "İhtarname",
   "description": "Karşı tarafa yasal süre tanıyarak talebini resmi şekilde bildiren ihtarname hazırla.",
   "meta": "Ort. 3 dk",
+  "longDescription": [
+    "İhtarname, bir kişinin karşı tarafa belirli bir talebini resmi şekilde bildirdiği ve genellikle belirli bir süre içinde bu talebin yerine getirilmesini istediği yazılı belgedir. Ödenmeyen kira bedelinden sözleşmeye aykırı davranışa, borcun ifasından bir hakkın hatırlatılmasına kadar birçok konuda kullanılabilir.",
+    "İhtarnamenin hukuki değer taşıması için karşı tarafa ulaştığının ispatlanabilir olması önemlidir — bu nedenle ihtarnameler genellikle **noter aracılığıyla** veya iadeli taahhütlü mektupla gönderilir. Burada hazırladığın metin, noterde ihtarname çekmeden önce içeriği netleştirmen için hazır bir taslaktır."
+  ],
+  "faq": [
+    {"q": "İhtarname mutlaka noterden mi çekilmeli?", "a": "Zorunlu değildir, iadeli taahhütlü mektupla da gönderilebilir; ancak noter kanalıyla çekilen ihtarname, tebliğ tarihi ve içeriği resmi olarak kayıt altına alındığı için daha güçlü bir delil niteliği taşır ve dava sürecinde işine yarayabilir."},
+    {"q": "İhtarnamede verilen süreye uyulmazsa ne olur?", "a": "İhtarnamede belirtilen süre sonunda talep karşılanmazsa, ihtarı çeken taraf genellikle bu durumu dava veya icra takibi gibi yasal yollara başvurmak için bir ön koşul/delil olarak kullanabilir. Sürenin makul olması (talebin niteliğine göre değişir) önemlidir."},
+    {"q": "İhtarnameye cevap vermek zorunlu mu?", "a": "Genel olarak cevap verme zorunluluğu yoktur, ancak bazı özel durumlarda (örneğin ticari ilişkilerde) susmak talebin kabulü anlamına gelebilir. Bu yüzden bir ihtarname aldığında içeriğini dikkatle değerlendirmen ve gerekiyorsa yazılı cevap vermen önerilir."}
+  ],
   "signatures": ["İhtarı Çeken İmzası"],
   "steps": [
     {"title": "Taraflar", "fields": ["sender_name", "sender_address", "recipient_name", "recipient_address"]},

@@ -4,6 +4,15 @@
   "title": "İbraname",
   "description": "İşten ayrılışta çalışanın haklarını aldığını beyan ettiği ibraname belgesi hazırla.",
   "meta": "Ort. 3 dk",
+  "longDescription": [
+    "İbraname, iş sözleşmesi sona eren bir çalışanın, işverenden alacaklı olduğu ücret, tazminat ve diğer hakları eksiksiz aldığını beyan ettiği ve işvereni bu konularda ibra ettiği (yani ileride hak talebinde bulunmayacağını kabul ettiği) belgedir. İşten ayrılış sürecinin son adımlarından biridir.",
+    "Yargıtay içtihatlarına göre ibranamenin geçerli sayılması için ödemenin gerçekten yapılmış olması, ibra iradesinin serbestçe oluşması ve mümkünse ödenen kalemlerin ayrı ayrı belirtilmiş olması önemlidir. Bu nedenle ibranameyi imzalamadan/imzalatmadan önce ödenen tutarların ve kapsamının doğru şekilde yazıldığından emin olmak gerekir."
+  ],
+  "faq": [
+    {"q": "İbraname imzalamak zorunlu mu?", "a": "Hayır, ibraname imzalamak yasal bir zorunluluk değildir. Ancak işverenler genellikle son ödemeyi yaparken bu belgeyi imzalatmak ister; çalışan olarak imzalamadan önce ödenen tutarların ve kapsamının doğru olduğundan emin olman önemlidir."},
+    {"q": "İbraname imzaladıktan sonra dava açabilir miyim?", "a": "Genel kural olarak ibra edilen konularda dava hakkı zorlaşır, ancak ibranamenin geçersiz sayılması (örneğin gerçekte ödeme yapılmamışsa, miktar belirtilmemişse veya baskı altında imzalatılmışsa) mümkün olabilir. Yargıtay bu konuda ibranamenin şeklini ve içeriğini sıkı şekilde denetler."},
+    {"q": "İbranamede hangi kalemler ayrı ayrı yazılmalı?", "a": "Kıdem tazminatı, ihbar tazminatı, yıllık izin ücreti, fazla mesai, varsa prim/ikramiye gibi kalemlerin miktarlarıyla birlikte ayrı ayrı belirtilmesi, belgenin daha sağlam bir delil niteliği taşıması açısından önerilir; toplu ve belirsiz bir tutar yerine kalem kalem yazmak her iki tarafı da korur."}
+  ],
   "signatures": ["İşveren Yetkilisi İmzası", "Çalışan İmzası"],
   "steps": [
     {"title": "Taraflar", "fields": ["company_name", "employee_name", "employee_tc", "position"]},

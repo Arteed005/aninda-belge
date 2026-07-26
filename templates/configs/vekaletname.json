@@ -4,6 +4,16 @@
   "title": "Vekaletname",
   "description": "Bir işlemi senin adına yapması için başka birine yetki ver.",
   "meta": "Ort. 3 dk",
+  "longDescription": [
+    "Vekaletname, bir kişinin (vekil eden) belirli bir işi kendi adına yapması için başka bir kişiye (vekil) yetki verdiğini gösteren belgedir. Banka işlemlerinden gayrimenkul alım satımına, resmi kurum başvurularından araç devrine kadar birçok işlem, ilgili kişi bizzat orada bulunmadan vekaletle yürütülebilir.",
+    "Bu şablon, vekaletin kapsamını ve süresini net şekilde belirlemene yardımcı olur. Ancak önemle belirtmek gerekir: genel vekaletnameler ve gayrimenkul, araç devri gibi resmi işlemler için düzenlenen vekaletnameler Türkiye'de kanunen **noterde düzenlenmek zorundadır** — burada hazırladığın metin, notere gitmeden önce içeriği netleştirmen ve nelerin yazılması gerektiğini görmen için bir taslak niteliğindedir."
+  ],
+  "faq": [
+    {"q": "Vekaletname mutlaka noterden mi çıkarılmalı?", "a": "Gayrimenkul satışı, araç devri, genel vekalet gibi birçok işlem türü için evet — kanun bu vekaletnamelerin noterde düzenlenmesini zorunlu kılar. Basit, düşük riskli ve tarafların birbirine güvendiği bazı özel yetkilendirmelerde yazılı belge yeterli olabilir, ama resmi bir işlemde kullanılacaksa noter şartını kontrol etmen gerekir."},
+    {"q": "Vekaletname verirken hangi belgeler gerekir?", "a": "Notere giderken vekil eden ve vekilin kimlik bilgileri (T.C. kimlik kartı/pasaport) ve varsa vekaletin konusuna özel belgeler (tapu bilgisi, araç ruhsatı vb.) istenir. Vekil şahsen notere gitmek zorunda değildir, sadece vekil eden ve kimlik bilgileri yeterlidir."},
+    {"q": "Vekaletname nasıl iptal edilir (azledilir)?", "a": "Vekil eden, dilediği zaman vekaleti tek taraflı olarak iptal edebilir (azil). Noterde düzenlenmiş bir vekaletin iptali de yine noter aracılığıyla yapılır ve mümkünse vekile de bildirilir; aksi halde vekilin iyi niyetle yaptığı işlemler geçerli sayılabilir."},
+    {"q": "Yurt dışından vekaletname verebilir miyim?", "a": "Evet, yurt dışındaki Türk konsolosluklarında da vekaletname düzenlenebilir. Konsoloslukta düzenlenen vekaletnameler Türkiye'de noter vekaletnamesiyle aynı hukuki geçerliliğe sahiptir."}
+  ],
   "signatures": ["Vekil Eden İmzası", "Vekil İmzası"],
   "steps": [
     {"title": "Taraflar", "fields": ["principal_name", "principal_tc", "principal_address", "agent_name", "agent_tc", "agent_address"]},

@@ -4,6 +4,16 @@
   "title": "Kira Sözleşmesi",
   "description": "Ev veya iş yeri kiralamaları için yasal olarak geçerli sözleşme oluştur.",
   "meta": "Ort. 4 dk",
+  "longDescription": [
+    "Kira sözleşmesi, bir taşınmazın belirli bir bedel karşılığında belirli bir süre için kullanıma bırakılmasını düzenleyen, kiraya veren ile kiracı arasındaki hak ve yükümlülükleri yazılı hale getiren belgedir. Sözlü kira anlaşmaları da geçerli olsa da, kira bedeli, ödeme günü, sözleşme süresi gibi ayrıntıların yazılı olması ileride çıkabilecek anlaşmazlıkları (zam oranı, depozito iadesi, erken çıkış gibi) önlemenin en pratik yoludur.",
+    "Bu şablon konut ve iş yeri kiralamalarında sık kullanılan temel maddeleri (taraflar, taşınmaz bilgisi, kira bedeli, süre, tarafların yükümlülükleri) içerir. Doldurduktan sonra iki nüsha çıkarıp her iki tarafın da imzalaması, gerekirse noterde onaylatılması veya e-Devlet üzerinden kayıt ettirilmesi önerilir."
+  ],
+  "faq": [
+    {"q": "Kira sözleşmesi noterden onaylanmak zorunda mı?", "a": "Hayır, kira sözleşmesinin geçerli olması için noter onayı zorunlu değildir; tarafların imzası yeterlidir. Ancak noter onayı veya e-Devlet üzerinden kayıt, ileride ispat kolaylığı sağlar ve bazı resmi işlemlerde (ikametgah, kira yardımı başvurusu vb.) istenebilir."},
+    {"q": "Kira artışı hangi orana göre yapılabilir?", "a": "Konut kiralarında yıllık artış oranı, bir önceki kira yılında tüketici fiyat endeksindeki (TÜFE) on iki aylık ortalamalara göre değişim oranını geçemez. Sözleşmede daha düşük bir oran belirlenmişse o oran geçerli olur; güncel sınırları kira artışı döneminde tekrar kontrol etmen faydalı olur."},
+    {"q": "Depozito (güvence bedeli) yasal olarak sınırlı mı?", "a": "Konut kiralarında güvence bedeli, üç aylık kira bedelini aşamaz ve kiracı tarafından bankaya, kiraya verenin onayı olmadan çekilemeyecek şekilde bloke edilebilir. Sözleşmeye bu tutarı ve iade şartlarını açıkça yazmak, taşınma sırasında yaşanabilecek anlaşmazlıkları azaltır."},
+    {"q": "Kiracı sözleşme süresi dolmadan çıkabilir mi?", "a": "Kiracı, sözleşmede belirtilen süreye bağlı kalmak zorundadır; erken çıkış halinde sözleşmede aksi kararlaştırılmadıkça kiraya verenin makul bir sürede zararının tazminini isteme hakkı doğabilir. Erken çıkış ihtimaline karşı sözleşmeye bir bildirim süresi/şart eklemek her iki tarafı da korur."}
+  ],
   "signatures": ["Kiraya Veren İmzası", "Kiracı İmzası"],
   "steps": [
     {"title": "Taraflar", "fields": ["landlord", "landlord_tc", "landlord_address", "tenant", "tenant_tc", "tenant_address"]},

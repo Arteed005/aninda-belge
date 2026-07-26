@@ -4,6 +4,16 @@
   "title": "İstifa Dilekçesi",
   "description": "İşyerinden ayrılırken kullanabileceğin resmi istifa dilekçesi hazırla.",
   "meta": "Ort. 2 dk",
+  "longDescription": [
+    "İstifa dilekçesi, bir çalışanın işyerinden kendi isteğiyle ayrılmak istediğini işverene yazılı olarak bildirdiği resmi belgedir. Sözlü olarak bildirilen istifa da hukuken geçerli olabilir, ancak ileride doğabilecek anlaşmazlıkları (son çalışma tarihi, devir teslim süreci, alacaklar) önlemek için yazılı ve imzalı bir dilekçeyle bildirmek her zaman daha güvenlidir.",
+    "Dilekçede işe başlama tarihi, ayrılış tarihi ve görev bilgilerinin doğru yazılması önemlidir; bu bilgiler hem kıdem hesaplamasında hem de olası bir uyuşmazlıkta referans noktası olur. Dilekçeyi doldurduktan sonra iki nüsha çıkarıp birini işverene teslim ederken diğerine \"teslim alındı\" imzası aldırman, teslim edildiğine dair elinde kanıt bulunması açısından faydalı olur."
+  ],
+  "faq": [
+    {"q": "İstifa dilekçesi kaç gün önceden verilmeli?", "a": "Belirsiz süreli iş sözleşmelerinde İş Kanunu'ndaki bildirim (ihbar) süreleri genel olarak kıdeme göre değişir: 6 aya kadar kıdemde 2 hafta, 6 ay-1,5 yıl arası 4 hafta, 1,5-3 yıl arası 6 hafta, 3 yıldan fazla kıdemde 8 hafta önceden bildirim önerilir. Sözleşmende farklı bir süre kararlaştırılmış olabilir, bu yüzden kendi sözleşmeni kontrol etmen faydalı olur."},
+    {"q": "İstifa dilekçesi noterden onaylatılmalı mı?", "a": "Hayır, istifa dilekçesinin geçerli olması için noter onayı şart değildir. Yazılı, imzalı ve işverene teslim edilmiş olması yeterlidir. Teslim edildiğine dair kanıt istiyorsan imza karşılığı teslim etmek veya iadeli taahhütlü posta ile göndermek yeterli olur."},
+    {"q": "İstifa edince kıdem tazminatı alabilir miyim?", "a": "Genel kural olarak sıradan bir istifada kıdem tazminatı hakkı doğmaz. Haklı bir sebeple (ücretin ödenmemesi, sağlık sorunları vb.) istifa, kadın çalışanın evlilik sonrası 1 yıl içinde ayrılması, askerlik veya emeklilik gibi kanunda sayılan özel durumlar bu kuralın istisnalarındandır. Kendi durumun bu istisnalardan birine giriyorsa bir uzmana danışmanı öneririz."},
+    {"q": "İstifa dilekçesi verdikten sonra geri alabilir miyim?", "a": "İşveren dilekçeyi henüz kabul etmemiş ve işlem başlatmamışsa karşılıklı anlaşarak istifadan vazgeçilebilir. Ancak işveren süreç başlattıktan sonra tek taraflı geri çekmek her zaman mümkün olmayabilir; bu nedenle istifa kararını netleştirdikten sonra dilekçeyi vermen daha sağlıklı olur."}
+  ],
   "signatures": ["İstifa Eden Çalışan İmzası"],
   "fields": [
     {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},

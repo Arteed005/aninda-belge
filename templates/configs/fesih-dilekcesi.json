@@ -4,6 +4,15 @@
   "title": "Fesih Dilekçesi",
   "description": "İşveren tarafından çalışana iş sözleşmesinin feshini bildiren resmi yazı hazırla.",
   "meta": "Ort. 2 dk",
+  "longDescription": [
+    "Fesih dilekçesi (fesih bildirimi), işverenin bir çalışanın iş sözleşmesini sona erdirdiğini yazılı olarak bildirdiği resmi belgedir. İş Kanunu'na göre işveren, fesih bildirimini yazılı yapmak ve fesih sebebini açık ve kesin şekilde belirtmekle yükümlüdür — bu hem çalışanın hem işverenin haklarının netleşmesi açısından önemlidir.",
+    "Fesih sebebine göre (işyeri ihtiyaçları, performans, haklı sebep vb.) çalışanın kıdem ve ihbar tazminatı hakları farklılık gösterebilir. Bu şablon temel bir fesih bildirimi taslağıdır; sebebin niteliğine göre ek belgelerle (tutanak, savunma isteme yazısı vb.) desteklenmesi gerekebilir."
+  ],
+  "faq": [
+    {"q": "İşveren fesih bildirimini kaç gün önceden yapmalı?", "a": "Belirsiz süreli sözleşmelerde İş Kanunu'ndaki bildirim süreleri kıdeme göre değişir: 6 aya kadar 2 hafta, 6 ay-1,5 yıl arası 4 hafta, 1,5-3 yıl arası 6 hafta, 3 yıldan fazla kıdemde 8 hafta. İşveren bu süreye uymadan fesih yaparsa, karşılığında ihbar tazminatı ödemesi gerekebilir."},
+    {"q": "Fesih dilekçesinde sebep belirtmek zorunlu mu?", "a": "Evet, İş Kanunu işverenin fesih bildirimini yazılı yapmasını ve fesih sebebini açık ve kesin bir şekilde belirtmesini şart koşar; özellikle 30 ve üzeri çalışanı olan işyerlerinde bu daha da önem taşır (işe iade davalarında bu sebep esas alınır)."},
+    {"q": "Fesih sonrası çalışana hangi ödemeler yapılmalı?", "a": "Fesih sebebine ve çalışanın kıdemine göre kıdem tazminatı, ihbar tazminatı, kullanılmayan yıllık izin ücreti gibi kalemler gündeme gelebilir. Bu tutarların doğru hesaplanması için çalışanın kıdemi ve fesih gerekçesi dikkatle değerlendirilmelidir."}
+  ],
   "signatures": ["Yetkili İmza"],
   "fields": [
     {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
