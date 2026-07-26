@@ -36,6 +36,25 @@ foreach ($searchCatalog as &$item) {
 }
 unset($item);
 
+foreach (getAllCalculators() as $calcSlug => $calcCfg) {
+    $searchCatalog[] = [
+        'name' => $calcCfg['title'] ?? $calcSlug,
+        'cat' => 'Hesaplayıcı',
+        'slug' => $calcSlug,
+        'available' => true,
+        'href' => 'hesapla.php?slug=' . $calcSlug,
+    ];
+}
+foreach (getAllGuides() as $guideSlug => $guideCfg) {
+    $searchCatalog[] = [
+        'name' => $guideCfg['title'] ?? $guideSlug,
+        'cat' => 'Rehber',
+        'slug' => $guideSlug,
+        'available' => true,
+        'href' => 'rehber.php?slug=' . $guideSlug,
+    ];
+}
+
 $chipNames = ['Kira Sözleşmesi', 'İstifa Dilekçesi', 'Vekaletname', 'Araç Satış Sözleşmesi'];
 
 $popularCards = [
@@ -131,6 +150,14 @@ require __DIR__ . '/partials/_header.php';
         </div>
         <h3>Kişisel Belgeler</h3>
         <p>Vekaletname, muvafakatname ve diğer kişisel evraklar</p>
+      </a>
+
+      <a href="hesaplayicilar.php" class="cat-card">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"></circle><line x1="8" y1="9" x2="16" y2="9"></line><line x1="8" y1="13" x2="10.2" y2="13"></line><line x1="13.8" y1="13" x2="16" y2="13"></line><line x1="8" y1="16.5" x2="10.2" y2="16.5"></line><line x1="13.8" y1="16.5" x2="16" y2="16.5"></line></svg>
+        </div>
+        <h3>Hesaplayıcılar</h3>
+        <p>Kıdem tazminatı, ihbar süresi, yıllık izin hesaplamalarını anında yap</p>
       </a>
 
     </div>

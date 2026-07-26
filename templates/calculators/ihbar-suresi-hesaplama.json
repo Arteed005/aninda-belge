@@ -1,0 +1,25 @@
+{
+  "slug": "ihbar-suresi-hesaplama",
+  "title": "İhbar Süresi Hesaplayıcı",
+  "seoTitle": "İhbar Süresi ve İhbar Tazminatı Hesaplama – Ücretsiz",
+  "description": "Kıdemine göre yasal ihbar (bildirim) sürenizi ve ihbar tazminatı tutarını hesapla.",
+  "meta": "Ort. 1 dk",
+  "calcType": "ihbar-suresi",
+  "constants": {},
+  "resultLabel": "Yasal İhbar Süresi",
+  "longDescription": [
+    "İhbar süresi (bildirim süresi), belirsiz süreli bir iş sözleşmesini feshetmek isteyen tarafın (işveren ya da çalışan), karşı tarafa bu durumu önceden bildirmesi gereken süredir. İş Kanunu'na göre bu süre, çalışanın kıdemine (aynı işyerindeki çalışma süresine) göre 2 ile 8 hafta arasında değişir.",
+    "İhbar süresine uyulmadan yapılan fesihlerde, uymayan taraf karşı tarafa **ihbar tazminatı** ödemekle yükümlü olur — tutar, ihbar süresi kadar ücrete karşılık gelir. Aşağıdaki hesaplayıcı, işe başlama tarihine göre kıdeminizi otomatik hesaplayıp yasal ihbar süresini ve (brüt ücretinizi girerseniz) yaklaşık ihbar tazminatı tutarını gösterir."
+  ],
+  "faq": [
+    {"q": "İhbar süresi nasıl hesaplanır?", "a": "İhbar süresi doğrudan çalışanın kıdemine bağlıdır: 6 aya kadar kıdemde 2 hafta, 6 ay–1,5 yıl arası 4 hafta, 1,5–3 yıl arası 6 hafta, 3 yıldan fazla kıdemde 8 hafta olarak uygulanır (İş Kanunu md. 17). Bu hesaplayıcıya işe başlama tarihini girdiğinde kıdeminiz otomatik hesaplanıp size uygulanacak hafta sayısı gösterilir."},
+    {"q": "İhbar tazminatı nasıl hesaplanır?", "a": "İhbar tazminatı, yasal ihbar süresine karşılık gelen brüt ücret tutarıdır. Örneğin 4 haftalık ihbar süresi olan bir çalışan için tazminat, o çalışanın 4 haftalık (yaklaşık aylık ücretin belirli bir oranı) brüt ücretine eşittir. Hesaplayıcıya brüt aylık ücretinizi de girerseniz tutar otomatik hesaplanır."},
+    {"q": "İhbar süresine kim uymak zorunda?", "a": "Hem işveren hem çalışan, belirsiz süreli bir iş sözleşmesini feshederken ihbar süresine uymakla yükümlüdür. Süreye uyulmadan yapılan fesihte, uymayan taraf karşı tarafa ihbar tazminatı ödemek zorunda kalabilir. Haklı sebeple derhal fesih hallerinde ihbar süresi aranmaz."},
+    {"q": "İhbar süresi çalışılarak mı geçirilir, yoksa ödeme mi yapılır?", "a": "Taraflar isterse ihbar süresi fiilen çalışılarak geçirilebilir, isterse işveren bu süreye karşılık gelen ücreti peşin ödeyip çalışanı hemen işten ayırabilir (ihbar tazminatı). İkisi de kanunen geçerlidir, uygulama işyerine ve tarafların anlaşmasına göre değişir."}
+  ],
+  "inputs": [
+    {"name": "start_date", "label": "İşe Başlama Tarihi", "type": "date", "required": true},
+    {"name": "end_date", "label": "Hesaplama / Fesih Tarihi", "type": "date", "required": true},
+    {"name": "gross_salary", "label": "Brüt Aylık Ücret (TL) — isteğe bağlı, tazminat tutarı için", "type": "text", "required": false, "placeholder": "Örn: 30000"}
+  ]
+}

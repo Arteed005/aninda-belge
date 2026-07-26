@@ -6,6 +6,11 @@
         <p>Belgeni dakikalar içinde hazırla, güvenle indir.</p>
       </div>
       <div class="footer-col">
+        <h4>Kaynaklar</h4>
+        <a href="hesaplayicilar.php">Hesaplayıcılar</a>
+        <a href="rehberler.php">Rehberler</a>
+      </div>
+      <div class="footer-col">
         <h4>İletişim</h4>
         <a href="mailto:destek@anindabelge.com">destek@anindabelge.com</a>
       </div>

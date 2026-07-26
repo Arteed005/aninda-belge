@@ -1,0 +1,41 @@
+{
+  "slug": "yillik-izin-hakki-kac-gun",
+  "title": "Yıllık Ücretli İzin Hakkı: Kaç Gün, Nasıl Hesaplanır?",
+  "seoTitle": "Yıllık İzin Hakkı Kaç Gün? Nasıl Hesaplanır? (2026)",
+  "description": "Kıdeme göre yıllık ücretli izin süresi, 18 yaş altı/50 yaş üstü istisnası ve izin hakkının ne zaman doğduğu.",
+  "meta": "Ort. 4 dk okuma",
+  "publishedDate": "2026-07-26",
+  "updatedDate": "2026-07-26",
+  "body": [
+    { "type": "p", "text": "Çalışanların dinlenme hakkı, İş Kanunu'nda yıllık ücretli izin olarak düzenlenmiştir. Bu rehberde yıllık izin süresinin nasıl belirlendiğini, kimlerin bu haktan yararlanabileceğini anlatıyoruz." },
+
+    { "type": "h2", "text": "Yıllık Ücretli İzin Nedir?" },
+    { "type": "p", "text": "Yıllık ücretli izin, aynı işyerinde en az 1 yıl çalışmış her işçinin, ücreti kesilmeden kullanabileceği kanuni dinlenme süresidir. İşveren, işçinin bu iznini kullanmasını engelleyemez; izin ücreti çalışılmış gibi ödenir." },
+
+    { "type": "h2", "text": "Yıllık İzin Süresi Kaç Gün? Kıdeme Göre Tablo" },
+    { "type": "p", "text": "İş Kanunu'nun 53. maddesine göre yıllık izin süresi, işçinin o işyerindeki kıdemine göre kademeli olarak artar:" },
+    { "type": "list", "items": [
+      "1-5 yıl arası (5 yıl dahil) kıdem: 14 gün",
+      "5 yıldan fazla, 15 yıldan az kıdem: 20 gün",
+      "15 yıl ve üzeri kıdem: 26 gün"
+    ] },
+    { "type": "p", "text": "Bu süreler asgari (en az) sürelerdir; iş sözleşmesi veya işyeri uygulaması daha uzun bir süre öngörebilir." },
+
+    { "type": "h2", "text": "18 Yaş Altı ve 50 Yaş Üstü Çalışanlar İçin İstisna" },
+    { "type": "p", "text": "18 yaşından küçük işçiler ile 50 yaşından büyük işçiler için, kıdemleri ne olursa olsun yıllık izin süresi 20 günden az olamaz. Yani örneğin 2 yıllık kıdemi olan 52 yaşındaki bir çalışan, normalde 14 gün hak edecekken bu istisna sayesinde 20 gün izin hakkına sahip olur." },
+
+    { "type": "h2", "text": "İzin Hakkı Ne Zaman Doğar?" },
+    { "type": "p", "text": "Yıllık izin hakkının doğması için işyerinde (deneme süresi dahil) en az 1 yıl kesintisiz çalışmış olmak gerekir. Bu süre dolmadan çalışan izin talep edemez; işveren isterse ücretsiz izin gibi farklı bir düzenleme yapabilir." },
+    { "type": "p", "text": "İş sözleşmesi herhangi bir sebeple sona erdiğinde, kullanılmamış izin günlerinin ücreti işveren tarafından çalışana ödenmek zorundadır — izin süresi devam ederken para olarak talep edilemez, ama sözleşme bitince mutlaka nakde çevrilir." },
+
+    { "type": "h2", "text": "Kendi Yıllık İzin Hakkınızı Hesaplayın" },
+    { "type": "p", "text": "İşe başlama tarihini girerek kaç gün yıllık izin hakkın olduğunu anında görebilir, izin talep dilekçeni de hemen ardından hazırlayabilirsin." }
+  ],
+  "faq": [
+    { "q": "Yıllık izin süresi nasıl hesaplanır?", "a": "Kıdeme göre kademeli belirlenir: 1-5 yıl arası 14 gün, 5-15 yıl arası 20 gün, 15 yıl ve üzerinde 26 gündür." },
+    { "q": "Kaç yıl çalışınca yıllık izin hakkı doğar?", "a": "İşyerinde en az 1 yıl (deneme süresi dahil) çalışmış olmak gerekir. Bu süre dolmadan izin hakkı doğmaz." },
+    { "q": "Kullanılmayan izin parayla ödenir mi?", "a": "İş ilişkisi devam ederken hayır — izin kullanılmak zorundadır. Ancak iş sözleşmesi sona erdiğinde, kullanılmamış izin günlerinin ücreti işveren tarafından ödenmek zorundadır." }
+  ],
+  "relatedCalculators": ["yillik-izin-hesaplama"],
+  "relatedTemplates": ["izin-talep-dilekcesi"]
+}

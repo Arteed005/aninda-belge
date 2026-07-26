@@ -1,0 +1,38 @@
+{
+  "slug": "kidem-tazminati-hesaplama",
+  "title": "Kıdem Tazminatı Hesaplayıcı",
+  "seoTitle": "Kıdem Tazminatı Hesaplama 2026 – Ücretsiz Hesaplayıcı",
+  "description": "İşe başlama/ayrılış tarihi ve brüt maaşınla kıdem tazminatını anında hesapla.",
+  "meta": "Ort. 1 dk",
+  "calcType": "kidem-tazminati",
+  "constants": {
+    "tavan": 73729.87,
+    "tavanGecerlilik": "1 Temmuz 2026 – 31 Aralık 2026"
+  },
+  "resultLabel": "Tahmini Kıdem Tazminatı",
+  "longDescription": [
+    "Kıdem tazminatı, bir işçinin aynı işverene bağlı olarak en az 1 yıl çalışmış olması ve iş sözleşmesinin kanunda sayılan haklı hallerden biriyle sona ermesi durumunda hak ettiği tazminattır. Tutar, işçinin son brüt ücreti üzerinden, her tam çalışma yılı için 30 günlük brüt ücret esas alınarak hesaplanır; kesirli yıllar için de gün oranında hesaplama yapılır.",
+    "Hesaplamada dikkat edilmesi gereken önemli bir nokta: kıdem tazminatına esas günlük ücretin bir **tavanı** vardır — bu tavan her yıl Ocak ve Temmuz aylarında memur maaş katsayısına göre güncellenir. Brüt maaşın günlük karşılığı bu tavanı aşıyorsa, hesaplama tavan üzerinden yapılır. Aşağıdaki hesaplayıcı bu tavanı otomatik uyguluyor."
+  ],
+  "faq": [
+    {"q": "Kıdem tazminatı nasıl hesaplanır?", "a": "Kıdem tazminatı, son brüt aylık ücretin 30'a bölünmesiyle bulunan günlük ücret (tavanı aşıyorsa tavan tutarı) ile toplam çalışma süresinin (gün cinsinden) çarpılıp 30'a bölünmesi ve ardından yıllık 30 günlük ücretle orantılanmasıyla hesaplanır. Bu sayfadaki hesaplayıcıya işe başlama/ayrılış tarihini ve brüt maaşını girdiğinde tutar otomatik hesaplanır."},
+    {"q": "Kıdem tazminatını kimler alabilir?", "a": "En az 1 yıl çalışmış olmak şartıyla; işveren tarafından haklı/geçerli bir sebep olmaksızın işten çıkarılan, haklı bir sebeple kendisi istifa eden, emekliliğe hak kazanan, askerlik nedeniyle ayrılan veya kadın çalışanın evlilik sonrası 1 yıl içinde ayrılması gibi durumlarda kıdem tazminatı hakkı doğar. Sıradan bir istifada (haklı sebep olmadan) bu hak normalde doğmaz."},
+    {"q": "Kıdem tazminatı tavanı nedir, neden önemli?", "a": "Kıdem tazminatına esas günlük ücretin yasal bir üst sınırı (tavanı) vardır; maaşınız ne kadar yüksek olursa olsun hesaplama bu tavanı aşamaz. Tavan her yıl Ocak ve Temmuz aylarında güncellenir. Bu hesaplayıcı güncel tavan tutarını otomatik uyguluyor, ancak tavan değiştiğinde tutarın da değişebileceğini unutmayın."},
+    {"q": "1 yıldan az çalışanlar kıdem tazminatı alabilir mi?", "a": "Hayır, kıdem tazminatı hakkının doğması için aynı işverene bağlı olarak en az 1 yıl (365 gün) kesintisiz çalışmış olmak gerekir. Bu süreden önce iş sözleşmesi sona ererse kıdem tazminatı hakkı doğmaz."}
+  ],
+  "inputs": [
+    {"name": "start_date", "label": "İşe Başlama Tarihi", "type": "date", "required": true},
+    {"name": "end_date", "label": "İşten Ayrılış Tarihi", "type": "date", "required": true},
+    {"name": "gross_salary", "label": "Son Brüt Aylık Ücret (TL)", "type": "text", "required": true, "placeholder": "Örn: 35000"},
+    {"name": "separation_reason", "label": "Ayrılma Sebebi", "type": "select", "required": true,
+      "options": [
+        {"value": "isveren-feshi", "label": "İşveren Feshi (Haklı/Geçerli Sebep veya İşyeri İhtiyacı)"},
+        {"value": "istifa-hakli", "label": "İstifa (Haklı Sebep — ör. ücret ödenmemesi)"},
+        {"value": "istifa-siradan", "label": "İstifa (Sıradan, haklı sebep yok)"},
+        {"value": "emeklilik", "label": "Emeklilik / Yaş Haddi"},
+        {"value": "askerlik", "label": "Askerlik"},
+        {"value": "evlilik", "label": "Kadın Çalışan — Evlilik Sonrası 1 Yıl İçinde Ayrılma"},
+        {"value": "vefat", "label": "Vefat"}
+      ]}
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "kidem-tazminati-nasil-hesaplanir",
+  "title": "Kıdem Tazminatı Nasıl Hesaplanır? Kimler Alabilir?",
+  "seoTitle": "Kıdem Tazminatı Nasıl Hesaplanır? Kimler Alabilir? (2026)",
+  "description": "Kıdem tazminatının şartları, hesaplama formülü, güncel tavan tutarı ve örnek hesaplama — sade bir dille anlatıldı.",
+  "meta": "Ort. 5 dk okuma",
+  "publishedDate": "2026-07-26",
+  "updatedDate": "2026-07-26",
+  "body": [
+    { "type": "p", "text": "İş hayatında en çok merak edilen konulardan biri, işten ayrılırken ya da çıkarılırken kıdem tazminatı alıp alamayacağın ve alacaksan bunun ne kadar olacağı. Bu rehberde kıdem tazminatının şartlarını, hesaplama mantığını ve güncel tavan tutarını sade bir dille anlatıyoruz." },
+
+    { "type": "h2", "text": "Kıdem Tazminatı Nedir?" },
+    { "type": "p", "text": "Kıdem tazminatı, bir işçinin aynı işverene bağlı olarak belirli bir süre çalıştıktan sonra, iş sözleşmesinin kanunda sayılan hallerden biriyle sona ermesi durumunda işveren tarafından kendisine ödenen bir tazminattır. Amacı, işçinin o işyerinde geçirdiği yılların karşılığını bir miktar telafi etmektir." },
+
+    { "type": "h2", "text": "Kıdem Tazminatı Almanın Şartları" },
+    { "type": "p", "text": "Kıdem tazminatı hakkının doğması için iki temel şart birlikte gerçekleşmeli:" },
+    { "type": "list", "items": [
+      "Aynı işverene bağlı olarak en az 1 yıl (365 gün) kesintisiz çalışmış olmak.",
+      "İş sözleşmesinin, kanunda sayılan haklı bir sebeple sona ermiş olması."
+    ] },
+    { "type": "p", "text": "Kanunda sayılan başlıca haller şunlardır: işveren tarafından haklı bir sebep olmaksızın (veya işyeri ihtiyaçları gibi geçerli bir sebeple) işten çıkarılma, çalışanın haklı bir sebeple (örn. ücretin ödenmemesi, sağlık sorunları) kendisi istifa etmesi, emekliliğe hak kazanma, askerlik nedeniyle ayrılma, kadın çalışanın evlilik sonrası 1 yıl içinde ayrılması ve çalışanın vefatı. Sıradan bir istifada (haklı bir sebep olmadan sadece 'ayrılmak istiyorum' denilerek yapılan istifada) kıdem tazminatı hakkı normalde doğmaz." },
+
+    { "type": "h2", "text": "Kıdem Tazminatı Nasıl Hesaplanır?" },
+    { "type": "p", "text": "Hesaplama, çalışanın son brüt ücreti üzerinden yapılır. Her tam çalışma yılı için 30 günlük brüt ücret esas alınır; bir yıldan az süreler için de gün oranında (kıstelyevm) hesaplama yapılır. Formül özetle şöyledir:" },
+    { "type": "list", "items": [
+      "Günlük brüt ücret = Brüt aylık ücret ÷ 30",
+      "Kıdem tazminatı = Günlük brüt ücret × 30 × (toplam çalışma günü ÷ 365)"
+    ] },
+    { "type": "p", "text": "Örnek: Brüt aylık ücreti 30.000 TL olan ve aynı işyerinde 3 yıl (1.095 gün) çalışmış bir kişinin kıdem tazminatı, günlük ücretin (1.000 TL) 30 ile çarpılıp 3 yılla (1.095/365) orantılanmasıyla yaklaşık 90.000 TL olarak hesaplanır. Kendi rakamlarınla hesaplamak için hesaplayıcımızı kullanabilirsin." },
+
+    { "type": "h2", "text": "Kıdem Tazminatı Tavanı" },
+    { "type": "p", "text": "Kıdem tazminatına esas günlük ücretin bir üst sınırı (tavanı) vardır — maaşın ne kadar yüksek olursa olsun hesaplama bu tavanı aşamaz. Tavan tutarı her yıl Ocak ve Temmuz aylarında memur maaş katsayısındaki değişime göre güncellenir; bu yüzden güncel tutarı hesaplama yaparken mutlaka kontrol etmek gerekir." },
+
+    { "type": "h2", "text": "Kendi Kıdem Tazminatını Hesapla" },
+    { "type": "p", "text": "İşe başlama/ayrılış tarihini ve brüt maaşını girerek, güncel tavan tutarı otomatik uygulanmış şekilde kıdem tazminatını anında görebilirsin." }
+  ],
+  "faq": [
+    { "q": "Kıdem tazminatı nasıl hesaplanır?", "a": "Son brüt aylık ücretin 30'a bölünmesiyle bulunan günlük ücret (tavanı aşıyorsa tavan tutarı) ile toplam çalışma gününün çarpılıp 30 ile orantılanmasıyla hesaplanır. Hesaplayıcımıza bilgilerini girerek anında sonuç alabilirsin." },
+    { "q": "Kaç yıl çalışınca kıdem tazminatı hakkı doğar?", "a": "En az 1 yıl (365 gün) kesintisiz çalışmış olmak gerekir. Bu süreden önce ayrılan çalışanların kıdem tazminatı hakkı doğmaz." },
+    { "q": "İstifa eden kıdem tazminatı alabilir mi?", "a": "Genel kural olarak sıradan bir istifada kıdem tazminatı hakkı doğmaz. Ancak haklı bir sebeple istifa (ücretin ödenmemesi, sağlık sorunları vb.), emeklilik, askerlik veya kadın çalışanın evlilik sonrası 1 yıl içinde ayrılması gibi kanunda sayılan istisnai durumlarda hak doğabilir." }
+  ],
+  "relatedCalculators": ["kidem-tazminati-hesaplama"],
+  "relatedTemplates": ["istifa-dilekcesi", "fesih-dilekcesi", "ibraname"]
+}

@@ -19,6 +19,16 @@ foreach (getAllTemplateConfigs() as $slug => $cfg) {
     $urls[] = ['loc' => $loc, 'priority' => '0.7'];
 }
 
+$urls[] = ['loc' => SITE_URL . '/hesaplayicilar.php', 'priority' => '0.8'];
+foreach (getAllCalculators() as $slug => $cfg) {
+    $urls[] = ['loc' => SITE_URL . '/hesapla.php?slug=' . urlencode($slug), 'priority' => '0.7'];
+}
+
+$urls[] = ['loc' => SITE_URL . '/rehberler.php', 'priority' => '0.7'];
+foreach (getAllGuides() as $slug => $cfg) {
+    $urls[] = ['loc' => SITE_URL . '/rehber.php?slug=' . urlencode($slug), 'priority' => '0.6'];
+}
+
 foreach (['kullanim-sartlari.php', 'gizlilik-politikasi.php', 'kvkk-aydinlatma-metni.php'] as $legalPage) {
     $urls[] = ['loc' => SITE_URL . '/' . $legalPage, 'priority' => '0.3'];
 }

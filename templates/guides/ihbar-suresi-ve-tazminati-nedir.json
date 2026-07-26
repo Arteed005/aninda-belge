@@ -1,0 +1,42 @@
+{
+  "slug": "ihbar-suresi-ve-tazminati-nedir",
+  "title": "İhbar Süresi ve İhbar Tazminatı Nedir, Nasıl Hesaplanır?",
+  "seoTitle": "İhbar Süresi ve İhbar Tazminatı Nedir? Nasıl Hesaplanır?",
+  "description": "İhbar (bildirim) süresi kaç hafta, ihbar tazminatı nasıl hesaplanır, kim kime ödemek zorunda — örneklerle anlatıldı.",
+  "meta": "Ort. 4 dk okuma",
+  "publishedDate": "2026-07-26",
+  "updatedDate": "2026-07-26",
+  "body": [
+    { "type": "p", "text": "Belirsiz süreli bir iş sözleşmesini feshetmek istediğinde, hem işveren hem çalışan için geçerli olan bir 'önceden haber verme' yükümlülüğü vardır. Buna ihbar süresi denir. Bu rehberde ihbar süresinin nasıl belirlendiğini, ihbar tazminatının nasıl hesaplandığını anlatıyoruz." },
+
+    { "type": "h2", "text": "İhbar Süresi Nedir?" },
+    { "type": "p", "text": "İhbar süresi, iş sözleşmesini feshetmek isteyen tarafın karşı tarafa bunu önceden bildirmesi gereken süredir. Bu sürenin amacı, işverene yeni bir çalışan bulması, çalışana ise yeni bir iş araması için makul bir zaman tanımaktır." },
+
+    { "type": "h2", "text": "İhbar Süresi Kaç Hafta? Kıdeme Göre Tablo" },
+    { "type": "p", "text": "İş Kanunu'nun 17. maddesine göre ihbar süresi, çalışanın o işyerindeki kıdemine (çalışma süresine) göre değişir:" },
+    { "type": "list", "items": [
+      "6 aya kadar kıdem: 2 hafta",
+      "6 ay – 1,5 yıl arası kıdem: 4 hafta",
+      "1,5 – 3 yıl arası kıdem: 6 hafta",
+      "3 yıldan fazla kıdem: 8 hafta"
+    ] },
+    { "type": "p", "text": "Bu süreler kanunda belirtilen asgari (en az) sürelerdir; iş sözleşmesinde daha uzun bir süre kararlaştırılmış olabilir." },
+
+    { "type": "h2", "text": "İhbar Tazminatı Nasıl Hesaplanır?" },
+    { "type": "p", "text": "İhbar süresine uyulmadan yapılan bir fesihte, uymayan taraf karşı tarafa ihbar tazminatı ödemekle yükümlü olur. Tutar, ihbar süresine karşılık gelen brüt ücrettir. Örneğin 3 yıldır çalışan ve brüt aylık ücreti 30.000 TL olan bir kişi için ihbar süresi 8 hafta olduğundan, ihbar tazminatı yaklaşık (8×7/30) × 30.000 ≈ 56.000 TL olarak hesaplanır." },
+    { "type": "p", "text": "İhbar süresi, taraflar isterse fiilen çalışılarak da geçirilebilir — bu durumda ayrıca bir tazminat ödemesi yapılmaz, çünkü süre zaten çalışılarak tamamlanmıştır." },
+
+    { "type": "h2", "text": "İhbar Süresi Her Zaman Uygulanır mı?" },
+    { "type": "p", "text": "Hayır. Haklı sebeple derhal fesih hallerinde (örneğin ahlak ve iyi niyet kurallarına aykırı davranış, sağlık sebepleri, ücretin ödenmemesi gibi kanunda sayılan durumlarda) ihbar süresi aranmaz, taraflardan biri sözleşmeyi derhal feshedebilir." },
+
+    { "type": "h2", "text": "Kendi İhbar Sürenizi Hesaplayın" },
+    { "type": "p", "text": "İşe başlama tarihini girerek kaç haftalık ihbar süresine tabi olduğunu ve (brüt ücretini de girersen) yaklaşık ihbar tazminatı tutarını anında görebilirsin." }
+  ],
+  "faq": [
+    { "q": "İhbar süresi nasıl hesaplanır?", "a": "Çalışanın işyerindeki kıdemine göre belirlenir: 6 aya kadar 2 hafta, 6 ay-1,5 yıl arası 4 hafta, 1,5-3 yıl arası 6 hafta, 3 yıldan fazla kıdemde 8 hafta uygulanır." },
+    { "q": "İhbar tazminatını kim öder?", "a": "İhbar süresine uymadan fesih yapan taraf (işveren ya da çalışan) karşı tarafa ihbar tazminatı ödemekle yükümlü olur." },
+    { "q": "Haklı sebeple fesihte ihbar süresi gerekir mi?", "a": "Hayır, kanunda sayılan haklı sebeplerle yapılan derhal fesihlerde ihbar süresi aranmaz." }
+  ],
+  "relatedCalculators": ["ihbar-suresi-hesaplama"],
+  "relatedTemplates": ["fesih-dilekcesi", "istifa-dilekcesi"]
+}

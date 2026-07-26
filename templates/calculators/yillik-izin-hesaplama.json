@@ -1,0 +1,29 @@
+{
+  "slug": "yillik-izin-hesaplama",
+  "title": "Yıllık İzin Hesaplayıcı",
+  "seoTitle": "Yıllık Ücretli İzin Hesaplama – Kaç Gün Hak Ediyorum?",
+  "description": "Kıdemine göre yıllık ücretli izin hakkını (gün) anında hesapla.",
+  "meta": "Ort. 1 dk",
+  "calcType": "yillik-izin",
+  "constants": {},
+  "resultLabel": "Yıllık İzin Hakkı",
+  "longDescription": [
+    "Yıllık ücretli izin, aynı işyerinde en az 1 yıl çalışmış her işçinin kanunen hak ettiği, ücreti kesilmeden kullanabileceği dinlenme süresidir. İzin süresi işçinin kıdemine (o işyerindeki toplam çalışma süresine) göre kademeli olarak artar: 1-5 yıl arası 14 gün, 5-15 yıl arası 20 gün, 15 yıl ve üzerinde 26 gün olarak uygulanır (İş Kanunu md. 53).",
+    "18 yaşından küçük ve 50 yaşından büyük işçiler için, kıdemleri ne olursa olsun yıllık izin süresi en az 20 günden az olamaz. Aşağıdaki hesaplayıcı, işe başlama tarihinize göre kıdeminizi otomatik hesaplayıp kaç gün yıllık izin hakkınız olduğunu gösterir."
+  ],
+  "faq": [
+    {"q": "Yıllık izin nasıl hesaplanır?", "a": "Yıllık izin süresi kıdeme göre kademeli belirlenir: 1-5 yıl arası (5 dahil) 14 gün, 5-15 yıl arası 20 gün, 15 yıl ve üzerinde 26 gündür. Bu hesaplayıcıya işe başlama tarihinizi girdiğinizde kıdeminiz otomatik hesaplanıp size uygulanacak izin günü gösterilir."},
+    {"q": "İlk yıl çalışanlar yıllık izin kullanabilir mi?", "a": "Hayır, yıllık izin hakkının doğması için işyerinde en az 1 yıl (deneme süresi dahil) çalışmış olmak gerekir. Bu süre dolmadan izin hakkı doğmaz; işveren onayıyla ücretsiz izin gibi farklı seçenekler değerlendirilebilir."},
+    {"q": "18 yaş altı veya 50 yaş üstü çalışanlar için kural farklı mı?", "a": "Evet. 18 yaşından küçük işçiler ile 50 yaşından büyük işçiler için yıllık izin süresi, kıdemleri ne olursa olsun 20 günden az olamaz. Bu hesaplayıcıda ilgili seçeneği işaretlediğinizde bu kural otomatik uygulanır."},
+    {"q": "Kullanılmayan yıllık izin ücrete çevrilir mi?", "a": "Çalışan iş ilişkisi devam ederken izin hakkını kullanmak zorundadır, para olarak talep edemez. Ancak iş sözleşmesi herhangi bir sebeple sona erdiğinde, kullanılmamış izin günlerinin ücreti işveren tarafından kendisine ödenmek zorundadır."}
+  ],
+  "inputs": [
+    {"name": "start_date", "label": "İşe Başlama Tarihi", "type": "date", "required": true},
+    {"name": "end_date", "label": "Hesaplama Tarihi", "type": "date", "required": true},
+    {"name": "special_age", "label": "18 Yaşından Küçük veya 50 Yaşından Büyüğüm", "type": "select", "required": false,
+      "options": [
+        {"value": "hayir", "label": "Hayır"},
+        {"value": "evet", "label": "Evet"}
+      ]}
+  ]
+}

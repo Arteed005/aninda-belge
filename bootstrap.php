@@ -12,6 +12,8 @@ require_once __DIR__ . '/config/mail.php';
 require_once __DIR__ . '/config/shopier.php';
 require_once __DIR__ . '/lib/Security.php';
 require_once __DIR__ . '/lib/TemplateConfig.php';
+require_once __DIR__ . '/lib/CalculatorConfig.php';
+require_once __DIR__ . '/lib/GuideConfig.php';
 require_once __DIR__ . '/lib/ClauseRenderer.php';
 require_once __DIR__ . '/lib/ResumeRenderer.php';
 require_once __DIR__ . '/lib/ResumePhoto.php';
