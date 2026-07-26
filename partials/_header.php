@@ -38,16 +38,35 @@ $__ogImage = SITE_URL . '/assets/og-image.png';
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/assets/css/site.css">
 <?php if (defined('GA_MEASUREMENT_ID') && GA_MEASUREMENT_ID): ?>
-<script async src="https://www.googletagmanager.com/gtag/js?id=<?= htmlspecialchars(GA_MEASUREMENT_ID) ?>"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', '<?= htmlspecialchars(GA_MEASUREMENT_ID) ?>');
+
+  (function () {
+    var loaded = false;
+    function loadGtagScript() {
+      if (loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=<?= htmlspecialchars(GA_MEASUREMENT_ID) ?>';
+      document.head.appendChild(s);
+      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function (evt) {
+        window.removeEventListener(evt, loadGtagScript);
+      });
+    }
+    ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function (evt) {
+      window.addEventListener(evt, loadGtagScript, { passive: true, once: true });
+    });
+    setTimeout(loadGtagScript, 4000);
+  })();
 </script>
 <?php endif; ?>
 </head>
@@ -55,7 +74,10 @@ $__ogImage = SITE_URL . '/assets/og-image.png';
 <header class="site-header">
   <div class="wrap header-inner">
     <a href="index.php" class="logo-link">
-      <img src="/assets/logo-header.png" alt="anında belge" class="logo-img" width="320" height="175">
+      <picture>
+        <source srcset="/assets/logo-header.webp" type="image/webp">
+        <img src="/assets/logo-header.png" alt="anında belge" class="logo-img" width="240" height="131">
+      </picture>
     </a>
     <div class="header-actions">
       <?php $__user = currentUser(); ?>
