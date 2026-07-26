@@ -6,12 +6,35 @@ $total = getShopierPaymentCount();
 $totalPages = max(1, (int) ceil($total / ADMIN_PAYMENTS_PER_PAGE));
 $page = min($page, $totalPages);
 $payments = getShopierPaymentsPaginated($page);
+$kpis = getShopierPaymentKpis();
+$trend = getMonthlyPaymentTrend(6);
 
 $activeNav = 'odemeler';
 $pageTitle = 'Ödemeler';
 $pageSubtitle = number_format($total, 0, ',', '.') . ' onaylanmış Shopier ödemesi';
 require __DIR__ . '/_layout_top.php';
 ?>
+
+<div class="admin-kpi-grid">
+  <?php foreach ($kpis as $k): ?>
+    <div class="admin-kpi-card">
+      <div class="admin-kpi-label"><?= htmlspecialchars($k['label']) ?></div>
+      <div class="admin-kpi-value"><?= htmlspecialchars($k['value']) ?></div>
+    </div>
+  <?php endforeach; ?>
+</div>
+
+<div class="admin-card">
+  <div class="admin-card-title" style="margin-bottom:18px;">Aylık Ödeme Adedi</div>
+  <div class="admin-chart">
+    <?php foreach ($trend as $m): ?>
+      <div class="admin-chart-col">
+        <div class="admin-chart-bar revenue" style="opacity:<?= $m['opacity'] ?>; height:<?= max(4, $m['height']) ?>px;" title="<?= $m['value'] ?> ödeme"></div>
+        <div class="admin-chart-label"><?= htmlspecialchars($m['label']) ?></div>
+      </div>
+    <?php endforeach; ?>
+  </div>
+</div>
 
 <div class="admin-card">
   <div class="admin-card-title" style="margin-bottom:16px;">Shopier Premium Ödemeleri</div>
@@ -49,7 +72,7 @@ require __DIR__ . '/_layout_top.php';
 </div>
 
 <p style="font-size:13px; color:oklch(50% 0.02 260); margin-top:16px;">
-  Tutar ve ödeme yöntemi gibi detaylar için Shopier panelindeki "Siparişler" sekmesine bakabilirsin — burası sadece hangi ödemenin hangi kullanıcıya premium açtığını gösteriyor.
+  Gelir rakamları, sabit ₺<?= PREMIUM_PRICE_TRY ?> üyelik fiyatı üzerinden tahmini olarak hesaplanıyor (gerçek tutar/ödeme yöntemi kaydı tutulmuyor). Kesin tutarlar için Shopier panelindeki "Siparişler" ve "Tahsilatlar" sekmelerine bakabilirsin.
 </p>
 
 <?php require __DIR__ . '/_layout_bottom.php'; ?>

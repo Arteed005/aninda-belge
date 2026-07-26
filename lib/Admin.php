@@ -382,6 +382,60 @@ function getShopierPaymentCount(): int
     return (int) getPDO()->query('SELECT COUNT(*) FROM shopier_processed_orders')->fetchColumn();
 }
 
+function getShopierPaymentKpis(): array
+{
+    $pdo = getPDO();
+    $total = (int) $pdo->query('SELECT COUNT(*) FROM shopier_processed_orders')->fetchColumn();
+    $thisMonth = (int) $pdo->query(
+        "SELECT COUNT(*) FROM shopier_processed_orders WHERE created_at >= DATE_FORMAT(NOW(), '%Y-%m-01')"
+    )->fetchColumn();
+
+    return [
+        ['label' => 'Toplam Ödeme', 'value' => number_format($total, 0, ',', '.')],
+        ['label' => 'Bu Ay', 'value' => number_format($thisMonth, 0, ',', '.')],
+        ['label' => 'Toplam Tahmini Gelir', 'value' => '₺' . number_format($total * PREMIUM_PRICE_TRY, 0, ',', '.')],
+        ['label' => 'Bu Ay Tahmini Gelir', 'value' => '₺' . number_format($thisMonth * PREMIUM_PRICE_TRY, 0, ',', '.')],
+    ];
+}
+
+function getMonthlyPaymentTrend(int $months = 6): array
+{
+    $pdo = getPDO();
+    $stmt = $pdo->prepare(
+        "SELECT DATE_FORMAT(created_at, '%Y-%m') AS ym, COUNT(*) AS cnt
+         FROM shopier_processed_orders
+         WHERE created_at >= :since
+         GROUP BY ym"
+    );
+    $since = (new DateTime('first day of this month'))->modify('-' . ($months - 1) . ' months')->format('Y-m-d H:i:s');
+    $stmt->execute(['since' => $since]);
+    $counts = [];
+    foreach ($stmt->fetchAll() as $row) {
+        $counts[$row['ym']] = (int) $row['cnt'];
+    }
+
+    $monthLabels = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'];
+    $trend = [];
+    $cursor = new DateTime('first day of this month');
+    $cursor->modify('-' . ($months - 1) . ' months');
+    for ($i = 0; $i < $months; $i++) {
+        $ym = $cursor->format('Y-m');
+        $trend[] = ['label' => $monthLabels[(int) $cursor->format('n') - 1], 'value' => $counts[$ym] ?? 0];
+        $cursor->modify('+1 month');
+    }
+
+    $max = max(1, max(array_column($trend, 'value')));
+    $last = count($trend) - 1;
+    return array_map(function ($t, $i) use ($max, $last) {
+        return [
+            'label' => $t['label'],
+            'height' => (int) round(($t['value'] / $max) * 120),
+            'opacity' => $i === $last ? 1 : round(0.55 + ($t['value'] / $max) * 0.3, 2),
+            'value' => $t['value'],
+        ];
+    }, $trend, array_keys($trend));
+}
+
 function getShopierPaymentsPaginated(int $page, int $perPage = ADMIN_PAYMENTS_PER_PAGE): array
 {
     $pdo = getPDO();
