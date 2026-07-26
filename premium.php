@@ -34,7 +34,7 @@ require __DIR__ . '/partials/_header.php';
         <li>Öncelikli destek</li>
       </ul>
       <div class="premium-price">
-        <span class="premium-price-amount">₺49<span class="premium-price-period">/ay</span></span>
+        <span class="premium-price-amount">₺<?= PREMIUM_PRICE_TRY ?><span class="premium-price-period">/ay</span></span>
       </div>
       <?php if (!$user): ?>
         <a href="giris.php" class="premium-cta">Satın Almak İçin Giriş Yap</a>
