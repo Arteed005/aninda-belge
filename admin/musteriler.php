@@ -42,7 +42,7 @@ require __DIR__ . '/_layout_top.php';
         <div><?= $c['docCount'] ?></div>
         <div>
           <?php if ($c['isPremium']): ?>
-            <span class="admin-badge admin-badge-success">Premium</span>
+            <span class="admin-badge admin-badge-success">Premium<?= $c['premiumExpiresAt'] ? ' — ' . htmlspecialchars($c['premiumExpiresAt']) . "'e kadar" : '' ?></span>
           <?php else: ?>
             <span class="admin-badge admin-badge-neutral">Ücretsiz</span>
           <?php endif; ?>

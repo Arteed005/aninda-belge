@@ -56,6 +56,14 @@ function emailExists(string $email): bool
     return $stmt->fetch() !== false;
 }
 
+function findUserByEmail(string $email): ?array
+{
+    $stmt = getPDO()->prepare('SELECT id, name, email FROM users WHERE LOWER(email) = LOWER(:email)');
+    $stmt->execute(['email' => $email]);
+    $row = $stmt->fetch();
+    return $row ?: null;
+}
+
 function attemptLogin(string $email, string $password): ?array
 {
     $stmt = getPDO()->prepare('SELECT * FROM users WHERE email = :email');
@@ -99,9 +107,13 @@ function currentUser(): ?array
         return $user = null;
     }
 
-    $stmt = getPDO()->prepare('SELECT id, name, email, email_verified_at, is_premium, is_admin, created_at FROM users WHERE id = :id');
+    $stmt = getPDO()->prepare('SELECT id, name, email, email_verified_at, is_premium, premium_expires_at, is_admin, created_at FROM users WHERE id = :id');
     $stmt->execute(['id' => $_SESSION['user_id']]);
     $row = $stmt->fetch();
+    if ($row) {
+        $row['is_premium'] = (bool) $row['is_premium']
+            && ($row['premium_expires_at'] === null || strtotime($row['premium_expires_at']) > time());
+    }
     return $user = ($row ?: null);
 }
 

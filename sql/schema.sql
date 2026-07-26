@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
   verify_token_hash CHAR(64) NULL,
   verify_token_expires_at DATETIME NULL,
   is_premium TINYINT(1) NOT NULL DEFAULT 0,
+  premium_expires_at DATETIME NULL,
   is_admin TINYINT(1) NOT NULL DEFAULT 0,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -21,4 +22,10 @@ CREATE TABLE IF NOT EXISTS documents (
   expires_at DATETIME NOT NULL,
   INDEX idx_expires_at (expires_at),
   CONSTRAINT fk_documents_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS shopier_processed_orders (
+  order_id VARCHAR(64) NOT NULL PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

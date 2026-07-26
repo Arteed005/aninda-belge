@@ -264,6 +264,8 @@ function getRecentCustomers(int $limit = 5): array
 
 function mapCustomerRow(array $row, int $index): array
 {
+    $expiresAt = $row['premium_expires_at'] ?? null;
+    $isPremium = (bool) ($row['is_premium'] ?? false) && ($expiresAt === null || strtotime($expiresAt) > time());
     return [
         'id' => (int) $row['id'],
         'name' => $row['name'],
@@ -271,7 +273,8 @@ function mapCustomerRow(array $row, int $index): array
         'initials' => adminInitials($row['name']),
         'avatarBg' => adminAvatarColor($index),
         'docCount' => (int) $row['doc_count'],
-        'isPremium' => (bool) ($row['is_premium'] ?? false),
+        'isPremium' => $isPremium,
+        'premiumExpiresAt' => $isPremium && $expiresAt !== null ? (new DateTime($expiresAt))->format('d M Y') : null,
         'isVerified' => !empty($row['email_verified_at']),
         'since' => (new DateTime($row['created_at']))->format('d M Y'),
     ];
@@ -282,7 +285,7 @@ function getCustomersPaginated(int $page, int $perPage = ADMIN_CUSTOMERS_PER_PAG
     $pdo = getPDO();
     $offset = max(0, ($page - 1) * $perPage);
     $stmt = $pdo->prepare(
-        "SELECT u.id, u.name, u.email, u.created_at, u.is_premium, u.email_verified_at,
+        "SELECT u.id, u.name, u.email, u.created_at, u.is_premium, u.premium_expires_at, u.email_verified_at,
                 (SELECT COUNT(*) FROM documents d WHERE d.user_id = u.id) AS doc_count
          FROM users u
          ORDER BY u.created_at DESC
@@ -369,7 +372,7 @@ function deleteDocumentAdmin(int $id): void
 
 function toggleUserPremium(int $userId): void
 {
-    $stmt = getPDO()->prepare('UPDATE users SET is_premium = NOT is_premium WHERE id = :id');
+    $stmt = getPDO()->prepare('UPDATE users SET is_premium = NOT is_premium, premium_expires_at = NULL WHERE id = :id');
     $stmt->execute(['id' => $userId]);
 }
 

@@ -2,6 +2,7 @@
 
 define('RETENTION_DAYS_DEFAULT', 30);
 define('WATERMARK_DEFAULT', true);
+define('PREMIUM_DURATION_DAYS', 30);
 define('ACCENT_COLOR', '#1e9e5c');
 define('BRAND_NAVY', '#1a2b4a');
 define('SITE_TITLE', 'Anında Belge');
