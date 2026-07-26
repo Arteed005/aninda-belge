@@ -30,6 +30,7 @@ $lineHeight = max(1.3, round(1.6 * $scale, 2));
     font-size: <?= $f(9.5) ?>; font-weight: normal; color: #8a8f99; letter-spacing: 2px;
     text-transform: uppercase; margin: 0 0 <?= $f(10) ?>; padding-bottom: <?= $f(6) ?>;
     border-bottom: 1px solid #ececec;
+    break-after: avoid; page-break-after: avoid;
   }
   .resume-summary { font-size: <?= $f(11.5) ?>; line-height: <?= $lineHeight ?>; color: #3d424b; margin: 0; font-weight: normal; }
   .resume-tags { font-size: <?= $f(11) ?>; color: #3d424b; margin: 0; }
@@ -47,7 +48,7 @@ $lineHeight = max(1.3, round(1.6 * $scale, 2));
     background: #f5f5f6; padding: <?= $f(2) ?> <?= $f(8) ?>; border-radius: <?= $f(8) ?>;
   }
   .resume-entry-desc { font-size: <?= $f(11) ?>; color: #3d424b; line-height: <?= $lineHeight ?>; margin: <?= $f(4) ?> 0 0; }
-  .resume-entry { margin-bottom: <?= $f(14) ?>; }
+  .resume-entry { margin-bottom: <?= $f(14) ?>; break-inside: avoid; page-break-inside: avoid; }
   .resume-entry:last-child { margin-bottom: 0; }
 
   .disclaimer { margin-top: <?= $f(30) ?>; font-size: <?= $f(9) ?>; color: #b6b9c0; }

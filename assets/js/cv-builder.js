@@ -293,6 +293,36 @@
       });
     }
 
+    var draggedCard = null;
+
+    function wireCardDrag(card) {
+      card.setAttribute('draggable', 'true');
+      card.addEventListener('dragstart', function (e) {
+        draggedCard = card;
+        card.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        try { e.dataTransfer.setData('text/plain', ''); } catch (err) {}
+      });
+      card.addEventListener('dragend', function () {
+        card.classList.remove('dragging');
+        var groupKey = card.closest('.resume-group-list') ? card.closest('.resume-group-list').getAttribute('data-group') : null;
+        draggedCard = null;
+        if (groupKey) {
+          renumberGroupCards(groupKey);
+          updatePreview();
+        }
+      });
+      card.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        if (!draggedCard || draggedCard === card) return;
+        var list = card.closest('.resume-group-list');
+        if (!list) return;
+        var rect = card.getBoundingClientRect();
+        var after = (e.clientY - rect.top) > (rect.height / 2);
+        list.insertBefore(draggedCard, after ? card.nextSibling : card);
+      });
+    }
+
     var groupCounters = {};
     (config.groups || []).forEach(function (g) {
       var list = document.querySelector('.resume-group-list[data-group="' + g.key + '"]');
@@ -313,6 +343,7 @@
     }
 
     function wireGroupCard(card, groupKey) {
+      wireCardDrag(card);
       card.querySelector('.resume-group-remove').addEventListener('click', function () {
         card.remove();
         renumberGroupCards(groupKey);

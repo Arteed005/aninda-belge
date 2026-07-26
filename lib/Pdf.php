@@ -61,6 +61,8 @@ function renderResumePdfHtml(array $config, array $resumeData, string $theme, bo
  */
 function buildFittedPdf(callable $renderHtml): Dompdf
 {
+    // Klasik/Minimalist temaların entry'lerinde break-inside:avoid olduğu için
+    // en küçük ölçekte bile tek sayfaya sığmayan içerik burada 2+ sayfa olarak kabul edilir.
     $scales = [1.0, 0.92, 0.85, 0.78, 0.72, 0.66];
     $dompdf = null;
 

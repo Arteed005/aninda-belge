@@ -219,9 +219,12 @@ a { color: inherit; }
 
 /* Resume (kind: "resume" — CV wizard cards + right-side preview) */
 .resume-group-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 16px; }
-.resume-group-card { border: 1.5px solid var(--border-light); border-radius: 10px; padding: 14px; }
-.resume-group-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.resume-group-card { border: 1.5px solid var(--border-light); border-radius: 10px; padding: 14px; transition: opacity .15s, border-color .15s; }
+.resume-group-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; cursor: grab; }
+.resume-group-card-head:active { cursor: grabbing; }
 .resume-group-card-title { font-size: 13.5px; font-weight: 700; color: var(--navy); }
+.resume-group-card-title::before { content: "\22ee\22ee"; letter-spacing: -2px; color: var(--border-light); font-size: 12px; margin-right: 8px; }
+.resume-group-card.dragging { opacity: .4; border-color: var(--accent); border-style: dashed; }
 .resume-group-remove { background: none; border: none; color: #dc2626; font-size: 13px; font-weight: 600; cursor: pointer; padding: 0; font-family: inherit; }
 .resume-add-btn { margin-bottom: 4px; }
 

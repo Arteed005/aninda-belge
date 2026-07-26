@@ -31,6 +31,7 @@ $lineHeight = max(1.2, round(1.5 * $scale, 2));
   .resume-section-title {
     font-size: <?= $f(11) ?>; font-weight: bold; color: #1a2b4a; letter-spacing: 1px;
     border-left: <?= $f(3) ?> solid #1e9e5c; padding-left: <?= $f(8) ?>; margin: 0 0 <?= $f(10) ?>;
+    break-after: avoid; page-break-after: avoid;
   }
   .resume-summary { font-size: <?= $f(12) ?>; line-height: <?= $lineHeight ?>; color: #3a4658; margin: 0; }
   .resume-tags { font-size: <?= $f(11.5) ?>; color: #3a4658; margin: 0; }
@@ -48,7 +49,7 @@ $lineHeight = max(1.2, round(1.5 * $scale, 2));
     background: #f2f4f7; padding: <?= $f(2) ?> <?= $f(8) ?>; border-radius: <?= $f(8) ?>;
   }
   .resume-entry-desc { font-size: <?= $f(11.5) ?>; color: #3a4658; line-height: <?= $lineHeight ?>; margin: <?= $f(3) ?> 0 0; }
-  .resume-entry { margin-bottom: <?= $f(12) ?>; }
+  .resume-entry { margin-bottom: <?= $f(12) ?>; break-inside: avoid; page-break-inside: avoid; }
   .resume-entry:last-child { margin-bottom: 0; }
 
   .disclaimer { margin-top: <?= $f(26) ?>; font-size: <?= $f(9.5) ?>; color: #9aa5b4; border-top: 1px solid #e4e8ee; padding-top: <?= $f(10) ?>; }
