@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://anindabelge.com/sitemap.php
+Sitemap: https://anindabelge.com/sitemap.xml
