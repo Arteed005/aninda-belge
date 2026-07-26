@@ -53,6 +53,9 @@ foreach ($popularCards as &$card) {
 }
 unset($card);
 
+$__homeUser = currentUser();
+$__homeIsPremium = $__homeUser && !empty($__homeUser['is_premium']);
+
 $pageTitle = SITE_TITLE . ' | Belgeni 3 Dakikada Hazırla';
 $pageDescription = SITE_DESCRIPTION;
 require __DIR__ . '/partials/_header.php';
@@ -159,6 +162,20 @@ require __DIR__ . '/partials/_header.php';
     </div>
   </div>
 </section>
+
+<?php if (!$__homeIsPremium): ?>
+<section class="section-block">
+  <div class="section-inner">
+    <div class="premium-banner">
+      <div class="premium-banner-glow"></div>
+      <span class="premium-banner-badge">✨ Premium</span>
+      <h2>Filigransız, Sınırsız, Öncelikli</h2>
+      <p>Tüm belgelerini filigransız indir, sınırsız belge oluştur, öncelikli destek al — ayda sadece <strong>₺<?= PREMIUM_PRICE_TRY ?></strong>.</p>
+      <a href="premium.php" class="premium-banner-cta">Premium'a Geç <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
 
 <section class="section-block alt">
   <div class="section-inner" style="max-width:980px;text-align:center">
