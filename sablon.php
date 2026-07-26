@@ -156,7 +156,7 @@ $__breadcrumbJsonLd = [
 
           <div class="download-area">
             <p id="required-hint" class="required-hint">PDF indirmek için zorunlu alanları doldur.</p>
-            <p class="premium-hint">Ücretsiz PDF'de küçük filigran bulunur. Filigransız + Word formatı için <a href="#" class="accent-link">Premium'a geç &rarr;</a></p>
+            <p class="premium-hint">Ücretsiz PDF'de küçük filigran bulunur. Filigransız indirme için <a href="premium.php" class="accent-link">Premium'a geç &rarr;</a></p>
           </div>
         </form>
       </div>

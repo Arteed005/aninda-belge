@@ -6,11 +6,15 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 
 /**
- * Freemium seam: watermarking is architecturally wired but inactive.
- * When premium is launched, flip this to check $user['is_premium'].
+ * Premium kullanıcılar (users.is_premium) filigransız indirir. Premium durumu
+ * şu an admin panelinden manuel olarak (toggleUserPremium()) işaretleniyor —
+ * gerçek ödeme akışı henüz yok (bkz. premium.php).
  */
 function shouldWatermark(?array $user = null): bool
 {
+    if ($user !== null && !empty($user['is_premium'])) {
+        return false;
+    }
     return WATERMARK_DEFAULT;
 }
 
