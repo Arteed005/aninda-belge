@@ -34,10 +34,13 @@ function getDocumentsForUser(int $userId, int $page, int $perPage = ADMIN_DOCS_P
     $stmt->execute();
     return array_map(static function (array $row): array {
         $isExpired = strtotime($row['expires_at']) < time();
+        $config = getTemplateConfig($row['template_slug']);
         return [
             'id' => (int) $row['id'],
             'no' => formatDocNo((int) $row['id']),
-            'type' => templateTitle($row['template_slug']),
+            'type' => $config['title'] ?? $row['template_slug'],
+            'category' => $config['category'] ?? null,
+            'isResume' => ($config['kind'] ?? 'contract') === 'resume',
             'isWatermarked' => (bool) $row['is_watermarked'],
             'isExpired' => $isExpired,
             'status' => $isExpired ? 'Süresi Dolmuş' : 'Aktif',

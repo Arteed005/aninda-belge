@@ -14,6 +14,13 @@ $totalPages = max(1, (int) ceil($total / $perPage));
 $page = min($page, $totalPages);
 $documents = getDocumentsForUser($user['id'], $page, $perPage);
 
+$categoryIcons = [
+    'sozlesmeler' => ['label' => 'SÖZ', 'class' => 'doc-icon-sozlesmeler'],
+    'dilekceler' => ['label' => 'DLK', 'class' => 'doc-icon-dilekceler'],
+    'is-belgeleri' => ['label' => 'İŞ', 'class' => 'doc-icon-is-belgeleri'],
+    'kisisel-belgeler' => ['label' => 'KŞ', 'class' => 'doc-icon-kisisel-belgeler'],
+];
+
 $pageTitle = 'Belgelerim | ' . SITE_TITLE;
 require __DIR__ . '/partials/_header.php';
 ?>
@@ -31,21 +38,27 @@ require __DIR__ . '/partials/_header.php';
     </div>
   <?php else: ?>
     <div class="doc-list">
-      <?php foreach ($documents as $doc): ?>
-        <div class="doc-row">
+      <?php foreach ($documents as $doc):
+        $iconInfo = $doc['isResume']
+            ? ['label' => 'CV', 'class' => 'doc-icon-resume']
+            : ($categoryIcons[$doc['category']] ?? ['label' => 'BLG', 'class' => 'doc-icon-default']);
+      ?>
+        <div class="doc-row<?= $doc['isExpired'] ? ' doc-row-expired' : '' ?>">
+          <div class="doc-icon <?= $iconInfo['class'] ?>"><?= htmlspecialchars($iconInfo['label']) ?></div>
           <div class="doc-row-main">
             <span class="doc-no"><?= htmlspecialchars($doc['no']) ?></span>
             <span class="doc-type"><?= htmlspecialchars($doc['type']) ?></span>
-          </div>
-          <div class="doc-row-meta">
-            <span class="doc-badge <?= $doc['isExpired'] ? 'doc-badge-neutral' : 'doc-badge-success' ?>"><?= htmlspecialchars($doc['status']) ?></span>
-            <span class="doc-date"><?= htmlspecialchars($doc['date']) ?></span>
+            <div class="doc-row-meta">
+              <span class="doc-badge <?= $doc['isExpired'] ? 'doc-badge-neutral' : 'doc-badge-success' ?>"><?= htmlspecialchars($doc['status']) ?></span>
+              <span class="doc-date"><?= htmlspecialchars($doc['date']) ?></span>
+            </div>
           </div>
           <div class="doc-row-action">
             <?php if ($doc['isExpired']): ?>
               <span class="doc-expired-hint">Süresi doldu</span>
             <?php else: ?>
-              <a href="belge-indir.php?id=<?= $doc['id'] ?>" class="doc-download-btn">İndir</a>
+              <a href="belge-indir.php?id=<?= $doc['id'] ?>" class="doc-preview-btn" target="_blank" rel="noopener">Önizle</a>
+              <a href="belge-indir.php?id=<?= $doc['id'] ?>&download=1" class="doc-download-btn">İndir</a>
             <?php endif; ?>
           </div>
         </div>

@@ -38,5 +38,6 @@ if ($isResume) {
 }
 
 $filename = formatDocNo($id) . '.pdf';
-$dompdf->stream($filename, ['Attachment' => false]);
+$forceDownload = isset($_GET['download']);
+$dompdf->stream($filename, ['Attachment' => $forceDownload]);
 exit;
