@@ -19,7 +19,8 @@ if (!csrf_check($_POST['csrf_token'] ?? null)) {
     exit('Geçersiz istek, lütfen formu yeniden gönderin.');
 }
 
-$watermark = shouldWatermark(null);
+$user = currentUser();
+$watermark = shouldWatermark($user);
 
 [$errors, $clean] = validateFormData($config, $_POST);
 $extraClauses = validateCustomClauses($_POST);
@@ -36,7 +37,7 @@ $renderedClauses = array_merge(renderClauses($config, $clean), renderCustomClaus
 $dompdf = buildFittedPdf(fn($scale) => renderPdfHtml($config, $renderedClauses, $watermark, $scale));
 
 $clean['extra_clauses'] = $extraClauses;
-saveDocument(null, $slug, $clean, $watermark);
+saveDocument($user['id'] ?? null, $slug, $clean, $watermark);
 
 $filename = $slug . '-' . date('Ymd-His') . '.pdf';
 $dompdf->stream($filename, ['Attachment' => true]);

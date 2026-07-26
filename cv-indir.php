@@ -24,7 +24,8 @@ if (!in_array($theme, $themeKeys, true)) {
     $theme = 'klasik';
 }
 
-$watermark = shouldWatermark(null);
+$user = currentUser();
+$watermark = shouldWatermark($user);
 
 [$errors, $clean] = validateFormData($config, $_POST);
 $groupEntries = validateRepeatableGroups($config, $_POST);
@@ -44,7 +45,7 @@ $dompdf = buildFittedPdf(fn($scale) => renderResumePdfHtml($config, $resumeData,
 
 $clean['groups'] = $groupEntries;
 $clean['theme'] = $theme;
-saveDocument(null, $slug, $clean, $watermark);
+saveDocument($user['id'] ?? null, $slug, $clean, $watermark);
 
 $filename = $slug . '-' . date('Ymd-His') . '.pdf';
 $dompdf->stream($filename, ['Attachment' => true]);

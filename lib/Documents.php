@@ -16,3 +16,47 @@ function saveDocument(?int $userId, string $templateSlug, array $formData, bool 
     ]);
     return (int) $pdo->lastInsertId();
 }
+
+function getDocumentsForUser(int $userId, int $page, int $perPage = ADMIN_DOCS_PER_PAGE): array
+{
+    $pdo = getPDO();
+    $offset = max(0, ($page - 1) * $perPage);
+    $stmt = $pdo->prepare(
+        'SELECT id, template_slug, is_watermarked, created_at, expires_at
+         FROM documents
+         WHERE user_id = :user_id
+         ORDER BY created_at DESC
+         LIMIT :limit OFFSET :offset'
+    );
+    $stmt->bindValue('user_id', $userId, PDO::PARAM_INT);
+    $stmt->bindValue('limit', $perPage, PDO::PARAM_INT);
+    $stmt->bindValue('offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    return array_map(static function (array $row): array {
+        $isExpired = strtotime($row['expires_at']) < time();
+        return [
+            'id' => (int) $row['id'],
+            'no' => formatDocNo((int) $row['id']),
+            'type' => templateTitle($row['template_slug']),
+            'isWatermarked' => (bool) $row['is_watermarked'],
+            'isExpired' => $isExpired,
+            'status' => $isExpired ? 'Süresi Dolmuş' : 'Aktif',
+            'date' => (new DateTime($row['created_at']))->format('d M Y'),
+        ];
+    }, $stmt->fetchAll());
+}
+
+function getDocumentCountForUser(int $userId): int
+{
+    $stmt = getPDO()->prepare('SELECT COUNT(*) FROM documents WHERE user_id = :user_id');
+    $stmt->execute(['user_id' => $userId]);
+    return (int) $stmt->fetchColumn();
+}
+
+function getDocumentByIdForUser(int $id, int $userId): ?array
+{
+    $stmt = getPDO()->prepare('SELECT * FROM documents WHERE id = :id AND user_id = :user_id');
+    $stmt->execute(['id' => $id, 'user_id' => $userId]);
+    $row = $stmt->fetch();
+    return $row ?: null;
+}

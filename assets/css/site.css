@@ -304,6 +304,24 @@ a { color: inherit; }
 .category-heading p { font-size: 15px; color: var(--muted); margin: 0; }
 .category-intro { max-width: 760px; margin-top: 12px !important; line-height: 1.65; color: #3a4658 !important; }
 
+/* Belgelerim (user document history) */
+.doc-list { display: flex; flex-direction: column; gap: 10px; }
+.doc-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; border: 1.5px solid var(--border-light); border-radius: 12px; padding: 14px 18px; background: #fff; }
+.doc-row-main { display: flex; flex-direction: column; gap: 2px; }
+.doc-no { font-size: 12px; color: var(--faint); font-weight: 600; }
+.doc-type { font-size: 15px; font-weight: 700; color: var(--navy); }
+.doc-row-meta { display: flex; align-items: center; gap: 12px; }
+.doc-badge { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 10px; }
+.doc-badge-success { background: #eaf6ef; color: #17794a; }
+.doc-badge-neutral { background: #f2f4f7; color: #6b7688; }
+.doc-date { font-size: 13px; color: var(--muted); }
+.doc-download-btn { background: var(--navy); color: #fff; font-weight: 700; font-size: 13.5px; padding: 8px 16px; border-radius: 8px; text-decoration: none; }
+.doc-expired-hint { font-size: 13px; color: var(--faint); }
+.doc-pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; font-size: 13.5px; color: var(--muted); }
+.doc-pagination-links { display: flex; gap: 14px; }
+.doc-pagination-links a { color: var(--navy); font-weight: 600; text-decoration: none; }
+.doc-pagination-links .disabled { color: var(--faint); }
+
 .category-search {
   position: relative; max-width: 480px; margin-bottom: 36px; display: flex; align-items: center;
   background: #fff; border: 2px solid var(--border-light); border-radius: 14px; padding: 4px 4px 4px 16px;
