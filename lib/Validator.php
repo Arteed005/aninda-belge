@@ -87,6 +87,37 @@ function validateCustomClauses(array $post): array
 }
 
 /**
+ * $post['clause_overrides'] is an optional [clauseIndex => editedText] map
+ * submitted when the user edits a standard clause's text in the wizard.
+ * Same sanitization as validateCustomClauses(): trim, length-cap, drop empty
+ * (an empty override just means "use the template as-is", handled by
+ * renderClauses() treating a missing/blank override as no-override).
+ */
+function validateClauseOverrides(array $config, array $post): array
+{
+    $raw = $post['clause_overrides'] ?? [];
+    if (!is_array($raw)) {
+        return [];
+    }
+
+    $clauseCount = count($config['clauses'] ?? []);
+    $clean = [];
+    foreach ($raw as $index => $text) {
+        $index = (int) $index;
+        if ($index < 0 || $index >= $clauseCount) {
+            continue;
+        }
+        $text = is_string($text) ? trim($text) : '';
+        $text = mb_substr($text, 0, CUSTOM_CLAUSE_MAX_LENGTH);
+        if ($text !== '') {
+            $clean[$index] = $text;
+        }
+    }
+
+    return $clean;
+}
+
+/**
  * Sanitizes repeatable resume groups (experience/education entries). Looser
  * than validateFormData(): sub-field "required" isn't enforced server-side
  * (a CV entry doesn't carry the legal weight a contract field does) — only

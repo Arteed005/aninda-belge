@@ -13,7 +13,15 @@
  * Callers must htmlspecialchars() every segment's text before output.
  */
 
-function renderClauses(array $config, array $formData): array
+/**
+ * $overrides is an optional [clauseIndex => editedText] map (0-based, matching
+ * $config['clauses'] order). When a clause has an override, its final text is
+ * used verbatim (same literal-line treatment as renderCustomClauses()) instead
+ * of re-interpolating {placeholder}s against the (possibly since-changed)
+ * template — this is what lets a saved document keep rendering with whatever
+ * wording the user actually chose at generation time.
+ */
+function renderClauses(array $config, array $formData, array $overrides = []): array
 {
     $fieldFormats = [];
     foreach ($config['fields'] ?? [] as $field) {
@@ -23,10 +31,17 @@ function renderClauses(array $config, array $formData): array
     $context = clauseAutoContext();
 
     $rendered = [];
-    foreach ($config['clauses'] ?? [] as $clause) {
+    foreach ($config['clauses'] ?? [] as $i => $clause) {
+        $override = $overrides[$i] ?? null;
         $lines = [];
-        foreach (explode("\n", $clause['template'] ?? '') as $lineTemplate) {
-            $lines[] = renderClauseLine($lineTemplate, $formData, $fieldFormats, $context);
+        if ($override !== null && trim((string) $override) !== '') {
+            foreach (explode("\n", (string) $override) as $lineText) {
+                $lines[] = $lineText !== '' ? [['type' => 'text', 'value' => $lineText]] : [];
+            }
+        } else {
+            foreach (explode("\n", $clause['template'] ?? '') as $lineTemplate) {
+                $lines[] = renderClauseLine($lineTemplate, $formData, $fieldFormats, $context);
+            }
         }
         $rendered[] = [
             'title' => $clause['title'] ?? '',

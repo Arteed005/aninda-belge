@@ -40,12 +40,22 @@
     return { bugun_tarihi: pad(d.getDate()) + '.' + pad(d.getMonth() + 1) + '.' + d.getFullYear() };
   }
 
-  function renderClauses(config, values) {
+  function renderClauses(config, values, overrides) {
+    overrides = overrides || {};
     var fieldFormats = {};
     (config.fields || []).forEach(function (f) { fieldFormats[f.name] = f.format || null; });
     var context = autoContext();
 
-    return (config.clauses || []).map(function (clause) {
+    return (config.clauses || []).map(function (clause, i) {
+      var override = overrides[i];
+      if (override && override.trim().length > 0) {
+        return {
+          title: clause.title,
+          lines: String(override).split('\n').map(function (line) {
+            return line !== '' ? [{ type: 'text', value: line }] : [];
+          })
+        };
+      }
       return {
         title: clause.title,
         lines: String(clause.template || '').split('\n').map(function (lineTpl) {
@@ -196,8 +206,20 @@
         .filter(function (v) { return v.trim().length > 0; });
     }
 
+    var clauseEditorList = document.getElementById('clause-editor-list');
+
+    function getClauseOverrides() {
+      var overrides = {};
+      if (!clauseEditorList) return overrides;
+      Array.prototype.slice.call(clauseEditorList.querySelectorAll('.clause-editor-textarea')).forEach(function (el) {
+        var idx = el.getAttribute('data-clause-textarea');
+        if (el.value.trim().length > 0) overrides[idx] = el.value;
+      });
+      return overrides;
+    }
+
     function updatePreview(changedField) {
-      var rendered = renderClauses(config, values).concat(renderCustomClauses(getCustomClauseTexts()));
+      var rendered = renderClauses(config, values, getClauseOverrides()).concat(renderCustomClauses(getCustomClauseTexts()));
       buildPreviewDom(previewEl, rendered);
       if (changedField) {
         var span = previewEl.querySelector('[data-field="' + CSS.escape(changedField) + '"]');
@@ -273,6 +295,28 @@
 
     if (customClausesList) {
       Array.prototype.slice.call(customClausesList.querySelectorAll('.custom-clause-item')).forEach(wireCustomClauseItem);
+    }
+
+    if (clauseEditorList) {
+      Array.prototype.slice.call(clauseEditorList.querySelectorAll('.clause-editor-item')).forEach(function (item) {
+        var textarea = item.querySelector('.clause-editor-textarea');
+        var toggleBtn = item.querySelector('.clause-editor-toggle');
+
+        textarea.addEventListener('input', function () { updatePreview(null); });
+
+        toggleBtn.addEventListener('click', function () {
+          if (textarea.hasAttribute('hidden')) {
+            textarea.removeAttribute('hidden');
+            textarea.focus();
+            toggleBtn.textContent = 'Şablona Dön';
+          } else {
+            textarea.setAttribute('hidden', '');
+            textarea.value = '';
+            toggleBtn.textContent = 'Düzenle';
+            updatePreview(null);
+          }
+        });
+      });
     }
 
     updatePreview(null);

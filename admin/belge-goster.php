@@ -26,7 +26,8 @@ if ($isResume) {
     $dompdf = buildFittedPdf(fn($scale) => renderResumePdfHtml($config, $resumeData, $theme, $watermark, $scale));
 } else {
     $extraClauses = $formData['extra_clauses'] ?? [];
-    $renderedClauses = array_merge(renderClauses($config, $formData), renderCustomClauses($extraClauses));
+    $clauseOverrides = $formData['clause_overrides'] ?? [];
+    $renderedClauses = array_merge(renderClauses($config, $formData, $clauseOverrides), renderCustomClauses($extraClauses));
     $dompdf = buildFittedPdf(fn($scale) => renderPdfHtml($config, $renderedClauses, $watermark, $scale));
 }
 

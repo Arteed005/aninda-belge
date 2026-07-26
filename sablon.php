@@ -21,10 +21,12 @@ if (($config['kind'] ?? 'contract') === 'resume') {
 $formErrors = $_SESSION['form_errors'][$slug] ?? [];
 $formValues = $_SESSION['form_values'][$slug] ?? [];
 $formExtraClauses = $_SESSION['form_extra_clauses'][$slug] ?? [];
+$formClauseOverrides = $_SESSION['form_clause_overrides'][$slug] ?? [];
 unset(
     $_SESSION['form_errors'][$slug],
     $_SESSION['form_values'][$slug],
-    $_SESSION['form_extra_clauses'][$slug]
+    $_SESSION['form_extra_clauses'][$slug],
+    $_SESSION['form_clause_overrides'][$slug]
 );
 
 $categoryNames = ['sozlesmeler' => 'Sözleşmeler', 'dilekceler' => 'Dilekçeler', 'is-belgeleri' => 'İş Belgeleri', 'kisisel-belgeler' => 'Kişisel Belgeler'];
@@ -36,11 +38,14 @@ foreach ($config['fields'] as $field) {
 }
 
 $steps = $config['steps'] ?? [['title' => 'Bilgiler', 'fields' => array_column($config['fields'], 'name')]];
+if (!empty($config['clauses'])) {
+    $steps[] = ['title' => 'Maddeleri Düzenle', 'fields' => [], 'clauseEditor' => true];
+}
 if ($config['allowCustomClauses'] ?? true) {
     $steps[] = ['title' => 'Ek Maddeler', 'fields' => [], 'customClauses' => true];
 }
 
-$renderedClauses = array_merge(renderClauses($config, $formValues), renderCustomClauses($formExtraClauses));
+$renderedClauses = array_merge(renderClauses($config, $formValues, $formClauseOverrides), renderCustomClauses($formExtraClauses));
 $signatures = $config['signatures'] ?? ['Taraf 1', 'Taraf 2'];
 
 $pageTitle = $config['title'] . ' | ' . SITE_TITLE;
@@ -103,7 +108,21 @@ $__breadcrumbJsonLd = [
 
           <?php foreach ($steps as $i => $step): ?>
             <div class="wizard-panel<?= $i === 0 ? ' active' : '' ?>" data-step-panel="<?= $i ?>">
-              <?php if (!empty($step['customClauses'])): ?>
+              <?php if (!empty($step['clauseEditor'])): ?>
+                <p class="clause-editor-intro">Standart madde metinlerini istersen kendi ihtiyacına göre değiştirebilirsin. Düzenlemediğin maddeler girdiğin bilgilerle otomatik doldurulur.</p>
+                <div id="clause-editor-list" class="clause-editor-list">
+                  <?php foreach ($config['clauses'] as $ci => $clause): ?>
+                    <?php $hasOverride = isset($formClauseOverrides[$ci]) && trim((string) $formClauseOverrides[$ci]) !== ''; ?>
+                    <div class="clause-editor-item" data-clause-index="<?= $ci ?>">
+                      <div class="clause-editor-head">
+                        <span class="clause-editor-title"><?= htmlspecialchars($clause['title'] !== '' ? $clause['title'] : ('Madde ' . ($ci + 1))) ?></span>
+                        <button type="button" class="clause-editor-toggle" data-clause-toggle="<?= $ci ?>"><?= $hasOverride ? 'Şablona Dön' : 'Düzenle' ?></button>
+                      </div>
+                      <textarea name="clause_overrides[<?= $ci ?>]" class="clause-editor-textarea" data-clause-textarea="<?= $ci ?>" rows="4" placeholder="Bu maddeyi kendi metninle değiştir..."<?= $hasOverride ? '' : ' hidden' ?>><?= htmlspecialchars($formClauseOverrides[$ci] ?? '') ?></textarea>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+              <?php elseif (!empty($step['customClauses'])): ?>
                 <div id="custom-clauses-list" class="custom-clauses-list">
                   <?php foreach ($formExtraClauses as $idx => $text): ?>
                     <div class="custom-clause-item">
