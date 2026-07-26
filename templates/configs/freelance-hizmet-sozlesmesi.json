@@ -4,6 +4,15 @@
   "title": "Freelance Hizmet Sözleşmesi",
   "description": "Serbest çalışan ile iş sahibi arasındaki hizmet ilişkisini ve ödeme şartlarını netleştir.",
   "meta": "Ort. 3 dk",
+  "longDescription": [
+    "Freelance hizmet sözleşmesi, bir işi/projeyi bağımsız çalışan (freelancer) olarak üstlenen kişi ile bu hizmeti satın alan iş sahibi arasındaki ilişkiyi düzenler. Klasik bir iş sözleşmesinden farklı olarak burada bir işçi-işveren ilişkisi değil, hizmet/eser sözleşmesi ilişkisi kurulur — freelancer kendi çalışma saatlerini ve yöntemini belirler, sadece kararlaştırılan işi/sonucu teslim etmekle yükümlüdür.",
+    "Özellikle iş tanımının, teslim tarihinin ve ücretin net yazılması, projenin kapsamının sonradan genişletilmesi (\"scope creep\") gibi freelance çalışmada sık yaşanan sorunları önler. Fikri mülkiyet hakkının ne zaman ve nasıl devredileceğinin belirtilmesi de dijital/yaratıcı işlerde özellikle önemlidir."
+  ],
+  "faq": [
+    {"q": "Freelancer ile işçi arasındaki fark nedir?", "a": "İşçi, işverenin talimatlarına bağlı, belirli çalışma saatleri olan ve SGK'lı çalışan kişidir. Freelancer ise bağımsız çalışır, kendi vergi/SGK yükümlülüklerini kendisi karşılar ve genellikle belirli bir iş/proje karşılığında ücret alır. Bu ayrımın net olması, ileride \"gizli işçilik ilişkisi\" iddialarını önler."},
+    {"q": "Freelancer fatura kesmek zorunda mı?", "a": "Türkiye'de düzenli olarak hizmet bedeli tahsil eden serbest çalışanların vergi mükellefiyeti tesis ettirip fatura/serbest meslek makbuzu kesmesi genel kuraldır. Arizi (tek seferlik, düzenli olmayan) işlerde farklı düzenlemeler olabilir; kendi durumun için bir mali müşavire danışmanı öneririz."},
+    {"q": "Proje teslim edilmeden ücret talep edilebilir mi?", "a": "Bu tamamen sözleşmede kararlaştırılan ödeme planına bağlıdır. Genellikle projelerde bir kısmı peşin (avans), kalanı teslimde ödenir; bu şablondaki 'Ödeme Şartları' alanına bu planı açıkça yazman anlaşmazlıkları önler."}
+  ],
   "signatures": ["İşi Veren İmzası", "Hizmeti Veren İmzası"],
   "steps": [
     {"title": "Taraflar", "fields": ["client_name", "client_tc", "client_address", "freelancer_name", "freelancer_tc", "freelancer_address"]},

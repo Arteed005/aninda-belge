@@ -4,6 +4,15 @@
   "title": "Ön Yazı",
   "description": "İş başvurunuza eşlik edecek etkili bir ön yazı (cover letter) hazırla.",
   "meta": "Ort. 3 dk",
+  "longDescription": [
+    "Ön yazı (cover letter), iş başvurunuza özgeçmişinizin yanında eşlik eden, neden bu pozisyona ve şirkete uygun olduğunuzu kısaca anlattığınız tanıtım yazısıdır. Özgeçmiş \"ne yaptığınızı\" listelerken, ön yazı \"neden sizi seçmeliler\" sorusuna cevap verir — özellikle çok sayıda başvuru arasından öne çıkmak istediğin pozisyonlarda fark yaratabilir.",
+    "Etkili bir ön yazı, şirkete ve pozisyona özel yazılmalıdır; genel geçer, kopyala-yapıştır ifadeler yerine ilanı okuyup neden o şirkette çalışmak istediğini somut şekilde belirtmek daha ikna edicidir."
+  ],
+  "faq": [
+    {"q": "Ön yazı her başvuruda gerekli mi?", "a": "Her iş ilanında zorunlu olmasa da, özellikle rekabetin yüksek olduğu pozisyonlarda veya ilanda özellikle istenmişse eklenmesi başvurunu güçlendirir. İlan metninde \"ön yazı/cover letter\" isteniyorsa mutlaka eklemen önerilir."},
+    {"q": "Ön yazı ne kadar uzun olmalı?", "a": "Genellikle yarım sayfa (3-4 kısa paragraf) idealdir — çok uzun ön yazılar okunmayabilir. Amaç, işe alım uzmanının dikkatini birkaç cümlede çekmektir."},
+    {"q": "Ön yazıda hangi bilgiler tekrar edilmemeli?", "a": "Özgeçmişte zaten yer alan tüm iş deneyimlerini tekrar listelemek yerine, pozisyonla en alakalı 1-2 deneyimi öne çıkarıp neden bu role uygun olduğunu anlatmak daha etkilidir."}
+  ],
   "signatures": ["İmza"],
   "fields": [
     {"name": "applicant_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Zeynep Aksoy"},

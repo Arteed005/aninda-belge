@@ -4,6 +4,15 @@
   "title": "Ortaklık Sözleşmesi",
   "description": "İki kişi arasındaki iş ortaklığının konusunu, sermaye ve kar paylaşımını netleştir.",
   "meta": "Ort. 4 dk",
+  "longDescription": [
+    "Ortaklık sözleşmesi, iki kişinin ortak bir iş/girişim yürütmek üzere sermaye, emek ve kar/zarar paylaşımı konusunda anlaştığı hükümleri yazılı hale getirir. Küçük ölçekli girişimlerde (kafe, atölye, ortak proje vb.) resmi bir şirket kurmadan önce ya da kurmaksızın yürütülen ortaklıklarda, kim ne kadar sermaye koydu, kar nasıl paylaşılacak gibi konuların baştan netleşmesi ileride en çok anlaşmazlık çıkan noktaları önler.",
+    "Bu belge adi ortaklık niteliğindedir (Türk Borçlar Kanunu anlamında) ve resmi bir şirket (limited/anonim şirket) kuruluşunun yerine geçmez. Ortaklığın büyümesi veya resmi bir tüzel kişilik gerektirmesi halinde bir mali müşavir/avukatla şirketleşme sürecini değerlendirmen önerilir."
+  ],
+  "faq": [
+    {"q": "Bu sözleşme şirket kurmak için yeterli mi?", "a": "Hayır, bu bir adi ortaklık sözleşmesidir; resmi bir şirket (limited/anonim) kurmak için Ticaret Sicili üzerinden ayrı bir kuruluş süreci gerekir. Bu belge, resmi şirketleşmeden önce veya şirketleşmeye gerek duyulmayan küçük ortaklıklarda tarafların anlaşmasını netleştirmek için kullanılır."},
+    {"q": "Ortaklardan biri ayrılmak isterse ne olur?", "a": "Sözleşmede bu konuda ayrı bir madde yoksa, adi ortaklıklarda bir ortağın haklı sebeple fesih bildirmesi mümkündür; bu durumda ortaklığın tasfiyesi (sermaye ve kâr/zarar payının hesaplanması) gündeme gelir. Bu tür ihtimalleri baştan sözleşmeye ek madde olarak yazman anlaşmazlık riskini azaltır."},
+    {"q": "Kar zarar oranı sermaye oranıyla aynı olmak zorunda mı?", "a": "Hayır, taraflar kar/zarar paylaşım oranını sermaye oranından bağımsız olarak serbestçe belirleyebilir (örneğin biri sermaye koyarken diğeri emek/yönetim katkısı sağlıyorsa farklı bir oran kararlaştırılabilir). Önemli olan bu oranın sözleşmede açıkça yazılmasıdır."}
+  ],
   "signatures": ["1. Ortak İmzası", "2. Ortak İmzası"],
   "steps": [
     {"title": "Ortaklar", "fields": ["partner1_name", "partner1_tc", "partner1_address", "partner2_name", "partner2_tc", "partner2_address"]},

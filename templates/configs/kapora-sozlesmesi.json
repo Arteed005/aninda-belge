@@ -4,6 +4,15 @@
   "title": "Kapora Sözleşmesi",
   "description": "Bir alım satım işleminden önce verilen kaporayı ve şartlarını yazılı hale getir.",
   "meta": "Ort. 3 dk",
+  "longDescription": [
+    "Kapora sözleşmesi, bir alım satım işleminin (özellikle konut, araç gibi yüksek bedelli işlemlerin) kesinleşmesinden önce alıcının satıcıya verdiği ön ödemeyi ve tarafların cayması halindeki sonuçlarını düzenler. Kapora, tarafların işlemi ciddiye aldığının bir göstergesi olduğu kadar, cayan tarafın karşılaşacağı yaptırımı da netleştirir.",
+    "Türk Borçlar Kanunu'na göre, sözleşmede aksi kararlaştırılmadıkça, kaporayı veren taraf cayarsa verdiği kaporayı geri isteyemez; kaporayı alan taraf cayarsa aldığının iki katını geri ödemekle yükümlü olur. Bu kuralın sözleşmede açıkça yazılması, ileride \"kapora mıydı yoksa ön ödeme miydi\" tartışmasını önler."
+  ],
+  "faq": [
+    {"q": "Kapora ile ön ödeme (avans) arasındaki fark nedir?", "a": "Kapora, cayma halinde yaptırım öngören bir güvence bedelidir (yukarıda açıklanan iki katı/geri alamama kuralı işler). Ön ödeme/avans ise sadece toplam bedelin bir kısmının peşin ödenmesidir ve cayma halinde normalde aynen iade edilir. Sözleşmede hangisinin kastedildiğini açıkça belirtmek önemlidir."},
+    {"q": "Kapora tutarı ne kadar olmalı?", "a": "Kanunda sabit bir oran yoktur, taraflar serbestçe belirler; uygulamada genellikle toplam bedelin %5-%10'u civarında kapora verildiği görülür. Tutarın makul olması, cayma halinde ortaya çıkacak yaptırımın da adil olmasını sağlar."},
+    {"q": "Nihai sözleşme hiç yapılmazsa kapora ne olur?", "a": "Taraflardan hangisinin işlemi gerçekleştirmekten kaçındığına bağlı olarak yukarıdaki kapora kuralları (cayma yaptırımı) uygulanır. Bu yüzden nihai işlem tarihinin ve tarafların yükümlülüklerinin sözleşmede net yazılması önemlidir."}
+  ],
   "signatures": ["Kaporayı Veren İmzası", "Kaporayı Alan İmzası"],
   "steps": [
     {"title": "Taraflar", "fields": ["payer_name", "payer_tc", "payer_address", "payee_name", "payee_tc", "payee_address"]},

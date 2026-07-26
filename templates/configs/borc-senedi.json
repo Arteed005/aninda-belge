@@ -4,6 +4,15 @@
   "title": "Borç Senedi",
   "description": "Kişiler arası ödünç para ilişkisini yazılı hale getiren borç senedi / ödünç sözleşmesi hazırla.",
   "meta": "Ort. 3 dk",
+  "longDescription": [
+    "Borç senedi, bir kişinin başka birine belirli bir miktar para ödünç verdiğini ve bunun ne zaman, nasıl geri ödeneceğini yazılı olarak kayıt altına alan belgedir. Aile içi veya arkadaşlar arasındaki para alışverişlerinde bile yazılı bir belge olması, ileride \"böyle bir borç yoktu/vardı\" tartışmasını önler ve gerektiğinde hukuki bir dayanak oluşturur.",
+    "Borç senedinin ispat gücünü artırmak için tutarın hem rakamla hem yazıyla belirtilmesi, tarafların imzasının bulunması ve mümkünse iki tanık huzurunda imzalanması önerilir."
+  ],
+  "faq": [
+    {"q": "Borç senedi noterden onaylanmalı mı?", "a": "Zorunlu değildir; taraflar arasında imzalanan adi yazılı senet de geçerlidir. Ancak yüksek tutarlı borçlarda noter onayı veya noterde düzenleme, ileride icra takibi gibi süreçlerde ispatı kolaylaştırır."},
+    {"q": "Borçlu ödemezse ne yapılabilir?", "a": "Alacaklı, elindeki yazılı borç senedini dayanak göstererek icra takibi başlatabilir veya dava açabilir. Senet üzerinde tutar, tarih ve imza net şekilde yer alıyorsa bu süreç daha hızlı ilerler."},
+    {"q": "Faizsiz borç senedi düzenlenebilir mi?", "a": "Evet, taraflar borcun faizsiz olduğunu açıkça belirtebilir. Faiz uygulanacaksa oranın ve hesaplama şeklinin sözleşmede net yazılması, ileride anlaşmazlık çıkmasını önler."}
+  ],
   "signatures": ["Alacaklı (Borç Veren) İmzası", "Borçlu İmzası"],
   "steps": [
     {"title": "Taraflar", "fields": ["creditor_name", "creditor_tc", "creditor_address", "debtor_name", "debtor_tc", "debtor_address"]},

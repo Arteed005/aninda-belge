@@ -4,6 +4,15 @@
   "title": "Nüfus Kaydı Talep Dilekçesi",
   "description": "Nüfus müdürlüğünden nüfus kayıt örneği veya ikametgah belgesi talep etmek için dilekçe hazırla.",
   "meta": "Ort. 2 dk",
+  "longDescription": [
+    "Nüfus kaydı talep dilekçesi, nüfus müdürlüğünden nüfus kayıt örneği, vukuatlı nüfus kayıt örneği veya ikametgah belgesi gibi resmi belgeleri talep etmek için kullanılır. Bu belgeler genellikle iş başvurusu, banka işlemleri, mahkeme süreçleri veya resmi kurum başvurularında istenir.",
+    "Not: Bu belgelerin çoğu artık e-Devlet üzerinden anında ve ücretsiz alınabiliyor; bu dilekçe daha çok e-Devlet erişimi olmayan durumlarda veya nüfus müdürlüğüne bizzat/yazılı başvuru gerektiğinde işine yarar."
+  ],
+  "faq": [
+    {"q": "Bu belgeleri e-Devlet'ten alabilir miyim?", "a": "Evet, nüfus kayıt örneği ve yerleşim yeri (ikametgah) belgesinin çoğu e-Devlet üzerinden anında, karekodlu ve ücretsiz olarak alınabilir. Bu dilekçe, e-Devlet'e erişimin olmadığı veya nüfus müdürlüğüne fiziksel/yazılı başvuru gerektiği durumlar için hazırlanmıştır."},
+    {"q": "Vukuatlı nüfus kayıt örneği nedir?", "a": "Vukuatlı nüfus kayıt örneği, kişinin kendisiyle birlikte anne, baba, eş ve çocukları gibi yakınlarının da nüfus bilgilerini gösteren daha detaylı bir belgedir; genellikle miras, vatandaşlık veya soybağı gibi işlemlerde istenir."},
+    {"q": "Başvuru için hangi belgeler gerekir?", "a": "Nüfus müdürlüğüne bizzat başvuruda kimlik belgesi (T.C. kimlik kartı) yeterlidir. Başkası adına talep ediliyorsa vekaletname gerekebilir."}
+  ],
   "signatures": ["İmza"],
   "fields": [
     {"name": "authority", "label": "Başvurulacak Makam", "type": "text", "required": true, "placeholder": "Örn: Kadıköy İlçe Nüfus Müdürlüğü"},

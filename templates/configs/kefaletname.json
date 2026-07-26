@@ -4,6 +4,15 @@
   "title": "Kefaletname",
   "description": "Bir borç ya da yükümlülük için kefil olduğunu beyan eden kefaletname hazırla.",
   "meta": "Ort. 3 dk",
+  "longDescription": [
+    "Kefaletname, bir kişinin (kefil) başka birinin (asıl borçlu) bir borcunu veya yükümlülüğünü yerine getirmemesi halinde, bunu üstlenmeyi kabul ettiğini beyan ettiği belgedir. Kira sözleşmelerinde, kredi başvurularında veya iş sözleşmelerinde asıl tarafın yanında ek bir güvence olarak sıklıkla istenir.",
+    "Kefil olmak ciddi bir mali sorumluluk doğurabileceğinden, kefalet tutarının ve kapsamının (hangi borç için, hangi üst sınıra kadar) net şekilde yazılması hem kefili gereksiz risklerden korur hem de alacaklının haklarını netleştirir."
+  ],
+  "faq": [
+    {"q": "Kefaletname noterde mi düzenlenmeli?", "a": "Adi kefalet (bu şablondaki gibi) yazılı olarak düzenlenebilir; ancak müteselsil kefalet gibi daha ağır sorumluluk doğuran türlerde ve yüksek meblağlarda, kefilin sorumluluğunun sınırlarının el yazısıyla belirtilmesi ve noter huzurunda imzalanması kanunen aranabilir. Yüksek tutarlı kefaletlerde noter işlemi güvenli tercih olur."},
+    {"q": "Kefil borcun tamamından mı sorumludur?", "a": "Bu, kefaletin türüne (adi kefalet mi müteselsil kefalet mi) ve sözleşmede belirlenen tutar sınırına bağlıdır. Adi kefalette alacaklı önce asıl borçluya başvurmak zorundadır; müteselsil kefalette ise doğrudan kefile başvurabilir. Bu şablon, kefaletin azami tutarla sınırlandığı temel bir yapı sunar."},
+    {"q": "Kefillikten nasıl kurtulunur?", "a": "Kefaletin süresi belirtilmişse süre sonunda kendiliğinden sona erer. Süresiz kefaletlerde borç tamamen kapandığında veya taraflar (alacaklı dahil) yazılı olarak kefaleti sonlandırdığında kefillik biter. Kefil, kendi başına tek taraflı olarak kefillikten çekilemez."}
+  ],
   "signatures": ["Kefil İmzası"],
   "steps": [
     {"title": "Taraflar", "fields": ["guarantor_name", "guarantor_tc", "guarantor_address", "debtor_name", "debtor_tc", "creditor_name"]},

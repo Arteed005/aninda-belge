@@ -4,6 +4,15 @@
   "title": "Araç Satış Sözleşmesi",
   "description": "Araç alım satım işlemlerini güvence altına alan sözleşme taslağı.",
   "meta": "Ort. 4 dk",
+  "longDescription": [
+    "Araç satış sözleşmesi, bir aracın alıcı ve satıcı arasında hangi bedelle, hangi şartlarla el değiştirdiğini yazılı olarak belgeler. Sözleşme tek başına aracın mülkiyetini devretmez — resmi devir işlemi, noter satış sözleşmesi veya trafik tescil müdürlüğünde yapılan devir işlemiyle tamamlanır. Bu belge, tarafların anlaştığı şartları (fiyat, teslim tarihi, aracın durumu) kayıt altına almak ve devir öncesi/sonrası olası anlaşmazlıkları azaltmak için kullanılır.",
+    "Şasi no, plaka, kilometre gibi bilgilerin eksiksiz ve doğru girilmesi, ileride aracın durumuyla ilgili çıkabilecek uyuşmazlıklarda (örn. kilometre hilesi iddiası) önemli bir referans noktası oluşturur."
+  ],
+  "faq": [
+    {"q": "Bu sözleşme araç devri için yeterli mi?", "a": "Hayır. Araçların resmi mülkiyet devri, noterde düzenlenen satış sözleşmesi ve devlet arşivi bilgi sistemi üzerinden yapılır. Bu şablon, noter işlemine gitmeden önce tarafların anlaştığı şartları netleştirmek için kullanılan bir ön sözleşme/taslak niteliğindedir."},
+    {"q": "Araç devri kaç gün içinde yapılmalı?", "a": "Kanuna göre satış tarihinden itibaren belirli bir süre içinde (genellikle 30 gün) devir/tescil işleminin tamamlanması gerekir; aksi halde idari para cezası uygulanabilir. Bu yüzden devir tarihini netleştirip vakit kaybetmeden noterde işlemi tamamlamak önemlidir."},
+    {"q": "Satıştan sonra çıkan trafik cezalarından kim sorumlu?", "a": "Devir işlemi tamamlanana kadar araç üzerindeki trafik cezaları ve sorumluluklar hukuken satıcıya aittir sayılabilir; bu yüzden devir işlemini geciktirmemek hem alıcı hem satıcı için önemlidir. Sözleşmeye bu konuda açık bir madde eklemek anlaşmazlıkları azaltır."}
+  ],
   "signatures": ["Satıcı İmzası", "Alıcı İmzası"],
   "steps": [
     {"title": "Taraflar", "fields": ["seller_name", "seller_tc", "seller_address", "buyer_name", "buyer_tc", "buyer_address"]},

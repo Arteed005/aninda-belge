@@ -4,6 +4,15 @@
   "title": "Zam Talep Dilekçesi",
   "description": "Yöneticinden ücretine zam yapılmasını talep etmek için resmi dilekçe hazırla.",
   "meta": "Ort. 3 dk",
+  "longDescription": [
+    "Zam talep dilekçesi, çalışanın mevcut ücretine artış yapılmasını yöneticisinden/işverenden resmi ve yazılı şekilde talep ettiği belgedir. Sözlü bir görüşmeden önce ya da sonra yazılı bir dilekçe sunmak, talebi daha ciddi ve somut hale getirir; ayrıca değerlendirme sürecinde referans olarak kullanılabilir.",
+    "Talebin gerekçesini (üstlenilen ek sorumluluklar, performans, piyasa koşulları vb.) somut ve ölçülebilir örneklerle desteklemek, dilekçenin etkisini artırır."
+  ],
+  "faq": [
+    {"q": "Zam talebi ne zaman yapılmalı?", "a": "Genellikle yıllık performans değerlendirme dönemlerinde, bir proje başarıyla tamamlandıktan sonra veya şirketin genel ücret güncellemesi yaptığı dönemlerde talep etmek daha isabetli olur. İşyerinin mali durumunun uygun olduğu bir zamanı seçmek de talebin kabul şansını artırabilir."},
+    {"q": "Zam talebi yasal bir hak mıdır, işveren vermek zorunda mı?", "a": "Hayır, ücret zammı (asgari ücret güncellemeleri dışında) kural olarak işverenin takdirindedir ve yasal bir zorunluluk değildir. Dilekçe, talebi resmi olarak iletmenin ve müzakere sürecini başlatmanın bir yoludur."},
+    {"q": "Zam talebi reddedilirse ne yapılabilir?", "a": "Ret durumunda gerekçe sorulabilir, belirli bir süre sonra (örneğin 6 ay-1 yıl sonra) tekrar değerlendirilmesi istenebilir veya performans hedefleri netleştirilerek gelecekteki bir zam için kriterler belirlenebilir."}
+  ],
   "signatures": ["Çalışan İmzası"],
   "fields": [
     {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},

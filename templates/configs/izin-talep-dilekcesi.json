@@ -4,6 +4,15 @@
   "title": "İzin Talep Dilekçesi",
   "description": "İşyerinden yıllık izin talep etmek için kullanabileceğin resmi dilekçe hazırla.",
   "meta": "Ort. 2 dk",
+  "longDescription": [
+    "İzin talep dilekçesi, çalışanın yıllık izin hakkını kullanmak istediğini işverene resmi olarak bildirdiği belgedir. Sözlü onay alınsa bile yazılı bir dilekçe vermek, izin tarihlerinin netleşmesi ve ileride \"izin onaylanmıştı/onaylanmamıştı\" tartışmasının önüne geçilmesi açısından faydalıdır.",
+    "İzin talebini mümkünse makul bir süre önceden iletmek, işyerindeki planlamayı kolaylaştırır ve talebin onaylanma ihtimalini artırır."
+  ],
+  "faq": [
+    {"q": "Yıllık izin hakkı kaç gündür?", "a": "İş Kanunu'na göre kıdeme bağlı olarak değişir: 1-5 yıl arası kıdemde en az 14 gün, 5-15 yıl arası en az 20 gün, 15 yıldan fazla kıdemde en az 26 gün yıllık izin hakkı vardır. Sözleşmende veya işyeri uygulamasında daha lehe bir süre kararlaştırılmış olabilir."},
+    {"q": "İşveren izin talebini reddedebilir mi?", "a": "İşveren, işyerinin ihtiyaçlarına göre izin kullanma zamanını belirleme hakkına sahiptir ama çalışanın izin hakkının tamamen kullandırılmaması mümkün değildir. Talep ettiğin tarih uygun görülmezse, işverenin makul bir alternatif tarih önermesi beklenir."},
+    {"q": "İlk yıl çalışanlar izin kullanabilir mi?", "a": "Yıllık izin hakkının doğması için işyerinde en az bir yıl çalışmış olmak gerekir (deneme süresi dahil). Bu sürenin dolmadığı durumlarda işveren onayıyla ücretsiz izin gibi farklı seçenekler değerlendirilebilir."}
+  ],
   "signatures": ["Çalışan İmzası"],
   "fields": [
     {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},

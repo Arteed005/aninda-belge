@@ -4,6 +4,15 @@
   "title": "Staj Sözleşmesi",
   "description": "Öğrenci stajyer ile şirket arasındaki staj ilişkisini ve şartlarını netleştir.",
   "meta": "Ort. 3 dk",
+  "longDescription": [
+    "Staj sözleşmesi, bir öğrencinin okulu kapsamında veya bağımsız olarak bir şirkette staj yapması sırasındaki karşılıklı yükümlülükleri (staj süresi, pozisyon, ücret varsa) düzenler. Zorunlu okul stajlarında genellikle okul tarafından ayrıca resmi bir staj protokolü/sözleşmesi de imzalatılır; bu belge, şirket ile stajyer arasındaki pratik detayları netleştirmek için tamamlayıcı olarak kullanılabilir.",
+    "Staj ücretinin (varsa), çalışma gün/saatlerinin ve staj süresinin net yazılması, hem şirketin hem stajyerin beklentilerini baştan hizalar."
+  ],
+  "faq": [
+    {"q": "Staj ücreti ödemek zorunlu mu?", "a": "Zorunlu (okul aracılığıyla mesleki eğitim kapsamındaki) stajlarda asgari ücretin belirli bir yüzdesi oranında ücret ödenmesi kanunen öngörülebilir; işletmenin büyüklüğüne ve staj türüne göre kurallar değişir. Gönüllü/kısa süreli stajlarda ücret genellikle tarafların anlaşmasına bağlıdır."},
+    {"q": "Stajyer SGK'lı sayılır mı?", "a": "Zorunlu stajlarda işveren, stajyerin iş kazası ve meslek hastalığı sigortası primini karşılamakla yükümlü olabilir (bu genellikle okul/işletme arasındaki protokolle düzenlenir). Bu belge SGK bildirimi yerine geçmez, sadece tarafların pratik çalışma şartlarını kayıt altına alır."},
+    {"q": "Staj sözleşmesi ile iş sözleşmesi aynı mı?", "a": "Hayır. Staj, öğrenim amaçlı ve genellikle sınırlı süreli bir ilişkidir; iş sözleşmesindeki tüm işçilik hak ve yükümlülükleri (kıdem tazminatı vb.) stajyer için aynı şekilde geçerli olmayabilir. Staj sonrası işe alım planlanıyorsa, bu ayrı bir iş sözleşmesiyle yapılmalıdır."}
+  ],
   "signatures": ["Şirket Yetkilisi İmzası", "Stajyer İmzası"],
   "steps": [
     {"title": "Taraflar", "fields": ["company_name", "company_address", "intern_name", "intern_tc", "intern_address"]},
