@@ -20,5 +20,5 @@ if (empty($user['email_verified_at'])) {
     }
 }
 
-header('Location: index.php');
+header('Location: /');
 exit;

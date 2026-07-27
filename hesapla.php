@@ -21,7 +21,7 @@ $__breadcrumbJsonLd = [
     '@context' => 'https://schema.org',
     '@type' => 'BreadcrumbList',
     'itemListElement' => [
-        ['@type' => 'ListItem', 'position' => 1, 'name' => 'Ana Sayfa', 'item' => SITE_URL . '/index.php'],
+        ['@type' => 'ListItem', 'position' => 1, 'name' => 'Ana Sayfa', 'item' => SITE_URL . '/'],
         ['@type' => 'ListItem', 'position' => 2, 'name' => 'Hesaplayıcılar', 'item' => SITE_URL . '/hesaplayicilar.php'],
         ['@type' => 'ListItem', 'position' => 3, 'name' => $config['title'], 'item' => $__canonicalUrl],
     ],
@@ -30,7 +30,7 @@ $__breadcrumbJsonLd = [
 <script type="application/ld+json"><?= json_encode($__breadcrumbJsonLd, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?></script>
 
 <div class="breadcrumb">
-  <a href="index.php">Ana Sayfa</a><span>&rsaquo;</span>
+  <a href="/">Ana Sayfa</a><span>&rsaquo;</span>
   <a href="hesaplayicilar.php">Hesaplayıcılar</a><span>&rsaquo;</span>
   <span class="current"><?= htmlspecialchars($config['title']) ?></span>
 </div>

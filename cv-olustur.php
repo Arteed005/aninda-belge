@@ -90,7 +90,7 @@ if ($config === null) {
     http_response_code(404);
     $pageTitle = 'CV oluşturucu bulunamadı | ' . SITE_TITLE;
     require __DIR__ . '/partials/_header.php';
-    echo '<main class="template-main"><h1>Sayfa bulunamadı</h1><p><a href="index.php">Ana sayfaya dön</a></p></main>';
+    echo '<main class="template-main"><h1>Sayfa bulunamadı</h1><p><a href="/">Ana sayfaya dön</a></p></main>';
     require __DIR__ . '/partials/_footer.php';
     exit;
 }
@@ -122,7 +122,7 @@ require __DIR__ . '/partials/_header.php';
 ?>
 
 <div class="breadcrumb">
-  <a href="index.php">Ana Sayfa</a><span>&rsaquo;</span>
+  <a href="/">Ana Sayfa</a><span>&rsaquo;</span>
   <a href="kategori.php?slug=<?= urlencode($config['category']) ?>">İş Belgeleri</a><span>&rsaquo;</span>
   <span class="current">CV Oluşturucu</span>
 </div>

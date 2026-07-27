@@ -19,7 +19,7 @@ require __DIR__ . '/partials/_header.php';
       <h1>Bağlantı Geçersiz veya Süresi Dolmuş</h1>
       <p>Doğrulama bağlantısının süresi dolmuş olabilir. Giriş yaptıktan sonra doğrulama e-postasını tekrar gönderebilirsin.</p>
     <?php endif; ?>
-    <a href="index.php" class="verify-result-btn">Ana Sayfaya Dön</a>
+    <a href="/" class="verify-result-btn">Ana Sayfaya Dön</a>
   </div>
 </section>
 </main>

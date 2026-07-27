@@ -2,7 +2,7 @@
 require_once __DIR__ . '/bootstrap.php';
 
 if (currentUser()) {
-    header('Location: index.php');
+    header('Location: /');
     exit;
 }
 
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         loginUser((int) $user['id'], $remember);
-        header('Location: index.php');
+        header('Location: /');
         exit;
     }
 
@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         sendVerificationEmail($email, $name, $token);
 
         loginUser($userId, false);
-        header('Location: index.php');
+        header('Location: /');
         exit;
     }
 

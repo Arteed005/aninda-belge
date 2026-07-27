@@ -34,7 +34,7 @@ require __DIR__ . '/partials/_header.php';
   <?php if (empty($documents)): ?>
     <div class="category-empty">
       <p class="category-empty-title">Henüz hiç belge oluşturmadın</p>
-      <p class="category-empty-sub"><a href="index.php" class="accent-link">Bir şablon seçip başla</a></p>
+      <p class="category-empty-sub"><a href="/" class="accent-link">Bir şablon seçip başla</a></p>
     </div>
   <?php else: ?>
     <div class="doc-list">

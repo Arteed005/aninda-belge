@@ -21,7 +21,7 @@ require __DIR__ . '/partials/_header.php';
 ?>
 
 <div class="breadcrumb">
-  <a href="index.php">Ana Sayfa</a><span>&rsaquo;</span>
+  <a href="/">Ana Sayfa</a><span>&rsaquo;</span>
   <span class="current">Rehberler</span>
 </div>
 

@@ -12,7 +12,7 @@ require __DIR__ . '/partials/_header.php';
   <div class="verify-result-card">
     <h1>Sayfa Bulunamadı</h1>
     <p>Aradığın sayfa kaldırılmış veya hiç var olmamış olabilir. Ana sayfadan istediğin belge şablonuna ulaşabilirsin.</p>
-    <a href="index.php" class="verify-result-btn">Ana Sayfaya Dön</a>
+    <a href="/" class="verify-result-btn">Ana Sayfaya Dön</a>
   </div>
 </section>
 </main>

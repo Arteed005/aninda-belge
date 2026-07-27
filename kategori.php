@@ -39,7 +39,7 @@ if ($meta === null) {
     http_response_code(404);
     $pageTitle = 'Kategori bulunamadı | ' . SITE_TITLE;
     require __DIR__ . '/partials/_header.php';
-    echo '<main class="template-main"><h1>Kategori bulunamadı</h1><p><a href="index.php">Ana sayfaya dön</a></p></main>';
+    echo '<main class="template-main"><h1>Kategori bulunamadı</h1><p><a href="/">Ana sayfaya dön</a></p></main>';
     require __DIR__ . '/partials/_footer.php';
     exit;
 }
@@ -64,7 +64,7 @@ require __DIR__ . '/partials/_header.php';
 ?>
 
 <div class="breadcrumb">
-  <a href="index.php">Ana Sayfa</a><span>&rsaquo;</span>
+  <a href="/">Ana Sayfa</a><span>&rsaquo;</span>
   <span class="current"><?= htmlspecialchars($meta['label']) ?></span>
 </div>
 

@@ -2,7 +2,7 @@
   <div class="wrap footer-inner">
     <div class="footer-cols">
       <div class="footer-brand">
-        <a href="index.php" class="footer-logo"><span class="c-white">anında</span> <span class="c-accent">belge</span></a>
+        <a href="/" class="footer-logo"><span class="c-white">anında</span> <span class="c-accent">belge</span></a>
         <p>Belgeni dakikalar içinde hazırla, güvenle indir.</p>
       </div>
       <div class="footer-col">

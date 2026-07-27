@@ -73,7 +73,7 @@ $__ogImage = SITE_URL . '/assets/og-image.png';
 <body>
 <header class="site-header">
   <div class="wrap header-inner">
-    <a href="index.php" class="logo-link">
+    <a href="/" class="logo-link">
       <picture>
         <source srcset="/assets/logo-header.webp" type="image/webp">
         <img src="/assets/logo-header.png" alt="anında belge" class="logo-img" width="240" height="131">
