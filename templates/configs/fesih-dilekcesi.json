@@ -16,6 +16,9 @@
     {"q": "Fesih sonrası çalışana hangi ödemeler yapılmalı?", "a": "Fesih sebebine ve çalışanın kıdemine göre kıdem tazminatı, ihbar tazminatı, kullanılmayan yıllık izin ücreti gibi kalemler gündeme gelebilir. Bu tutarların doğru hesaplanması için çalışanın kıdemi ve fesih gerekçesi dikkatle değerlendirilmelidir."}
   ],
   "signatures": ["Yetkili İmza"],
+  "personGroups": [
+    {"label": "Çalışan", "map": {"full_name": "employee_name", "tc_no": "employee_tc", "phone": null, "email": null, "address": null}}
+  ],
   "fields": [
     {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
     {"name": "employee_name", "label": "Çalışanın Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},

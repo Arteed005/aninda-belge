@@ -16,6 +16,9 @@
     {"q": "Zam talebi reddedilirse ne yapılabilir?", "a": "Ret durumunda gerekçe sorulabilir, belirli bir süre sonra (örneğin 6 ay-1 yıl sonra) tekrar değerlendirilmesi istenebilir veya performans hedefleri netleştirilerek gelecekteki bir zam için kriterler belirlenebilir."}
   ],
   "signatures": ["Çalışan İmzası"],
+  "personGroups": [
+    {"label": "Çalışan", "map": {"full_name": "employee_name", "tc_no": null, "phone": null, "email": null, "address": null}}
+  ],
   "fields": [
     {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
     {"name": "employee_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},

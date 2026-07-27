@@ -21,6 +21,10 @@
     {"title": "Görev ve Süre", "fields": ["position", "contract_type", "start_date", "end_date"]},
     {"title": "Ücret ve Koşullar", "fields": ["salary", "payment_day", "working_hours", "weekly_off_days", "annual_leave"]}
   ],
+  "personGroups": [
+    {"label": "İşveren", "map": {"full_name": "employer_name", "tc_no": null, "phone": null, "email": null, "address": "employer_address"}},
+    {"label": "Çalışan", "map": {"full_name": "employee_name", "tc_no": "employee_tc", "phone": null, "email": null, "address": "employee_address"}}
+  ],
   "fields": [
     {"name": "employer_name", "label": "İşveren Adı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
     {"name": "employer_address", "label": "İşveren Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},

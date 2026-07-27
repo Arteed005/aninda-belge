@@ -20,6 +20,10 @@
     {"title": "Taraflar", "fields": ["payer_name", "payer_tc", "payer_address", "payee_name", "payee_tc", "payee_address"]},
     {"title": "Kapora Şartları", "fields": ["subject", "deposit_amount", "total_price", "final_date"]}
   ],
+  "personGroups": [
+    {"label": "Kaporayı Veren", "map": {"full_name": "payer_name", "tc_no": "payer_tc", "phone": null, "email": null, "address": "payer_address"}},
+    {"label": "Kaporayı Alan", "map": {"full_name": "payee_name", "tc_no": "payee_tc", "phone": null, "email": null, "address": "payee_address"}}
+  ],
   "fields": [
     {"name": "payer_name", "label": "Kaporayı Veren Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
     {"name": "payer_tc", "label": "Kaporayı Veren T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},

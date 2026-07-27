@@ -20,6 +20,9 @@
     {"title": "Taraflar", "fields": ["company_name", "company_address", "intern_name", "intern_tc", "intern_address"]},
     {"title": "Staj Bilgileri", "fields": ["school_name", "department", "position", "start_date", "end_date", "daily_allowance", "working_days"]}
   ],
+  "personGroups": [
+    {"label": "Stajyer", "map": {"full_name": "intern_name", "tc_no": "intern_tc", "phone": null, "email": null, "address": "intern_address"}}
+  ],
   "fields": [
     {"name": "company_name", "label": "Şirket Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
     {"name": "company_address", "label": "Şirket Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},

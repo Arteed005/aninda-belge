@@ -20,6 +20,11 @@
     {"title": "Taraflar", "fields": ["guarantor_name", "guarantor_tc", "guarantor_address", "debtor_name", "debtor_tc", "creditor_name"]},
     {"title": "Kefalet Şartları", "fields": ["obligation_description", "amount"]}
   ],
+  "personGroups": [
+    {"label": "Kefil", "map": {"full_name": "guarantor_name", "tc_no": "guarantor_tc", "phone": null, "email": null, "address": "guarantor_address"}},
+    {"label": "Asıl Borçlu", "map": {"full_name": "debtor_name", "tc_no": "debtor_tc", "phone": null, "email": null, "address": null}},
+    {"label": "Alacaklı", "map": {"full_name": "creditor_name", "tc_no": null, "phone": null, "email": null, "address": null}}
+  ],
   "fields": [
     {"name": "guarantor_name", "label": "Kefil Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
     {"name": "guarantor_tc", "label": "Kefil T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},

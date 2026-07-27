@@ -224,7 +224,7 @@ a { color: inherit; }
 .download-btn:disabled { opacity: .55; cursor: not-allowed; }
 .required-hint { font-size: 13px; color: var(--faint); margin: 0; }
 .premium-hint { font-size: 13px; color: var(--muted); text-decoration: none; text-align: center; }
-.premium-hint .accent-link { color: var(--accent-dark); font-weight: 700; text-decoration: underline; }
+.accent-link { color: var(--accent-dark); font-weight: 700; text-decoration: underline; }
 
 .form-errors { background: #fdecec; border: 1px solid #f3b9b9; color: #a13333; border-radius: 10px; padding: 12px 16px; margin-bottom: 18px; font-size: 13.5px; }
 .form-errors ul { margin: 4px 0 0; padding-left: 18px; }
@@ -448,6 +448,36 @@ a { color: inherit; }
 .category-empty { text-align: center; padding: 60px 20px; color: var(--faint); }
 .category-empty-title { font-size: 16px; font-weight: 600; color: var(--navy); margin: 0 0 6px; }
 .category-empty-sub { font-size: 14px; margin: 0; }
+
+/* Kayıtlı Kişiler */
+.persons-toolbar { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+.person-add-btn { width: auto; padding: 12px 24px; font-size: 14.5px; }
+.persons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.person-card { background: #fff; border: 1.5px solid var(--border-light); border-radius: 14px; padding: 18px 20px; }
+.person-card h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+.person-card-line { font-size: 13.5px; color: var(--muted); margin: 0 0 3px; }
+.person-card-address { line-height: 1.45; }
+.person-card-actions { display: flex; gap: 8px; margin-top: 14px; }
+.person-card-actions form { flex: 1; display: flex; }
+.person-edit-btn, .person-delete-btn {
+  flex: 1; font-size: 13px; font-weight: 700; padding: 8px 10px; border-radius: 8px;
+  border: 1.5px solid var(--border-light); background: #fff; color: var(--navy); cursor: pointer; font-family: inherit;
+}
+.person-edit-btn:hover { border-color: var(--accent); color: var(--accent-dark); }
+.person-delete-btn:hover { border-color: #e39b9b; color: #a13333; }
+.person-modal-box { max-width: 460px; text-align: left; }
+.person-modal-box .field-list { display: flex; flex-direction: column; gap: 16px; }
+
+.person-picker-row { margin-bottom: 12px; }
+.person-picker-select {
+  width: 100%; font-size: 14px; padding: 10px 12px; border: 1.5px solid var(--accent); border-radius: 10px;
+  font-family: inherit; color: var(--navy); background: #f4faf7;
+}
+.person-picker-locked {
+  display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted);
+  background: #f8f6ee; border: 1px dashed #e0d4a8; border-radius: 10px; padding: 10px 12px; margin-bottom: 12px;
+}
+.person-picker-locked a { color: var(--accent-dark); font-weight: 700; text-decoration: underline; }
 
 /* Footer */
 .site-footer { background: var(--navy); color: #fff; padding: 52px 24px 26px; }

@@ -20,6 +20,11 @@
     {"title": "Muvafakat Veren", "fields": ["consenter_name", "consenter_tc", "consenter_address"]},
     {"title": "Seyahat Bilgileri", "fields": ["child_name", "child_tc", "companion_name", "companion_tc", "destination", "travel_start", "travel_end", "purpose"]}
   ],
+  "personGroups": [
+    {"label": "Muvafakat Veren (Veli/Vasi)", "map": {"full_name": "consenter_name", "tc_no": "consenter_tc", "phone": null, "email": null, "address": "consenter_address"}},
+    {"label": "Küçük", "map": {"full_name": "child_name", "tc_no": "child_tc", "phone": null, "email": null, "address": null}},
+    {"label": "Birlikte Seyahat Edecek Kişi", "map": {"full_name": "companion_name", "tc_no": "companion_tc", "phone": null, "email": null, "address": null}}
+  ],
   "fields": [
     {"name": "consenter_name", "label": "Muvafakat Veren (Veli/Vasi) Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
     {"name": "consenter_tc", "label": "Muvafakat Veren T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},

@@ -22,6 +22,10 @@
     {"title": "Taşınmaz", "fields": ["rental_subject", "property_address"]},
     {"title": "Kira Şartları", "fields": ["rent", "payment_method", "payment_day", "startDate", "duration"]}
   ],
+  "personGroups": [
+    {"label": "Kiraya Veren", "map": {"full_name": "landlord", "tc_no": "landlord_tc", "phone": null, "email": null, "address": "landlord_address"}},
+    {"label": "Kiracı", "map": {"full_name": "tenant", "tc_no": "tenant_tc", "phone": null, "email": null, "address": "tenant_address"}}
+  ],
   "fields": [
     {"name": "landlord", "label": "Kiraya Veren Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
     {"name": "landlord_tc", "label": "Kiraya Veren T.C. Kimlik / Vergi No", "type": "text", "required": true, "placeholder": "12345678901"},

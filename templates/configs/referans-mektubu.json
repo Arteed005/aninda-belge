@@ -16,6 +16,10 @@
     {"q": "Referans mektubu ne kadar uzun olmalı?", "a": "Genellikle yarım-bir sayfa (birkaç paragraf) yeterlidir; önemli olan uzunluk değil, somut ve inandırıcı örneklerle desteklenmiş olmasıdır."}
   ],
   "signatures": ["İmza"],
+  "personGroups": [
+    {"label": "Referans Veren", "map": {"full_name": "referrer_name", "tc_no": null, "phone": null, "email": null, "address": null}},
+    {"label": "Hakkında Yazılan Kişi", "map": {"full_name": "candidate_name", "tc_no": null, "phone": null, "email": null, "address": null}}
+  ],
   "fields": [
     {"name": "referrer_name", "label": "Referans Veren Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
     {"name": "referrer_title", "label": "Referans Verenin Unvanı / Şirketi", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş. - Genel Müdür"},

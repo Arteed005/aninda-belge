@@ -20,6 +20,9 @@
     {"title": "Taraflar", "fields": ["company_name", "employee_name", "employee_tc", "position"]},
     {"title": "Ödeme Bilgileri", "fields": ["start_date", "end_date", "amount_paid", "payment_items"]}
   ],
+  "personGroups": [
+    {"label": "Çalışan", "map": {"full_name": "employee_name", "tc_no": "employee_tc", "phone": null, "email": null, "address": null}}
+  ],
   "fields": [
     {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
     {"name": "employee_name", "label": "Çalışanın Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},

@@ -20,6 +20,10 @@
     {"title": "Taraflar", "fields": ["creditor_name", "creditor_tc", "creditor_address", "debtor_name", "debtor_tc", "debtor_address"]},
     {"title": "Borç Şartları", "fields": ["amount", "loan_date", "repayment_date", "repayment_method", "interest"]}
   ],
+  "personGroups": [
+    {"label": "Alacaklı (Borç Veren)", "map": {"full_name": "creditor_name", "tc_no": "creditor_tc", "phone": null, "email": null, "address": "creditor_address"}},
+    {"label": "Borçlu", "map": {"full_name": "debtor_name", "tc_no": "debtor_tc", "phone": null, "email": null, "address": "debtor_address"}}
+  ],
   "fields": [
     {"name": "creditor_name", "label": "Alacaklı (Borç Veren) Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
     {"name": "creditor_tc", "label": "Alacaklı T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},

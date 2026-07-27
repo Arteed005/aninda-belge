@@ -20,6 +20,10 @@
     {"title": "Ortaklar", "fields": ["partner1_name", "partner1_tc", "partner1_address", "partner2_name", "partner2_tc", "partner2_address"]},
     {"title": "Ortaklık Şartları", "fields": ["business_subject", "capital_share1", "capital_share2", "profit_share", "start_date"]}
   ],
+  "personGroups": [
+    {"label": "1. Ortak", "map": {"full_name": "partner1_name", "tc_no": "partner1_tc", "phone": null, "email": null, "address": "partner1_address"}},
+    {"label": "2. Ortak", "map": {"full_name": "partner2_name", "tc_no": "partner2_tc", "phone": null, "email": null, "address": "partner2_address"}}
+  ],
   "fields": [
     {"name": "partner1_name", "label": "1. Ortak Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
     {"name": "partner1_tc", "label": "1. Ortak T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},

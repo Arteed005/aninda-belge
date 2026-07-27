@@ -20,6 +20,10 @@
     {"title": "Taraflar", "fields": ["client_name", "client_tc", "client_address", "freelancer_name", "freelancer_tc", "freelancer_address"]},
     {"title": "Hizmet Şartları", "fields": ["service_description", "fee", "payment_terms", "start_date", "deadline"]}
   ],
+  "personGroups": [
+    {"label": "İşi Veren", "map": {"full_name": "client_name", "tc_no": "client_tc", "phone": null, "email": null, "address": "client_address"}},
+    {"label": "Hizmeti Veren", "map": {"full_name": "freelancer_name", "tc_no": "freelancer_tc", "phone": null, "email": null, "address": "freelancer_address"}}
+  ],
   "fields": [
     {"name": "client_name", "label": "İşi Veren Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
     {"name": "client_tc", "label": "İşi Veren T.C. Kimlik / Vergi No", "type": "text", "required": true, "placeholder": "12345678901"},

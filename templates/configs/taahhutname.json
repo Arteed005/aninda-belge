@@ -16,6 +16,9 @@
     {"q": "Taahhüt yerine getirilmezse ne olur?", "a": "Taahhüdün niteliğine göre değişir; taahhütname bir borcun kabulü niteliğindeyse, alacaklı bu belgeyi icra takibi veya dava sürecinde delil olarak kullanabilir. Taahhüdün hukuki sonuçları içeriğine ve altında yatan ilişkiye göre değerlendirilmelidir."}
   ],
   "signatures": ["Taahhüt Eden İmzası"],
+  "personGroups": [
+    {"label": "Taahhüt Eden", "map": {"full_name": "declarant_name", "tc_no": "declarant_tc", "phone": null, "email": null, "address": "declarant_address"}}
+  ],
   "fields": [
     {"name": "declarant_name", "label": "Taahhüt Eden Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
     {"name": "declarant_tc", "label": "Taahhüt Eden T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},

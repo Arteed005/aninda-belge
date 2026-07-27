@@ -16,6 +16,9 @@
     {"q": "İlk yıl çalışanlar izin kullanabilir mi?", "a": "Yıllık izin hakkının doğması için işyerinde en az bir yıl çalışmış olmak gerekir (deneme süresi dahil). Bu sürenin dolmadığı durumlarda işveren onayıyla ücretsiz izin gibi farklı seçenekler değerlendirilebilir."}
   ],
   "signatures": ["Çalışan İmzası"],
+  "personGroups": [
+    {"label": "Çalışan", "map": {"full_name": "employee_name", "tc_no": null, "phone": null, "email": null, "address": null}}
+  ],
   "fields": [
     {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
     {"name": "employee_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},

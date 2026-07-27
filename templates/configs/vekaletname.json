@@ -21,6 +21,10 @@
     {"title": "Taraflar", "fields": ["principal_name", "principal_tc", "principal_address", "agent_name", "agent_tc", "agent_address"]},
     {"title": "Vekaletin Kapsamı", "fields": ["scope", "duration"]}
   ],
+  "personGroups": [
+    {"label": "Vekil Eden", "map": {"full_name": "principal_name", "tc_no": "principal_tc", "phone": null, "email": null, "address": "principal_address"}},
+    {"label": "Vekil", "map": {"full_name": "agent_name", "tc_no": "agent_tc", "phone": null, "email": null, "address": "agent_address"}}
+  ],
   "fields": [
     {"name": "principal_name", "label": "Vekil Eden Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
     {"name": "principal_tc", "label": "Vekil Eden T.C. Kimlik No", "type": "text", "required": true, "placeholder": "12345678901"},

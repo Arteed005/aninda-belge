@@ -37,6 +37,16 @@ foreach ($config['fields'] as $field) {
     $fieldsByName[$field['name']] = $field;
 }
 
+$user = currentUser();
+$isPremium = !empty($user['is_premium']);
+$personGroupsByAnchor = [];
+foreach ($config['personGroups'] ?? [] as $group) {
+    $anchorField = $group['map']['full_name'] ?? null;
+    if ($anchorField !== null) {
+        $personGroupsByAnchor[$anchorField] = $group;
+    }
+}
+
 $steps = $config['steps'] ?? [['title' => 'Bilgiler', 'fields' => array_column($config['fields'], 'name')]];
 if (!empty($config['clauses'])) {
     $steps[] = ['title' => 'Maddeleri Düzenle', 'fields' => [], 'clauseEditor' => true];
@@ -140,6 +150,18 @@ $__breadcrumbJsonLd = [
                     if ($field === null) {
                         continue;
                     }
+                    $personGroup = $personGroupsByAnchor[$fieldName] ?? null;
+                    if ($personGroup !== null):
+                        if ($isPremium): ?>
+                          <div class="person-picker-row">
+                            <select class="person-picker-select" data-map='<?= htmlspecialchars(json_encode($personGroup['map'], JSON_UNESCAPED_UNICODE)) ?>'>
+                              <option value="">— <?= htmlspecialchars($personGroup['label']) ?>: Kişilerim'den seç —</option>
+                            </select>
+                          </div>
+                        <?php else: ?>
+                          <div class="person-picker-locked">🔒 Premium ile <?= htmlspecialchars(mb_strtolower($personGroup['label'], 'UTF-8')) ?> bilgilerini Kişilerim'den tek tıkla doldurabilirsin. <a href="premium.php">Premium'a Geç →</a></div>
+                        <?php endif;
+                    endif;
                     $val = $formValues[$fieldName] ?? '';
                     renderFieldInput($field, $val);
                   endforeach; ?>
@@ -229,5 +251,8 @@ $__breadcrumbJsonLd = [
 
 <script type="application/json" id="tpl-config"><?= json_encode($config, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?></script>
 <script src="/assets/js/live-preview.js"></script>
+<?php if ($isPremium && !empty($config['personGroups'])): ?>
+<script src="/assets/js/person-picker.js"></script>
+<?php endif; ?>
 
 <?php require __DIR__ . '/partials/_footer.php'; ?>

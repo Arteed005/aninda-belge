@@ -17,6 +17,9 @@
     {"q": "İstifa dilekçesi verdikten sonra geri alabilir miyim?", "a": "İşveren dilekçeyi henüz kabul etmemiş ve işlem başlatmamışsa karşılıklı anlaşarak istifadan vazgeçilebilir. Ancak işveren süreç başlattıktan sonra tek taraflı geri çekmek her zaman mümkün olmayabilir; bu nedenle istifa kararını netleştirdikten sonra dilekçeyi vermen daha sağlıklı olur."}
   ],
   "signatures": ["İstifa Eden Çalışan İmzası"],
+  "personGroups": [
+    {"label": "Çalışan", "map": {"full_name": "employee_name", "tc_no": "employee_tc", "phone": null, "email": null, "address": null}}
+  ],
   "fields": [
     {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
     {"name": "employee_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},

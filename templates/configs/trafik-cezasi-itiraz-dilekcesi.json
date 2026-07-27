@@ -16,6 +16,9 @@
     {"q": "İtiraz nereye yapılır, harç ödenir mi?", "a": "İtiraz, cezayı kesen kurumun bulunduğu yerdeki Sulh Ceza Hakimliği'ne yapılır. Trafik idari para cezalarına itirazlar genellikle harçtan muaftır, ancak güncel uygulamayı başvuru sırasında ilgili adliyeden teyit etmen faydalı olur."}
   ],
   "signatures": ["İtiraz Eden İmzası"],
+  "personGroups": [
+    {"label": "İtiraz Eden", "map": {"full_name": "applicant_name", "tc_no": "applicant_tc", "phone": null, "email": null, "address": "applicant_address"}}
+  ],
   "fields": [
     {"name": "authority", "label": "İtiraz Edilecek Makam", "type": "text", "required": true, "placeholder": "Örn: İstanbul Sulh Ceza Hakimliği"},
     {"name": "applicant_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},

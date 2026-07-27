@@ -20,6 +20,10 @@
     {"title": "Taraflar", "fields": ["seller_name", "seller_tc", "seller_address", "buyer_name", "buyer_tc", "buyer_address"]},
     {"title": "Satış Şartları", "fields": ["item_description", "item_condition", "price", "payment_method", "delivery_date"]}
   ],
+  "personGroups": [
+    {"label": "Satıcı", "map": {"full_name": "seller_name", "tc_no": "seller_tc", "phone": null, "email": null, "address": "seller_address"}},
+    {"label": "Alıcı", "map": {"full_name": "buyer_name", "tc_no": "buyer_tc", "phone": null, "email": null, "address": "buyer_address"}}
+  ],
   "fields": [
     {"name": "seller_name", "label": "Satıcı Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
     {"name": "seller_tc", "label": "Satıcı T.C. Kimlik / Vergi No", "type": "text", "required": true, "placeholder": "12345678901"},

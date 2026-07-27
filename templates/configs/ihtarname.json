@@ -20,6 +20,10 @@
     {"title": "Taraflar", "fields": ["sender_name", "sender_address", "recipient_name", "recipient_address"]},
     {"title": "İhtarın İçeriği", "fields": ["subject", "explanation", "deadline_days", "city"]}
   ],
+  "personGroups": [
+    {"label": "Gönderen", "map": {"full_name": "sender_name", "tc_no": null, "phone": null, "email": null, "address": "sender_address"}},
+    {"label": "Muhatap", "map": {"full_name": "recipient_name", "tc_no": null, "phone": null, "email": null, "address": "recipient_address"}}
+  ],
   "fields": [
     {"name": "sender_name", "label": "İhtarı Çeken (Gönderen) Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
     {"name": "sender_address", "label": "Gönderen Adresi", "type": "textarea", "required": true, "placeholder": "Mahalle, sokak, no, ilçe/il"},

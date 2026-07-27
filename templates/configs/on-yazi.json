@@ -16,6 +16,9 @@
     {"q": "Ön yazıda hangi bilgiler tekrar edilmemeli?", "a": "Özgeçmişte zaten yer alan tüm iş deneyimlerini tekrar listelemek yerine, pozisyonla en alakalı 1-2 deneyimi öne çıkarıp neden bu role uygun olduğunu anlatmak daha etkilidir."}
   ],
   "signatures": ["İmza"],
+  "personGroups": [
+    {"label": "Başvuran", "map": {"full_name": "applicant_name", "tc_no": null, "phone": null, "email": null, "address": null}}
+  ],
   "fields": [
     {"name": "applicant_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Zeynep Aksoy"},
     {"name": "applicant_contact", "label": "E-posta / Telefon", "type": "text", "required": true, "placeholder": "Örn: zeynep@example.com / 0555 123 45 67"},

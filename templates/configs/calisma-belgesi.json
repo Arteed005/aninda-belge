@@ -16,6 +16,9 @@
     {"q": "Halen çalışıyorsam bitiş tarihi ne yazılmalı?", "a": "Halen çalışılıyorsa bitiş tarihi alanı boş bırakılabilir veya \"halen devam etmektedir\" şeklinde belirtilebilir; bu şablonda ilgili alan zaten isteğe bağlı bırakılmıştır."}
   ],
   "signatures": ["Yetkili İmza"],
+  "personGroups": [
+    {"label": "Çalışan", "map": {"full_name": "employee_name", "tc_no": "employee_tc", "phone": null, "email": null, "address": null}}
+  ],
   "fields": [
     {"name": "company_name", "label": "Şirket / Kurum Adı", "type": "text", "required": true, "placeholder": "Örn: ABC Teknoloji A.Ş."},
     {"name": "employee_name", "label": "Çalışanın Adı Soyadı", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},

@@ -21,6 +21,10 @@
     {"title": "Araç Bilgileri", "fields": ["brand_model", "model_year", "plate_no", "chassis_no", "engine_no", "color", "mileage"]},
     {"title": "Satış Şartları", "fields": ["price", "payment_method", "delivery_date"]}
   ],
+  "personGroups": [
+    {"label": "Satıcı", "map": {"full_name": "seller_name", "tc_no": "seller_tc", "phone": null, "email": null, "address": "seller_address"}},
+    {"label": "Alıcı", "map": {"full_name": "buyer_name", "tc_no": "buyer_tc", "phone": null, "email": null, "address": "buyer_address"}}
+  ],
   "fields": [
     {"name": "seller_name", "label": "Satıcı Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
     {"name": "seller_tc", "label": "Satıcı T.C. Kimlik / Vergi No", "type": "text", "required": true, "placeholder": "12345678901"},

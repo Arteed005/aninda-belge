@@ -16,6 +16,9 @@
     {"q": "Sağlık nedeniyle erteleme için ne gerekir?", "a": "Sağlık gerekçeli ertelemede, tam teşekküllü bir hastaneden alınacak sağlık kurulu raporu ve bu raporun askerlik şubesine sunulması gerekir. Rapor süreci ve gerekli belgeler hakkında güncel bilgi için askerlik şubesiyle iletişime geçmen önerilir."}
   ],
   "signatures": ["İmza"],
+  "personGroups": [
+    {"label": "Başvuran", "map": {"full_name": "applicant_name", "tc_no": "applicant_tc", "phone": null, "email": null, "address": "applicant_address"}}
+  ],
   "fields": [
     {"name": "authority", "label": "Başvurulacak Makam", "type": "text", "required": true, "placeholder": "Örn: Kadıköy Askerlik Şubesi Başkanlığı"},
     {"name": "applicant_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Mehmet Kaya"},

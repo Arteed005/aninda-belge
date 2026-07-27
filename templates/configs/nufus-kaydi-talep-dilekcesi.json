@@ -16,6 +16,9 @@
     {"q": "Başvuru için hangi belgeler gerekir?", "a": "Nüfus müdürlüğüne bizzat başvuruda kimlik belgesi (T.C. kimlik kartı) yeterlidir. Başkası adına talep ediliyorsa vekaletname gerekebilir."}
   ],
   "signatures": ["İmza"],
+  "personGroups": [
+    {"label": "Başvuran", "map": {"full_name": "applicant_name", "tc_no": "applicant_tc", "phone": null, "email": null, "address": "applicant_address"}}
+  ],
   "fields": [
     {"name": "authority", "label": "Başvurulacak Makam", "type": "text", "required": true, "placeholder": "Örn: Kadıköy İlçe Nüfus Müdürlüğü"},
     {"name": "applicant_name", "label": "Adınız Soyadınız", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},
