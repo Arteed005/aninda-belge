@@ -469,7 +469,7 @@ a { color: inherit; }
 .person-modal-box .field-list { display: flex; flex-direction: column; gap: 16px; }
 
 .person-picker-row { margin-bottom: 12px; }
-.person-picker-select {
+.person-picker-select, .property-picker-select {
   width: 100%; font-size: 14px; padding: 10px 12px; border: 1.5px solid var(--accent); border-radius: 10px;
   font-family: inherit; color: var(--navy); background: #f4faf7;
 }
@@ -478,6 +478,61 @@ a { color: inherit; }
   background: #f8f6ee; border: 1px dashed #e0d4a8; border-radius: 10px; padding: 10px 12px; margin-bottom: 12px;
 }
 .person-picker-locked a { color: var(--accent-dark); font-weight: 700; text-decoration: underline; }
+
+.person-type-badge {
+  display: inline-block; font-size: 11px; font-weight: 700; color: var(--accent-dark); background: #f4faf7;
+  border: 1px solid var(--accent); border-radius: 999px; padding: 2px 9px; margin-left: 6px; vertical-align: middle;
+}
+.person-card-notes { font-style: italic; }
+.field-hint { font-size: 12px; font-weight: 400; color: var(--faint); }
+.field-row { display: flex; gap: 14px; }
+.field-row .field { flex: 1; min-width: 0; }
+.person-multiselect {
+  display: flex; flex-direction: column; gap: 6px; max-height: 160px; overflow-y: auto;
+  border: 1.5px solid var(--border-light); border-radius: 10px; padding: 10px 12px;
+}
+.person-multiselect-item { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--navy); }
+.person-address-row {
+  display: flex; gap: 8px; align-items: flex-start; border: 1px dashed var(--border-light); border-radius: 10px;
+  padding: 10px; margin-bottom: 8px;
+}
+.person-address-row input { flex: 0 0 40%; }
+.person-address-row textarea { flex: 1; }
+.person-address-remove {
+  border: none; background: none; color: var(--muted); cursor: pointer; font-size: 15px; padding: 4px;
+}
+.person-address-remove:hover { color: #a13333; }
+
+/* Emlak Çalışma Alanı */
+.emlak-kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+.emlak-kpi-card { background: #fff; border: 1.5px solid var(--border-light); border-radius: 14px; padding: 18px 20px; }
+.emlak-kpi-label { font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
+.emlak-kpi-value { font-size: 28px; font-weight: 800; color: var(--navy); }
+.emlak-section-title { font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 14px; }
+.emlak-quick-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 32px; }
+.emlak-quick-action-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px; text-align: center;
+  background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; font-size: 14.5px;
+  border-radius: 14px; padding: 20px 16px; transition: background 180ms ease;
+}
+.emlak-quick-action-btn:hover { background: var(--accent-dark); }
+.emlak-quick-action-btn.disabled { background: #eef1f6; color: var(--faint); cursor: default; }
+.emlak-soon-badge {
+  font-size: 10.5px; font-weight: 700; background: #fff; color: var(--muted); border-radius: 999px; padding: 2px 8px;
+}
+.emlak-content-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+.emlak-panel { background: #fff; border: 1.5px solid var(--border-light); border-radius: 14px; padding: 18px 20px; }
+.emlak-panel-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.emlak-panel-head h2 { font-size: 15px; font-weight: 700; color: var(--navy); margin: 0; }
+.emlak-mini-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.emlak-mini-list li { display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; color: var(--navy); }
+.emlak-mini-list-meta { color: var(--faint); font-size: 12.5px; flex: none; }
+.emlak-panel-links { display: flex; gap: 12px; }
+
+@media (max-width: 720px) {
+  .emlak-kpi-grid, .emlak-content-grid { grid-template-columns: 1fr; }
+  .field-row { flex-direction: column; gap: 18px; }
+}
 
 /* Footer */
 .site-footer { background: var(--navy); color: #fff; padding: 52px 24px 26px; }

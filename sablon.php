@@ -46,6 +46,13 @@ foreach ($config['personGroups'] ?? [] as $group) {
         $personGroupsByAnchor[$anchorField] = $group;
     }
 }
+$propertyGroupsByAnchor = [];
+foreach ($config['propertyGroups'] ?? [] as $group) {
+    $anchorField = $group['map']['address'] ?? null;
+    if ($anchorField !== null) {
+        $propertyGroupsByAnchor[$anchorField] = $group;
+    }
+}
 
 $steps = $config['steps'] ?? [['title' => 'Bilgiler', 'fields' => array_column($config['fields'], 'name')]];
 if (!empty($config['clauses'])) {
@@ -162,6 +169,18 @@ $__breadcrumbJsonLd = [
                           <div class="person-picker-locked">🔒 Premium ile <?= htmlspecialchars(mb_strtolower($personGroup['label'], 'UTF-8')) ?> bilgilerini Kişilerim'den tek tıkla doldurabilirsin. <a href="premium.php">Premium'a Geç →</a></div>
                         <?php endif;
                     endif;
+                    $propertyGroup = $propertyGroupsByAnchor[$fieldName] ?? null;
+                    if ($propertyGroup !== null):
+                        if ($isPremium): ?>
+                          <div class="person-picker-row">
+                            <select class="property-picker-select" data-map='<?= htmlspecialchars(json_encode($propertyGroup['map'], JSON_UNESCAPED_UNICODE)) ?>'>
+                              <option value="">— <?= htmlspecialchars($propertyGroup['label']) ?>: Taşınmazlarımdan seç —</option>
+                            </select>
+                          </div>
+                        <?php else: ?>
+                          <div class="person-picker-locked">🔒 Premium ile <?= htmlspecialchars(mb_strtolower($propertyGroup['label'], 'UTF-8')) ?> bilgilerini Taşınmazlarımdan tek tıkla doldurabilirsin. <a href="premium.php">Premium'a Geç →</a></div>
+                        <?php endif;
+                    endif;
                     $val = $formValues[$fieldName] ?? '';
                     renderFieldInput($field, $val);
                   endforeach; ?>
@@ -253,6 +272,9 @@ $__breadcrumbJsonLd = [
 <script src="/assets/js/live-preview.js"></script>
 <?php if ($isPremium && !empty($config['personGroups'])): ?>
 <script src="/assets/js/person-picker.js"></script>
+<?php endif; ?>
+<?php if ($isPremium && !empty($config['propertyGroups'])): ?>
+<script src="/assets/js/property-picker.js"></script>
 <?php endif; ?>
 
 <?php require __DIR__ . '/partials/_footer.php'; ?>

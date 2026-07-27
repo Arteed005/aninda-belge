@@ -19,12 +19,15 @@
   "signatures": ["Kiraya Veren İmzası", "Kiracı İmzası"],
   "steps": [
     {"title": "Taraflar", "fields": ["landlord", "landlord_tc", "landlord_address", "tenant", "tenant_tc", "tenant_address"]},
-    {"title": "Taşınmaz", "fields": ["rental_subject", "property_address"]},
+    {"title": "Taşınmaz", "fields": ["property_address", "rental_subject"]},
     {"title": "Kira Şartları", "fields": ["rent", "payment_method", "payment_day", "startDate", "duration"]}
   ],
   "personGroups": [
     {"label": "Kiraya Veren", "map": {"full_name": "landlord", "tc_no": "landlord_tc", "phone": null, "email": null, "address": "landlord_address"}},
     {"label": "Kiracı", "map": {"full_name": "tenant", "tc_no": "tenant_tc", "phone": null, "email": null, "address": "tenant_address"}}
+  ],
+  "propertyGroups": [
+    {"label": "Taşınmaz", "map": {"address": "property_address", "title": "rental_subject", "rent_amount": "rent", "owner_full_name": "landlord", "owner_tc_no": "landlord_tc", "owner_address": "landlord_address"}}
   ],
   "fields": [
     {"name": "landlord", "label": "Kiraya Veren Adı Soyadı / Ünvanı", "type": "text", "required": true, "placeholder": "Örn: Ahmet Yılmaz"},

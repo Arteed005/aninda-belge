@@ -59,6 +59,9 @@ require __DIR__ . '/partials/_header.php';
             <?php else: ?>
               <a href="belge-indir.php?id=<?= $doc['id'] ?>" class="doc-preview-btn" target="_blank" rel="noopener">Önizle</a>
               <a href="belge-indir.php?id=<?= $doc['id'] ?>&download=1" class="doc-download-btn">İndir</a>
+              <?php if (!$doc['isResume']): ?>
+                <a href="belge-kopyala.php?id=<?= $doc['id'] ?>" class="doc-preview-btn">Kopyala</a>
+              <?php endif; ?>
             <?php endif; ?>
           </div>
         </div>

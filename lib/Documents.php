@@ -56,6 +56,15 @@ function getDocumentCountForUser(int $userId): int
     return (int) $stmt->fetchColumn();
 }
 
+function getTodayDocumentCountForUser(int $userId): int
+{
+    $stmt = getPDO()->prepare(
+        "SELECT COUNT(*) FROM documents WHERE user_id = :user_id AND DATE(created_at) = CURDATE()"
+    );
+    $stmt->execute(['user_id' => $userId]);
+    return (int) $stmt->fetchColumn();
+}
+
 function getDocumentByIdForUser(int $id, int $userId): ?array
 {
     $stmt = getPDO()->prepare('SELECT * FROM documents WHERE id = :id AND user_id = :user_id');

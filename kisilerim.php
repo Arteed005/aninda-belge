@@ -10,6 +10,14 @@ if (!$user) {
 $isPremium = !empty($user['is_premium']);
 $persons = $isPremium ? getPersonsForUser($user['id']) : [];
 
+$personTypeLabels = [
+    'ev_sahibi' => 'Ev Sahibi',
+    'kiraci' => 'Kiracı',
+    'alici' => 'Alıcı',
+    'satici' => 'Satıcı',
+    'genel' => 'Genel Kişi',
+];
+
 $pageTitle = 'Kişilerim | ' . SITE_TITLE;
 require __DIR__ . '/partials/_header.php';
 ?>
@@ -39,21 +47,30 @@ require __DIR__ . '/partials/_header.php';
     <?php else: ?>
       <div class="persons-grid">
         <?php foreach ($persons as $p): ?>
+          <?php $extraAddresses = getPersonAddresses($p['id']); ?>
           <div class="person-card">
-            <h3><?= htmlspecialchars($p['full_name']) ?></h3>
+            <h3><?= htmlspecialchars($p['full_name']) ?>
+              <?php if (!empty($p['person_type']) && isset($personTypeLabels[$p['person_type']])): ?>
+                <span class="person-type-badge"><?= htmlspecialchars($personTypeLabels[$p['person_type']]) ?></span>
+              <?php endif; ?>
+            </h3>
             <?php if ($p['tc_no']): ?><p class="person-card-line">TC: <?= htmlspecialchars($p['tc_no']) ?></p><?php endif; ?>
             <?php if ($p['phone']): ?><p class="person-card-line"><?= htmlspecialchars($p['phone']) ?></p><?php endif; ?>
             <?php if ($p['email']): ?><p class="person-card-line"><?= htmlspecialchars($p['email']) ?></p><?php endif; ?>
             <?php if ($p['address']): ?><p class="person-card-line person-card-address"><?= htmlspecialchars($p['address']) ?></p><?php endif; ?>
+            <?php if ($p['notes']): ?><p class="person-card-line person-card-notes"><?= htmlspecialchars($p['notes']) ?></p><?php endif; ?>
             <div class="person-card-actions">
               <button type="button" class="person-edit-btn"
                 data-open-person-modal
                 data-person-id="<?= $p['id'] ?>"
                 data-person-name="<?= htmlspecialchars($p['full_name']) ?>"
+                data-person-type="<?= htmlspecialchars($p['person_type'] ?? '') ?>"
                 data-person-tc="<?= htmlspecialchars($p['tc_no'] ?? '') ?>"
                 data-person-phone="<?= htmlspecialchars($p['phone'] ?? '') ?>"
                 data-person-email="<?= htmlspecialchars($p['email'] ?? '') ?>"
-                data-person-address="<?= htmlspecialchars($p['address'] ?? '') ?>">Düzenle</button>
+                data-person-address="<?= htmlspecialchars($p['address'] ?? '') ?>"
+                data-person-notes="<?= htmlspecialchars($p['notes'] ?? '') ?>"
+                data-person-addresses="<?= htmlspecialchars(json_encode($extraAddresses, JSON_UNESCAPED_UNICODE)) ?>">Düzenle</button>
               <form method="post" action="kisi-islem.php" onsubmit="return confirm('Bu kişiyi silmek istediğine emin misin?');">
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrf_token()) ?>">
                 <input type="hidden" name="action" value="delete">
@@ -79,6 +96,15 @@ require __DIR__ . '/partials/_header.php';
             <input type="text" id="person-full-name" name="full_name" required placeholder="Örn: Ahmet Yılmaz">
           </div>
           <div class="field">
+            <label for="person-type">Kişi Tipi</label>
+            <select id="person-type" name="person_type">
+              <option value="">Seçiniz</option>
+              <?php foreach ($personTypeLabels as $value => $label): ?>
+                <option value="<?= htmlspecialchars($value) ?>"><?= htmlspecialchars($label) ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+          <div class="field">
             <label for="person-tc-no">T.C. Kimlik No</label>
             <input type="text" id="person-tc-no" name="tc_no" placeholder="12345678901" maxlength="11">
           </div>
@@ -93,6 +119,15 @@ require __DIR__ . '/partials/_header.php';
           <div class="field">
             <label for="person-address">Adres</label>
             <textarea id="person-address" name="address" rows="2" placeholder="Mahalle, sokak, no, ilçe/il"></textarea>
+          </div>
+          <div class="field">
+            <label for="person-notes">Not</label>
+            <textarea id="person-notes" name="notes" rows="2" placeholder="Bu kişiyle ilgili hatırlatma notu (opsiyonel)"></textarea>
+          </div>
+          <div class="field">
+            <label>Ek Adresler <span class="field-hint">(opsiyonel, birden fazla adres eklenebilir)</span></label>
+            <div id="person-extra-addresses"></div>
+            <button type="button" class="accent-link" id="person-add-address-row">+ Adres Ekle</button>
           </div>
           <button type="submit" class="download-btn" style="width:100%;">Kaydet</button>
         </form>
