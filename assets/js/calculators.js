@@ -50,29 +50,27 @@
     return parts.join(' ');
   }
 
-  function renderResult(amountText, label, breakdownLines, notes, ctaHtml) {
-    var html = '<div class="calc-result-box">';
-    html += '<div class="calc-result-label">' + label + '</div>';
-    html += '<div class="calc-result-amount">' + amountText + '</div>';
-    if (breakdownLines && breakdownLines.length) {
-      html += '<ul class="calc-result-breakdown">';
-      breakdownLines.forEach(function (line) { html += '<li>' + line + '</li>'; });
-      html += '</ul>';
-    }
+  function renderResult(rows, highlightRow, label, notes, ctaHtml) {
+    var html = '<div class="calc-result-panel">';
+    html += '<div class="calc-result-title">' + label + '</div>';
+    html += '<table class="calc-result-table">';
+    rows.forEach(function (r) {
+      html += '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>';
+    });
+    html += '<tr class="calc-result-highlight"><td>' + highlightRow[0] + '</td><td>' + highlightRow[1] + '</td></tr>';
+    html += '</table>';
     if (notes && notes.length) {
-      notes.forEach(function (note) {
-        html += '<p class="calc-result-note">' + note + '</p>';
-      });
+      html += '<div class="calc-result-notes">';
+      notes.forEach(function (note) { html += '<p class="calc-result-note">' + note + '</p>'; });
+      html += '</div>';
     }
     if (ctaHtml) html += ctaHtml;
     html += '</div>';
     resultEl.innerHTML = html;
-    resultEl.hidden = false;
   }
 
   function renderError(message) {
-    resultEl.innerHTML = '<div class="calc-result-error">' + message + '</div>';
-    resultEl.hidden = false;
+    resultEl.innerHTML = '<div class="calc-result-panel"><div class="calc-result-error">' + message + '</div></div>';
   }
 
   function calcKidemTazminati() {
@@ -103,14 +101,15 @@
     }
     notes.push('Bu hesaplama bilgilendirme amaçlıdır, kesin tutar için bir uzmana danışmanı öneririz.');
 
-    var breakdown = [
-      'Toplam çalışma süresi: ' + yearsMonthsDaysText(days),
-      'Günlük brüt ücret (tavan uygulanmış): ' + formatCurrencyTry(dailyWageCapped)
+    var rows = [
+      ['Toplam çalışma süresi', yearsMonthsDaysText(days)],
+      ['Günlük brüt ücret (tavan uygulanmış)', formatCurrencyTry(dailyWageCapped)]
     ];
+    var highlight = [config.resultLabel || 'Sonuç', formatCurrencyTry(Math.max(amount, 0))];
 
     var cta = '<a href="sablon.php?slug=' + (reason === 'istifa-siradan' || reason === 'istifa-hakli' ? 'istifa-dilekcesi' : 'fesih-dilekcesi') + '" class="calc-result-cta">' + (reason === 'istifa-siradan' || reason === 'istifa-hakli' ? 'İstifa Dilekçesi Hazırla' : 'Fesih Dilekçesi Hazırla') + ' →</a>';
 
-    renderResult(formatCurrencyTry(Math.max(amount, 0)), config.resultLabel || 'Sonuç', breakdown, notes, cta);
+    renderResult(rows, highlight, 'Hesaplama Sonucu', notes, cta);
   }
 
   function calcIhbarSuresi() {
@@ -129,17 +128,17 @@
     else if (days < 1095) weeks = 6;
     else weeks = 8;
 
-    var breakdown = ['Toplam çalışma süresi: ' + yearsMonthsDaysText(days)];
+    var rows = [['Toplam çalışma süresi', yearsMonthsDaysText(days)]];
     var notes = ['Bu hesaplama bilgilendirme amaçlıdır, kesin durum için bir uzmana danışmanı öneririz.'];
-    var amountText = weeks + ' hafta';
 
     if (salaryRaw && !isNaN(salary) && salary > 0) {
       var amount = (weeks * 7 / 30) * salary;
-      breakdown.push('Yaklaşık ihbar tazminatı: ' + formatCurrencyTry(amount));
+      rows.push(['Yaklaşık ihbar tazminatı', formatCurrencyTry(amount)]);
     }
 
+    var highlight = [config.resultLabel || 'Sonuç', weeks + ' hafta'];
     var cta = '<a href="sablon.php?slug=fesih-dilekcesi" class="calc-result-cta">Fesih Dilekçesi Hazırla →</a>';
-    renderResult(amountText, config.resultLabel || 'Sonuç', breakdown, notes, cta);
+    renderResult(rows, highlight, 'Hesaplama Sonucu', notes, cta);
   }
 
   function calcYillikIzin() {
@@ -171,9 +170,10 @@
       notes.push('18 yaş altı / 50 yaş üstü çalışanlar için izin süresi en az 20 gün olarak uygulandı.');
     }
 
-    var breakdown = ['Toplam çalışma süresi: ' + yearsMonthsDaysText(days)];
+    var rows = [['Toplam çalışma süresi', yearsMonthsDaysText(days)]];
+    var highlight = [config.resultLabel || 'Sonuç', result + ' gün'];
     var cta = '<a href="sablon.php?slug=izin-talep-dilekcesi" class="calc-result-cta">İzin Talep Dilekçesi Hazırla →</a>';
-    renderResult(result + ' gün', config.resultLabel || 'Sonuç', breakdown, notes, cta);
+    renderResult(rows, highlight, 'Hesaplama Sonucu', notes, cta);
   }
 
   var dispatch = {

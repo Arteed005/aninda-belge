@@ -60,7 +60,16 @@ $__breadcrumbJsonLd = [
     </div>
 
     <div>
-      <div id="calc-result" class="calc-result" aria-live="polite" hidden></div>
+      <div id="calc-result" class="calc-result" aria-live="polite">
+        <div class="calc-result-panel">
+          <div class="calc-result-placeholder">
+            <div class="calc-result-placeholder-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"></rect><line x1="8" y1="7.5" x2="16" y2="7.5"></line><line x1="8" y1="12" x2="10.2" y2="12"></line><line x1="13.8" y1="12" x2="16" y2="12"></line><line x1="8" y1="15.7" x2="10.2" y2="15.7"></line><line x1="13.8" y1="15.7" x2="16" y2="15.7"></line></svg>
+            </div>
+            <p>Bilgilerini gir ve "Hesapla"ya bas, sonucu burada göreceksin.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
