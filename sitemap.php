@@ -4,7 +4,7 @@ require_once __DIR__ . '/bootstrap.php';
 header('Content-Type: application/xml; charset=utf-8');
 
 $urls = [
-    ['loc' => SITE_URL . '/index.php', 'priority' => '1.0'],
+    ['loc' => SITE_URL . '/', 'priority' => '1.0'],
     ['loc' => SITE_URL . '/giris.php', 'priority' => '0.5'],
 ];
 
