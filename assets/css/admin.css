@@ -348,6 +348,12 @@
 .admin-badge-neutral { background: oklch(92% 0.004 240); color: oklch(48% 0.02 260); }
 .admin-badge-warning { background: oklch(92% 0.09 85); color: oklch(42% 0.1 70); }
 
+.admin-package-form { display: inline-block; }
+.admin-package-select {
+  font-size: 12.5px; font-weight: 600; padding: 5px 8px; border-radius: 8px;
+  border: 1px solid oklch(88% 0.006 240); background: #fff; color: oklch(30% 0.02 260); cursor: pointer;
+}
+
 /* Avatars with name */
 .admin-person { display: flex; align-items: center; gap: 10px; }
 .admin-person-list { display: flex; flex-direction: column; gap: 4px; }

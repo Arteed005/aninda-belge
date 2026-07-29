@@ -19,12 +19,17 @@ if (!csrf_check($_POST['csrf_token'] ?? null)) {
 $id = (int) ($_POST['id'] ?? 0);
 $action = $_POST['action'] ?? '';
 
-if ($id > 0 && $action === 'toggle_premium') {
-    toggleUserPremium($id);
-    $_SESSION['flash_notice'] = 'Müşterinin premium durumu güncellendi.';
-} elseif ($id > 0 && $action === 'toggle_emlak') {
-    togglePackageForUser($id, 'emlak');
-    $_SESSION['flash_notice'] = 'Müşterinin emlak paketi durumu güncellendi.';
+$validPackages = ['ucretsiz', 'premium', 'emlak'];
+
+if ($id > 0 && $action === 'set_package') {
+    $package = $_POST['package'] ?? '';
+    if (in_array($package, $validPackages, true)) {
+        // Emlak paketi Premium'un tüm avantajlarını da kapsar, bu yüzden
+        // emlak seçilince is_premium de birlikte açılır.
+        setUserPremium($id, $package === 'premium' || $package === 'emlak');
+        setPackageForUser($id, 'emlak', $package === 'emlak');
+        $_SESSION['flash_notice'] = 'Müşterinin paketi güncellendi.';
+    }
 } elseif ($id > 0 && $action === 'delete') {
     if ($id === $adminUser['id']) {
         $_SESSION['flash_notice'] = 'Kendi hesabınızı buradan silemezsiniz.';

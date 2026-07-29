@@ -6,9 +6,10 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 
 /**
- * Premium kullanıcılar (users.is_premium) filigransız indirir. Premium durumu
- * şu an admin panelinden manuel olarak (toggleUserPremium()) işaretleniyor —
- * gerçek ödeme akışı henüz yok (bkz. premium.php).
+ * Premium kullanıcılar (users.is_premium) filigransız indirir. Premium ve
+ * Emlak paketi Shopier üzerinden satın alınabilir (bkz. premium.php,
+ * lib/Shopier.php) ya da admin panelinden (admin/musteriler.php) manuel
+ * atanabilir — Emlak paketi de her zaman is_premium'ı birlikte açar.
  */
 function shouldWatermark(?array $user = null): bool
 {

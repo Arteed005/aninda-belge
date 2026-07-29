@@ -268,6 +268,7 @@ function mapCustomerRow(array $row, int $index): array
     $expiresAt = $row['premium_expires_at'] ?? null;
     $isPremium = (bool) ($row['is_premium'] ?? false) && ($expiresAt === null || strtotime($expiresAt) > time());
     $isEmlak = in_array('emlak', getActivePackagesForUser((int) $row['id']), true);
+    $package = $isEmlak ? 'emlak' : ($isPremium ? 'premium' : 'ucretsiz');
     return [
         'id' => (int) $row['id'],
         'name' => $row['name'],
@@ -278,6 +279,7 @@ function mapCustomerRow(array $row, int $index): array
         'isPremium' => $isPremium,
         'premiumExpiresAt' => $isPremium && $expiresAt !== null ? (new DateTime($expiresAt))->format('d M Y') : null,
         'isEmlak' => $isEmlak,
+        'package' => $package,
         'isVerified' => !empty($row['email_verified_at']),
         'since' => (new DateTime($row['created_at']))->format('d M Y'),
     ];
@@ -373,10 +375,10 @@ function deleteDocumentAdmin(int $id): void
     $stmt->execute(['id' => $id]);
 }
 
-function toggleUserPremium(int $userId): void
+function setUserPremium(int $userId, bool $active): void
 {
-    $stmt = getPDO()->prepare('UPDATE users SET is_premium = NOT is_premium, premium_expires_at = NULL WHERE id = :id');
-    $stmt->execute(['id' => $userId]);
+    $stmt = getPDO()->prepare('UPDATE users SET is_premium = :active, premium_expires_at = NULL WHERE id = :id');
+    $stmt->execute(['active' => $active ? 1 : 0, 'id' => $userId]);
 }
 
 function getShopierPaymentCount(): int

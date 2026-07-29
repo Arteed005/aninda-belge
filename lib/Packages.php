@@ -37,11 +37,10 @@ function getPackageExpiryForUser(int $userId, string $package): ?string
     return $row ? $row['expires_at'] : null;
 }
 
-function togglePackageForUser(int $userId, string $package): void
+function setPackageForUser(int $userId, string $package, bool $active): void
 {
     $pdo = getPDO();
-    $active = in_array($package, getActivePackagesForUser($userId), true);
-    if ($active) {
+    if (!$active) {
         $stmt = $pdo->prepare('DELETE FROM user_packages WHERE user_id = :user_id AND package = :package');
         $stmt->execute(['user_id' => $userId, 'package' => $package]);
         return;
