@@ -13,9 +13,9 @@ $allPersons = [];
 $ownersByProperty = [];
 if ($isEmlak) {
     $properties = getPropertiesForUser($user['id']);
-    $allPersons = getPersonsForUser($user['id']);
+    $allPersons = PERSONS_FEATURE_ENABLED ? getPersonsForUser($user['id']) : [];
     foreach ($properties as $prop) {
-        $ownersByProperty[$prop['id']] = getPropertyOwners((int) $prop['id']);
+        $ownersByProperty[$prop['id']] = PERSONS_FEATURE_ENABLED ? getPropertyOwners((int) $prop['id']) : [];
     }
 }
 
@@ -41,7 +41,7 @@ require __DIR__ . '/partials/_header.php';
       <button type="button" class="download-btn person-add-btn" data-open-property-modal>+ Yeni Taşınmaz Ekle</button>
     </div>
 
-    <?php if (empty($allPersons)): ?>
+    <?php if (PERSONS_FEATURE_ENABLED && empty($allPersons)): ?>
       <div class="category-empty-sub" style="margin-bottom:16px;">İpucu: önce <a href="kisilerim.php" class="accent-link">Kişilerim</a>'e sahip bilgilerini eklersen, taşınmaza sahip atayabilirsin.</div>
     <?php endif; ?>
 
@@ -93,6 +93,7 @@ require __DIR__ . '/partials/_header.php';
           <div class="field"><label for="property-title">Başlık</label>
             <input type="text" id="property-title" name="title" required placeholder="Örn: Kadıköy 2+1 Daire"></div>
 
+          <?php if (PERSONS_FEATURE_ENABLED): ?>
           <div class="field"><label>Sahip(ler)</label>
             <div class="person-multiselect" id="property-owners-list">
               <?php foreach ($allPersons as $p): ?>
@@ -103,6 +104,11 @@ require __DIR__ . '/partials/_header.php';
               <?php endforeach; ?>
             </div>
           </div>
+          <?php else: ?>
+          <div class="field"><label>Sahip(ler)</label>
+            <p class="category-empty-sub" style="margin:0;">🔒 Kişilerim özelliği geçici olarak kullanım dışı olduğu için sahip atanamıyor.</p>
+          </div>
+          <?php endif; ?>
 
           <div class="field-row">
             <div class="field"><label for="property-province">İl</label><input type="text" id="property-province" name="province"></div>

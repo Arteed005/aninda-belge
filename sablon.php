@@ -159,7 +159,7 @@ $__breadcrumbJsonLd = [
                         continue;
                     }
                     $personGroup = $personGroupsByAnchor[$fieldName] ?? null;
-                    if ($personGroup !== null):
+                    if ($personGroup !== null && PERSONS_FEATURE_ENABLED):
                         if ($isPremium): ?>
                           <div class="person-picker-row">
                             <select class="person-picker-select" data-map='<?= htmlspecialchars(json_encode($personGroup['map'], JSON_UNESCAPED_UNICODE)) ?>'>
@@ -169,7 +169,9 @@ $__breadcrumbJsonLd = [
                         <?php else: ?>
                           <div class="person-picker-locked">🔒 Premium ile <?= htmlspecialchars(mb_strtolower($personGroup['label'], 'UTF-8')) ?> bilgilerini Kişilerim'den tek tıkla doldurabilirsin. <a href="premium.php">Premium'a Geç →</a></div>
                         <?php endif;
-                    endif;
+                    elseif ($personGroup !== null && $isPremium): ?>
+                      <div class="person-picker-locked">🔒 Bu özellik geçici olarak kullanım dışı.</div>
+                    <?php endif;
                     $propertyGroup = $propertyGroupsByAnchor[$fieldName] ?? null;
                     if ($propertyGroup !== null):
                         if ($isEmlak): ?>
@@ -271,7 +273,7 @@ $__breadcrumbJsonLd = [
 
 <script type="application/json" id="tpl-config"><?= json_encode($config, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?></script>
 <script src="/assets/js/live-preview.js"></script>
-<?php if ($isPremium && !empty($config['personGroups'])): ?>
+<?php if ($isPremium && PERSONS_FEATURE_ENABLED && !empty($config['personGroups'])): ?>
 <script src="/assets/js/person-picker.js"></script>
 <?php endif; ?>
 <?php if ($isEmlak && !empty($config['propertyGroups'])): ?>
