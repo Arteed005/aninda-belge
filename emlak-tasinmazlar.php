@@ -7,11 +7,11 @@ if (!$user) {
     exit;
 }
 
-$isPremium = !empty($user['is_premium']);
+$isEmlak = !empty($user['is_emlak']);
 $properties = [];
 $allPersons = [];
 $ownersByProperty = [];
-if ($isPremium) {
+if ($isEmlak) {
     $properties = getPropertiesForUser($user['id']);
     $allPersons = getPersonsForUser($user['id']);
     foreach ($properties as $prop) {
@@ -29,11 +29,11 @@ require __DIR__ . '/partials/_header.php';
     <p>Kiraya verdiğin/sattığın taşınmazları kaydet, belge oluştururken tek tıkla doldur.</p>
   </div>
 
-  <?php if (!$isPremium): ?>
+  <?php if (!$isEmlak): ?>
     <div class="category-empty">
-      <p class="category-empty-title">Bu özellik Premium üyelere özel</p>
-      <p class="category-empty-sub">Premium ile kayıtlı taşınmazlarınızı tek tıkla belgelere doldurabilirsiniz.</p>
-      <p class="category-empty-sub"><a href="premium.php" class="accent-link">Premium'a Geç →</a></p>
+      <p class="category-empty-title">Bu özellik Emlak paketine özel</p>
+      <p class="category-empty-sub">Emlak paketiyle kayıtlı taşınmazlarınızı tek tıkla belgelere doldurabilirsiniz.</p>
+      <p class="category-empty-sub"><a href="premium.php#emlak" class="accent-link">Emlak Paketine Geç →</a></p>
     </div>
   <?php else: ?>
     <div class="persons-toolbar">

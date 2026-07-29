@@ -17,7 +17,7 @@ if (!csrf_check($_POST['csrf_token'] ?? null)) {
     exit('Geçersiz istek, lütfen formu yeniden gönderin.');
 }
 
-if (empty($user['is_premium'])) {
+if (empty($user['is_emlak'])) {
     header('Location: emlak-tasinmazlar.php');
     exit;
 }

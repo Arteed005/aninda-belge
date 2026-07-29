@@ -267,6 +267,7 @@ function mapCustomerRow(array $row, int $index): array
 {
     $expiresAt = $row['premium_expires_at'] ?? null;
     $isPremium = (bool) ($row['is_premium'] ?? false) && ($expiresAt === null || strtotime($expiresAt) > time());
+    $isEmlak = in_array('emlak', getActivePackagesForUser((int) $row['id']), true);
     return [
         'id' => (int) $row['id'],
         'name' => $row['name'],
@@ -276,6 +277,7 @@ function mapCustomerRow(array $row, int $index): array
         'docCount' => (int) $row['doc_count'],
         'isPremium' => $isPremium,
         'premiumExpiresAt' => $isPremium && $expiresAt !== null ? (new DateTime($expiresAt))->format('d M Y') : null,
+        'isEmlak' => $isEmlak,
         'isVerified' => !empty($row['email_verified_at']),
         'since' => (new DateTime($row['created_at']))->format('d M Y'),
     ];
@@ -382,19 +384,29 @@ function getShopierPaymentCount(): int
     return (int) getPDO()->query('SELECT COUNT(*) FROM shopier_processed_orders')->fetchColumn();
 }
 
+function shopierPackagePriceSql(): string
+{
+    return 'CASE package WHEN \'emlak\' THEN ' . (int) EMLAK_PRICE_TRY . ' ELSE ' . (int) PREMIUM_PRICE_TRY . ' END';
+}
+
 function getShopierPaymentKpis(): array
 {
     $pdo = getPDO();
+    $priceSql = shopierPackagePriceSql();
     $total = (int) $pdo->query('SELECT COUNT(*) FROM shopier_processed_orders')->fetchColumn();
     $thisMonth = (int) $pdo->query(
         "SELECT COUNT(*) FROM shopier_processed_orders WHERE created_at >= DATE_FORMAT(NOW(), '%Y-%m-01')"
+    )->fetchColumn();
+    $totalRevenue = (int) $pdo->query("SELECT COALESCE(SUM($priceSql), 0) FROM shopier_processed_orders")->fetchColumn();
+    $thisMonthRevenue = (int) $pdo->query(
+        "SELECT COALESCE(SUM($priceSql), 0) FROM shopier_processed_orders WHERE created_at >= DATE_FORMAT(NOW(), '%Y-%m-01')"
     )->fetchColumn();
 
     return [
         ['label' => 'Toplam Ödeme', 'value' => number_format($total, 0, ',', '.')],
         ['label' => 'Bu Ay', 'value' => number_format($thisMonth, 0, ',', '.')],
-        ['label' => 'Toplam Tahmini Gelir', 'value' => '₺' . number_format($total * PREMIUM_PRICE_TRY, 0, ',', '.')],
-        ['label' => 'Bu Ay Tahmini Gelir', 'value' => '₺' . number_format($thisMonth * PREMIUM_PRICE_TRY, 0, ',', '.')],
+        ['label' => 'Toplam Tahmini Gelir', 'value' => '₺' . number_format($totalRevenue, 0, ',', '.')],
+        ['label' => 'Bu Ay Tahmini Gelir', 'value' => '₺' . number_format($thisMonthRevenue, 0, ',', '.')],
     ];
 }
 
@@ -441,7 +453,7 @@ function getShopierPaymentsPaginated(int $page, int $perPage = ADMIN_PAYMENTS_PE
     $pdo = getPDO();
     $offset = max(0, ($page - 1) * $perPage);
     $stmt = $pdo->prepare(
-        'SELECT o.order_id, o.created_at, u.name, u.email
+        'SELECT o.order_id, o.created_at, o.package, u.name, u.email
          FROM shopier_processed_orders o
          JOIN users u ON u.id = o.user_id
          ORDER BY o.created_at DESC
@@ -450,11 +462,13 @@ function getShopierPaymentsPaginated(int $page, int $perPage = ADMIN_PAYMENTS_PE
     $stmt->bindValue('limit', $perPage, PDO::PARAM_INT);
     $stmt->bindValue('offset', $offset, PDO::PARAM_INT);
     $stmt->execute();
-    return array_map(static function (array $row): array {
+    $packageLabels = ['premium' => 'Premium', 'emlak' => 'Emlak'];
+    return array_map(static function (array $row) use ($packageLabels): array {
         return [
             'orderId' => $row['order_id'],
             'name' => $row['name'],
             'email' => $row['email'],
+            'package' => $packageLabels[$row['package']] ?? ucfirst($row['package']),
             'date' => (new DateTime($row['created_at']))->format('d M Y H:i'),
         ];
     }, $stmt->fetchAll());

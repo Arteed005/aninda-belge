@@ -22,6 +22,9 @@ $action = $_POST['action'] ?? '';
 if ($id > 0 && $action === 'toggle_premium') {
     toggleUserPremium($id);
     $_SESSION['flash_notice'] = 'Müşterinin premium durumu güncellendi.';
+} elseif ($id > 0 && $action === 'toggle_emlak') {
+    togglePackageForUser($id, 'emlak');
+    $_SESSION['flash_notice'] = 'Müşterinin emlak paketi durumu güncellendi.';
 } elseif ($id > 0 && $action === 'delete') {
     if ($id === $adminUser['id']) {
         $_SESSION['flash_notice'] = 'Kendi hesabınızı buradan silemezsiniz.';

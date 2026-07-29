@@ -22,6 +22,7 @@ require_once __DIR__ . '/lib/Validator.php';
 require_once __DIR__ . '/lib/Documents.php';
 require_once __DIR__ . '/lib/Persons.php';
 require_once __DIR__ . '/lib/Properties.php';
+require_once __DIR__ . '/lib/Packages.php';
 require_once __DIR__ . '/lib/Pdf.php';
 require_once __DIR__ . '/lib/Auth.php';
 require_once __DIR__ . '/lib/Mailer.php';

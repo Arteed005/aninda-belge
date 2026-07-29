@@ -42,13 +42,14 @@ require __DIR__ . '/_layout_top.php';
     <div class="admin-empty">Henüz ödeme yok.</div>
   <?php else: ?>
     <div class="admin-table-head admin-cols-payments">
-      <div>Sipariş No</div><div>Müşteri</div><div>E-posta</div><div>Tarih</div>
+      <div>Sipariş No</div><div>Müşteri</div><div>E-posta</div><div>Paket</div><div>Tarih</div>
     </div>
     <?php foreach ($payments as $p): ?>
       <div class="admin-table-row admin-cols-payments">
         <div class="admin-cell-strong"><?= htmlspecialchars($p['orderId']) ?></div>
         <div><?= htmlspecialchars($p['name']) ?></div>
         <div class="admin-cell-truncate admin-cell-muted"><?= htmlspecialchars($p['email']) ?></div>
+        <div><?= htmlspecialchars($p['package']) ?></div>
         <div class="admin-cell-date"><?= htmlspecialchars($p['date']) ?></div>
       </div>
     <?php endforeach; ?>
@@ -72,7 +73,7 @@ require __DIR__ . '/_layout_top.php';
 </div>
 
 <p style="font-size:13px; color:oklch(50% 0.02 260); margin-top:16px;">
-  Gelir rakamları, sabit ₺<?= PREMIUM_PRICE_TRY ?> üyelik fiyatı üzerinden tahmini olarak hesaplanıyor (gerçek tutar/ödeme yöntemi kaydı tutulmuyor). Kesin tutarlar için Shopier panelindeki "Siparişler" ve "Tahsilatlar" sekmelerine bakabilirsin.
+  Gelir rakamları, Premium için ₺<?= PREMIUM_PRICE_TRY ?>, Emlak paketi için ₺<?= EMLAK_PRICE_TRY ?> sabit fiyat üzerinden tahmini olarak hesaplanıyor (gerçek tutar/ödeme yöntemi kaydı tutulmuyor). Kesin tutarlar için Shopier panelindeki "Siparişler" ve "Tahsilatlar" sekmelerine bakabilirsin.
 </p>
 
 <?php require __DIR__ . '/_layout_bottom.php'; ?>

@@ -46,6 +46,9 @@ require __DIR__ . '/_layout_top.php';
           <?php else: ?>
             <span class="admin-badge admin-badge-neutral">Ücretsiz</span>
           <?php endif; ?>
+          <?php if ($c['isEmlak']): ?>
+            <span class="admin-badge admin-badge-success">Emlak</span>
+          <?php endif; ?>
         </div>
         <div>
           <?php if ($c['isVerified']): ?>
@@ -63,6 +66,13 @@ require __DIR__ . '/_layout_top.php';
               <input type="hidden" name="action" value="toggle_premium">
               <input type="hidden" name="return" value="musteriler.php?page=<?= $page ?>">
               <button type="submit"><?= $c['isPremium'] ? 'Premium Kaldır' : 'Premium Yap' ?></button>
+            </form>
+            <form method="post" action="musteri-islem.php">
+              <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrf_token()) ?>">
+              <input type="hidden" name="id" value="<?= $c['id'] ?>">
+              <input type="hidden" name="action" value="toggle_emlak">
+              <input type="hidden" name="return" value="musteriler.php?page=<?= $page ?>">
+              <button type="submit"><?= $c['isEmlak'] ? 'Emlak Kaldır' : 'Emlak Yap' ?></button>
             </form>
             <form method="post" action="musteri-islem.php" data-confirm="<?= htmlspecialchars($c['name']) ?> kalıcı olarak silinecek. Emin misiniz?">
               <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrf_token()) ?>">

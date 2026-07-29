@@ -39,6 +39,7 @@ foreach ($config['fields'] as $field) {
 
 $user = currentUser();
 $isPremium = !empty($user['is_premium']);
+$isEmlak = !empty($user['is_emlak']);
 $personGroupsByAnchor = [];
 foreach ($config['personGroups'] ?? [] as $group) {
     $anchorField = $group['map']['full_name'] ?? null;
@@ -171,14 +172,14 @@ $__breadcrumbJsonLd = [
                     endif;
                     $propertyGroup = $propertyGroupsByAnchor[$fieldName] ?? null;
                     if ($propertyGroup !== null):
-                        if ($isPremium): ?>
+                        if ($isEmlak): ?>
                           <div class="person-picker-row">
                             <select class="property-picker-select" data-map='<?= htmlspecialchars(json_encode($propertyGroup['map'], JSON_UNESCAPED_UNICODE)) ?>'>
                               <option value="">— <?= htmlspecialchars($propertyGroup['label']) ?>: Taşınmazlarımdan seç —</option>
                             </select>
                           </div>
                         <?php else: ?>
-                          <div class="person-picker-locked">🔒 Premium ile <?= htmlspecialchars(mb_strtolower($propertyGroup['label'], 'UTF-8')) ?> bilgilerini Taşınmazlarımdan tek tıkla doldurabilirsin. <a href="premium.php">Premium'a Geç →</a></div>
+                          <div class="person-picker-locked">🔒 Emlak paketiyle <?= htmlspecialchars(mb_strtolower($propertyGroup['label'], 'UTF-8')) ?> bilgilerini Taşınmazlarımdan tek tıkla doldurabilirsin. <a href="premium.php#emlak">Emlak Paketine Geç →</a></div>
                         <?php endif;
                     endif;
                     $val = $formValues[$fieldName] ?? '';
@@ -273,7 +274,7 @@ $__breadcrumbJsonLd = [
 <?php if ($isPremium && !empty($config['personGroups'])): ?>
 <script src="/assets/js/person-picker.js"></script>
 <?php endif; ?>
-<?php if ($isPremium && !empty($config['propertyGroups'])): ?>
+<?php if ($isEmlak && !empty($config['propertyGroups'])): ?>
 <script src="/assets/js/property-picker.js"></script>
 <?php endif; ?>
 

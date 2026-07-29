@@ -113,6 +113,8 @@ function currentUser(): ?array
     if ($row) {
         $row['is_premium'] = (bool) $row['is_premium']
             && ($row['premium_expires_at'] === null || strtotime($row['premium_expires_at']) > time());
+        $row['packages'] = getActivePackagesForUser((int) $row['id']);
+        $row['is_emlak'] = in_array('emlak', $row['packages'], true);
     }
     return $user = ($row ?: null);
 }
