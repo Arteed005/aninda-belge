@@ -1,6 +1,15 @@
 <?php
 
 define('RETENTION_DAYS_DEFAULT', 30);
+// KVKK riski nedeniyle geçici olarak kapatıldı (2026-07-29): "Kişilerim" özelliği
+// (persons tablosu — TC Kimlik No, telefon, e-posta, adres gibi üçüncü taraf
+// kişisel verilerini düz metin saklıyor) yeni veri girişine ve doldurma
+// entegrasyonlarına kapatıldı. false iken: Kişilerim menü linki gizlenir,
+// yeni kişi ekleme/düzenleme engellenir (var olan kayıtlar SİLİNMEZ, listelenip
+// silinebilir), sözleşmelerdeki "Kişilerim'den seç" ve taşınmaz sahibi
+// otomatik doldurma entegrasyonları devre dışı kalır. true'ya çevirmek özelliği
+// eski haline tamamen geri getirir — kod hiçbir yerde silinmedi.
+define('PERSONS_FEATURE_ENABLED', false);
 define('WATERMARK_DEFAULT', true);
 define('PREMIUM_DURATION_DAYS', 30);
 define('PREMIUM_PRICE_TRY', 99);

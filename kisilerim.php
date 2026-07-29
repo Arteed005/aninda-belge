@@ -35,8 +35,15 @@ require __DIR__ . '/partials/_header.php';
       <p class="category-empty-sub"><a href="premium.php" class="accent-link">Premium'a Geç →</a></p>
     </div>
   <?php else: ?>
+    <?php if (!PERSONS_FEATURE_ENABLED): ?>
+      <div class="category-empty-sub" style="margin-bottom:16px;">
+        ⚠️ Bu özellik geçici olarak kullanım dışı — yeni kişi eklenemiyor/düzenlenemiyor. Kayıtlı kişilerini görebilir ve silebilirsin.
+      </div>
+    <?php endif; ?>
     <div class="persons-toolbar">
-      <button type="button" class="download-btn person-add-btn" data-open-person-modal>+ Yeni Kişi Ekle</button>
+      <?php if (PERSONS_FEATURE_ENABLED): ?>
+        <button type="button" class="download-btn person-add-btn" data-open-person-modal>+ Yeni Kişi Ekle</button>
+      <?php endif; ?>
     </div>
 
     <?php if (empty($persons)): ?>
@@ -60,17 +67,19 @@ require __DIR__ . '/partials/_header.php';
             <?php if ($p['address']): ?><p class="person-card-line person-card-address"><?= htmlspecialchars($p['address']) ?></p><?php endif; ?>
             <?php if ($p['notes']): ?><p class="person-card-line person-card-notes"><?= htmlspecialchars($p['notes']) ?></p><?php endif; ?>
             <div class="person-card-actions">
-              <button type="button" class="person-edit-btn"
-                data-open-person-modal
-                data-person-id="<?= $p['id'] ?>"
-                data-person-name="<?= htmlspecialchars($p['full_name']) ?>"
-                data-person-type="<?= htmlspecialchars($p['person_type'] ?? '') ?>"
-                data-person-tc="<?= htmlspecialchars($p['tc_no'] ?? '') ?>"
-                data-person-phone="<?= htmlspecialchars($p['phone'] ?? '') ?>"
-                data-person-email="<?= htmlspecialchars($p['email'] ?? '') ?>"
-                data-person-address="<?= htmlspecialchars($p['address'] ?? '') ?>"
-                data-person-notes="<?= htmlspecialchars($p['notes'] ?? '') ?>"
-                data-person-addresses="<?= htmlspecialchars(json_encode($extraAddresses, JSON_UNESCAPED_UNICODE)) ?>">Düzenle</button>
+              <?php if (PERSONS_FEATURE_ENABLED): ?>
+                <button type="button" class="person-edit-btn"
+                  data-open-person-modal
+                  data-person-id="<?= $p['id'] ?>"
+                  data-person-name="<?= htmlspecialchars($p['full_name']) ?>"
+                  data-person-type="<?= htmlspecialchars($p['person_type'] ?? '') ?>"
+                  data-person-tc="<?= htmlspecialchars($p['tc_no'] ?? '') ?>"
+                  data-person-phone="<?= htmlspecialchars($p['phone'] ?? '') ?>"
+                  data-person-email="<?= htmlspecialchars($p['email'] ?? '') ?>"
+                  data-person-address="<?= htmlspecialchars($p['address'] ?? '') ?>"
+                  data-person-notes="<?= htmlspecialchars($p['notes'] ?? '') ?>"
+                  data-person-addresses="<?= htmlspecialchars(json_encode($extraAddresses, JSON_UNESCAPED_UNICODE)) ?>">Düzenle</button>
+              <?php endif; ?>
               <form method="post" action="kisi-islem.php" onsubmit="return confirm('Bu kişiyi silmek istediğine emin misin?');">
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrf_token()) ?>">
                 <input type="hidden" name="action" value="delete">
@@ -83,6 +92,7 @@ require __DIR__ . '/partials/_header.php';
       </div>
     <?php endif; ?>
 
+    <?php if (PERSONS_FEATURE_ENABLED): ?>
     <div class="modal-overlay hidden" id="person-modal">
       <div class="modal-box person-modal-box">
         <button type="button" class="modal-close" id="person-modal-close">✕</button>
@@ -133,9 +143,12 @@ require __DIR__ . '/partials/_header.php';
         </form>
       </div>
     </div>
+    <?php endif; ?>
   <?php endif; ?>
 </main>
 
+<?php if (PERSONS_FEATURE_ENABLED): ?>
 <script src="/assets/js/persons.js"></script>
+<?php endif; ?>
 
 <?php require __DIR__ . '/partials/_footer.php'; ?>

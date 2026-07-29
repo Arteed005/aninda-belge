@@ -84,7 +84,9 @@ $__ogImage = SITE_URL . '/assets/og-image.png';
       <?php if ($__user): ?>
         <span class="header-greeting">Merhaba, <?= htmlspecialchars(explode(' ', $__user['name'])[0]) ?></span>
         <a href="belgelerim.php" class="btn-ghost">Belgelerim</a>
-        <a href="kisilerim.php" class="btn-ghost">Kişilerim</a>
+        <?php if (PERSONS_FEATURE_ENABLED): ?>
+          <a href="kisilerim.php" class="btn-ghost">Kişilerim</a>
+        <?php endif; ?>
         <a href="emlak.php" class="btn-ghost">Emlak</a>
         <a href="cikis.php" class="btn-ghost">Çıkış Yap</a>
       <?php else: ?>

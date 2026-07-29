@@ -34,6 +34,12 @@ if ($action === 'delete') {
     exit;
 }
 
+if (($action === 'create' || $action === 'update') && !PERSONS_FEATURE_ENABLED) {
+    $_SESSION['flash_notice'] = 'Bu özellik geçici olarak kullanım dışı.';
+    header('Location: kisilerim.php');
+    exit;
+}
+
 $validPersonTypes = ['ev_sahibi', 'kiraci', 'alici', 'satici', 'genel'];
 
 if ($action === 'create' || $action === 'update') {

@@ -4,7 +4,7 @@ require_once __DIR__ . '/bootstrap.php';
 header('Content-Type: application/json; charset=utf-8');
 
 $user = currentUser();
-if (!$user || empty($user['is_premium'])) {
+if (!$user || empty($user['is_premium']) || !PERSONS_FEATURE_ENABLED) {
     echo json_encode([]);
     exit;
 }
