@@ -23,6 +23,7 @@ body {
   color: var(--navy);
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 .wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
