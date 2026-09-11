@@ -6,6 +6,8 @@ CREATE TABLE IF NOT EXISTS users (
   email_verified_at DATETIME NULL,
   verify_token_hash CHAR(64) NULL,
   verify_token_expires_at DATETIME NULL,
+  password_reset_token_hash CHAR(64) NULL,
+  password_reset_expires_at DATETIME NULL,
   is_premium TINYINT(1) NOT NULL DEFAULT 0,
   premium_expires_at DATETIME NULL,
   is_admin TINYINT(1) NOT NULL DEFAULT 0,

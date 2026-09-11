@@ -2,6 +2,7 @@
 
 define('REMEMBER_ME_DAYS', 30);
 define('VERIFY_TOKEN_TTL_HOURS', 24);
+define('PASSWORD_RESET_TOKEN_TTL_HOURS', 1);
 
 function registerUser(string $name, string $email, string $password): int
 {
@@ -134,6 +135,52 @@ function updateUserPassword(int $userId, string $newPassword): void
         'password_hash' => password_hash($newPassword, PASSWORD_DEFAULT),
         'id' => $userId,
     ]);
+}
+
+function generatePasswordResetToken(int $userId): string
+{
+    $token = bin2hex(random_bytes(32));
+    $stmt = getPDO()->prepare(
+        'UPDATE users SET password_reset_token_hash = :hash, password_reset_expires_at = :expires WHERE id = :id'
+    );
+    $stmt->execute([
+        'hash' => hash('sha256', $token),
+        'expires' => (new DateTime('+' . PASSWORD_RESET_TOKEN_TTL_HOURS . ' hours'))->format('Y-m-d H:i:s'),
+        'id' => $userId,
+    ]);
+    return $token;
+}
+
+function isPasswordResetTokenValid(string $token): bool
+{
+    if ($token === '') {
+        return false;
+    }
+    $stmt = getPDO()->prepare(
+        'SELECT id FROM users WHERE password_reset_token_hash = :hash AND password_reset_expires_at > NOW()'
+    );
+    $stmt->execute(['hash' => hash('sha256', $token)]);
+    return $stmt->fetch() !== false;
+}
+
+function resetPasswordWithToken(string $token, string $newPassword): bool
+{
+    if ($token === '') {
+        return false;
+    }
+    $stmt = getPDO()->prepare(
+        'UPDATE users
+         SET password_hash = :password_hash,
+             password_reset_token_hash = NULL,
+             password_reset_expires_at = NULL
+         WHERE password_reset_token_hash = :token_hash
+           AND password_reset_expires_at > NOW()'
+    );
+    $stmt->execute([
+        'password_hash' => password_hash($newPassword, PASSWORD_DEFAULT),
+        'token_hash' => hash('sha256', $token),
+    ]);
+    return $stmt->rowCount() === 1;
 }
 
 function logoutUser(): void

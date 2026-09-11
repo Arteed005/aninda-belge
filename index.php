@@ -107,7 +107,7 @@ require __DIR__ . '/partials/_header.php';
           <button type="button" class="chip-btn" data-chip="<?= htmlspecialchars($chip) ?>"><?= htmlspecialchars($chip) ?></button>
         <?php endforeach; ?>
       </div>
-      <p class="trust-line">SSL korumalı&nbsp; &middot; &nbsp;KVKK uyumlu&nbsp; &middot; &nbsp;10.000+ kullanıcı tarafından tercih ediliyor</p>
+      <p class="trust-line">Güvenli bağlantı&nbsp; &middot; &nbsp;Şeffaf veri saklama&nbsp; &middot; &nbsp;PDF olarak indir</p>
     </div>
   </div>
 </section>
@@ -220,7 +220,7 @@ require __DIR__ . '/partials/_header.php';
           <div class="how-badge">1</div>
         </div>
         <h3>Şablon Seç</h3>
-        <p>İhtiyacına uygun şablonu binlerce belge arasından seç</p>
+        <p>İhtiyacına uygun hazır şablonu seç</p>
       </div>
 
       <div class="how-step">

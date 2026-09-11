@@ -770,6 +770,9 @@ a { color: inherit; }
   box-shadow: 0 20px 48px rgba(26,43,74,0.1); padding: 40px 36px; animation: cardIn 380ms cubic-bezier(.22,.61,.36,1) both;
 }
 .auth-logo { height: 64px; width: auto; display: block; margin: 0 auto 28px; }
+.auth-title { font-size: 22px; font-weight: 800; color: var(--navy); text-align: center; margin: 0 0 8px; }
+.auth-description { color: var(--muted); font-size: 14px; line-height: 1.55; text-align: center; margin: 0 0 24px; }
+.form-notice { background: rgba(30,158,92,0.08); border: 1px solid rgba(30,158,92,0.2); border-radius: 10px; color: var(--accent-dark); font-size: 13.5px; line-height: 1.55; padding: 12px 14px; margin: 0 0 16px; }
 
 .auth-tabs { display: flex; border-bottom: 1px solid var(--border-light); margin-bottom: 28px; }
 .auth-tab {

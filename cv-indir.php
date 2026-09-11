@@ -45,7 +45,11 @@ $dompdf = buildFittedPdf(fn($scale) => renderResumePdfHtml($config, $resumeData,
 
 $clean['groups'] = $groupEntries;
 $clean['theme'] = $theme;
-saveDocument($user['id'] ?? null, $slug, $clean, $watermark);
+// Misafirlerin CV verileri yalnızca bu istekte PDF üretmek için kullanılır.
+// Kalıcı belge geçmişi yalnızca oturum açmış kullanıcılar içindir.
+if ($user !== null) {
+    saveDocument((int) $user['id'], $slug, $clean, $watermark);
+}
 
 $filename = $slug . '-' . date('Ymd-His') . '.pdf';
 $dompdf->stream($filename, ['Attachment' => true]);

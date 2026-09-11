@@ -40,7 +40,12 @@ $dompdf = buildFittedPdf(fn($scale) => renderPdfHtml($config, $renderedClauses, 
 
 $clean['extra_clauses'] = $extraClauses;
 $clean['clause_overrides'] = $clauseOverrides;
-saveDocument($user['id'] ?? null, $slug, $clean, $watermark);
+// Misafirlerin belge verileri yalnızca bu istekte PDF üretmek için kullanılır;
+// PDF akışı tamamlandığında veritabanına yazılmadan bellekten düşer.
+// Belgelerim alanı ve 30 günlük saklama yalnızca oturum açmış kullanıcılara sunulur.
+if ($user !== null) {
+    saveDocument((int) $user['id'], $slug, $clean, $watermark);
+}
 
 $filename = $slug . '-' . date('Ymd-His') . '.pdf';
 $dompdf->stream($filename, ['Attachment' => true]);

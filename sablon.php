@@ -200,6 +200,9 @@ $__breadcrumbJsonLd = [
 
           <div class="download-area">
             <p id="required-hint" class="required-hint">PDF indirmek için zorunlu alanları doldur.</p>
+            <?php if ($user === null): ?>
+              <p class="premium-hint">Misafir olarak oluşturduğun belge, PDF indirildikten sonra kaydedilmez ve yeniden düzenlenemez. <a href="giris.php#kayit" class="accent-link">Ücretsiz hesap oluştur</a>, belgen 30 gün boyunca Belgelerim'de kalsın.</p>
+            <?php endif; ?>
             <p class="premium-hint">Ücretsiz PDF'de küçük filigran bulunur. Filigransız indirme için <a href="premium.php" class="accent-link">Premium'a geç &rarr;</a></p>
           </div>
         </form>

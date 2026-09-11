@@ -161,7 +161,7 @@ require __DIR__ . '/partials/_header.php';
             <input type="checkbox" name="remember">
             Beni Hatırla
           </label>
-          <a href="#" class="auth-forgot">Şifremi Unuttum</a>
+          <a href="sifre-sifirla.php" class="auth-forgot">Şifremi Unuttum</a>
         </div>
         <button type="submit" class="auth-submit">Giriş Yap</button>
         <p class="auth-switch">Hesabın yok mu? <a href="#" data-tab-btn="kayit">Kayıt Ol</a></p>

@@ -116,3 +116,35 @@ HTML;
         $altBody
     );
 }
+
+function sendPasswordResetEmail(string $toEmail, string $toName, string $token): bool
+{
+    $resetUrl = baseUrl() . '/sifre-sifirla.php?token=' . urlencode($token);
+    $safeName = htmlspecialchars($toName);
+    $safeUrl = htmlspecialchars($resetUrl);
+    $ttlHours = PASSWORD_RESET_TOKEN_TTL_HOURS;
+
+    $bodyHtml = <<<HTML
+<p style="margin:0 0 16px;">Merhaba {$safeName},</p>
+<p style="margin:0 0 24px;">Anında Belge hesabının şifresini yenilemek için aşağıdaki butona tıklayabilirsin:</p>
+<p style="margin:0 0 28px;text-align:center;">
+  <a href="{$safeUrl}" style="display:inline-block;background:#1e9e5c;color:#ffffff;text-decoration:none;font-weight:bold;font-size:15px;padding:13px 30px;border-radius:10px;">Şifremi Yenile</a>
+</p>
+<p style="margin:0 0 8px;font-size:13px;color:#5b6b82;">Bu bağlantı {$ttlHours} saat boyunca geçerlidir ve yalnızca bir kez kullanılabilir.</p>
+<p style="margin:0;font-size:13px;color:#8b96a6;">Bu isteği sen yapmadıysan bu e-postayı yok sayabilirsin.</p>
+HTML;
+
+    $altBody = "Merhaba {$toName},\r\n\r\n"
+        . "Anında Belge hesabının şifresini yenilemek için aşağıdaki bağlantıya tıklayabilirsin:\r\n\r\n"
+        . $resetUrl . "\r\n\r\n"
+        . "Bu bağlantı " . PASSWORD_RESET_TOKEN_TTL_HOURS . " saat boyunca geçerlidir ve yalnızca bir kez kullanılabilir.\r\n\r\n"
+        . "Bu isteği sen yapmadıysan bu e-postayı yok sayabilirsin.\r\n\r\nAnında Belge";
+
+    return sendMail(
+        $toEmail,
+        $toName,
+        'Anında Belge - Şifre Yenileme',
+        renderEmailHtml($bodyHtml),
+        $altBody
+    );
+}
