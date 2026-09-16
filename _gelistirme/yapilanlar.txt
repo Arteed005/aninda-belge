@@ -1,5 +1,5 @@
 ANINDA BELGE — YAPILANLAR
-Son güncelleme: 2026-07-17 (SEO altyapısı, Google Analytics, git tabanlı deploy, CV Oluşturucu'nun bağımsız/çok şablonlu sayfaya taşınması)
+Son güncelleme: 2026-07-29 (Emlak ayrı ücretli paket + genel paket sistemi altyapısı)
 
 =================================================
 1) ORTAM KURULUMU
@@ -336,17 +336,419 @@ _gelistirme/tasarim-referans/  - Kullanıcının Claude Design ile hazırladığ
   akışını bir adım geciktirdi.
 
 =================================================
-8) SONRAKİ FAZ (HENÜZ YAPILMADI)
+8) DÖRT BEKLEYEN ÖZELLİK — TAMAMLANDI (2026-07-26)
 =================================================
-- Sabit madde metinlerinin kullanıcı tarafından düzenlenebilir olması (biz standart metni
-  verelim, kullanıcı silip yeniden yazabilsin) — daha önce planlanmıştı ama plan dosyası
-  (serialized-meandering-naur.md) birkaç kez başka planlarla ÜZERİNE YAZILDI, o yüzden
-  kayıtlı plan artık yok. Fikir hâlâ geçerli, bir sonraki oturumda yeniden planlanmalı.
-- Kullanıcı hesabına bağlı belge geçmişi (documents tablosu şu an user_id nullable
-  tutuyor ama arayüzde henüz gösterilmiyor).
-- Premium/filigran akışının aktive edilmesi (altyapı hazır, shouldWatermark() pasif).
-- CV'de bölümleri sürükle-bırak ile yeniden sıralama, çoklu sayfa desteği (şu an
-  tek sayfaya küçültme davranışı korunuyor) — bilinçli olarak bu turun kapsamı
-  dışında bırakıldı.
-- Modern CV temasındaki yan panel sayfa-sonu boşluğu (yukarıda "Bilinen küçük
-  kozmetik eksik" notuna bak).
+Önceki oturumda "Sonraki Faz" olarak listelenen 4 madde bu oturumda hayata geçirildi
+(plan dosyası: serialized-meandering-naur.md, faz faz onaylanıp push edildi):
+
+- Faz 1 — Kullanıcıya bağlı belge geçmişi: indir.php/cv-indir.php artık giriş yapmış
+  kullanıcıyı documents.user_id'ye gerçekten bağlıyor (önceden hep null geçiyordu).
+  Yeni belgelerim.php (kullanıcının kendi belge listesi) ve belge-indir.php (sahiplik
+  kontrollü yeniden indirme) eklendi. lib/Documents.php'ye getDocumentsForUser() /
+  getDocumentCountForUser() / getDocumentByIdForUser() eklendi.
+- Faz 2 — Düzenlenebilir standart madde metni: sablon.php'ye her maddenin yanına
+  "Düzenle" toggle'ı eklendi (clause_overrides[index] textarea). lib/ClauseRenderer.php
+  renderClauses() artık $overrides parametresi alıyor; override varsa placeholder
+  çözümlemesi yerine kullanıcının yazdığı literal metin kullanılıyor (Ek Madde'deki
+  literal-satır mantığıyla aynı). ÖNEMLİ: override'lar documents.form_data içinde
+  final metin olarak saklanıyor (custom_clauses gibi) — eski bir belge tekrar
+  görüntülendiğinde o günkü config değil, o günkü yazılan metin kullanılıyor.
+- Faz 3 — Premium aktivasyonu (altyapı): shouldWatermark() artık gerçekten
+  is_premium'a bakıyor. config/app.php'de WATERMARK_DEFAULT false'tan true'ya
+  çevrildi (canlı, kullanıcı onaylı bir davranış değişikliği — artık ücretsiz
+  kullanıcıların TÜM PDF'lerinde filigran var). Yeni premium.php bilgi/satış sayfası.
+  (Bu fazın gerçek ödeme kısmı aşağıdaki 10. bölümde tamamlandı.)
+- Faz 4 — CV sürükle-bırak sıralama + çoklu sayfa: assets/js/cv-builder.js'e native
+  HTML5 drag & drop eklendi (.resume-group-card sürüklenip bırakılınca DOM sırası
+  değişiyor, PHP tarafı form gönderiminde bracket-index'e değil DOM/gönderim sırasına
+  göre array oluşturduğu için ekstra bir backend değişikliği gerekmedi — doğrulandı).
+  templates/resume-shell-klasik.php ve -minimalist.php'ye break-inside:avoid /
+  break-after:avoid eklendi, artık çok girdili CV'ler girdi ortadan bölünmeden 2.
+  sayfaya taşabiliyor. Modern tema bu kapsamın dışında bırakıldı (kullanıcı onayıyla).
+
+=================================================
+9) SEO İÇERİĞİ, ERİŞİLEBİLİRLİK, PERFORMANS (2026-07-26)
+=================================================
+- GA4 + Search Console verisiyle trafik teşhisi yapıldı: gerçek trafiğin ~%97'sinin
+  bulut/veri-merkezi şehirlerinden (Ashburn, Boardman vb.) gelen bot trafiği olduğu,
+  organik görünürlüğün neredeyse sıfır olduğu (3 ayda 27 gösterim) tespit edildi.
+- sitemap.php ~/sitemap.xml olarak servis edilecek şekilde .htaccess rewrite eklendi,
+  Search Console'a gönderildi, 35 sayfa "Başarılı" olarak keşfedildi.
+- 26 şablonun HEPSİNE longDescription (2 paragraf) + faq (3-4 soru, FAQPage JSON-LD)
+  eklendi (templates/configs/*.json), sablon.php'de yeni .template-info/.template-faq
+  bölümleri render ediyor. kategori.php'ye her 4 kategori için tanıtım paragrafı eklendi.
+- Erişilebilirlik: PageSpeed Insights'ta "yetersiz kontrast" ve "linkler renkle ayırt
+  ediliyor" uyarıları (accent yeşilin #1e9e5c açık zeminde/beyaz metinde WCAG AA'yı
+  geçmemesi) düzeltildi — buton/rozet arka planları --accent-dark'a, --faint kullanan
+  küçük metinler --muted'a çekildi, footer linkine underline eklendi. Erişilebilirlik
+  skoru 87 → 100.
+- Performans: header logosu gerçek gösterim boyutuna (240x131, 24KB→9KB WebP + PNG
+  fallback <picture>) küçültüldü; .htaccess'teki tarayıcı önbellek süresi (önceden
+  sadece JS) CSS/görsel/font'lara genişletildi; Google Analytics (gtag.js) artık sayfa
+  açılır açılmaz değil, kullanıcı ilk etkileşiminde ya da en geç 4sn sonra yükleniyor
+  (mobildeki "kullanılmayan JavaScript" uyarısının asıl kaynağıydı). Sonuç: masaüstü
+  performans 96→100, mobil 83→91.
+
+=================================================
+10) SHOPIER ÖDEME ENTEGRASYONU — CANLI (2026-07-26)
+=================================================
+- Kullanıcı Shopier'de "anindabelge" adında ayrı bir dükkan açtı (mevcut "Opulento"
+  işiyle aynı hesap altında — kimlik/KYC tek hesaba bağlı olduğu için ayrı hesap
+  yerine ayrı dükkan çözümü kullanıldı) ve bir Kişisel Erişim Anahtarı (PAT) üretti.
+- Araştırma sonucu: Shopier'in REST API'sinde (api.shopier.com/v1, PAT ile Bearer
+  auth) bir "checkout/ödeme linki oluştur" endpoint'i YOK — kullanıcı Shopier'in
+  barındırdığı bir ürün ödeme sayfasına (dashboard'da manuel oluşturulan "Anında
+  Belge Premium Üyelik" ürünü, ₺49, ürün ID 49316659) yönlendiriliyor. Ödeme
+  tamamlanınca webhook (order.created) tetikleniyor.
+- Güvenlik deseni: webhook body'sine DOĞRUDAN GÜVENİLMİYOR (tam imza algoritması
+  dokümante edilmemişti) — sadece "şu sipariş ID'sine bak" tetikleyicisi olarak
+  kullanılıp, PAT ile GET /v1/orders/{id} üzerinden siparişin gerçek/güncel hali
+  (ödeme durumu, alıcı e-postası, ürün kalemi) doğrudan Shopier'den sorgulanıyor.
+- Yeni dosyalar: lib/Shopier.php (shopierApiGet, grantPremiumDays, idempotency
+  fonksiyonları), shopier-webhook.php (public endpoint), config/shopier.php
+  (gitignore'lu — PAT + ürün ID + ödeme URL'i, .example.php şablonu git'te).
+- users.premium_expires_at (DATETIME NULL) eklendi: her ödeme 30 gün premium süresi
+  veriyor (üst üste alımlarda süre uzuyor, grantPremiumDays() ile), admin panelden
+  manuel "Premium Yap" süresiz sayılıyor (NULL). currentUser() artık is_premium'u
+  süre bitmişse otomatik false döndürüyor (efektif hesaplama), shouldWatermark()
+  ve premium.php hiç değişmeden doğru çalışmaya devam ediyor.
+- shopier_processed_orders tablosu ile webhook idempotency sağlanıyor (aynı sipariş
+  ikinci kez gelirse süre yanlışlıkla tekrar uzamıyor) — birim testlerle doğrulandı
+  (grant/duplicate/no_match/wrong_product/unpaid/renewal senaryolarının hepsi).
+  Eşleşme bulunamayan siparişler error_log()'a düşüyor, admin elle düzeltebiliyor.
+- Webhook aboneliği POST /v1/webhooks ile kaydedildi (id: acd87626f979ecfe).
+  GERÇEK bir ₺49 test ödemesiyle uçtan uca doğrulandı: ödeme → webhook → sipariş
+  doğrulama → e-posta eşleşmesi → premium açılışı, hepsi otomatik ve sorunsuz işledi.
+- Admin panele yeni "Ödemeler" sekmesi (admin/odemeler.php) eklendi: KPI kartları
+  (toplam/bu ay ödeme sayısı, sabit ₺49 üzerinden tahmini gelir) + son 6 ayın ödeme
+  adedini gösteren bar grafik (raporlar.php'deki chart deseni yeniden kullanıldı) +
+  sipariş no/müşteri/e-posta/tarih listesi. Gerçek tutar/ödeme yöntemi Shopier'in
+  kendi panelinde kalıyor, burası sadece "hangi ödeme hangi kullanıcıya premium
+  açtı" eşleşmesini gösteriyor.
+- Ana sayfaya (index.php) "Popüler Şablonlar" ile "Nasıl Çalışır" arasına dikkat
+  çekici bir premium banner eklendi (gradient arka plan, ışıltı animasyonu, nabız
+  atan rozet, beyaz CTA butonu) — zaten premium olan kullanıcılara gösterilmiyor.
+
+=================================================
+11) SONRAKİ FAZ (HENÜZ YAPILMADI)
+=================================================
+- Modern CV temasındaki yan panel sayfa-sonu boşluğu (bkz. bölüm 7 — "Bilinen küçük
+  kozmetik eksik") ve Modern temanın çoklu sayfa desteği (bölüm 8/Faz 4'te bilinçli
+  olarak kapsam dışı bırakıldı).
+- Google Play Developer Console ve Apple Developer Console hesapları henüz alınmadı
+  ("ilerleyen zamanlarda" alınacak).
+- Mobil uygulama — Play/Apple hesapları alındıktan sonra başlanacak, henüz platform/
+  teknoloji (native/React Native/Flutter/webview) belirlenmedi.
+- Shopier ödemesinin kullanıcı eşleştirmesi alıcı e-postasına dayanıyor (Shopier'in
+  API'si özel bir referans/metadata alanı sunmuyor) — kullanıcı ödemede farklı bir
+  e-posta girerse otomatik eşleşmiyor, admin panelden elle "Premium Yap" gerekiyor.
+  Bilinçli bir MVP kararı, ileride daha sağlam bir çözüm gerekirse yeniden ele alınabilir.
+
+=================================================
+12) SEO — "NASIL YAZILIR" ARAMA NİYETİ HEDEFLEME (2026-07-26)
+=================================================
+- Teşhis: PageSpeed skorları (Performans/Erişilebilirlik/En İyi Uygulamalar/SEO
+  hepsi 100) ile organik trafik eksikliği farklı sorunlar olduğu netleşti. Google
+  aramasında sadece marka adıyla ("anında belge") görünüyoruz, "istifa dilekçesi
+  örneği" gibi jenerik/bilgi arama sorgularında ilk sayfada hiç yokuz — o sorguda
+  üst sıralar hukuk bürosu blogları ve kariyer siteleri (WebSearch ile doğrulandı).
+  Kullanıcının tespiti: sorun otorite/backlink kadar, "X nasıl yazılır" gibi
+  informational sorgulara hiç içerik/başlık sinyali vermememiz de — hiçbir şablon
+  config'inde "nasıl yazılır" ifadesi geçmiyordu.
+- sablon.php'nin <title> mantığı $config['seoTitle'] ?? $config['title'] şeklinde
+  güncellendi (opsiyonel alan, yoksa eskisi gibi çalışır — kategori/arama
+  listelerindeki kısa 'title' etiketine dokunulmadı, sadece sayfa <title>'ı).
+- 25 sözleşme/dilekçe config'inin (ozgecmis-cv hariç, CV ayrı akışta) HEPSİNE:
+  * "seoTitle": "{Belge} Örneği ve Nasıl Yazılır? – Ücretsiz Oluştur" tarzı,
+    arama niyetine uygun sayfa başlığı,
+  * faq dizisinin İLK sorusu olarak "{Belge} nasıl yazılır?" — o belgenin kendi
+    alanlarına özgü, gerçek/somut bir cevapla (jenerik metin değil).
+  eklendi. Bu FAQ zaten mevcut FAQPage JSON-LD şemasına dahil olduğu için Google
+  sonuçlarında açılır soru-cevap (rich snippet) olarak çıkma ihtimali de var.
+- Search Console'da doğrulanan bulgular: sitemap.xml/sitemap.php ikisi de
+  "Başarılı" durumda, 35 sayfa keşfedilmiş — teknik bir index sorunu YOK. Ama
+  Performans raporunda son 28 günde sadece 31 gösterim / 1 tıklama / ortalama
+  sıralama 74 — yani sayfalar index'li ama neredeyse hiç üst sıralarda değil
+  (otorite/içerik derinliği meselesi, teknik değil). Site haritası bugün
+  gönderildiği için birçok sayfa henüz hiç taranmamış ("Son tarama: Yok").
+- URL denetimi aracıyla 5 öncelikli sayfa (istifa-dilekcesi, kira-sozlesmesi,
+  is-sozlesmesi, vekaletname, ihtarname) için "Dizine Eklenmesini İste" manuel
+  olarak tetiklendi — günlük kota sınırlı olduğu için sadece en yüksek trafik
+  potansiyelli sayfalarla sınırlı tutuldu, kalan sayfalar sitemap üzerinden
+  doğal taramayla zamanla index'lenecek.
+- Sonraki adım (henüz yapılmadı): birkaç hafta sonra Search Console → Performans
+  → Sorgular'dan "nasıl yazılır" ve belge adı içeren sorgularda gösterim/tıklama
+  artışı olup olmadığını kontrol etmek. Daha büyük otorite kazanımı için
+  backlink ve bağımsız blog/rehber içeriği fikirleri konuşuldu ama henüz
+  uygulanmadı (kapsam dışı bırakıldı, istenirse ayrı bir iş olarak ele alınabilir).
+
+=================================================
+13) HESAPLAYICILAR + HUKUKİ REHBERLER — SEO İÇERİK GENİŞLEMESİ (2026-07-27/28)
+=================================================
+- Amaç: "nasıl yazılır" FAQ hedeflemesinin devamı olarak, jenerik/bilgi arama
+  niyetine (ör. "kıdem tazminatı nasıl hesaplanır") hitap eden, belge şablonu
+  olmayan iki yeni içerik türü eklendi. Nafaka hesaplayıcısı bilinçli olarak
+  KAPSAM DIŞI bırakıldı (hukuki doğruluk riski yüksek, çok değişkenli/hakim
+  takdirine bağlı bir hesap — yanlış sonuç itibar riski taşır).
+- Config-driven mimari mevcut şablon sistemiyle birebir aynı desende
+  genişletildi: templates/calculators/*.json + lib/CalculatorConfig.php
+  (kıdem-tazminati-hesaplama, ihbar-suresi-hesaplama, yillik-izin-hesaplama),
+  templates/guides/*.json + lib/GuideConfig.php (3 rehber makalesi). Yeni
+  sayfalar: hesapla.php (tekil hesaplayıcı), hesaplayicilar.php (liste),
+  rehber.php (tekil rehber), rehberler.php (liste). index.php, sitemap.php,
+  partials/_footer.php, assets/css/site.css güncellendi.
+- Hesap mantığı assets/js/calculators.js'te: kıdem tazminatı tavanı (1 Temmuz–
+  31 Aralık 2026 için ₺73.729,87, web'den doğrulandı), İş Kanunu md.17 ihbar
+  süresi kademeleri (2/4/6/8 hafta), md.53 yıllık izin kademeleri (14/20/26 gün).
+  ÖNEMLİ BAKIM NOTU: kıdem tavanı her Ocak ve Temmuz'da değişiyor —
+  templates/calculators/kidem-tazminati-hesaplama.json'daki constants.tavan
+  değeri güncellenmezse hesaplayıcı eski tavanı kullanmaya devam eder. Bunun
+  için RemoteTrigger ile Ocak 2027 ve Temmuz 2027'de otomatik çalışıp PR açan
+  (main'e doğrudan push etmeyen) iki kalıcı bulut routine'i kuruldu.
+- İlk tasarımda sonuç paneli sayfanın sağında, karmaşık/amatörce göründüğü
+  için ("sonuç sağda çok saçma bir yerde çıkıyor") eleştirildi -> renderResult()
+  tablo formatına (etiket/değer satırları + vurgulu son satır) çevrildi,
+  hesapla.php'de boş yerine anlamlı bir varsayılan yer tutucu durumu eklendi.
+  Node tabanlı birim testlerle + tarayıcı ekran görüntüsüyle doğrulanıp
+  push edildi.
+
+=================================================
+14) index.php TEMİZLİĞİ — KANONİK "/" URL'İNE GEÇİŞ (2026-07-27)
+=================================================
+- Search Console'da index.php ve / için duplicate content uyarısı görüldü.
+  index.php artık kanonik "/" adresine 301 yönlendiriyor; sitedeki TÜM
+  dahili href="index.php" (16 dosya), header('Location: index.php')
+  yönlendirmesi (3 dosya) ve JSON-LD breadcrumb'lardaki SITE_URL.'/index.php'
+  referansı (3 dosya) "/" kullanacak şekilde güncellendi — toplam 19 dosya.
+
+=================================================
+15) KAYITLI KİŞİLER — PREMIUM ÖZELLİĞİ (2026-07-28)
+=================================================
+- Amaç: Premium üyeliğin tek faydası filigran kaldırmaktı; bu özellik somut bir
+  "zaman kazandırma" değeri kattı. Premium kullanıcı sık kullandığı kişileri
+  (kiracı, ev sahibi, karşı taraf vb.) bir kere kaydedip sonraki her belgede
+  tek tıkla dolduruyor. Plan dosyası: serialized-meandering-naur.md.
+- Veritabanı: sql/migration-persons.sql (+ sql/schema.sql'e de eklendi) ile
+  yeni "persons" tablosu (id, user_id FK→users(id) ON DELETE CASCADE, full_name,
+  tc_no, phone, email, address, created_at, updated_at). Sabit kolon şeması
+  (EAV/JSON değil), documents/users ile aynı felsefe.
+- Yeni dosyalar: lib/Persons.php (lib/Documents.php'nin birebir sahiplik
+  deseni — her sorgu WHERE user_id=:user_id, ownership ihlalinde null/false
+  döner), kisilerim.php (liste + premium upsell), kisi-islem.php (POST CRUD,
+  CSRF + sunucu taraflı premium kontrolü), kisiler-api.php (GET JSON, sadece
+  giriş yapmış+premium kullanıcıya, user_id asla client'tan alınmıyor),
+  assets/js/persons.js (kisilerim.php modal yönetimi), assets/js/person-picker.js
+  (belge formlarındaki dropdown + otomatik doldurma).
+  Belge şablonu entegrasyonu: 25 config'in (CV hariç) hepsine opsiyonel
+  "personGroups" anahtarı eklendi (motor kodu değişmeden, config-driven).
+  sablon.php'de ilgili alanın üstüne premium kullanıcıya "Kişilerim'den seç"
+  dropdown'u, premium olmayana kilitli bir ipucu render ediliyor.
+- Kritik teknik keşif: assets/js/live-preview.js zaten [data-field]
+  elemanlarına DOMContentLoaded'da input/change listener'ı bağlıyor —
+  person-picker.js sadece .value'yu JS'le set edip dispatchEvent(new
+  Event('input',{bubbles:true})) çağırarak mevcut canlı önizleme ve wizard
+  "zorunlu alan" mantığına ekstra kod yazmadan entegre oldu. Kullanıcı
+  otomatik dolan alanı elle değiştirebiliyor (readonly/disabled yapılmadı).
+  .modal-overlay/.modal-box CSS'i (anasayfa "yakında" modalından) aynen
+  tekrar kullanıldı, yeni modal framework'ü eklenmedi. Bootstrap kullanılmadı
+  (site zaten Bootstrap kullanmıyor, mevcut site.css diline uyuldu).
+- Test: php -l tüm dosyalar, 25 config JSON geçerliliği, lib/Persons.php için
+  ownership/CRUD birim testi (başka user_id ile erişim denemesi null/false
+  döndüğü doğrulandı), premium/non-premium ekran görüntüleri, gerçek session
+  cookie'siyle fetch edilmiş HTML üzerinde window.fetch stub'lanarak
+  person-picker.js'in tam otomatik doldurma zincirinin uçtan uca çalıştığı
+  doğrulandı (test verileri ve test kullanıcısı sonradan silindi).
+  Tek commit olarak push edildi (522560f, 37 dosya). Migration phpMyAdmin
+  "İçe Aktar" ile production'da çalıştırıldı.
+
+=================================================
+16) EMLAK ÇALIŞMA ALANI — FAZ 1: TEMEL ALTYAPI (2026-07-28)
+=================================================
+- Amaç: Site artık sadece belge şablonu sunmuyor, küçük/orta emlak ofislerinin
+  günlük evrak işini hızlandıran bir "çalışma alanı" haline geliyor. Kullanıcı
+  12 maddelik detaylı bir spesifikasyon verdi; kapsam çok büyük olduğu için
+  (Kişiler, Taşınmazlar, belge entegrasyonu, belge önerileri, dashboard, hızlı
+  işlemler, belge kopyalama, 5 yeni belge şablonu) aşamalı teslime karar
+  verildi. Bu tur sadece Faz 1'i kapsıyor. Plan dosyası: serialized-meandering-naur.md.
+  FAZ 2 (henüz yapılmadı, ayrı onay bekliyor): Depozito Teslim Tutanağı, Ev
+  Teslim Tutanağı, Tahliye Taahhütnamesi, Demirbaş Listesi, Kiralanan Yer
+  Teslim Tutanağı şablonları (hiçbiri şu an mevcut değil) + belge oluşturulduktan
+  sonra otomatik "bunları da oluştur" öneri motoru. Dashboard'daki bu 3 hızlı
+  işlem butonu şimdilik "Yakında" rozetiyle pasif duruyor.
+- Kullanıcının "Kişiler" tanımı (Ev Sahibi/Kiracı/Alıcı/Satıcı/Genel Kişi tipi,
+  Not, çoklu adres) bir önceki bölümde teslim edilen "Kayıtlı Kişiler" ile aynı
+  kavramdı — paralel bir yapı kurmak yerine MEVCUT persons tablosu genişletildi
+  (person_type ENUM + notes kolonu eklendi, çoklu adres için ayrı
+  person_addresses tablosu kuruldu). kisilerim.php/kisi-islem.php/persons.js
+  bu alanları destekleyecek şekilde güncellendi (adres tekrarlı-liste UI'ı,
+  CV'nin experience[i][alan] bracket-index deseninden ilham alan basit bir
+  addresses[i][label]/addresses[i][address] deseniyle).
+- Yeni "properties" (Taşınmazlar) ve "property_owners" (çoklu sahiplik,
+  many-to-many junction) tabloları eklendi — sql/migration-persons-extend.sql
+  ve sql/migration-properties.sql (+ sql/schema.sql'e de eklendi). Sabit kolon
+  şeması (documents/persons ile aynı felsefe, EAV/JSON yok). property_owners'ın
+  kendi user_id'si yok — sahiplik properties.user_id ve persons.user_id
+  üzerinden transitif; emlak-tasinmaz-islem.php seçilen her person_id'yi
+  getPersonByIdForUser() ile doğruluyor (başkasının kişisi sahip olarak
+  atanamaz). İleride Araçlar/Firmalar/Çalışanlar eklenmek istenirse aynı desen
+  (yeni tablo + user_id + FK) tekrar kullanılabilir, mevcut şema değişmeden.
+- Yeni dosyalar: lib/Properties.php (lib/Persons.php'nin birebir CRUD/ownership
+  stili), emlak-tasinmazlar.php + emlak-tasinmaz-islem.php +
+  emlak-tasinmazlar-api.php (kisilerim.php/kisi-islem.php/kisiler-api.php'nin
+  birebir kopyası), assets/js/properties.js (modal aç/kapa),
+  assets/js/property-picker.js (assets/js/person-picker.js'in birebir mirror'ı
+  — fetch + data-map JSON + dispatchEvent(input/change), motor kodu
+  live-preview.js hiç değişmedi). emlak.php: Dashboard (bugünkü belge sayısı,
+  toplam taşınmaz/kişi, hızlı işlemler, son kullanılan belgeler/taşınmazlar/
+  kişiler) — auth+premium guard aynı desende. belge-kopyala.php: "Kopyala"
+  özelliği YENİ bir prefill mekanizması kurmadan, sablon.php'nin zaten
+  validasyon-hatası tekrar-doldurma için kullandığı
+  $_SESSION['form_values'][$slug] anahtarını documents.form_data'dan
+  doldurup sablon.php'ye yönlendiriyor (CV/resume belgeleri bu turda
+  kapsam dışı, cv-olustur.php ayrı bir akış kullandığı için).
+- sablon.php'ye personGroups'un yanına paralel bir propertyGroups mekanizması
+  eklendi (config'te "propertyGroups" anahtarı → alan önünde taşınmaz seçici/
+  kilit render → property-picker.js). Şu an sadece kira-sozlesmesi.json'da
+  aktif (ev sahibi bilgileri property'nin birincil sahibinden otomatik
+  düzleştirilip geliyor — emlak-tasinmazlar-api.php owner_full_name/owner_tc_no/
+  owner_address alanlarını taşınmaz JSON'una gömüyor). Diğer 24 şablona bu
+  turda eklenmedi (spesifikasyon zaten sadece kira sözleşmesi akışını
+  anlatıyor), ileride aynı desenle genişletilebilir.
+- Test: php -l tüm dosyalar, 25 config JSON geçerliliği, lib/Properties.php +
+  genişletilmiş lib/Persons.php için ownership/CRUD/çoklu-sahip/çoklu-adres
+  birim testi (cross-user erişim denemeleri null/false döndü, var olmayan
+  person_id ile sahip atama denemesi DB foreign key seviyesinde reddedildi —
+  savunma derinliği doğrulandı). Gerçek bir test kullanıcısıyla (geçici,
+  sonradan silindi) premium/non-premium HTTP durumları, dashboard/taşınmaz/
+  kişi sayfalarının PHP hatasız render edildiği, kira-sözleşmesi'nde taşınmaz
+  seçicisinin doğru data-map ile ve doğru DOM konumunda (adres alanının hemen
+  üstünde) render edildiği doğrulandı.
+
+=================================================
+17) EMLAK — AYRI ÜCRETLİ PAKET + GENEL PAKET SİSTEMİ (2026-07-29)
+=================================================
+- Amaç: Emlak Çalışma Alanı, tekli Premium'un bir parçası olmaktan çıkıp
+  kendi fiyatı olan ayrı bir "paket" haline getirildi. Kullanıcının vizyonu:
+  bundan sonra eklenecek her büyük modül aynı kalıpla ayrı paket olacak —
+  bu yüzden tek seferlik değil, genel bir çoklu-paket altyapısı kuruldu.
+  Plan dosyası: serialized-meandering-naur.md.
+- Netleşen ürün kararları: Kişiler (kisilerim.php) Premium'da KALDI — 25
+  şablonun hepsinde herkes kullanmaya devam ediyor. Sadece Taşınmazlar
+  modülü + Emlak dashboard'u (emlak.php) + kira sözleşmesindeki taşınmaz
+  seçici Emlak paketine özel oldu. Emlak fiyatı ₺240/ay, Premium'un (₺99/ay)
+  tüm avantajlarını da kapsıyor (satın alınca hem premium hem emlak paketi
+  birlikte açılıyor). Shopier'de Emlak ürünü henüz oluşturulmadı — config'te
+  SHOPIER_EMLAK_PRODUCT_ID/SHOPIER_EMLAK_PAYMENT_URL boş placeholder, ürün
+  oluşturulunca doldurulacak (premium.php o zamana kadar "Çok Yakında" gösterir).
+- Veritabanı: yeni genel user_packages tablosu (user_id + package slug +
+  expires_at — paket başına ayrı kolon çifti DEĞİL, ileride yeni paket
+  eklendiğinde şema değişmeyecek şekilde). shopier_processed_orders'a
+  "package" kolonu eklendi (hangi paketin satın alındığını artık biliyoruz,
+  önceden hiç kaydedilmiyordu). sql/migration-packages.sql (+ schema.sql).
+- Yeni lib/Packages.php: getActivePackagesForUser() (expiry-aware, hem
+  currentUser() hem admin panel bu TEK fonksiyonu çağırıyor — önceden bu
+  expiry hesaplaması iki yerde bağımsız tekrarlanıyordu, sadeleştirildi),
+  grantPackageDays() (grantPremiumDays() ile aynı "stack/uzat" deseni),
+  togglePackageForUser() (admin manuel grant, toggleUserPremium() ile aynı
+  "flip + süresiz" deseni), getPackageExpiryForUser().
+- lib/Auth.php currentUser() artık $user['packages'] (aktif paket listesi)
+  ve $user['is_emlak'] (kolaylık bool) döndürüyor — mevcut is_premium hesabı
+  hiç değişmedi. lib/Shopier.php processShopierOrderPayload() artık ürün
+  ID'sine göre premium/emlak dallanıyor (zaten line-item bazlı eşleşme
+  yapıyordu, sadece ikinci bir dal eklendi) — Emlak satın alınca hem
+  grantPremiumDays hem grantPackageDays çağrılıyor.
+- Real-estate'e özel ~5 dosyanın (emlak.php, emlak-tasinmazlar.php,
+  emlak-tasinmaz-islem.php, emlak-tasinmazlar-api.php, sablon.php'deki
+  propertyGroups script-include satırı) is_premium kontrolü is_emlak'a
+  çevrildi; kilit/upsell metinleri "Emlak Paketine Geç" diyor artık.
+  kisilerim.php/kisi-islem.php/kisiler-api.php ve sablon.php'deki
+  personGroups kontrolü DOKUNULMADI (is_premium kalmaya devam ediyor).
+- premium.php tek kart yerine $plans dizisi üzerinden 2 kart (Premium/Emlak)
+  render ediyor, her kart kullanıcının o paketi olup olmadığına göre doğru
+  CTA'yı gösteriyor. emlak.php'ye "paket hero" bandı eklendi (ikon + "EMLAK
+  PAKETİ" etiketi + başlık/slogan, gradient navy arka plan, mevcut CSS
+  değişkenleriyle) — bu, ileride her yeni paketin dashboard'unun da
+  kullanacağı tekrarlanabilir bir görsel desen olarak tasarlandı
+  (.package-hero sınıfı paket-agnostik).
+- admin/musteriler.php'ye "Emlak Yap/Kaldır" butonu + rozet eklendi
+  (mevcut Premium toggle'ın birebir kopyası, admin/musteri-islem.php'de
+  action=toggle_emlak). admin/odemeler.php'nin gelir hesabı artık paket
+  bazlı (₺99 Premium / ₺240 Emlak, sabit tek fiyat varsayımı düzeltildi) —
+  önceden Emlak siparişleri gelmeye başlasaydı bu hesap yanlış çıkacaktı,
+  şimdiden düzeltildi. Ödemeler tablosuna "Paket" kolonu eklendi.
+- Test: php -l tüm dosyalar, local DB migration + lib/Packages.php için
+  grant/stack/toggle/expiry birim testi + processShopierOrderPayload()
+  simülasyonu (granted/duplicate/ignored senaryoları) hepsi geçti. Gerçek
+  bir test kullanıcısıyla (geçici, silindi): sadece Premium verilince
+  Kişiler açık/Emlak kilitli, Emlak de verilince ikisi de açık olduğu,
+  premium.php'nin iki kartının doğru durumu gösterdiği, admin panelde
+  Emlak rozeti/butonu ve paket bazlı gelir (₺240) hesabının doğru
+  çalıştığı doğrulandı. Gerçek Shopier ödemesiyle Emlak ürünü henüz test
+  edilmedi (ürün henüz oluşturulmadı) — kullanıcı ürünü oluşturup
+  product ID/ödeme linkini verdiğinde ayrıca uçtan uca test edilecek.
+- (2026-07-29 devamı) Emlak Shopier ürünü kullanıcı tarafından oluşturuldu:
+  ürün ID 49411294, fiyat ₺249 (₺240 değil — kullanıcı son anda değiştirdi,
+  config/app.php'deki EMLAK_PRICE_TRY buna göre güncellendi). Sunucudaki
+  config/shopier.php (.gitignore'lu, git'e gitmiyor) kullanıcı tarafından
+  cPanel File Manager ile elle güncellendi (SHOPIER_EMLAK_PRODUCT_ID/
+  SHOPIER_EMLAK_PAYMENT_URL eklendi) — bu tür dosyalar için push yeterli
+  değil, ayrıca sunucuda elle düzenleme gerekiyor, kullanıcıya adım adım
+  anlatıldı.
+- admin/musteriler.php'deki ayrı "Premium Yap"/"Emlak Yap" butonları
+  kullanıcı isteğiyle TEK bir paket dropdown'una (Ücretsiz/Premium/Emlak)
+  dönüştürüldü — seçim değişince otomatik submit oluyor, action=set_package
+  tek POST endpoint'i (admin/musteri-islem.php) her iki eski toggle
+  action'ının yerini aldı. Eski toggleUserPremium()/togglePackageForUser()
+  (flip mantığı) kaldırılıp yerine doğrudan setUserPremium()/
+  setPackageForUser() (açık bool mantığı) fonksiyonları eklendi — dropdown
+  ile "mevcut durumu bilmeden" doğru sonuca ulaşmak flip yerine set
+  gerektiriyordu. Emlak seçilince otomatik olarak Premium da açılıyor
+  (Emlak, Premium'u kapsadığı için). Üç geçiş de (emlak→premium→ücretsiz)
+  local'de test edilip DB ve dropdown'ın senkron kaldığı doğrulandı.
+
+=================================================
+18) KİŞİLERİM — KVKK RİSKİ NEDENİYLE GEÇİCİ KAPATILDI (2026-07-29/30)
+=================================================
+- Kullanıcının talebi: persons tablosu TC Kimlik No/telefon/e-posta/adres
+  gibi üçüncü taraf kişisel verilerini düz metin sakladığı için riskli
+  bulundu, yeni veri girişi geçici olarak durduruldu (var olan kayıtlar
+  SİLİNMEDİ, sadece erişim/giriş kapatıldı).
+- config/app.php'ye PERSONS_FEATURE_ENABLED (şu an false) bayrağı eklendi.
+  Kapalıyken: partials/_header.php'de "Kişilerim" menü linki gizleniyor;
+  kisi-islem.php create/update action'ları "Bu özellik geçici olarak
+  kullanım dışı" mesajıyla engelleniyor (delete ve listeleme AÇIK kaldı —
+  kullanıcı mevcut kayıtlarını görüp silebiliyor); kisilerim.php'de
+  "+ Yeni Kişi Ekle"/"Düzenle" butonları ve modalı gizlendi, yerine
+  uyarı bandı eklendi; kisiler-api.php her zaman [] dönüyor.
+- Site genelindeki kullanım noktaları da aynı bayrakla kapatıldı: 25
+  şablondaki "Kişilerim'den seç" picker'ı (sablon.php'deki personGroups
+  bloğu) artık kilitli mesaj gösteriyor, person-picker.js yüklenmiyor;
+  emlak-tasinmazlar.php'deki taşınmaza sahip atama listesi ve var olan
+  sahiplerin taşınmaz kartlarında gösterimi gizlendi; emlak-tasinmazlar-
+  api.php'nin taşınmaz picker'ı için sahibin TC/telefon/e-posta/adresini
+  otomatik doldurmak üzere sızdırdığı owner_* alanları API yanıtından
+  tamamen çıkarıldı (taşınmazın kendi alanları — adres, kira vb. —
+  etkilenmedi, Emlak paketi çalışmaya devam ediyor).
+- Ayrıca genel bir KVKK taraması yapıldı (sadece rapor, hiçbir şey
+  değiştirilmedi): documents.form_data JSON'unun 13+ şablonda (kira-
+  sozlesmesi, vekaletname, borc-senedi, arac/esya-satis-sozlesmesi,
+  kefaletname, muvafakatname — bir küçüğün TC'si dahil — vb.) üçüncü
+  tarafların TC/adres bilgisini içerdiği, RETENTION_DAYS_DEFAULT=30 gün
+  sonra silinmesinin cron/cleanup-documents.php'nin SUNUCUDA elle
+  cPanel cron'a bağlanmasına bağlı olduğu (repo içinde otomatik
+  tetiklenmiyor — sunucuda gerçekten kurulu olup olmadığı doğrulanmalı)
+  ve misafir (user_id NULL) belgelerinin de aynı 30 günlük süreye tabi
+  olduğu tespit edildi. Bu bulgu kullanıcıya raporlandı, kullanıcı ne
+  yapılacağına kendisi karar verecek — kod tarafında dokunulmadı.
+- İki ayrı commit: (1) 9af6c6b — çekirdek Kişilerim kapatma (config
+  bayrağı, nav, kisi-islem.php, kisilerim.php, kisiler-api.php),
+  (2) ab78cc5 — site genelindeki entegrasyonların kapatılması
+  (sablon.php personGroups picker, emlak-tasinmazlar.php sahip listesi,
+  emlak-tasinmazlar-api.php owner_* PII sızıntısı).
+- Test: php -l tüm dosyalar; local'de gerçek bir test kullanıcısı ve
+  önceden var olan bir kişi/taşınmaz-sahip bağlantısıyla uçtan uca
+  doğrulandı — nav linki gizli, ekleme denemesi DB'ye hiç yazmadı
+  (doğrudan POST ile denendi), var olan kayıt hâlâ listelendi ve
+  silinebildi, kisiler-api.php/emlak-tasinmazlar-api.php PII sızdırmadı,
+  sablon.php'de person picker yerine kilitli mesaj çıktı, property
+  picker (taşınmazın kendi alanları) hiç bozulmadan çalışmaya devam etti.

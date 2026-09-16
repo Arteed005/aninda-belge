@@ -22,7 +22,7 @@ function generateVerificationToken(int $userId): string
 {
     $token = bin2hex(random_bytes(32));
     $stmt = getPDO()->prepare(
-        'UPDATE users SET verify_token_hash = :hash, verify_token_expires_at = :expires WHERE id = :id'
+        'UPDATE users SET verify_token_hash = :hash, verify_token_expires_at = :expires, email_verify_requested_at = NOW() WHERE id = :id'
     );
     $stmt->execute([
         'hash' => hash('sha256', $token),
@@ -30,6 +30,18 @@ function generateVerificationToken(int $userId): string
         'id' => $userId,
     ]);
     return $token;
+}
+
+function getEmailVerifyCooldownSecondsRemaining(?string $requestedAt, int $cooldownSeconds = 60): int
+{
+    if (empty($requestedAt)) {
+        return 0;
+    }
+    $lastTime = strtotime($requestedAt);
+    if ($lastTime === false) {
+        return 0;
+    }
+    return max(0, $cooldownSeconds - (time() - $lastTime));
 }
 
 function verifyEmailToken(string $token): bool
@@ -59,7 +71,7 @@ function emailExists(string $email): bool
 
 function findUserByEmail(string $email): ?array
 {
-    $stmt = getPDO()->prepare('SELECT id, name, email FROM users WHERE LOWER(email) = LOWER(:email)');
+    $stmt = getPDO()->prepare('SELECT id, name, email, password_reset_requested_at FROM users WHERE LOWER(email) = LOWER(:email)');
     $stmt->execute(['email' => $email]);
     $row = $stmt->fetch();
     return $row ?: null;
@@ -108,7 +120,7 @@ function currentUser(): ?array
         return $user = null;
     }
 
-    $stmt = getPDO()->prepare('SELECT id, name, email, email_verified_at, is_premium, premium_expires_at, is_admin, created_at FROM users WHERE id = :id');
+    $stmt = getPDO()->prepare('SELECT id, name, email, email_verified_at, email_verify_requested_at, is_premium, premium_expires_at, is_admin, created_at FROM users WHERE id = :id');
     $stmt->execute(['id' => $_SESSION['user_id']]);
     $row = $stmt->fetch();
     if ($row) {
@@ -141,7 +153,7 @@ function generatePasswordResetToken(int $userId): string
 {
     $token = bin2hex(random_bytes(32));
     $stmt = getPDO()->prepare(
-        'UPDATE users SET password_reset_token_hash = :hash, password_reset_expires_at = :expires WHERE id = :id'
+        'UPDATE users SET password_reset_token_hash = :hash, password_reset_expires_at = :expires, password_reset_requested_at = NOW() WHERE id = :id'
     );
     $stmt->execute([
         'hash' => hash('sha256', $token),
@@ -149,6 +161,18 @@ function generatePasswordResetToken(int $userId): string
         'id' => $userId,
     ]);
     return $token;
+}
+
+function getPasswordResetCooldownSecondsRemaining(?string $requestedAt, int $cooldownSeconds = 60): int
+{
+    if (empty($requestedAt)) {
+        return 0;
+    }
+    $lastTime = strtotime($requestedAt);
+    if ($lastTime === false) {
+        return 0;
+    }
+    return max(0, $cooldownSeconds - (time() - $lastTime));
 }
 
 function isPasswordResetTokenValid(string $token): bool

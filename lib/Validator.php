@@ -159,3 +159,17 @@ function validateRepeatableGroups(array $config, array $post): array
 
     return $result;
 }
+
+/**
+ * E-posta girişini temizler ve geçerliliğini doğrular.
+ * [?string $error, string $cleanEmail] döndürür.
+ */
+function validateEmail(mixed $email): array
+{
+    $val = is_string($email) ? trim($email) : '';
+    $val = mb_substr($val, 0, 190);
+    if ($val === '' || !filter_var($val, FILTER_VALIDATE_EMAIL)) {
+        return ['Geçerli bir e-posta adresi girin.', ''];
+    }
+    return [null, $val];
+}
